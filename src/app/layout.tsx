@@ -1,9 +1,4 @@
-import {
-  geistMono,
-  geistSans,
-  notoSansJp,
-  ubuntuSans,
-} from "@/constants/fonts";
+import { notoSansJp } from "@/constants/fonts";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -21,7 +16,7 @@ export default function RootLayout({
     <html
       lang="ja"
       data-google-analytics-opt-out=""
-      className={`${ubuntuSans.className} ${geistSans.className} ${geistMono.className} ${notoSansJp.className} h-full font-sans antialiased`}
+      className={`${notoSansJp.className} h-full font-sans antialiased`}
     >
       <body className="flex min-h-full flex-col">{children}</body>
     </html>
