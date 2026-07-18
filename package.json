@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "gen:works": "node ./scripts/generate-works-images.js",
+    "gen:works:force": "node ./scripts/generate-works-images.js --force",
     "start": "next start",
     "lint": "eslint",
     "format": "npx prettier . --write"
@@ -39,6 +41,7 @@
     "prettier-plugin-tailwindcss": "^0.8.1",
     "react-masonry-css": "^1.0.16",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "sharp": "^0.32.0"
   }
 }

@@ -1,4 +1,4 @@
-import { readdir, stat } from "node:fs/promises";
+import { readdir, readFile, stat } from "node:fs/promises";
 import { join } from "node:path";
 
 export type WorkItem = {
@@ -6,6 +6,8 @@ export type WorkItem = {
   title: string;
   date: string; // ISO
   src: string; // public path
+  thumb?: { src: string; width: number; height: number | null };
+  display?: { src: string; width: number; height: number | null };
 };
 
 const WORKS_DIR = join(process.cwd(), "public", "assets", "works");
@@ -18,23 +20,89 @@ export async function getWorks(): Promise<WorkItem[]> {
     return [];
   }
 
+  // try to load generated manifest (created by scripts/generate-works-images.js)
+  type ManifestEntry = {
+    thumb?: string;
+    thumbWidth?: number;
+    thumbHeight?: number | null;
+    display?: string;
+    displayWidth?: number;
+    displayHeight?: number | null;
+  };
+  let manifest: Record<string, ManifestEntry> = {};
+  try {
+    const m = await readFile(join(WORKS_DIR, "manifest.json"), "utf8");
+    manifest = JSON.parse(m);
+  } catch {
+    // manifest not present — continue
+  }
+
   const imageExt = /\.(png|jpe?g|webp|gif|avif)$/i;
 
-  const items = await Promise.all(
-    files
-      .filter((f) => imageExt.test(f))
-      .map(async (file) => {
-        const p = join(WORKS_DIR, file);
-        const s = await stat(p);
-        const slug = file.replace(/\.[^.]+$/, "");
-        return {
+  let items: WorkItem[] = [];
+
+  if (Object.keys(manifest).length > 0) {
+    // build items from manifest entries
+    items = await Promise.all(
+      Object.keys(manifest).map(async (slug) => {
+        const entry = manifest[slug] as ManifestEntry;
+
+        // try to stat display file for date
+        let date = new Date().toISOString();
+        if (entry.display) {
+          try {
+            const displayRel = entry.display.replace(/^\/assets\/works\//, "");
+            const s = await stat(join(WORKS_DIR, displayRel));
+            date = s.mtime.toISOString();
+          } catch {
+            // ignore
+          }
+        }
+
+        const displaySrc = entry.display ?? entry.thumb ?? "";
+        const thumbSrc = entry.thumb ?? entry.display ?? "";
+
+        const item: WorkItem = {
           slug,
           title: slug,
-          date: s.mtime.toISOString(),
-          src: `/assets/works/${file}`,
-        } as WorkItem;
+          date,
+          src: displaySrc,
+          thumb: thumbSrc
+            ? {
+                src: thumbSrc,
+                width: entry.thumbWidth ?? 0,
+                height: entry.thumbHeight ?? null,
+              }
+            : undefined,
+          display: entry.display
+            ? {
+                src: entry.display,
+                width: entry.displayWidth ?? 0,
+                height: entry.displayHeight ?? null,
+              }
+            : undefined,
+        };
+
+        return item;
       }),
-  );
+    );
+  } else {
+    items = await Promise.all(
+      files
+        .filter((f) => imageExt.test(f))
+        .map(async (file) => {
+          const p = join(WORKS_DIR, file);
+          const s = await stat(p);
+          const slug = file.replace(/\.[^.]+$/, "");
+          return {
+            slug,
+            title: slug,
+            date: s.mtime.toISOString(),
+            src: `/assets/works/${file}`,
+          } as WorkItem;
+        }),
+    );
+  }
 
   // sort by filename (slug) in descending order
   items.sort((a, b) =>
