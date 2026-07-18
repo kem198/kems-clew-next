@@ -5,5 +5,5 @@ type Props = {
 };
 
 export default function NotesLayout({ children }: Props) {
-  return <main className="mx-auto max-w-6xl px-8 py-8">{children}</main>;
+  return <main>{children}</main>;
 }
