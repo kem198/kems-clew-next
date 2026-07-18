@@ -1,13 +1,4 @@
-import { WorkItem } from "@/types/work";
-
-export type AlbumPhoto = {
-  src: string;
-  width: number;
-  height: number;
-  alt?: string;
-  display?: string;
-  [key: string]: unknown;
-};
+import { AlbumPhoto, WorkItem } from "@/types/work";
 
 export function mapItemsToPhotos(items: WorkItem[]): AlbumPhoto[] {
   return items.map((item) => ({

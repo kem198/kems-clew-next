@@ -1,9 +1,9 @@
 "use client";
 
-import { WorkItem } from "@/types/work";
+import { AlbumPhoto, WorkItem } from "@/types/work";
 import Image from "next/image";
 import PhotoAlbum, { type RenderPhotoProps } from "react-photo-album";
-import { mapItemsToPhotos, type AlbumPhoto } from "./works-gallery-utils";
+import { mapItemsToPhotos } from "./works-gallery-utils";
 
 type Props = {
   items: WorkItem[];
@@ -12,7 +12,7 @@ type Props = {
   onPhotoClick?: (photo: AlbumPhoto) => void;
 };
 
-export default function InlineMasonry({
+export default function Masonry({
   items,
   columns = 3,
   targetRowHeight = 300,
