@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="ja"
       data-google-analytics-opt-out=""
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
