@@ -1,12 +1,12 @@
 "use client";
 
 import WorksMasonry from "@/app/(contents)/works/_components/works-masonry";
+import { mapItemsToPhotos } from "@/lib/works";
 import { WorkItem } from "@/types/work";
 import { useMemo, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import GroupToggle from "./works-controls";
-import { mapItemsToPhotos } from "./works-utils";
 
 type Props = {
   items: WorkItem[];
