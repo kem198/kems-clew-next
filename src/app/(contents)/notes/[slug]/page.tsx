@@ -6,8 +6,7 @@ import { evaluate } from "next-mdx-remote-client/rsc";
 import rehypeSlug from "rehype-slug";
 import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
 import remarkGfm from "remark-gfm";
-import { NoteNavigation } from "../_components/note-navigation";
-import { TableOfContents } from "../_components/table-of-contents";
+import { NoteNavigation, NoteToc } from "../_components";
 
 type Props = {
   params: Promise<{
@@ -59,7 +58,7 @@ export default async function NotePage({ params }: Props) {
         <aside>
           <div className="bg-card sticky top-20 rounded-xl border p-6 shadow-sm">
             <h2>目次</h2>
-            <TableOfContents toc={scope.toc} />
+            <NoteToc toc={scope.toc} />
           </div>
         </aside>
       </div>

@@ -1,16 +1,73 @@
 "use client";
 
-import { mapItemsToPhotos } from "@/lib/works";
-import type { WorkItem } from "@/types/work";
 import { useMemo, useState } from "react";
+import type { Photo } from "react-photo-album";
+import PhotoAlbum from "react-photo-album";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import GroupToggle from "./controls";
-import WorksMasonry from "./works-masonry";
+
+import { mapItemsToPhotos } from "@/lib/works";
+import type { WorkItem } from "@/types/work";
 
 type Props = {
   items: WorkItem[];
 };
+
+function GroupToggle({
+  groupByYear,
+  setGroupByYear,
+}: {
+  groupByYear: boolean;
+  setGroupByYear: (v: boolean) => void;
+}) {
+  return (
+    <div className="flex gap-2">
+      <label className="flex items-center gap-2">
+        <input
+          type="checkbox"
+          checked={groupByYear}
+          onChange={(e) => setGroupByYear(e.target.checked)}
+        />
+        <span>Group by year</span>
+      </label>
+    </div>
+  );
+}
+
+function WorksMasonry({
+  items,
+  columns = 3,
+  targetRowHeight = 200,
+  onPhotoClick,
+}: {
+  items: WorkItem[];
+  columns?: number;
+  targetRowHeight?: number;
+  onPhotoClick?: (photo: Photo) => void;
+}) {
+  const photos = items.map((it) => {
+    const src = it.display?.src ?? it.thumb?.src ?? it.src;
+    const width = it.display?.width ?? it.thumb?.width ?? 1;
+    const height = it.display?.height ?? it.thumb?.height ?? 1;
+    return {
+      src,
+      width: width ?? 1,
+      height: height ?? 1,
+      slug: it.slug,
+      key: it.slug,
+    } as unknown as Photo;
+  });
+
+  return (
+    <PhotoAlbum
+      layout="rows"
+      photos={photos}
+      targetRowHeight={targetRowHeight}
+      columns={columns}
+      onClick={(_event: unknown, photo: Photo) => onPhotoClick?.(photo)}
+    />
+  );
+}
 
 export default function WorksGallery({ items }: Props) {
   const [groupByYear, setGroupByYear] = useState(false);
