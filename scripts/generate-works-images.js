@@ -34,57 +34,67 @@ async function main() {
     const input = join(SRC_DIR, file);
     const name = file.replace(/\.[^.]+$/, "");
 
-    // generate thumbs
-    for (const w of THUMB_SIZES) {
-      const outWebP = join(OUT_THUMBS, `${name}.${w}.webp`);
-      let exists = false;
-      try {
-        await access(outWebP, constants.F_OK);
-        exists = true;
-      } catch {}
-
-      if (exists && !force) {
-        console.log("skip existing thumb", outWebP);
-      } else {
-        await sharp(input)
-          .resize({ width: w })
-          .webp({ quality: 75 })
-          .toFile(outWebP);
-      }
-    }
-
-    // generate display size
-    const outDisplayWebP = join(OUT_DISPLAY, `${name}.${DISPLAY_SIZE}.webp`);
     try {
-      await access(outDisplayWebP, constants.F_OK);
-      if (!force) {
-        console.log("skip existing display", outDisplayWebP);
-      } else {
+      // generate thumbs
+      for (const w of THUMB_SIZES) {
+        const outWebP = join(OUT_THUMBS, `${name}.${w}.webp`);
+        let exists = false;
+        try {
+          await access(outWebP, constants.F_OK);
+          exists = true;
+        } catch {}
+
+        if (exists && !force) {
+          console.log("skip existing thumb", outWebP);
+        } else {
+          await sharp(input)
+            .resize({ width: w })
+            .webp({ quality: 75 })
+            .toFile(outWebP);
+        }
+      }
+
+      // generate display size
+      const outDisplayWebP = join(OUT_DISPLAY, `${name}.${DISPLAY_SIZE}.webp`);
+      try {
+        await access(outDisplayWebP, constants.F_OK);
+        if (!force) {
+          console.log("skip existing display", outDisplayWebP);
+        } else {
+          await sharp(input)
+            .resize({ width: DISPLAY_SIZE })
+            .webp({ quality: 80 })
+            .toFile(outDisplayWebP);
+        }
+      } catch {
         await sharp(input)
           .resize({ width: DISPLAY_SIZE })
           .webp({ quality: 80 })
           .toFile(outDisplayWebP);
       }
-    } catch {
-      await sharp(input)
-        .resize({ width: DISPLAY_SIZE })
-        .webp({ quality: 80 })
-        .toFile(outDisplayWebP);
+
+      // read metadata from the generated webp images
+      const metaDisplay = await sharp(outDisplayWebP).metadata();
+      const thumbPath = join(OUT_THUMBS, `${name}.${THUMB_SIZES[1]}.webp`);
+      const metaThumb = await sharp(thumbPath).metadata();
+
+      manifest[name] = {
+        thumb: `/assets/works/thumbs/${name}.${THUMB_SIZES[1]}.webp`,
+        thumbWidth: metaThumb.width || THUMB_SIZES[1],
+        thumbHeight: metaThumb.height || null,
+        display: `/assets/works/display/${name}.${DISPLAY_SIZE}.webp`,
+        displayWidth: metaDisplay.width || DISPLAY_SIZE,
+        displayHeight: metaDisplay.height || null,
+      };
+    } catch (err) {
+      console.error(
+        "failed processing",
+        file,
+        err && err.message ? err.message : err,
+      );
+      // continue with next file
+      continue;
     }
-
-    // read metadata from the generated webp images
-    const metaDisplay = await sharp(outDisplayWebP).metadata();
-    const thumbPath = join(OUT_THUMBS, `${name}.${THUMB_SIZES[1]}.webp`);
-    const metaThumb = await sharp(thumbPath).metadata();
-
-    manifest[name] = {
-      thumb: `/assets/works/thumbs/${name}.${THUMB_SIZES[1]}.webp`,
-      thumbWidth: metaThumb.width || THUMB_SIZES[1],
-      thumbHeight: metaThumb.height || null,
-      display: `/assets/works/display/${name}.${DISPLAY_SIZE}.webp`,
-      displayWidth: metaDisplay.width || DISPLAY_SIZE,
-      displayHeight: metaDisplay.height || null,
-    };
   }
 
   await writeFile(MANIFEST_PATH, JSON.stringify(manifest, null, 2), "utf8");
