@@ -2,7 +2,7 @@ import { NoteNavigation } from "@/components/shared/note-navigation";
 import { TableOfContents } from "@/components/shared/table-of-contents";
 import { Tags } from "@/components/shared/tags";
 import { formatDateToYYYYMMDD } from "@/lib/date";
-import { getNoteSource, getNotes } from "@/lib/notes";
+import { getNoteSource, getPrevNextNote } from "@/lib/notes";
 import type { NoteFrontmatter } from "@/types/note";
 import { evaluate } from "next-mdx-remote-client/rsc";
 import rehypeSlug from "rehype-slug";
@@ -21,15 +21,7 @@ export default async function NotePage({ params }: Props) {
   const source = await getNoteSource(slug);
 
   // 記事一覧を取得して 次の記事へ / 前の記事へ 用に加工する
-  const notes = await getNotes();
-  const sorted = notes.sort(
-    (a, b) =>
-      new Date(a.frontmatter.date).getTime() -
-      new Date(b.frontmatter.date).getTime(),
-  );
-  const idx = sorted.findIndex((n) => n.slug === slug);
-  const prev = idx > 0 ? sorted[idx - 1] : null;
-  const next = idx >= 0 && idx < sorted.length - 1 ? sorted[idx + 1] : null;
+  const { prev, next } = await getPrevNextNote(slug);
 
   const { content, frontmatter, scope } = await evaluate<
     NoteFrontmatter,

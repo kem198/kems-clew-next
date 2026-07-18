@@ -1,17 +1,9 @@
 import { formatDateToYYYYMMDD } from "@/lib/date";
-import { getNotes } from "@/lib/notes";
+import { getLatestNotes } from "@/lib/notes";
 import Link from "next/link";
 
 export default async function Home() {
-  const notes = await getNotes();
-  const latest = notes
-    .slice()
-    .sort(
-      (a, b) =>
-        new Date(b.frontmatter.date).getTime() -
-        new Date(a.frontmatter.date).getTime(),
-    )
-    .slice(0, 3);
+  const latest = await getLatestNotes(3);
 
   return (
     <main className="prose">
