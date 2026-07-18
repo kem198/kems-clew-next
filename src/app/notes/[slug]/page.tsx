@@ -1,7 +1,7 @@
-import { evaluate } from "next-mdx-remote-client/rsc";
-
 import { getNoteSource } from "@/lib/notes";
 import type { NoteFrontmatter } from "@/types/note";
+import { evaluate } from "next-mdx-remote-client/rsc";
+import remarkGfm from "remark-gfm";
 
 type Props = {
   params: Promise<{
@@ -18,6 +18,9 @@ export default async function NotePage({ params }: Props) {
     source,
     options: {
       parseFrontmatter: true,
+      mdxOptions: {
+        remarkPlugins: [remarkGfm],
+      },
     },
   });
 
