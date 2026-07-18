@@ -2,9 +2,8 @@
 
 import type { WorkItem } from "@/lib/works";
 import Image from "next/image";
-import Link from "next/link";
-import { useMemo, useState, type SyntheticEvent } from "react";
-import Masonry from "react-masonry-css";
+import { useMemo, useState } from "react";
+import PhotoAlbum, { type RenderPhotoProps } from "react-photo-album";
 
 type Props = {
   items: WorkItem[];
@@ -66,73 +65,54 @@ export default function WorksGallery({ items }: Props) {
 }
 
 function InlineMasonry({ items }: { items: WorkItem[] }) {
-  const [ratios, setRatios] = useState<Record<string, number>>({});
-  const breakpointColumnsObj = {
-    default: 3,
-    1024: 3,
-    768: 2,
-    480: 1,
+  const photos = items.map((item) => ({
+    src: item.thumb?.src ?? item.display?.src ?? item.src,
+    width: item.thumb?.width ?? item.display?.width ?? 800,
+    height: item.thumb?.height ?? item.display?.height ?? 600,
+    alt: item.title,
+    slug: item.slug,
+    display: item.display?.src ?? item.src,
+  }));
+
+  type AlbumPhoto = {
+    src: string;
+    width: number;
+    height: number;
+    alt?: string;
+    display?: string;
+    [key: string]: unknown;
+  };
+
+  const renderPhoto = (props: RenderPhotoProps & { photo: AlbumPhoto }) => {
+    const { photo, wrapperStyle } = props;
+    const href = photo.display ?? photo.src;
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={wrapperStyle}
+        className="block"
+      >
+        <Image
+          src={photo.src}
+          alt={String(photo.alt ?? "")}
+          width={photo.width}
+          height={photo.height}
+          sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
+          className="h-full w-full rounded object-cover"
+        />
+      </a>
+    );
   };
 
   return (
-    <Masonry
-      breakpointCols={breakpointColumnsObj}
-      className="my-masonry-grid"
-      columnClassName="my-masonry-grid_column"
-    >
-      {items.map((item) => (
-        <article key={item.slug} className="not-prose mb-4">
-          <Link
-            href={item.src}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block"
-          >
-            {item.thumb && item.thumb.width && item.thumb.height ? (
-              <div
-                className="relative w-full"
-                style={{
-                  aspectRatio: `${item.thumb.width}/${item.thumb.height}`,
-                }}
-              >
-                <Image
-                  src={item.thumb.src}
-                  alt={item.title}
-                  width={item.thumb.width}
-                  height={item.thumb.height}
-                  sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
-                  className="h-full w-full rounded object-cover"
-                />
-              </div>
-            ) : (
-              <div
-                className="relative w-full"
-                style={{ aspectRatio: ratios[item.slug] ?? 1 }}
-              >
-                <Image
-                  src={item.src}
-                  alt={item.title}
-                  fill
-                  sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
-                  className="h-full w-full rounded object-cover"
-                  onLoad={(e: SyntheticEvent<HTMLImageElement>) => {
-                    const img = e.currentTarget as HTMLImageElement;
-                    const w = img.naturalWidth || img.width;
-                    const h = img.naturalHeight || img.height;
-                    if (w && h) {
-                      setRatios((prev) =>
-                        prev[item.slug]
-                          ? prev
-                          : { ...prev, [item.slug]: w / h },
-                      );
-                    }
-                  }}
-                />
-              </div>
-            )}
-          </Link>
-        </article>
-      ))}
-    </Masonry>
+    <PhotoAlbum
+      layout="masonry"
+      columns={3}
+      photos={photos}
+      renderPhoto={renderPhoto}
+      targetRowHeight={300}
+    />
   );
 }
