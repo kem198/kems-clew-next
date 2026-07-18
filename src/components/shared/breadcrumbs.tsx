@@ -23,7 +23,7 @@ function Breadcrumbs() {
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="#">Home</BreadcrumbLink>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         {pathnamesIgnoredRouteGroups.map((segment, index) => (
           <React.Fragment key={segment}>

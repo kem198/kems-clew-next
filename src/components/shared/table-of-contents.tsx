@@ -6,8 +6,8 @@ type Props = {
 
 export function TableOfContents({ toc }: Props) {
   return (
-    <nav>
-      <ul>
+    <nav className="prose">
+      <ul className="">
         {toc.map((item) => (
           <li key={item.href}>
             <a href={item.href}>{item.value}</a>
