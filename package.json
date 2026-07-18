@@ -37,6 +37,7 @@
     "prettier": "^3.9.5",
     "prettier-plugin-organize-imports": "^4.3.0",
     "prettier-plugin-tailwindcss": "^0.8.1",
+    "react-masonry-css": "^1.0.16",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
