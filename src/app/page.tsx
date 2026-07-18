@@ -9,14 +9,18 @@ export default async function Home() {
     <main className="prose">
       <div className="flex flex-col gap-4">
         <Link href={"/notes"}>Notes</Link>
-        <ul className="not-prose ml-4">
+        <ul>
           {latest.map((n) => (
             <li key={n.slug}>
               <Link href={`/notes/${n.slug}`}>
-                {formatDateToYYYYMMDD(n.frontmatter.date)} {n.frontmatter.title}
+                {formatDateToYYYYMMDD(n.frontmatter.date)} |{" "}
+                {n.frontmatter.title}
               </Link>
             </li>
           ))}
+          <li>
+            <Link href="/notes">More</Link>
+          </li>
         </ul>
 
         <Link href={"/works"}>Works</Link>
