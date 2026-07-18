@@ -1,5 +1,5 @@
 import { TableOfContents } from "@/components/shared/table-of-contents";
-import { ubuntuSans } from "@/constants/fonts";
+import { Tags } from "@/components/shared/tags";
 import { getNoteSource } from "@/lib/notes";
 import type { NoteFrontmatter } from "@/types/note";
 import { evaluate } from "next-mdx-remote-client/rsc";
@@ -35,21 +35,18 @@ export default async function NotePage({ params }: Props) {
 
   return (
     <div className="flex gap-4">
-      <div>
-        <ul>
+      <article className="prose bg-red-200">
+        <ul className="not-prose text-right">
           <li>作成日: {frontmatter.date}</li>
           <li>更新日: {frontmatter.lastmod}</li>
         </ul>
+
         <h1>{frontmatter.title}</h1>
-        {frontmatter.tags && frontmatter.tags.length > 0 && (
-          <ul className={`${ubuntuSans.className} flex gap-2`}>
-            {frontmatter.tags.map((tag) => (
-              <li key={tag}>{tag}</li>
-            ))}
-          </ul>
-        )}
-        <article className="prose bg-blue-200">{content}</article>
-      </div>
+
+        <Tags tags={frontmatter.tags}></Tags>
+
+        {content}
+      </article>
 
       <aside>
         <div className="bg-card sticky top-20 rounded-xl border p-6 shadow-sm">
