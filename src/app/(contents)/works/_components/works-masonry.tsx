@@ -3,21 +3,21 @@
 import { AlbumPhoto, WorkItem } from "@/types/work";
 import Image from "next/image";
 import PhotoAlbum, { type RenderPhotoProps } from "react-photo-album";
-import { mapItemsToPhotos } from "./works-gallery-utils";
+import { mapItemsToPhotos } from "./works-utils";
 
-type Props = {
+type WorksMasonryProps = {
   items: WorkItem[];
   columns?: number;
   targetRowHeight?: number;
   onPhotoClick?: (photo: AlbumPhoto) => void;
 };
 
-export default function Masonry({
+export default function WorksMasonry({
   items,
   columns = 3,
   targetRowHeight = 300,
   onPhotoClick,
-}: Props) {
+}: WorksMasonryProps) {
   const photos = mapItemsToPhotos(items);
 
   const renderPhoto = (props: RenderPhotoProps & { photo: AlbumPhoto }) => {
