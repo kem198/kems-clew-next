@@ -2,10 +2,10 @@
 
 import type { WorkItem } from "@/lib/works";
 import { useMemo, useState } from "react";
-import GroupToggle from "./works-gallery-controls";
-import InlineMasonry from "./works-gallery-inline-masonry";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import GroupToggle from "./works-gallery-controls";
+import InlineMasonry from "./works-gallery-inline-masonry";
 import { mapItemsToPhotos } from "./works-gallery-utils";
 
 type Props = {
@@ -19,7 +19,11 @@ export default function WorksGallery({ items }: Props) {
   const flatPhotos = useMemo(() => mapItemsToPhotos(items), [items]);
 
   const handlePhotoClick = (photo: { [key: string]: any }) => {
-    const idx = flatPhotos.findIndex((p) => p.slug === photo.slug && (p.display ?? p.src) === (photo.display ?? photo.src));
+    const idx = flatPhotos.findIndex(
+      (p) =>
+        p.slug === photo.slug &&
+        (p.display ?? p.src) === (photo.display ?? photo.src),
+    );
     if (idx >= 0) setOpenIndex(idx);
   };
 
