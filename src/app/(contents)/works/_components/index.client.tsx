@@ -1,12 +1,12 @@
 "use client";
 
-import GroupToggle from "@/components/shared/works-gallery-controls";
-import InlineMasonry from "@/components/shared/works-gallery-inline-masonry";
 import { mapItemsToPhotos } from "@/lib/works";
 import type { WorkItem } from "@/types/work";
 import { useMemo, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import GroupToggle from "./controls";
+import WorksMasonry from "./works-masonry";
 
 type Props = {
   items: WorkItem[];
@@ -44,12 +44,12 @@ export default function WorksGallery({ items }: Props) {
 
       <div className="mt-6">
         {!groupByYear ? (
-          <InlineMasonry items={items} onPhotoClick={handlePhotoClick} />
+          <WorksMasonry items={items} onPhotoClick={handlePhotoClick} />
         ) : (
           groups.map(([year, its]) => (
             <section key={year} className="mb-8">
               <h2 className="mb-4 text-lg font-semibold">{year}</h2>
-              <InlineMasonry items={its} onPhotoClick={handlePhotoClick} />
+              <WorksMasonry items={its} onPhotoClick={handlePhotoClick} />
             </section>
           ))
         )}

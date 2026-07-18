@@ -1,5 +1,3 @@
-import { NoteNavigation } from "@/components/shared/note-navigation";
-import { TableOfContents } from "@/components/shared/table-of-contents";
 import { Tags } from "@/components/shared/tags";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import type { NoteFrontmatter } from "@/types/note";
@@ -8,6 +6,8 @@ import { evaluate } from "next-mdx-remote-client/rsc";
 import rehypeSlug from "rehype-slug";
 import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
 import remarkGfm from "remark-gfm";
+import { NoteNavigation } from "../_components/note-navigation";
+import { TableOfContents } from "../_components/table-of-contents";
 
 type Props = {
   params: Promise<{
