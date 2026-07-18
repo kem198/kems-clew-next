@@ -36,8 +36,13 @@ export async function getWorks(): Promise<WorkItem[]> {
       }),
   );
 
-  // sort desc by date
-  items.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  // sort by filename (slug) in descending order
+  items.sort((a, b) =>
+    b.slug.localeCompare(a.slug, undefined, {
+      numeric: true,
+      sensitivity: "base",
+    }),
+  );
 
   return items;
 }
