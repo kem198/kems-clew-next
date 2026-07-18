@@ -133,28 +133,3 @@ body {
     @apply font-sans;
   }
 }
-
-/* react-masonry-css default classes */
-/* https://github.com/paulcollett/react-masonry-css */
-.my-masonry-grid {
-  display: flex;
-  margin-left: -1rem; /* gutter size offset */
-  width: auto;
-}
-.my-masonry-grid_column {
-  padding-left: 1rem; /* gutter size */
-  background-clip: padding-box;
-}
-
-/* Style your items */
-.my-masonry-grid_column > * {
-  border: 1px solid #eee;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  overflow: hidden;
-}
-.my-masonry-grid_column > * img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
