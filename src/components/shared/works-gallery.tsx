@@ -18,7 +18,7 @@ export default function WorksGallery({ items }: Props) {
 
   const flatPhotos = useMemo(() => mapItemsToPhotos(items), [items]);
 
-  const handlePhotoClick = (photo: { [key: string]: any }) => {
+  const handlePhotoClick = (photo: { [key: string]: unknown }) => {
     const idx = flatPhotos.findIndex(
       (p) =>
         p.slug === photo.slug &&
