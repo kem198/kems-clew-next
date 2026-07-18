@@ -2,8 +2,8 @@
 
 import GroupToggle from "@/components/shared/works-gallery-controls";
 import InlineMasonry from "@/components/shared/works-gallery-inline-masonry";
-import type { WorkItem } from "@/lib/works";
 import { mapItemsToPhotos } from "@/lib/works";
+import type { WorkItem } from "@/types/work";
 import { useMemo, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";

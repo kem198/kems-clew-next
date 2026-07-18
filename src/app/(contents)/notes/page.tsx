@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 import { Tags } from "@/components/shared/tags";
-import { formatDateToYYYYMMDD } from "@/utils/date";
-import { getNotes } from "@/utils/notes";
+import { formatDateToYYYYMMDD } from "@/lib/date";
+import { getNotes } from "@/utils/server/notes.server";
 
 export default async function NotesPage() {
   const notes = await getNotes();

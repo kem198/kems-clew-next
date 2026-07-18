@@ -1,14 +1,6 @@
+import type { WorkItem } from "@/types/work";
 import { readdir, readFile, stat } from "node:fs/promises";
 import { join } from "node:path";
-
-export type WorkItem = {
-  slug: string;
-  title: string;
-  date: string; // ISO
-  src: string; // public path
-  thumb?: { src: string; width: number; height: number | null };
-  display?: { src: string; width: number; height: number | null };
-};
 
 const WORKS_DIR = join(process.cwd(), "public", "assets", "works");
 
@@ -20,7 +12,6 @@ export async function getWorks(): Promise<WorkItem[]> {
     return [];
   }
 
-  // try to load generated manifest (created by scripts/generate-works-images.js)
   type ManifestEntry = {
     thumb?: string;
     thumbWidth?: number;
@@ -42,12 +33,10 @@ export async function getWorks(): Promise<WorkItem[]> {
   let items: WorkItem[] = [];
 
   if (Object.keys(manifest).length > 0) {
-    // build items from manifest entries
     items = await Promise.all(
       Object.keys(manifest).map(async (slug) => {
         const entry = manifest[slug] as ManifestEntry;
 
-        // determine date: prefer parsing from slug YYYYMMDD / YYYYMM / YYYY, fall back to display file mtime, else current date
         let date: string | undefined;
         const m = slug.match(/^(\d{4})(\d{2})?(\d{2})?/);
         if (m) {
@@ -112,7 +101,6 @@ export async function getWorks(): Promise<WorkItem[]> {
     );
   }
 
-  // sort by filename (slug) in descending order
   items.sort((a, b) =>
     b.slug.localeCompare(a.slug, undefined, {
       numeric: true,
@@ -122,6 +110,3 @@ export async function getWorks(): Promise<WorkItem[]> {
 
   return items;
 }
-
-// mapItemsToPhotos and AlbumPhoto are centralized in `src/lib/works.ts` to avoid
-// duplicating client-facing utilities.
