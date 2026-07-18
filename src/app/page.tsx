@@ -1,5 +1,5 @@
-import { formatDateToYYYYMMDD } from "@/lib/date";
-import { getLatestNotes } from "@/lib/notes";
+import { formatDateToYYYYMMDD } from "@/utils/date";
+import { getLatestNotes } from "@/utils/notes";
 import Link from "next/link";
 
 export default async function Home() {

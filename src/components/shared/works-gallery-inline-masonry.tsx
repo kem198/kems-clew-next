@@ -1,9 +1,9 @@
 "use client";
 
-import type { WorkItem } from "@/lib/works";
+import type { AlbumPhoto, WorkItem } from "@/lib/works";
+import { mapItemsToPhotos } from "@/lib/works";
 import Image from "next/image";
 import PhotoAlbum, { type RenderPhotoProps } from "react-photo-album";
-import { mapItemsToPhotos, type AlbumPhoto } from "./works-gallery-utils";
 
 type Props = {
   items: WorkItem[];
