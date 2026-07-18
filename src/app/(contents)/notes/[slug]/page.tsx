@@ -1,5 +1,6 @@
 import { TableOfContents } from "@/components/shared/table-of-contents";
 import { Tags } from "@/components/shared/tags";
+import { formatDateToYYYYMMDD } from "@/lib/date";
 import { getNoteSource } from "@/lib/notes";
 import type { NoteFrontmatter } from "@/types/note";
 import { evaluate } from "next-mdx-remote-client/rsc";
@@ -38,8 +39,8 @@ export default async function NotePage({ params }: Props) {
       <div className="flex gap-4">
         <article className="prose bg-red-200">
           <ul className="not-prose text-right">
-            <li>作成日: {frontmatter.date}</li>
-            <li>更新日: {frontmatter.lastmod}</li>
+            <li>作成日: {formatDateToYYYYMMDD(frontmatter.date)}</li>
+            <li>更新日: {formatDateToYYYYMMDD(frontmatter.lastmod)}</li>
           </ul>
 
           <h1>{frontmatter.title}</h1>

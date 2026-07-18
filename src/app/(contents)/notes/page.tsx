@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { Tags } from "@/components/shared/tags";
+import { formatDateToYYYYMMDD } from "@/lib/date";
 import { getNotes } from "@/lib/notes";
 
 export default async function NotesPage() {
@@ -15,7 +16,7 @@ export default async function NotesPage() {
           {notes.map((note) => (
             <li key={note.slug} className="bg-blue-200">
               <Link href={`/notes/${note.slug}`}>
-                {note.frontmatter.date}
+                {formatDateToYYYYMMDD(note.frontmatter.date)}
                 {note.frontmatter.title}
                 {/* // TODO: 記事の本分プレビューを表示する */}
                 {<Tags tags={note.frontmatter.tags}></Tags>}
