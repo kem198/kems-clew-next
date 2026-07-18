@@ -1,12 +1,10 @@
-import { notFound } from "next/navigation";
-
-import { evaluate } from "next-mdx-remote-client/rsc";
-import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
-import remarkGfm from "remark-gfm";
-
 import { TableOfContents } from "@/components/shared/table-of-contents";
 import { getNoteSource } from "@/lib/notes";
 import type { NoteFrontmatter } from "@/types/note";
+import { evaluate } from "next-mdx-remote-client/rsc";
+import rehypeSlug from "rehype-slug";
+import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
+import remarkGfm from "remark-gfm";
 
 type Props = {
   params: Promise<{
@@ -28,11 +26,10 @@ export default async function NotePage({ params }: Props) {
       parseFrontmatter: true,
       mdxOptions: {
         remarkPlugins: [remarkGfm, remarkFlexibleToc],
+        rehypePlugins: [rehypeSlug],
       },
       vfileDataIntoScope: "toc",
     },
-  }).catch(() => {
-    notFound();
   });
 
   return (
