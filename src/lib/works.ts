@@ -14,7 +14,7 @@ export async function getWorks(): Promise<WorkItem[]> {
   let files: string[] = [];
   try {
     files = await readdir(WORKS_DIR);
-  } catch (e) {
+  } catch {
     return [];
   }
 
