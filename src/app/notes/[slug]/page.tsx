@@ -23,9 +23,11 @@ export default async function NotePage({ params }: Props) {
 
   return (
     <main>
-      <h1>{frontmatter.title}</h1>
-      <p>{frontmatter.date}</p>
-      {content}
+      <article className="prose lg:prose-xl">
+        <h1>{frontmatter.title}</h1>
+        <p>{frontmatter.date}</p>
+        {content}
+      </article>
     </main>
   );
 }
