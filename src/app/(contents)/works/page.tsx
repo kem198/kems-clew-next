@@ -1,4 +1,4 @@
-import WorksGallery from "@/app/(contents)/works/_components/works-gallery";
+import { WorksGallery } from "@/app/(contents)/works/_components/works-gallery";
 import { getWorks } from "@/utils/server/works.server";
 
 export default async function WorksPage() {
