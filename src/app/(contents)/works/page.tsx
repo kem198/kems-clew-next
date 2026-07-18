@@ -1,5 +1,5 @@
-import WorksGallery from "@/components/shared/works-gallery";
 import { getWorks } from "@/utils/server/works.server";
+import WorksGallery from "./_components/index.client";
 
 export default async function WorksPage() {
   const items = await getWorks();
