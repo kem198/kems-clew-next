@@ -1,13 +1,21 @@
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
+import Link from "next/link";
 
-import { MDXRemote } from "next-mdx-remote-client/rsc";
+import { getNotes } from "@/lib/notes";
 
-export default async function Page() {
-  const source = await readFile(
-    join(process.cwd(), "src/contents/notes/hello.md"),
-    "utf-8",
+export default async function NotesPage() {
+  const notes = await getNotes();
+
+  return (
+    <main>
+      <h1>Notes</h1>
+
+      <ul>
+        {notes.map((note) => (
+          <li key={note.slug}>
+            <Link href={`/notes/${note.slug}`}>{note.frontmatter.title}</Link>
+          </li>
+        ))}
+      </ul>
+    </main>
   );
-
-  return <MDXRemote source={source} />;
 }
