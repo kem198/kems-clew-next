@@ -34,26 +34,28 @@ export default async function NotePage({ params }: Props) {
   });
 
   return (
-    <div className="flex gap-4">
-      <article className="prose bg-red-200">
-        <ul className="not-prose text-right">
-          <li>作成日: {frontmatter.date}</li>
-          <li>更新日: {frontmatter.lastmod}</li>
-        </ul>
+    <main>
+      <div className="flex gap-4">
+        <article className="prose bg-red-200">
+          <ul className="not-prose text-right">
+            <li>作成日: {frontmatter.date}</li>
+            <li>更新日: {frontmatter.lastmod}</li>
+          </ul>
 
-        <h1>{frontmatter.title}</h1>
+          <h1>{frontmatter.title}</h1>
 
-        <Tags tags={frontmatter.tags}></Tags>
+          <Tags tags={frontmatter.tags}></Tags>
 
-        {content}
-      </article>
+          {content}
+        </article>
 
-      <aside>
-        <div className="bg-card sticky top-20 rounded-xl border p-6 shadow-sm">
-          <h2>目次</h2>
-          <TableOfContents toc={scope.toc} />
-        </div>
-      </aside>
-    </div>
+        <aside>
+          <div className="bg-card sticky top-20 rounded-xl border p-6 shadow-sm">
+            <h2>目次</h2>
+            <TableOfContents toc={scope.toc} />
+          </div>
+        </aside>
+      </div>
+    </main>
   );
 }

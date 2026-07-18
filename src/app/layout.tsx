@@ -1,5 +1,4 @@
 import { AppHeader } from "@/components/layout/app-header";
-import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { notoSansJp } from "@/constants/fonts";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
@@ -25,17 +24,17 @@ export default function RootLayout({
     >
       <body>
         <div className="flex flex-col gap-2">
-          <AppHeader className="flex justify-center md:hidden">
-            <Link href="/">
+          <AppHeader>
+            <Link href="/" className="flex gap-2">
               <Image
                 src="/icons/icon-192x192.png"
                 alt="icon"
                 width={24}
                 height={24}
               />
+              KeM&apos;s Clew
             </Link>
           </AppHeader>
-          <Breadcrumbs />
           {children}
         </div>
       </body>
