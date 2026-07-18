@@ -3,6 +3,7 @@
 import type { WorkItem } from "@/lib/works";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, type SyntheticEvent } from "react";
 import Masonry from "react-masonry-css";
 
 type Props = {
@@ -10,6 +11,7 @@ type Props = {
 };
 
 export default function MasonryWorks({ items }: Props) {
+  const [ratios, setRatios] = useState<Record<string, number>>({});
   const breakpointColumnsObj = {
     default: 3,
     1024: 3,
@@ -25,14 +27,34 @@ export default function MasonryWorks({ items }: Props) {
     >
       {items.map((item) => (
         <article key={item.slug} className="not-prose mb-4">
-          <Link href={item.src} target="_blank" className="block">
-            <Image
-              src={item.src}
-              alt={item.title}
-              width={1000}
-              height={1000}
-              className="h-auto w-full rounded"
-            />
+          <Link
+            href={item.src}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            <div
+              className="relative w-full"
+              style={{ aspectRatio: ratios[item.slug] ?? 1 }}
+            >
+              <Image
+                src={item.src}
+                alt={item.title}
+                fill
+                sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
+                className="h-full w-full rounded object-cover"
+                onLoad={(e: SyntheticEvent<HTMLImageElement>) => {
+                  const img = e.currentTarget as HTMLImageElement;
+                  const w = img.naturalWidth || img.width;
+                  const h = img.naturalHeight || img.height;
+                  if (w && h) {
+                    setRatios((prev) =>
+                      prev[item.slug] ? prev : { ...prev, [item.slug]: w / h },
+                    );
+                  }
+                }}
+              />
+            </div>
           </Link>
         </article>
       ))}
