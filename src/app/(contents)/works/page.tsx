@@ -1,4 +1,4 @@
-import MasonryWorks from "@/components/shared/masonry-works";
+import WorksGallery from "@/components/shared/works-gallery";
 import { getWorks } from "@/lib/works";
 
 export default async function WorksPage() {
@@ -11,7 +11,7 @@ export default async function WorksPage() {
       </article>
 
       <section className="mt-8">
-        <MasonryWorks items={items} />
+        <WorksGallery items={items} />
       </section>
     </main>
   );
