@@ -4,6 +4,9 @@ import type { WorkItem } from "@/lib/works";
 import { useMemo, useState } from "react";
 import GroupToggle from "./works-gallery-controls";
 import InlineMasonry from "./works-gallery-inline-masonry";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import { mapItemsToPhotos } from "./works-gallery-utils";
 
 type Props = {
   items: WorkItem[];
@@ -11,6 +14,14 @@ type Props = {
 
 export default function WorksGallery({ items }: Props) {
   const [groupByYear, setGroupByYear] = useState(false);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const flatPhotos = useMemo(() => mapItemsToPhotos(items), [items]);
+
+  const handlePhotoClick = (photo: { [key: string]: any }) => {
+    const idx = flatPhotos.findIndex((p) => p.slug === photo.slug && (p.display ?? p.src) === (photo.display ?? photo.src));
+    if (idx >= 0) setOpenIndex(idx);
+  };
 
   const groups = useMemo(() => {
     const map = new Map<number, WorkItem[]>();
@@ -29,16 +40,23 @@ export default function WorksGallery({ items }: Props) {
 
       <div className="mt-6">
         {!groupByYear ? (
-          <InlineMasonry items={items} />
+          <InlineMasonry items={items} onPhotoClick={handlePhotoClick} />
         ) : (
           groups.map(([year, its]) => (
             <section key={year} className="mb-8">
               <h2 className="mb-4 text-lg font-semibold">{year}</h2>
-              <InlineMasonry items={its} />
+              <InlineMasonry items={its} onPhotoClick={handlePhotoClick} />
             </section>
           ))
         )}
       </div>
+
+      <Lightbox
+        open={openIndex !== null}
+        index={openIndex ?? 0}
+        slides={flatPhotos.map((p) => ({ src: p.display ?? p.src }))}
+        close={() => setOpenIndex(null)}
+      />
     </div>
   );
 }
