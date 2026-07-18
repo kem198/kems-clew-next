@@ -47,9 +47,15 @@ export async function getWorks(): Promise<WorkItem[]> {
       Object.keys(manifest).map(async (slug) => {
         const entry = manifest[slug] as ManifestEntry;
 
-        // try to stat display file for date
-        let date = new Date().toISOString();
-        if (entry.display) {
+        // determine date: prefer parsing from slug YYYYMMDD / YYYYMM / YYYY, fall back to display file mtime, else current date
+        let date: string | undefined;
+        const m = slug.match(/^(\d{4})(\d{2})?(\d{2})?/);
+        if (m) {
+          const y = m[1];
+          const mo = m[2] ?? "01";
+          const d = m[3] ?? "01";
+          date = new Date(`${y}-${mo}-${d}T00:00:00.000Z`).toISOString();
+        } else if (entry.display) {
           try {
             const displayRel = entry.display.replace(/^\/assets\/works\//, "");
             const s = await stat(join(WORKS_DIR, displayRel));
@@ -58,6 +64,8 @@ export async function getWorks(): Promise<WorkItem[]> {
             // ignore
           }
         }
+
+        if (!date) date = new Date().toISOString();
 
         const displaySrc = entry.display ?? entry.thumb ?? "";
         const thumbSrc = entry.thumb ?? entry.display ?? "";
