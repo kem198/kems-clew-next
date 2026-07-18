@@ -6,7 +6,7 @@ export default async function NotesPage() {
   const notes = await getNotes();
 
   return (
-    <main>
+    <>
       <h1>Notes</h1>
 
       <ul>
@@ -16,6 +16,6 @@ export default async function NotesPage() {
           </li>
         ))}
       </ul>
-    </main>
+    </>
   );
 }

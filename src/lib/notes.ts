@@ -10,7 +10,7 @@ const NOTES_DIR = join(process.cwd(), "src/contents/notes");
 export async function getNotes(): Promise<Note[]> {
   const files = await readdir(NOTES_DIR);
 
-  const notes = await Promise.all(
+  return Promise.all(
     files
       .filter((file) => file.endsWith(".md"))
       .map(async (file) => {
@@ -24,10 +24,8 @@ export async function getNotes(): Promise<Note[]> {
         };
       }),
   );
-
-  return notes;
 }
 
-export async function getNoteSource(slug: string): Promise<string> {
+export async function getNoteSource(slug: string) {
   return readFile(join(NOTES_DIR, `${slug}.md`), "utf-8");
 }
