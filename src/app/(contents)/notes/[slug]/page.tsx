@@ -1,9 +1,9 @@
 import { NoteNavigation } from "@/components/shared/note-navigation";
 import { TableOfContents } from "@/components/shared/table-of-contents";
 import { Tags } from "@/components/shared/tags";
-import { formatDateToYYYYMMDD } from "@/lib/date";
-import { getNoteSource, getPrevNextNote } from "@/lib/notes";
 import type { NoteFrontmatter } from "@/types/note";
+import { formatDateToYYYYMMDD } from "@/utils/date";
+import { getNoteSource, getPrevNextNote } from "@/utils/notes";
 import { evaluate } from "next-mdx-remote-client/rsc";
 import rehypeSlug from "rehype-slug";
 import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
