@@ -1,11 +1,14 @@
 "use client";
 
-type Props = {
+type GroupToggleProps = {
   groupByYear: boolean;
   setGroupByYear: (v: boolean) => void;
 };
 
-export default function GroupToggle({ groupByYear, setGroupByYear }: Props) {
+export default function GroupToggle({
+  groupByYear,
+  setGroupByYear,
+}: GroupToggleProps) {
   return (
     <fieldset className="flex items-center gap-4">
       <legend className="sr-only">Grouping</legend>
