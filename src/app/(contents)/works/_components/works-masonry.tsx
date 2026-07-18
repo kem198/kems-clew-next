@@ -1,9 +1,9 @@
 "use client";
 
+import { mapItemsToPhotos } from "@/lib/works";
 import { AlbumPhoto, WorkItem } from "@/types/work";
 import Image from "next/image";
 import PhotoAlbum, { type RenderPhotoProps } from "react-photo-album";
-import { mapItemsToPhotos } from "./works-utils";
 
 type WorksMasonryProps = {
   items: WorkItem[];
