@@ -1,6 +1,10 @@
 import { notoSansJp } from "@/constants/fonts";
 import type { Metadata } from "next";
 import "./globals.css";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: "KeM's Clew",
@@ -16,7 +20,7 @@ export default function RootLayout({
     <html
       lang="ja"
       data-google-analytics-opt-out=""
-      className={`${notoSansJp.className} h-full font-sans antialiased`}
+      className={cn("h-full", "antialiased", notoSansJp.className, "font-sans", geist.variable)}
     >
       <body className="flex min-h-full flex-col">{children}</body>
     </html>
