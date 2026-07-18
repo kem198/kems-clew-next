@@ -5,7 +5,7 @@ import { getFrontmatter } from "next-mdx-remote-client/utils";
 
 import type { Note, NoteFrontmatter } from "@/types/note";
 
-const NOTES_DIR = join(process.cwd(), "src/contents/notes");
+const NOTES_DIR = join(process.cwd(), "contents/notes");
 
 export async function getNotes(): Promise<Note[]> {
   const files = await readdir(NOTES_DIR);
