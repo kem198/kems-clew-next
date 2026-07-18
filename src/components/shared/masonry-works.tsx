@@ -33,28 +33,48 @@ export default function MasonryWorks({ items }: Props) {
             rel="noopener noreferrer"
             className="block"
           >
-            <div
-              className="relative w-full"
-              style={{ aspectRatio: ratios[item.slug] ?? 1 }}
-            >
-              <Image
-                src={item.src}
-                alt={item.title}
-                fill
-                sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
-                className="h-full w-full rounded object-cover"
-                onLoad={(e: SyntheticEvent<HTMLImageElement>) => {
-                  const img = e.currentTarget as HTMLImageElement;
-                  const w = img.naturalWidth || img.width;
-                  const h = img.naturalHeight || img.height;
-                  if (w && h) {
-                    setRatios((prev) =>
-                      prev[item.slug] ? prev : { ...prev, [item.slug]: w / h },
-                    );
-                  }
+            {item.thumb && item.thumb.width && item.thumb.height ? (
+              <div
+                className="relative w-full"
+                style={{
+                  aspectRatio: `${item.thumb.width}/${item.thumb.height}`,
                 }}
-              />
-            </div>
+              >
+                <Image
+                  src={item.thumb.src}
+                  alt={item.title}
+                  width={item.thumb.width}
+                  height={item.thumb.height}
+                  sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
+                  className="h-full w-full rounded object-cover"
+                />
+              </div>
+            ) : (
+              <div
+                className="relative w-full"
+                style={{ aspectRatio: ratios[item.slug] ?? 1 }}
+              >
+                <Image
+                  src={item.src}
+                  alt={item.title}
+                  fill
+                  sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
+                  className="h-full w-full rounded object-cover"
+                  onLoad={(e: SyntheticEvent<HTMLImageElement>) => {
+                    const img = e.currentTarget as HTMLImageElement;
+                    const w = img.naturalWidth || img.width;
+                    const h = img.naturalHeight || img.height;
+                    if (w && h) {
+                      setRatios((prev) =>
+                        prev[item.slug]
+                          ? prev
+                          : { ...prev, [item.slug]: w / h },
+                      );
+                    }
+                  }}
+                />
+              </div>
+            )}
           </Link>
         </article>
       ))}
