@@ -9,7 +9,7 @@ export default async function Home() {
   const latest = await getLatestNotes(3);
 
   return (
-    <main className="prose">
+    <article className="prose">
       <div className="flex flex-col gap-8">
         <section>
           <HomeLink href={"/notes"} description="雑記いろいろ">
@@ -39,17 +39,17 @@ export default async function Home() {
         </section>
 
         <section>
-          <HomeLink href={"/works"} description="制作物のページ">
+          <HomeLink href={'/works'} description="制作物のページ">
             Works
           </HomeLink>
         </section>
 
         <section>
-          <HomeLink href={"/about"} description="当サイトについて">
+          <HomeLink href={'/about'} description="当サイトについて">
             About
           </HomeLink>
         </section>
       </div>
-    </main>
+    </article>
   );
 }
