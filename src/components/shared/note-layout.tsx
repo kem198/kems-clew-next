@@ -5,7 +5,7 @@ import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import type { NoteFrontmatter } from "@/types/note";
 import * as React from "react";
-import { TocItem } from "remark-flexible-toc";
+import type { TocItem } from "remark-flexible-toc";
 
 type NoteLayoutProps = {
   frontmatter?: Partial<NoteFrontmatter>;
