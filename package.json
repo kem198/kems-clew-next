@@ -8,6 +8,8 @@
     "build:clean": "rm -rf .next && next build",
     "gen:works": "node ./scripts/generate-works-images.js",
     "gen:works:force": "node ./scripts/generate-works-images.js --force",
+    "gen:notes": "node ./scripts/generate-notes-images.js",
+    "gen:notes:force": "node ./scripts/generate-notes-images.js --force",
     "start": "next start",
     "lint": "eslint",
     "format": "npx prettier . --write",
