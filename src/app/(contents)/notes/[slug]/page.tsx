@@ -18,9 +18,15 @@ import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
 import remarkGfm from "remark-gfm";
 import { NoteNavigation, NoteToc } from "../_components";
 
+type NotePageProps = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
+
 const getNoteSource = cache(getNoteSourceUncached);
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: NotePageProps) {
   const { slug } = await params;
   try {
     const src = await getNoteSource(slug);
@@ -32,13 +38,7 @@ export async function generateMetadata({ params }: Props) {
   }
 }
 
-type Props = {
-  params: Promise<{
-    slug: string;
-  }>;
-};
-
-export default async function NotePage({ params }: Props) {
+export default async function NotePage({ params }: NotePageProps) {
   const { slug } = await params;
 
   const source = await getNoteSource(slug);
