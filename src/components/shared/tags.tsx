@@ -17,7 +17,7 @@ export function Tags({ tags }: Props) {
   return (
     <div className="not-prose">
       <ul
-        className={`${ubuntuSans.className} flex gap-2 text-sm text-gray-400`}
+        className={`${ubuntuSans.className} flex gap-2 text-sm text-cyan-600`}
       >
         {list.map((tag) => (
           <li key={tag}>#{tag}</li>
