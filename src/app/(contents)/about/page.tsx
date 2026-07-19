@@ -3,6 +3,7 @@ export default async function AboutPage() {
     <main>
       <article className="prose">
         <h1>About</h1>
+        <p>test</p>
       </article>
     </main>
   );
