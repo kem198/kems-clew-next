@@ -4,6 +4,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { withSiteName } from "@/lib/seo";
 import type { NoteFrontmatter } from "@/types/note";
 import {
+  getAllNotes,
   getNoteSource as getNoteSourceUncached,
   getPrevNextNote,
 } from "@/utils/server/notes.server";
@@ -21,7 +22,16 @@ type NotePageProps = {
   }>;
 };
 
+export const dynamic = "force-static";
+export const revalidate = 3600;
+
 const getNoteSource = cache(getNoteSourceUncached);
+
+// 事前生成する slug 一覧
+export async function generateStaticParams() {
+  const notes = await getAllNotes();
+  return notes.map((n) => ({ slug: n.slug }));
+}
 
 export async function generateMetadata({ params }: NotePageProps) {
   const { slug } = await params;

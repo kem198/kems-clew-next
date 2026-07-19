@@ -5,8 +5,6 @@ import { getFrontmatter } from "next-mdx-remote-client/utils";
 
 import type { Note, NoteFrontmatter } from "@/types/note";
 
-const NOTES_DIR = join(process.cwd(), "contents/notes");
-
 export async function getNotes(): Promise<Note[]> {
   const files = await readdir(NOTES_DIR);
 
@@ -94,4 +92,40 @@ export async function getPrevNextNote(slug: string) {
   const next = idx >= 0 && idx < sorted.length - 1 ? sorted[idx + 1] : null;
 
   return { prev, next };
+}
+
+import fs from "node:fs/promises";
+import path from "node:path";
+
+export type NoteIndexItem = {
+  slug: string;
+  title?: string;
+  date?: string;
+  lastmod?: string;
+};
+
+const NOTES_DIR = path.join(process.cwd(), "contents", "notes");
+
+export async function getAllNotes(): Promise<NoteIndexItem[]> {
+  const files = await fs.readdir(NOTES_DIR);
+  const mdFiles = files.filter((f) => f.endsWith(".md") || f.endsWith(".mdx"));
+
+  const notes = await Promise.all(
+    mdFiles.map(async (file) => {
+      const slug = file.replace(/\.mdx?$/, "");
+      const fullPath = path.join(NOTES_DIR, file);
+      const src = await fs.readFile(fullPath, "utf-8");
+      const { frontmatter } = getFrontmatter<NoteFrontmatter>(src);
+      return {
+        slug,
+        title: frontmatter?.title,
+        date: frontmatter?.date,
+        lastmod: frontmatter?.lastmod,
+      };
+    }),
+  );
+
+  // 必要なら日付順に
+  notes.sort((a, b) => (a.date && b.date ? (a.date < b.date ? 1 : -1) : 0));
+  return notes;
 }
