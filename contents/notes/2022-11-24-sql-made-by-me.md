@@ -11,23 +11,14 @@ lastmod: 2023-12-10
 
 自作の SQL や便利な構文をまとめているページ。SQL Server 向け。
 
-[標準 SQL 集]({% post_url 2022-11-24-sql-standard %}) と同じく [kem198/mssql-with-docker](https://github.com/kem198/mssql-with-docker) からの引っ越しページ。
+[標準 SQL 集]({/notes/2022-11-24-sql-standard) と同じく [kem198/mssql-with-docker](https://github.com/kem198/mssql-with-docker) からの引っ越しページ。
 
-<!-- omit in toc -->
-## リンク
+リンク:
 
-- [標準 SQL 集]({% post_url 2022-11-24-sql-standard %})
-- [自作 SQL 集]({% post_url 2022-11-24-sql-made-by-me %}) ← イマココ！
+- [標準 SQL 集](/notes/2022-11-24-sql-standard)
+- [自作 SQL 集](/notes/2022-11-24-sql-made-by-me) ← イマココ！
 
-<!-- omit in toc -->
-## 目次
-
-- [1. 値の組み合わせ毎の件数を取得する](#1-値の組み合わせ毎の件数を取得する)
-- [2. カラムの情報を見やすい形式で表示する](#2-カラムの情報を見やすい形式で表示する)
-- [3. グループ中で最大値を持つレコードを取得する](#3-グループ中で最大値を持つレコードを取得する)
-- [4. CSV などのデータファイルからインポート](#4-csv-などのデータファイルからインポート)
-
-## 1. 値の組み合わせ毎の件数を取得する
+## 値の組み合わせ毎の件数を取得する
 
 指定したカラムのフィールドに存在する値の組み合わせ毎の件数を取得する。  
 めちゃくちゃ使っている。  
@@ -62,7 +53,7 @@ ORDER BY
 
 - [Rollupちゃんと理解してる？ - Qiita](https://qiita.com/tlokweng/items/a15b67f3475e38282dca)
 
-## 2. カラムの情報を見やすい形式で表示する
+## カラムの情報を見やすい形式で表示する
 
 指定したテーブルの以下の情報を出力する。
 
@@ -154,7 +145,7 @@ ORDER BY
 - [SQL Server のカタログビューからテーブルの定義書情報を取得する \| JOHOBASE](https://johobase.com/sqlserver-catalogview-table-column/)
 - [オブジェクト カタログ ビュー (Transact-SQL) - SQL Server \| Microsoft Docs](https://docs.microsoft.com/ja-jp/sql/relational-databases/system-catalog-views/object-catalog-views-transact-sql?view=sql-server-ver15)
 
-## 3. グループ中で最大値を持つレコードを取得する
+## グループ中で最大値を持つレコードを取得する
 
 `NOT` 演算子及び `EXISTS` 述語を活用した大変便利な構文。  
 比較対象のグループ中で、最大値を持つフィールドが存在するレコードを取得する。
@@ -209,7 +200,7 @@ WHERE
 - [同一グループの中で最大のレコードを取得する SQL を書く \| Webシステム開発／教育ソリューションのタイムインターメディア](https://www.timedia.co.jp/tech/selecting-max-record-in-group-by/)
 - [【SQL】グループごとに最大の値を持つレコードを取得する方法3選 \| Takakisan](https://takakisan.com/sql-max-in-each-group/)
 
-## 4. CSV などのデータファイルからインポート
+## CSV などのデータファイルからインポート
 
 SQL Server の `BULK INSERT` を使用した SQL 文。  
 CSV として作成したテストデータを対象のテーブルへまるごと取り込ませたいときに使う。

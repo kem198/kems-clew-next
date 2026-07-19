@@ -14,26 +14,11 @@ lastmod: 2023-11-25
 
 VS Code の拡張機能 [Markdown Table](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdowntable) を推し推ししていく記事です。
 
-<!-- omit in toc -->
 ## 要約
 
 - Markdown 記法はテーブルを記述するのがめんどうくさい。
 - 拡張機能 [Markdown Table](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdowntable) を VS Code へインストールすると解決するぞ。
 - ショートカットキーの設定もすると便利だよ。
-
-<!-- omit in toc -->
-## 目次
-
-- [はじめに](#はじめに)
-- [検証環境](#検証環境)
-- [利用手順](#利用手順)
-    - [1. 拡張機能のインストール](#1-拡張機能のインストール)
-    - [2. テーブルを整形する](#2-テーブルを整形する)
-    - [3. 行を入れ替える](#3-行を入れ替える)
-    - [4. 列を入れ替える](#4-列を入れ替える)
-- [ショートカットキーまとめ](#ショートカットキーまとめ)
-- [おわりに](#おわりに)
-- [オマケ: Obsidian でも同様の操作を実現する](#オマケ-obsidian-でも同様の操作を実現する)
 
 ## はじめに
 
