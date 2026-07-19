@@ -10,7 +10,7 @@ async function main() {
 
   const TARGET_WIDTH = 1800;
   const TARGET_HEIGHT = 2400;
-  const OUTPUT_QUALITY = 85;
+  const OUTPUT_QUALITY = 90;
 
   const force = process.argv.includes("--force");
 
@@ -18,9 +18,9 @@ async function main() {
 
   let files = [];
   try {
-    files = await readdir(SRC_DIR);
+    files = await readdir(WORKS_SRC_DIR);
   } catch (err) {
-    console.error("Source directory not found:", SRC_DIR);
+    console.error("Source directory not found:", WORKS_SRC_DIR);
     process.exit(1);
   }
 
