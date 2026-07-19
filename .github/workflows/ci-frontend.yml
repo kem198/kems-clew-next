@@ -1,0 +1,53 @@
+name: CI - Frontend
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        task: [lint, build]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract Node.js version from package.json (Volta / engines fallback)
+        run: |
+          NODE_VERSION=$(jq -r '.volta.node // .engines.node // "lts/*"' package.json)
+          echo "NODE_VERSION=$NODE_VERSION" >> $GITHUB_ENV
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+          cache-dependency-path: "./package-lock.json"
+
+      - name: Restore node_modules cache
+        id: node-mod-cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ env.NODE_VERSION }}-modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
+      - name: Install dependencies if cache missed
+        run: |
+          if [ "${{ steps.node-mod-cache.outputs.cache-hit }}" != 'true' ]; then
+            npm ci
+          fi
+
+      - name: Run ${{ matrix.task }}
+        run: npm run ${{ matrix.task }}
