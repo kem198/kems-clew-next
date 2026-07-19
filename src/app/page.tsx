@@ -1,4 +1,4 @@
-import { Article } from "@/components/shared/article";
+import { ContentArea } from "@/components/shared/content-area";
 import { HomeLink } from "@/components/shared/home-link";
 import { ubuntuSans } from "@/constants/fonts";
 import { SITE_NAME } from "@/constants/site";
@@ -15,7 +15,7 @@ export default async function Home() {
   const latest = await getLatestNotes(3);
 
   return (
-    <Article full>
+    <ContentArea full>
       <div className="flex flex-col gap-8 p-6">
         <section>
           <HomeLink href={"/notes"} description="雑記いろいろ">
@@ -57,6 +57,6 @@ export default async function Home() {
           </HomeLink>
         </section>
       </div>
-    </Article>
+    </ContentArea>
   );
 }

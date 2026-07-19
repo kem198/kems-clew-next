@@ -1,4 +1,4 @@
-import Article from "@/components/shared/article";
+import ContentArea from "@/components/shared/content-area";
 import { SetPageTitle } from "@/components/shared/page-title-context";
 import { Tags } from "@/components/shared/tags";
 import { formatDateToYYYYMMDD } from "@/lib/date";
@@ -61,7 +61,7 @@ export default async function NotePage({ params }: Props) {
 
   return (
     <div className="flex gap-6">
-      <Article full>
+      <ContentArea full>
         <SetPageTitle title={frontmatter?.title ?? slug} />
         <ul className="not-prose text-right">
           <li>作成日: {formatDateToYYYYMMDD(frontmatter.date)}</li>
@@ -75,13 +75,13 @@ export default async function NotePage({ params }: Props) {
         {content}
 
         <NoteNavigation prev={prev} next={next} />
-      </Article>
+      </ContentArea>
 
       <aside>
-        <div className="prose sticky top-6 min-w-72 rounded-md bg-white p-6">
+        <ContentArea className="sticky top-6 min-w-72">
           <h2>目次</h2>
           <NoteToc toc={scope.toc} />
-        </div>
+        </ContentArea>
       </aside>
     </div>
   );
