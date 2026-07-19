@@ -1,9 +1,14 @@
 "use client";
 
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { mapItemsToPhotos } from "@/lib/works";
 import type { AlbumPhoto, WorkItem } from "@/types/work";
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import PhotoAlbum from "react-photo-album";
+import "react-photo-album/rows.css";
+import "react-photo-album/styles.css";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
@@ -23,32 +28,63 @@ type GroupToggleProps = {
   groupByYear: boolean;
   onChange: (value: boolean) => void;
 };
-
 function GroupToggle({ groupByYear, onChange }: GroupToggleProps) {
   return (
-    <fieldset className="mb-6 flex items-center gap-4">
-      <legend className="sr-only">Grouping</legend>
+    <RadioGroup
+      value={groupByYear ? "year" : "all"}
+      onValueChange={(value) => onChange(value === "year")}
+      className="flex items-center gap-6"
+    >
+      <div className="flex items-center gap-2">
+        <RadioGroupItem value="all" id="group-all" />
+        <Label htmlFor="group-all">すべて</Label>
+      </div>
 
-      <label className="flex items-center gap-2">
-        <input
-          type="radio"
-          name="group"
-          checked={!groupByYear}
-          onChange={() => onChange(false)}
-        />
-        <span>All</span>
-      </label>
+      <div className="flex items-center gap-2">
+        <RadioGroupItem value="year" id="group-year" />
+        <Label htmlFor="group-year">年度ごとに表示</Label>
+      </div>
+    </RadioGroup>
+  );
+}
 
-      <label className="flex items-center gap-2">
-        <input
-          type="radio"
-          name="group"
-          checked={groupByYear}
-          onChange={() => onChange(true)}
-        />
-        <span>By year</span>
-      </label>
-    </fieldset>
+function renderNextImage(
+  {
+    alt = "",
+    title,
+    sizes,
+  }: {
+    alt?: string;
+    title?: string;
+    sizes?: string;
+  },
+  {
+    photo,
+    width,
+    height,
+  }: {
+    photo: AlbumPhoto;
+    width: number;
+    height: number;
+  },
+) {
+  return (
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        aspectRatio: `${width} / ${height}`,
+      }}
+    >
+      <Image
+        fill
+        src={photo.src}
+        alt={alt}
+        title={title}
+        sizes={sizes}
+        quality={80}
+      />
+    </div>
   );
 }
 
@@ -65,6 +101,8 @@ function WorksAlbum({ photos, onClick }: WorksAlbumProps) {
       columns={columns}
       breakpoints={[640, 768, 1024]}
       onClick={({ index }: { index: number }) => onClick(index)}
+
+      render={{ image: renderNextImage }}
     />
   );
 }
@@ -82,7 +120,7 @@ function WorksLightbox({ index, slides, onClose }: WorksLightboxProps) {
       index={index}
       close={onClose}
       slides={slides.map((photo) => ({
-        src: photo.display ?? photo.src,
+        src: photo.src,
       }))}
       controller={{
         closeOnBackdropClick: true,

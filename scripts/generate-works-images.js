@@ -4,25 +4,23 @@ import { join } from "path";
 import sharp from "sharp";
 
 async function main() {
-  const SRC_DIR = join(process.cwd(), "assets_src", "works");
-  const OUT_BASE = join(process.cwd(), "public", "assets", "works");
-  const OUT_THUMBS = join(OUT_BASE, "thumbs");
-  const OUT_DISPLAY = join(OUT_BASE, "display");
-  const MANIFEST_PATH = join(OUT_BASE, "manifest.json");
+  const WORKS_SRC_DIR = join(process.cwd(), "assets_src", "works");
+  const WORKS_OUT_DIR = join(process.cwd(), "public", "assets", "works");
+  const WORKS_MANIFEST_PATH = join(WORKS_OUT_DIR, "manifest.json");
 
-  const THUMB_SIZES = [400, 800];
-  const DISPLAY_SIZE = 1600;
+  const TARGET_WIDTH = 1800;
+  const TARGET_HEIGHT = 2400;
+  const OUTPUT_QUALITY = 90;
 
   const force = process.argv.includes("--force");
 
-  await mkdir(OUT_THUMBS, { recursive: true });
-  await mkdir(OUT_DISPLAY, { recursive: true });
+  await mkdir(WORKS_OUT_DIR, { recursive: true });
 
   let files = [];
   try {
-    files = await readdir(SRC_DIR);
+    files = await readdir(WORKS_SRC_DIR);
   } catch (err) {
-    console.error("Source directory not found:", SRC_DIR);
+    console.error("Source directory not found:", WORKS_SRC_DIR);
     process.exit(1);
   }
 
@@ -31,60 +29,44 @@ async function main() {
 
   for (const file of files) {
     if (!imageExt.test(file)) continue;
-    const input = join(SRC_DIR, file);
+    const input = join(WORKS_SRC_DIR, file);
     const name = file.replace(/\.[^.]+$/, "");
 
     try {
-      // generate thumbs
-      for (const w of THUMB_SIZES) {
-        const outWebP = join(OUT_THUMBS, `${name}.${w}.webp`);
-        let exists = false;
-        try {
-          await access(outWebP, constants.F_OK);
-          exists = true;
-        } catch {}
+      // generate a single display image preserving aspect ratio (no crop)
+      // use `inside` so the image fits within the box without cropping
+      const outDisplayWebP = join(WORKS_OUT_DIR, `${name}.webp`);
 
-        if (exists && !force) {
-          console.log("skip existing thumb", outWebP);
-        } else {
-          await sharp(input)
-            .resize({ width: w })
-            .webp({ quality: 75 })
-            .toFile(outWebP);
-        }
-      }
-
-      // generate display size
-      const outDisplayWebP = join(OUT_DISPLAY, `${name}.${DISPLAY_SIZE}.webp`);
+      let exists = false;
       try {
         await access(outDisplayWebP, constants.F_OK);
-        if (!force) {
-          console.log("skip existing display", outDisplayWebP);
-        } else {
-          await sharp(input)
-            .resize({ width: DISPLAY_SIZE })
-            .webp({ quality: 80 })
-            .toFile(outDisplayWebP);
-        }
-      } catch {
+        exists = true;
+      } catch {}
+
+      if (exists && !force) {
+        console.log("skip existing display", outDisplayWebP);
+      } else {
         await sharp(input)
-          .resize({ width: DISPLAY_SIZE })
-          .webp({ quality: 80 })
+          .resize(TARGET_WIDTH, TARGET_HEIGHT, {
+            fit: "inside",
+            withoutEnlargement: true,
+          })
+          .webp({
+            nearLossless: true,
+            quality: OUTPUT_QUALITY,
+            effort: 6,
+            alphaQuality: 90,
+          })
           .toFile(outDisplayWebP);
       }
 
-      // read metadata from the generated webp images
-      const metaDisplay = await sharp(outDisplayWebP).metadata();
-      const thumbPath = join(OUT_THUMBS, `${name}.${THUMB_SIZES[1]}.webp`);
-      const metaThumb = await sharp(thumbPath).metadata();
+      // read metadata from the generated webp image and record actual size
+      const meta = await sharp(outDisplayWebP).metadata();
 
       manifest[name] = {
-        thumb: `/assets/works/thumbs/${name}.${THUMB_SIZES[1]}.webp`,
-        thumbWidth: metaThumb.width || THUMB_SIZES[1],
-        thumbHeight: metaThumb.height || null,
-        display: `/assets/works/display/${name}.${DISPLAY_SIZE}.webp`,
-        displayWidth: metaDisplay.width || DISPLAY_SIZE,
-        displayHeight: metaDisplay.height || null,
+        src: `/assets/works/${name}.webp`,
+        width: meta.width || TARGET_WIDTH,
+        height: meta.height || TARGET_HEIGHT,
       };
     } catch (err) {
       console.error(
@@ -97,8 +79,12 @@ async function main() {
     }
   }
 
-  await writeFile(MANIFEST_PATH, JSON.stringify(manifest, null, 2), "utf8");
-  console.log("Generated images and manifest at", OUT_BASE);
+  await writeFile(
+    WORKS_MANIFEST_PATH,
+    JSON.stringify(manifest, null, 2),
+    "utf8",
+  );
+  console.log("Generated images and manifest at", WORKS_OUT_DIR);
 }
 
 main().catch((err) => {

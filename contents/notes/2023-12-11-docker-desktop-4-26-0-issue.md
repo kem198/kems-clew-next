@@ -82,6 +82,6 @@ Common Commands:
     >
     > - Switch the CLI binaries to a version compatible with older versions of glibc, such as used in Ubuntu 20.04 fixes [docker/for-win#13824](https://github.com/docker/for-win/issues/13824)
 
-![docker-4261](/assets/notes/2023-12-11-docker-desktop-4-26-0-issue/docker-4261.png)
+![docker-4261](/assets/notes/2023-12-11-docker-desktop-4-26-0-issue/docker-4261.webp)
 
 よかった～～。

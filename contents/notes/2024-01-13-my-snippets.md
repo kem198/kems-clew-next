@@ -46,7 +46,7 @@ lastmod: 2025-10-13
 - タブ文字
 
   ```c
-  [	]
+  [ ]
   ```
 
   ※ `[` `]` の中をコピーする。
@@ -207,7 +207,7 @@ lastmod: 2025-10-13
   $ neofetch
   ```
 
-  ![neofetch]({{ baseurl | append: "/assets/notes/2024-01-13-my-snippets/neofetch.png" | relative_url }})
+  ![neofetch](/assets/notes/2024-01-13-my-snippets/neofetch.webp)
 
 ### 3.2. alias
 
