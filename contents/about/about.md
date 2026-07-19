@@ -53,6 +53,7 @@ description:
 ### フォント
 
 - [Google Fonts](https://fonts.google.com/)
+    - [Ubuntu Sans](https://fonts.google.com/specimen/Ubuntu+Sans)
     - [Noto Sans Japanese](https://fonts.google.com/noto/specimen/Noto+Sans+JP?query=noto+sans)
 
 ### アイコン
