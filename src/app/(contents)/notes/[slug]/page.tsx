@@ -1,9 +1,6 @@
 import ContentArea from "@/components/shared/content-area";
-import { SetPageTitle } from "@/components/shared/page-title-context";
-import { Tags } from "@/components/shared/tags";
+import NoteLayout from "@/components/shared/note-layout";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ubuntuSans } from "@/constants/fonts";
-import { formatDateToYYYYMMDD } from "@/lib/date";
 import { withSiteName } from "@/lib/seo";
 import type { NoteFrontmatter } from "@/types/note";
 import {
@@ -64,31 +61,11 @@ export default async function NotePage({ params }: NotePageProps) {
   return (
     <div className="flex gap-6">
       <article>
-        <ContentArea className="flex flex-col gap-4">
-          <SetPageTitle title={frontmatter?.title ?? slug} />
-          <ul className="not-prose text-right text-gray-400">
-            <li>
-              作成日:{" "}
-              <span className={`${ubuntuSans.className}`}>
-                {formatDateToYYYYMMDD(frontmatter.date)}
-              </span>
-            </li>
-            <li>
-              更新日:{" "}
-              <span className={`${ubuntuSans.className}`}>
-                {formatDateToYYYYMMDD(frontmatter.lastmod)}
-              </span>
-            </li>
-          </ul>
-
-          <div className="flex flex-col gap-1">
-            <h1 className="mb-2">{frontmatter.title}</h1>
-            <Tags tags={frontmatter.tags} className="text-base"></Tags>
-          </div>
-
-          {content}
-
-          <NoteNavigation prev={prev} next={next} />
+        <ContentArea>
+          <NoteLayout frontmatter={frontmatter} className="flex flex-col gap-4">
+            {content}
+            <NoteNavigation prev={prev} next={next} />
+          </NoteLayout>
         </ContentArea>
       </article>
 
