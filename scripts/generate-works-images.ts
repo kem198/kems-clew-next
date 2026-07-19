@@ -1,6 +1,14 @@
-import { constants } from "fs";
-import { access, mkdir, readdir, stat, unlink, writeFile } from "fs/promises";
-import { basename, extname, join } from "path";
+import { constants } from "node:fs";
+import {
+  access,
+  copyFile,
+  mkdir,
+  readdir,
+  stat,
+  unlink,
+  writeFile,
+} from "node:fs/promises";
+import { basename, extname, join } from "node:path";
 import sharp from "sharp";
 
 type WebpMode = "lossy" | "lossless" | "near-lossless";
@@ -21,7 +29,7 @@ type ManifestItem = {
 const WEBP_MODE: WebpMode = "lossy";
 
 // 非可逆品質
-const WEBP_QUALITY = 82;
+const WEBP_QUALITY = 90;
 
 // 圧縮処理量 (0 - 6)
 const WEBP_EFFORT = 6;
@@ -111,6 +119,18 @@ async function main() {
     recursive: true,
   });
 
+  console.log("\n=== Generate works images ===\n");
+
+  console.log("=== Settings ===");
+  console.log(`webp mode       : ${WEBP_MODE}`);
+  console.log(`webp quality     : ${WEBP_QUALITY}`);
+  console.log(`webp effort      : ${WEBP_EFFORT}`);
+  console.log(`alpha quality   : ${WEBP_ALPHA_QUALITY}`);
+  console.log(`target size     : ${TARGET_WIDTH}x${TARGET_HEIGHT}`);
+  console.log(`source dir      : ${SRC_DIR}`);
+  console.log(`output dir      : ${OUT_DIR}`);
+  console.log("");
+
   const files = await readdir(SRC_DIR);
 
   const imageRegex = /\.(png|jpe?g|gif|webp|avif)$/i;
@@ -177,6 +197,8 @@ async function main() {
           await unlink(outputWebp);
         }
 
+        await copyFile(input, outputOriginal);
+
         selectedPath = outputOriginal;
 
         result = "KEEP ORIGINAL";
@@ -225,14 +247,18 @@ async function main() {
 
   await writeFile(MANIFEST_PATH, JSON.stringify(manifest, null, 2), "utf8");
 
+  console.log("");
   console.log("=== Summary ===");
-
+  console.log(`webp mode       : ${WEBP_MODE}`);
+  console.log(`webp quality     : ${WEBP_QUALITY}`);
+  console.log(`webp effort      : ${WEBP_EFFORT}`);
+  console.log(`alpha quality   : ${WEBP_ALPHA_QUALITY}`);
+  console.log(`target size     : ${TARGET_WIDTH}x${TARGET_HEIGHT}`);
+  console.log(`source dir      : ${SRC_DIR}`);
+  console.log(`output dir      : ${OUT_DIR}`);
   console.log(`input  : ${formatBytes(totalInput)}`);
-
   console.log(`output : ${formatBytes(totalOutput)}`);
-
   console.log(`saved  : ${formatSaved(totalInput, totalOutput)}`);
-
   console.log("\nGenerated:", MANIFEST_PATH);
 }
 
