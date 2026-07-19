@@ -51,12 +51,12 @@ export function NoteLayout({
           ) : null}
         </div>
 
-        {toc && (
+        {toc?.length ? (
           <div className="rounded-md bg-zinc-100 p-4 md:hidden">
             <h2 className="mt-0 mb-2 border-none">TOC</h2>
             <NoteToc toc={toc} />
           </div>
-        )}
+        ) : null}
       </div>
       <div>{children}</div>
     </div>
