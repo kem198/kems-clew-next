@@ -10,7 +10,7 @@ export function AppFooter({ className, ...props }: AppFooterProps) {
   return (
     <footer
       className={cn(
-        "flex flex-col items-center gap-8 bg-gray-800 p-8 text-white",
+        "bg-primary flex flex-col items-center gap-8 p-8 text-white",
         className,
       )}
       {...props}
