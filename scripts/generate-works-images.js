@@ -1,5 +1,5 @@
 import { constants } from "fs";
-import { access, mkdir, readdir, writeFile } from "fs/promises";
+import { access, copyFile, mkdir, readdir, writeFile } from "fs/promises";
 import { join } from "path";
 import sharp from "sharp";
 
@@ -25,6 +25,7 @@ async function main() {
   }
 
   const imageExt = /\.(png|jpe?g|webp|gif|avif)$/i;
+  const gifExt = /\.gif$/i;
   const manifest = {};
 
   for (const file of files) {
@@ -34,37 +35,45 @@ async function main() {
 
     try {
       // generate a single display image preserving aspect ratio (no crop)
-      // use `inside` so the image fits within the box without cropping
-      const outDisplayWebP = join(WORKS_OUT_DIR, `${name}.webp`);
+      // For GIFs we copy as-is; for others we create a WebP display image.
+      const outDisplayFile = gifExt.test(file)
+        ? join(WORKS_OUT_DIR, `${name}.gif`)
+        : join(WORKS_OUT_DIR, `${name}.webp`);
 
       let exists = false;
       try {
-        await access(outDisplayWebP, constants.F_OK);
+        await access(outDisplayFile, constants.F_OK);
         exists = true;
       } catch {}
 
       if (exists && !force) {
-        console.log("skip existing display", outDisplayWebP);
+        console.log("skip existing display", outDisplayFile);
       } else {
-        await sharp(input)
-          .resize(TARGET_WIDTH, TARGET_HEIGHT, {
-            fit: "inside",
-            withoutEnlargement: true,
-          })
-          .webp({
-            nearLossless: true,
-            quality: OUTPUT_QUALITY,
-            effort: 6,
-            alphaQuality: 90,
-          })
-          .toFile(outDisplayWebP);
+        if (gifExt.test(file)) {
+          // Copy GIF as-is (no conversion or scaling)
+          await copyFile(input, outDisplayFile);
+          console.log("copied gif", input, "->", outDisplayFile);
+        } else {
+          await sharp(input)
+            .resize(TARGET_WIDTH, TARGET_HEIGHT, {
+              fit: "inside",
+              withoutEnlargement: true,
+            })
+            .webp({
+              nearLossless: true,
+              quality: OUTPUT_QUALITY,
+              effort: 6,
+              alphaQuality: 90,
+            })
+            .toFile(outDisplayFile);
+        }
       }
 
       // read metadata from the generated webp image and record actual size
-      const meta = await sharp(outDisplayWebP).metadata();
+      const meta = await sharp(outDisplayFile).metadata();
 
       manifest[name] = {
-        src: `/assets/works/${name}.webp`,
+        src: `/assets/works/${name}${gifExt.test(file) ? ".gif" : ".webp"}`,
         width: meta.width || TARGET_WIDTH,
         height: meta.height || TARGET_HEIGHT,
       };
