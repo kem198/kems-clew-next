@@ -11,7 +11,7 @@ export function ContentArea({
   full,
   ...props
 }: ContentAreaProps) {
-  const innerBase = full ? "prose max-w-none" : "prose";
+  const innerBase = full ? "prose max-w-none" : "prose max-w-4xl";
 
   return (
     <article
