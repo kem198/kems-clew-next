@@ -7,6 +7,7 @@ import type { AlbumPhoto, WorkItem } from "@/types/work";
 import { RadioGroup } from "@base-ui/react";
 import { useMemo, useState } from "react";
 import PhotoAlbum from "react-photo-album";
+import "react-photo-album/styles.css";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
