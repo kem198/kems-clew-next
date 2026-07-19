@@ -1,18 +1,26 @@
+import { NoteToc } from "@/app/(contents)/notes/_components";
 import { SetPageTitle } from "@/components/shared/page-title-context";
 import { Tags } from "@/components/shared/tags";
 import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import type { NoteFrontmatter } from "@/types/note";
 import * as React from "react";
+import { TocItem } from "remark-flexible-toc";
 
 type NoteLayoutProps = {
   frontmatter?: Partial<NoteFrontmatter>;
   title?: string;
+  toc?: TocItem[];
   className?: string;
   children?: React.ReactNode;
 };
 
-export function NoteLayout({ frontmatter, title, children }: NoteLayoutProps) {
+export function NoteLayout({
+  frontmatter,
+  title,
+  toc,
+  children,
+}: NoteLayoutProps) {
   const displayTitle = title ?? frontmatter?.title;
 
   return (
@@ -42,6 +50,13 @@ export function NoteLayout({ frontmatter, title, children }: NoteLayoutProps) {
             <Tags tags={frontmatter?.tags} className="text-base" />
           ) : null}
         </div>
+
+        {toc && (
+          <div className="rounded-md bg-zinc-100 p-4 md:hidden">
+            <h2 className="mt-0 mb-2 border-none">TOC</h2>
+            <NoteToc toc={toc} />
+          </div>
+        )}
       </div>
       <div>{children}</div>
     </div>
