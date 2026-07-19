@@ -27,7 +27,7 @@ export default async function NotesPage() {
 
             <div className="flex flex-col gap-0">
               <Link href={`/notes/${note.slug}`}>
-                <span className="text-primary/80 text-xl font-bold hover:underline">
+                <span className="text-primary/90 text-xl font-bold hover:underline">
                   {note.frontmatter.title}
                 </span>
               </Link>

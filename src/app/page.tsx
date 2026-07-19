@@ -15,7 +15,7 @@ export default async function Home() {
   const latest = await getLatestNotes(3);
 
   return (
-    <ContentArea full>
+    <ContentArea full className="flex flex-1">
       <div className="flex flex-col gap-8">
         <section>
           <HomeLink href={"/notes"} description="雑記いろいろ">
