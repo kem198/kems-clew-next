@@ -1,3 +1,4 @@
+import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import ContentArea from "@/components/shared/content-area";
 import NoteLayout from "@/components/shared/note-layout";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -68,26 +69,29 @@ export default async function NotePage({ params }: NotePageProps) {
   });
 
   return (
-    <div className="flex gap-6">
-      <ContentArea className="min-w-0 flex-1">
-        <NoteLayout frontmatter={frontmatter} toc={scope.toc}>
-          {content}
-          <hr className="not-prose mt-24 mb-6" />
-          <NoteNavigation prev={prev} next={next} />
-        </NoteLayout>
-      </ContentArea>
+    <>
+      <Breadcrumbs segments={["notes", slug]} title={frontmatter.title} />
+      <div className="flex gap-6">
+        <ContentArea className="min-w-0 flex-1">
+          <NoteLayout frontmatter={frontmatter} toc={scope.toc}>
+            {content}
+            <hr className="not-prose mt-24 mb-6" />
+            <NoteNavigation prev={prev} next={next} />
+          </NoteLayout>
+        </ContentArea>
 
-      {/* PC 用目次  */}
-      {scope.toc.length ? (
-        <aside className="w-72 shrink-0 max-md:hidden">
-          <ContentArea className="sticky top-6 flex max-h-[calc(100vh-6rem)] min-h-0">
-            <ScrollArea className="min-h-0 flex-1 overflow-auto">
-              <h2 className="mt-0 mb-2 border-none">TOC</h2>
-              <NoteToc toc={scope.toc} />
-            </ScrollArea>
-          </ContentArea>
-        </aside>
-      ) : null}
-    </div>
+        {/* PC 用目次  */}
+        {scope.toc.length ? (
+          <aside className="w-72 shrink-0 max-md:hidden">
+            <ContentArea className="sticky top-6 flex max-h-[calc(100vh-6rem)] min-h-0">
+              <ScrollArea className="min-h-0 flex-1 overflow-auto">
+                <h2 className="mt-0 mb-2 border-none">TOC</h2>
+                <NoteToc toc={scope.toc} />
+              </ScrollArea>
+            </ContentArea>
+          </aside>
+        ) : null}
+      </div>
+    </>
   );
 }
