@@ -53,11 +53,16 @@ export function NoteLayout({
           ) : null}
         </div>
 
+        {/* スマホ用目次 */}
         {toc?.length ? (
-          <div className="rounded-md bg-zinc-100 p-4 md:hidden">
-            <h2 className="mt-0 mb-2 border-none">TOC</h2>
-            <NoteToc toc={toc} />
-          </div>
+          <details className="rounded-md bg-zinc-100 md:hidden">
+            <summary className="cursor-pointer list-none px-4 py-2 font-bold">
+              TOC
+            </summary>
+            <div className="px-4">
+              <NoteToc toc={toc} />
+            </div>
+          </details>
         ) : null}
       </div>
       <div>{children}</div>
