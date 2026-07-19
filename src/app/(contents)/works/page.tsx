@@ -11,7 +11,7 @@ export default async function WorksPage() {
   const items = await getWorks();
 
   return (
-    <ContentArea full>
+    <ContentArea>
       <h1>Works</h1>
 
       <section className="mt-8">

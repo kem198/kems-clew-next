@@ -8,9 +8,11 @@ export default function ContentLayout({
 }>) {
   return (
     <PageTitleProvider>
-      <div className="flex flex-col gap-4 p-6">
-        <Breadcrumbs />
-        {children}
+      <div className="w-full">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-6 py-4 max-md:p-3">
+          <Breadcrumbs />
+          {children}
+        </div>
       </div>
     </PageTitleProvider>
   );

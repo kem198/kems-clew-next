@@ -18,6 +18,7 @@ const config = {
             },
             h1: {
               fontWeight: theme("fontWeight.black"),
+              lineHeight: "1.4",
             },
             h2: {
               borderBottom: `1px solid ${theme("colors.gray.300")}`,
