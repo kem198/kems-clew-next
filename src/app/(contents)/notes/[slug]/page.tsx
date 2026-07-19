@@ -60,7 +60,7 @@ export default async function NotePage({ params }: NotePageProps) {
 
   return (
     <div className="flex gap-6">
-      <ContentArea>
+      <ContentArea className="min-w-0 flex-1">
         <NoteLayout frontmatter={frontmatter}>
           {content}
           <NoteNavigation prev={prev} next={next} />
