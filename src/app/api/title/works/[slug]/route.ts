@@ -1,11 +1,11 @@
 import { getWorks } from "@/utils/server/works.server";
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
 export async function GET(
-  _req: Request,
-  { params }: { params: { slug: string } },
+  _req: NextRequest,
+  { params }: { params: Promise<{ slug: string }> },
 ) {
-  const slug = params.slug;
+  const { slug } = await params;
   try {
     const works = await getWorks();
     const found = works.find((w) => w.slug === slug);
