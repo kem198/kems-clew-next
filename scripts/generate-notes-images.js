@@ -7,6 +7,7 @@ async function main() {
   const SRC_BASE = join(process.cwd(), "assets_src", "notes");
   const OUT_BASE = join(process.cwd(), "public", "assets", "notes");
 
+  const NOTES_QUALITY = 80;
   const force = process.argv.includes("--force");
 
   let folders = [];
@@ -58,7 +59,7 @@ async function main() {
           continue;
         }
 
-        await sharp(inPath).webp({ quality: 80 }).toFile(outPath);
+        await sharp(inPath).webp({ quality: NOTES_QUALITY }).toFile(outPath);
         console.log("converted", inPath, "->", outPath);
       } catch (err) {
         console.error(
