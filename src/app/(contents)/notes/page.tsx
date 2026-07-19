@@ -2,7 +2,12 @@ import Link from "next/link";
 
 import { Tags } from "@/components/shared/tags";
 import { formatDateToYYYYMMDD } from "@/lib/date";
+import { withSiteName } from "@/lib/seo";
 import { getNotes } from "@/utils/server/notes.server";
+
+export const metadata = {
+  title: withSiteName("Notes"),
+};
 
 export default async function NotesPage() {
   const notes = await getNotes();

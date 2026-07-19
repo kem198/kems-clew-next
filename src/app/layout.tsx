@@ -1,12 +1,13 @@
 import { AppFooter } from "@/components/layout/app-footer";
 import { AppHeader } from "@/components/layout/app-header";
 import { notoSansJp } from "@/constants/fonts";
+import { SITE_NAME } from "@/constants/site";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "KeM's Clew",
+  title: SITE_NAME,
   description: "@KeM198 のホームページ。",
 };
 

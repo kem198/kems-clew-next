@@ -1,3 +1,9 @@
+import { withSiteName } from "@/lib/seo";
+
+export const metadata = {
+  title: withSiteName("About"),
+};
+
 export default async function AboutPage() {
   return (
     <article className="prose">
