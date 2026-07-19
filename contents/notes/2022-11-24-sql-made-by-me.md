@@ -47,7 +47,7 @@ ORDER BY
 
 実行結果イメージ:
 
-![result](/assets/notes/2022-11-24-sql-made-by-me/select_multi_count_result.png)
+![result](/assets/notes/2022-11-24-sql-made-by-me/select_multi_count_result.webp)
 
 参考文献:
 
@@ -136,7 +136,7 @@ ORDER BY
 
 実行結果イメージ:
 
-![result](/assets/notes/2022-11-24-sql-made-by-me/show_columns_info_result.png)
+![result](/assets/notes/2022-11-24-sql-made-by-me/show_columns_info_result.webp)
 
 参考文献:
 

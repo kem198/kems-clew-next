@@ -70,11 +70,11 @@ __ボールド（アンダースコア2個）__
 
 小さい画像 (532x532):
 
-![2](/assets/notes/2022-11-18-test-markdown/small.jpg)
+![2](/assets/notes/2022-11-18-test-markdown/small.webp)
 
 大きい画像 (1080x1080):
 
-![2](/assets/notes/2022-11-18-test-markdown/large.jpg)
+![2](/assets/notes/2022-11-18-test-markdown/large.webp)
 
 ## テーブル
 

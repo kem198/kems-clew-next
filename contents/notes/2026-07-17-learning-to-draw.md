@@ -19,11 +19,11 @@ lastmod: 2026-07-18
 
 人物画の模写をしたり、デッサン教室に通ったりと、ゆっくりゆったりやってます。
 
-![2](/assets/notes/2026-07-17-learning-to-draw/20260107132216-34.jpg)
+![2](/assets/notes/2026-07-17-learning-to-draw/20260107132216-34.webp)
 
-![1](/assets/notes/2026-07-17-learning-to-draw/20260107132216-147.jpg)
+![1](/assets/notes/2026-07-17-learning-to-draw/20260107132216-147.webp)
 
-![3](/assets/notes/2026-07-17-learning-to-draw/20260316195052-5.jpg)
+![3](/assets/notes/2026-07-17-learning-to-draw/20260316195052-5.webp)
 
 アウトプットは下記からどうぞ。絵関連は「藍鉄」という名義にしています。
 

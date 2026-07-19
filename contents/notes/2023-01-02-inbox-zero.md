@@ -3,7 +3,7 @@ layout: post
 page-category: note
 title: Inbox Zero が良すぎるので設定をまとめるぞ
 description: メールの受信トレイを空にし続けるテクニック「Inbox Zero」の設定ノートです。
-preview: https://clew.kem198.net/assets/notes/2023-01-02-inbox-zero/inbox-zero-01.jpg
+preview: https://clew.kem198.net/assets/notes/2023-01-02-inbox-zero/inbox-zero-01.webp
 category: 情報技術
 tags:
   - gmail
@@ -59,7 +59,7 @@ Gmail > 設定（歯車ボタン） > `すべての設定を表示` から設定
 以上で設定は完了。  
 受信トレイに戻り、以下のような画面配置になっていれば OK！
 
-![inbox-zero-01](/assets/notes/2023-01-02-inbox-zero/inbox-zero-01.jpg)
+![inbox-zero-01](/assets/notes/2023-01-02-inbox-zero/inbox-zero-01.webp)
 
 ## 運用
 
