@@ -90,7 +90,7 @@ export default async function NotePage({ params }: Props) {
 
       <aside>
         <ContentArea className="sticky top-6 min-w-72">
-          <h2>目次</h2>
+          <h2 className="mb-2 border-none">TOC</h2>
           <NoteToc toc={scope.toc} />
         </ContentArea>
       </aside>
