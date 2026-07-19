@@ -3,6 +3,7 @@ import { SetPageTitle } from "@/components/shared/page-title-context";
 import { Tags } from "@/components/shared/tags";
 import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
+import { cn } from "@/lib/utils";
 import type { NoteFrontmatter } from "@/types/note";
 import * as React from "react";
 import type { TocItem } from "remark-flexible-toc";
@@ -19,12 +20,13 @@ export function NoteLayout({
   frontmatter,
   title,
   toc,
+  className,
   children,
 }: NoteLayoutProps) {
   const displayTitle = title ?? frontmatter?.title;
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className={cn("flex flex-col gap-8", className)}>
       <div className="flex flex-col gap-4">
         {displayTitle ? <SetPageTitle title={displayTitle} /> : null}
 
