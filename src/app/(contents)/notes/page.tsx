@@ -25,7 +25,7 @@ export default async function NotesPage() {
               {formatDateToYYYYMMDD(note.frontmatter.date)}
             </span>
 
-            <div className="flex flex-col gap-0">
+            <div className="flex flex-col gap-1">
               <Link href={`/notes/${note.slug}`}>
                 <span className="text-primary/90 text-xl font-bold hover:underline">
                   {note.frontmatter.title}
