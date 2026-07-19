@@ -61,13 +61,13 @@ export default async function NotePage({ params }: NotePageProps) {
   return (
     <div className="flex gap-6">
       <ContentArea className="min-w-0 flex-1">
-        <NoteLayout frontmatter={frontmatter}>
+        <NoteLayout frontmatter={frontmatter} toc={scope.toc}>
           {content}
           <NoteNavigation prev={prev} next={next} />
         </NoteLayout>
       </ContentArea>
 
-      <aside className="w-72 shrink-0">
+      <aside className="w-72 shrink-0 max-md:hidden">
         <ContentArea className="sticky top-6 flex max-h-[calc(100vh-6rem)] min-h-0">
           <ScrollArea className="min-h-0 flex-1 overflow-auto">
             <h2 className="mt-0 mb-2 border-none">TOC</h2>
