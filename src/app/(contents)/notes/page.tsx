@@ -19,7 +19,7 @@ export default async function NotesPage() {
 
       <ul className="not-prose flex flex-col gap-12">
         {notes.map((note) => (
-          <li key={note.slug} className="bg-blue-20 flex flex-col gap-1">
+          <li key={note.slug} className="flex flex-col gap-1">
             <span className={`${ubuntuSans.className} text-sm text-gray-400`}>
               {formatDateToYYYYMMDD(note.frontmatter.date)}
             </span>
