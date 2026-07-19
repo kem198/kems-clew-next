@@ -7,10 +7,7 @@ import type { AlbumPhoto, WorkItem } from "@/types/work";
 import { RadioGroup } from "@base-ui/react";
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import PhotoAlbum, {
-  RenderImageContext,
-  RenderImageProps,
-} from "react-photo-album";
+import PhotoAlbum from "react-photo-album";
 import "react-photo-album/rows.css";
 import "react-photo-album/styles.css";
 import Lightbox from "yet-another-react-lightbox";
@@ -52,25 +49,48 @@ function GroupToggle({ groupByYear, onChange }: GroupToggleProps) {
   );
 }
 
+/**
+ *
+ * @param param0
+ * @param param1
+ * @returns
+ * @see https://react-photo-album.com/examples/nextjs
+ */
 function renderNextImage(
-  { alt = "", title, sizes }: RenderImageProps,
-  { photo, width, height }: RenderImageContext,
+  {
+    alt = "",
+    title,
+    sizes,
+  }: {
+    alt?: string;
+    title?: string;
+    sizes?: string;
+  },
+  {
+    photo,
+    width,
+    height,
+  }: {
+    photo: AlbumPhoto;
+    width: number;
+    height: number;
+  },
 ) {
   return (
     <div
       style={{
-        width: "100%",
         position: "relative",
+        width: "100%",
         aspectRatio: `${width} / ${height}`,
       }}
     >
       <Image
         fill
-        src={photo}
+        src={photo.src}
         alt={alt}
         title={title}
         sizes={sizes}
-        placeholder={"blurDataURL" in photo ? "blur" : undefined}
+        quality={80}
       />
     </div>
   );
