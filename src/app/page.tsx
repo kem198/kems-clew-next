@@ -10,7 +10,9 @@ export default async function Home() {
   return (
     <main className="prose">
       <div className="flex flex-col gap-4">
-        <HomeLink href={"/notes"}>Notes</HomeLink>
+        <HomeLink href={"/notes"} description="雑記いろいろ">
+          Notes
+        </HomeLink>
 
         <ul>
           {latest.map((n) => (
@@ -28,9 +30,13 @@ export default async function Home() {
           </li>
         </ul>
 
-        <HomeLink href={"/works"}>Works</HomeLink>
+        <HomeLink href={"/works"} description="制作物のページ">
+          Works
+        </HomeLink>
 
-        <HomeLink href={"/about"}>About</HomeLink>
+        <HomeLink href={"/about"} description="当サイトについて">
+          About
+        </HomeLink>
       </div>
     </main>
   );

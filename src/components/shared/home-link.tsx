@@ -6,9 +6,16 @@ import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import * as React from "react";
 
-export type HomeLinkProps = React.ComponentProps<typeof Link>;
+export type HomeLinkProps = React.ComponentProps<typeof Link> & {
+  description?: string;
+};
 
-export function HomeLink({ className, children, ...props }: HomeLinkProps) {
+export function HomeLink({
+  className,
+  children,
+  description,
+  ...props
+}: HomeLinkProps) {
   return (
     <h2 className={cn("not-prose", className)}>
       <Link {...props}>
@@ -16,6 +23,7 @@ export function HomeLink({ className, children, ...props }: HomeLinkProps) {
           {children} <ChevronRightIcon />
         </Button>
       </Link>
+      {description && <p>{description}</p>}
     </h2>
   );
 }
