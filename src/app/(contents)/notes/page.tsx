@@ -10,7 +10,7 @@ export const metadata = {
 };
 
 export default async function NotesPage() {
-  const notes = await getNotes();
+  const notes = await (await getNotes()).reverse();
 
   return (
     <article className="prose">
