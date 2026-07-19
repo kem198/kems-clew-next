@@ -1,4 +1,5 @@
 import { HomeLink } from "@/components/shared/home-link";
+import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import { getLatestNotes } from "@/utils/server/notes.server";
 import { ChevronRightIcon } from "lucide-react";
@@ -19,7 +20,9 @@ export default async function Home() {
             {latest.map((n) => (
               <li key={n.slug}>
                 <Link href={`/notes/${n.slug}`}>
-                  {formatDateToYYYYMMDD(n.frontmatter.date)} |{" "}
+                  <span className={`${ubuntuSans.className} text-gray-400`}>
+                    {formatDateToYYYYMMDD(n.frontmatter.date)} |{" "}
+                  </span>{" "}
                   {n.frontmatter.title}
                 </Link>
               </li>
