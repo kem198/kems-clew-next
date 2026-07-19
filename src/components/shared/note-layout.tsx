@@ -1,5 +1,4 @@
 import { NoteToc } from "@/app/(contents)/notes/_components";
-import { SetPageTitle } from "@/components/shared/page-title-context";
 import { Tags } from "@/components/shared/tags";
 import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
@@ -28,8 +27,6 @@ export function NoteLayout({
   return (
     <div className={cn("flex flex-col gap-8", className)}>
       <div className="flex flex-col gap-4">
-        {displayTitle ? <SetPageTitle title={displayTitle} /> : null}
-
         <ul className="not-prose flex justify-end gap-2 text-sm text-gray-400">
           <li>
             作成日:{" "}
