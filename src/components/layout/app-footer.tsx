@@ -12,30 +12,36 @@ export type AppFooterProps = React.HTMLAttributes<HTMLElement>;
 
 export function AppFooter({ className, ...props }: AppFooterProps) {
   return (
-    <footer className={cn("bg-gray-800 p-4 text-white", className)} {...props}>
+    <footer
+      className={cn(
+        "flex flex-col items-center gap-4 bg-gray-800 p-8 text-white",
+        className,
+      )}
+      {...props}
+    >
       <ul className="flex gap-4">
         <li>
           <Link href="https://github.com/kem198" aria-label="GitHub">
-            <ComputerIcon className="h-5 w-5" />
+            <ComputerIcon className="h-6 w-6" />
           </Link>
         </li>
         <li>
           <Link href="https://www.pixiv.net/users/7791923" aria-label="Pixiv">
-            <PaletteIcon className="h-5 w-5" />
+            <PaletteIcon className="h-6 w-6" />
           </Link>
         </li>
         <li>
           <Link href="#" aria-label="Feed">
-            <RssIcon className="h-5 w-5" />
+            <RssIcon className="h-6 w-6" />
           </Link>
         </li>
       </ul>
+
       <p>&copy; 2022 KeM198</p>
-      <div>
-        <Link href="#" aria-label="Back to top">
-          <ChevronUpIcon className="h-5 w-5" />
-        </Link>
-      </div>
+
+      <Link href="#" aria-label="Back to top" className="self-end">
+        <ChevronUpIcon className="h-6 w-6" />
+      </Link>
     </footer>
   );
 }
