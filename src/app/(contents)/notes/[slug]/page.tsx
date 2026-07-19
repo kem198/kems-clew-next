@@ -62,7 +62,7 @@ export default async function NotePage({ params }: NotePageProps) {
     <div className="flex gap-6">
       <article>
         <ContentArea>
-          <NoteLayout frontmatter={frontmatter} className="flex flex-col gap-4">
+          <NoteLayout frontmatter={frontmatter}>
             {content}
             <NoteNavigation prev={prev} next={next} />
           </NoteLayout>
