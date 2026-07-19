@@ -48,7 +48,10 @@ export function NoteToc({ toc }: NoteTocProps) {
     <nav aria-label="Table of contents">
       <ul>
         {list.map((item) => (
-          <li key={item.href}>
+          <li
+            key={item.href}
+            style={{ marginLeft: `${Math.max(0, (item.depth - 1) * 16)}px` }}
+          >
             <a href={item.href}>{item.value}</a>
           </li>
         ))}
