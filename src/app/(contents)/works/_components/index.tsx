@@ -1,7 +1,10 @@
 "use client";
 
+import { Label } from "@/components/ui/label";
+import { RadioGroupItem } from "@/components/ui/radio-group";
 import { mapItemsToPhotos } from "@/lib/works";
 import type { AlbumPhoto, WorkItem } from "@/types/work";
+import { RadioGroup } from "@base-ui/react";
 import { useMemo, useState } from "react";
 import PhotoAlbum from "react-photo-album";
 import Lightbox from "yet-another-react-lightbox";
@@ -23,32 +26,23 @@ type GroupToggleProps = {
   groupByYear: boolean;
   onChange: (value: boolean) => void;
 };
-
 function GroupToggle({ groupByYear, onChange }: GroupToggleProps) {
   return (
-    <fieldset className="mb-6 flex items-center gap-4">
-      <legend className="sr-only">Grouping</legend>
+    <RadioGroup
+      value={groupByYear ? "year" : "all"}
+      onValueChange={(value) => onChange(value === "year")}
+      className="flex items-center gap-6"
+    >
+      <div className="flex items-center gap-2">
+        <RadioGroupItem value="all" id="group-all" />
+        <Label htmlFor="group-all">すべて</Label>
+      </div>
 
-      <label className="flex items-center gap-2">
-        <input
-          type="radio"
-          name="group"
-          checked={!groupByYear}
-          onChange={() => onChange(false)}
-        />
-        <span>All</span>
-      </label>
-
-      <label className="flex items-center gap-2">
-        <input
-          type="radio"
-          name="group"
-          checked={groupByYear}
-          onChange={() => onChange(true)}
-        />
-        <span>By year</span>
-      </label>
-    </fieldset>
+      <div className="flex items-center gap-2">
+        <RadioGroupItem value="year" id="group-year" />
+        <Label htmlFor="group-year">年度ごとに表示</Label>
+      </div>
+    </RadioGroup>
   );
 }
 
