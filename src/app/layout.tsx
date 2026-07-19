@@ -22,7 +22,7 @@ export default function RootLayout({
       data-google-analytics-opt-out=""
       className={cn("h-full", "antialiased", notoSansJp.className, "font-sans")}
     >
-      <body className="min-h-screen">
+      <body id="top" className="min-h-screen">
         <div className="flex min-h-screen flex-col">
           <AppHeader />
           <main className="flex-1 p-4">{children}</main>

@@ -35,7 +35,7 @@ export function AppFooter({ className, ...props }: AppFooterProps) {
 
       <p>&copy; 2022 KeM198</p>
 
-      <Link href="#" aria-label="Back to top" className="self-end">
+      <Link href="#top" aria-label="Back to top" className="self-end">
         <ChevronUpIcon className="h-6 w-6" />
       </Link>
     </footer>
