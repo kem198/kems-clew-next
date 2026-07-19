@@ -36,7 +36,7 @@ export default function RootLayout({
               KeM&apos;s Clew
             </Link>
           </AppHeader>
-          {children}
+          <div className="p-4">{children}</div>
           <AppFooter />
         </div>
       </body>
