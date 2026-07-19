@@ -64,7 +64,7 @@ export default async function NotePage({ params }: Props) {
   return (
     <div className="flex gap-6">
       <article>
-        <ContentArea full>
+        <ContentArea full className="w-full md:max-w-4xl">
           <SetPageTitle title={frontmatter?.title ?? slug} />
           <ul className="not-prose text-right text-gray-400">
             <li>
