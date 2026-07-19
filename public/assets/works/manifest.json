@@ -1,28 +1,28 @@
 {
   "20130724_ikaku": {
-    "src": "/assets/works/20130724_ikaku.gif",
+    "src": "/assets/works/20130724_ikaku.webp",
     "width": 320,
     "height": 240
   },
   "20130724_lagia": {
-    "src": "/assets/works/20130724_lagia.gif",
+    "src": "/assets/works/20130724_lagia.webp",
     "width": 320,
     "height": 240
   },
   "20130724_mismagius": {
-    "src": "/assets/works/20130724_mismagius.gif",
+    "src": "/assets/works/20130724_mismagius.webp",
     "width": 320,
     "height": 240
   },
   "20130724_ugo3d": {
-    "src": "/assets/works/20130724_ugo3d.gif",
+    "src": "/assets/works/20130724_ugo3d.webp",
     "width": 320,
     "height": 240
   },
   "20170611_sqiq": {
-    "src": "/assets/works/20170611_sqiq.webp",
-    "width": 1800,
-    "height": 1350
+    "src": "/assets/works/20170611_sqiq.jpg",
+    "width": 2933,
+    "height": 2200
   },
   "20170616_fj": {
     "src": "/assets/works/20170616_fj.webp",
@@ -30,14 +30,14 @@
     "height": 1200
   },
   "20180103_nid": {
-    "src": "/assets/works/20180103_nid.webp",
-    "width": 1800,
-    "height": 1444
+    "src": "/assets/works/20180103_nid.png",
+    "width": 1834,
+    "height": 1471
   },
   "20180427_429": {
-    "src": "/assets/works/20180427_429.webp",
-    "width": 1800,
-    "height": 2308
+    "src": "/assets/works/20180427_429.jpg",
+    "width": 2200,
+    "height": 2821
   },
   "20180714_swordman": {
     "src": "/assets/works/20180714_swordman.webp",
@@ -45,19 +45,19 @@
     "height": 1366
   },
   "20190119_rkgk_zelda": {
-    "src": "/assets/works/20190119_rkgk_zelda.webp",
-    "width": 1800,
-    "height": 2219
+    "src": "/assets/works/20190119_rkgk_zelda.JPG",
+    "width": 2200,
+    "height": 2712
   },
   "20190403_coo": {
-    "src": "/assets/works/20190403_coo.webp",
+    "src": "/assets/works/20190403_coo.jpg",
     "width": 1592,
     "height": 2244
   },
   "20190403_minu_inu_spinner": {
-    "src": "/assets/works/20190403_minu_inu_spinner.webp",
-    "width": 1800,
-    "height": 2351
+    "src": "/assets/works/20190403_minu_inu_spinner.jpg",
+    "width": 2200,
+    "height": 2873
   },
   "20190403_wakuwaku_bubble": {
     "src": "/assets/works/20190403_wakuwaku_bubble.webp",
@@ -65,7 +65,7 @@
     "height": 988
   },
   "20190625_lady_fashion_selection": {
-    "src": "/assets/works/20190625_lady_fashion_selection.webp",
+    "src": "/assets/works/20190625_lady_fashion_selection.jpg",
     "width": 1518,
     "height": 1920
   },
@@ -75,49 +75,49 @@
     "height": 2400
   },
   "20191201_sq4_on_sale": {
-    "src": "/assets/works/20191201_sq4_on_sale.webp",
+    "src": "/assets/works/20191201_sq4_on_sale.jpg",
     "width": 1080,
     "height": 1522
   },
   "20200101_morinezumi": {
-    "src": "/assets/works/20200101_morinezumi.webp",
+    "src": "/assets/works/20200101_morinezumi.jpg",
     "width": 1024,
     "height": 1280
   },
   "20200220_exp": {
-    "src": "/assets/works/20200220_exp.webp",
-    "width": 1800,
-    "height": 1800
+    "src": "/assets/works/20200220_exp.png",
+    "width": 2000,
+    "height": 2000
   },
   "20200830_kagayaku_zelda": {
-    "src": "/assets/works/20200830_kagayaku_zelda.webp",
-    "width": 1800,
-    "height": 1800
+    "src": "/assets/works/20200830_kagayaku_zelda.png",
+    "width": 2000,
+    "height": 2000
   },
   "20201006_my_kenk": {
-    "src": "/assets/works/20201006_my_kenk.webp",
+    "src": "/assets/works/20201006_my_kenk.jpg",
     "width": 1106,
     "height": 1700
   },
   "20201006_my_modane": {
-    "src": "/assets/works/20201006_my_modane.webp",
+    "src": "/assets/works/20201006_my_modane.jpg",
     "width": 1225,
     "height": 1700
   },
   "20201203_discordbot_mdn_tube": {
-    "src": "/assets/works/20201203_discordbot_mdn_tube.webp",
+    "src": "/assets/works/20201203_discordbot_mdn_tube.jpg",
     "width": 1280,
     "height": 720
   },
   "20201224_modane_sakura": {
-    "src": "/assets/works/20201224_modane_sakura.webp",
+    "src": "/assets/works/20201224_modane_sakura.jpg",
     "width": 1080,
     "height": 1080
   },
   "20201224_modane_wallpaper": {
-    "src": "/assets/works/20201224_modane_wallpaper.webp",
-    "width": 1220,
-    "height": 2400
+    "src": "/assets/works/20201224_modane_wallpaper.png",
+    "width": 1310,
+    "height": 2577
   },
   "20210101_modane_kotoyoro": {
     "src": "/assets/works/20210101_modane_kotoyoro.webp",
@@ -125,24 +125,24 @@
     "height": 1252
   },
   "20210114_pickup_zelda": {
-    "src": "/assets/works/20210114_pickup_zelda.webp",
-    "width": 1800,
-    "height": 2160
+    "src": "/assets/works/20210114_pickup_zelda.jpg",
+    "width": 2500,
+    "height": 3000
   },
   "20210120_modane_aki": {
-    "src": "/assets/works/20210120_modane_aki.webp",
-    "width": 1800,
-    "height": 2160
+    "src": "/assets/works/20210120_modane_aki.png",
+    "width": 2200,
+    "height": 2640
   },
   "20210130_modane_ugo": {
-    "src": "/assets/works/20210130_modane_ugo.gif",
+    "src": "/assets/works/20210130_modane_ugo.webp",
     "width": 320,
     "height": 240
   },
   "20210321_modane_kisei": {
-    "src": "/assets/works/20210321_modane_kisei.webp",
-    "width": 1800,
-    "height": 1800
+    "src": "/assets/works/20210321_modane_kisei.jpg",
+    "width": 2200,
+    "height": 2200
   },
   "20210508_modane_yumi": {
     "src": "/assets/works/20210508_modane_yumi.webp",
@@ -150,32 +150,32 @@
     "height": 1378
   },
   "20210515_modane_yahho": {
-    "src": "/assets/works/20210515_modane_yahho.webp",
+    "src": "/assets/works/20210515_modane_yahho.jpg",
     "width": 1490,
     "height": 1920
   },
   "20210523_nhnk": {
-    "src": "/assets/works/20210523_nhnk.gif",
+    "src": "/assets/works/20210523_nhnk.webp",
     "width": 320,
     "height": 240
   },
   "20210523_rl": {
-    "src": "/assets/works/20210523_rl.gif",
+    "src": "/assets/works/20210523_rl.webp",
     "width": 320,
     "height": 240
   },
   "20210523_tomu_tachi": {
-    "src": "/assets/works/20210523_tomu_tachi.webp",
-    "width": 1800,
-    "height": 1234
+    "src": "/assets/works/20210523_tomu_tachi.jpg",
+    "width": 3000,
+    "height": 2057
   },
   "20210526_mtp": {
-    "src": "/assets/works/20210526_mtp.gif",
+    "src": "/assets/works/20210526_mtp.webp",
     "width": 320,
     "height": 240
   },
   "20210526_smyi_2": {
-    "src": "/assets/works/20210526_smyi_2.gif",
+    "src": "/assets/works/20210526_smyi_2.webp",
     "width": 320,
     "height": 240
   },
@@ -185,39 +185,39 @@
     "height": 1080
   },
   "20210619_mochio": {
-    "src": "/assets/works/20210619_mochio.webp",
-    "width": 1800,
-    "height": 1800
+    "src": "/assets/works/20210619_mochio.jpg",
+    "width": 3000,
+    "height": 3000
   },
   "20210710_modane_moda": {
-    "src": "/assets/works/20210710_modane_moda.webp",
-    "width": 1800,
-    "height": 1800
+    "src": "/assets/works/20210710_modane_moda.jpg",
+    "width": 2000,
+    "height": 2000
   },
   "20210711_dual_ichigo": {
-    "src": "/assets/works/20210711_dual_ichigo.webp",
-    "width": 1800,
-    "height": 1800
+    "src": "/assets/works/20210711_dual_ichigo.jpg",
+    "width": 3000,
+    "height": 3000
   },
   "20210717_modane_nandemo": {
-    "src": "/assets/works/20210717_modane_nandemo.webp",
-    "width": 1800,
-    "height": 1013
+    "src": "/assets/works/20210717_modane_nandemo.jpg",
+    "width": 1920,
+    "height": 1080
   },
   "20210723_modane_amonus": {
-    "src": "/assets/works/20210723_modane_amonus.webp",
-    "width": 1800,
-    "height": 1440
+    "src": "/assets/works/20210723_modane_amonus.jpg",
+    "width": 2500,
+    "height": 2000
   },
   "20210723_modane_sleep": {
-    "src": "/assets/works/20210723_modane_sleep.webp",
-    "width": 1800,
-    "height": 1800
+    "src": "/assets/works/20210723_modane_sleep.png",
+    "width": 2000,
+    "height": 2000
   },
   "20210731_chikara": {
-    "src": "/assets/works/20210731_chikara.webp",
-    "width": 1800,
-    "height": 1800
+    "src": "/assets/works/20210731_chikara.jpg",
+    "width": 3840,
+    "height": 3840
   },
   "20210731_discordbot_mdn": {
     "src": "/assets/works/20210731_discordbot_mdn.webp",
@@ -235,17 +235,17 @@
     "height": 532
   },
   "20210807_setoha": {
-    "src": "/assets/works/20210807_setoha.webp",
-    "width": 1800,
-    "height": 1800
+    "src": "/assets/works/20210807_setoha.jpg",
+    "width": 3000,
+    "height": 3000
   },
   "20210824_modane_wado": {
-    "src": "/assets/works/20210824_modane_wado.webp",
+    "src": "/assets/works/20210824_modane_wado.jpg",
     "width": 1117,
     "height": 1800
   },
   "20210923_rphpb": {
-    "src": "/assets/works/20210923_rphpb.webp",
+    "src": "/assets/works/20210923_rphpb.jpg",
     "width": 1080,
     "height": 1080
   },
@@ -255,19 +255,19 @@
     "height": 690
   },
   "20211015_modane_kanzenrikai": {
-    "src": "/assets/works/20211015_modane_kanzenrikai.webp",
-    "width": 1800,
-    "height": 1800
+    "src": "/assets/works/20211015_modane_kanzenrikai.jpg",
+    "width": 2200,
+    "height": 2200
   },
   "20211016_modane_nendoro": {
-    "src": "/assets/works/20211016_modane_nendoro.webp",
+    "src": "/assets/works/20211016_modane_nendoro.jpg",
     "width": 1141,
     "height": 1936
   },
   "20211123_modane_komarigao": {
-    "src": "/assets/works/20211123_modane_komarigao.webp",
-    "width": 1651,
-    "height": 2400
+    "src": "/assets/works/20211123_modane_komarigao.jpg",
+    "width": 2064,
+    "height": 3000
   },
   "20211218_modane_mc": {
     "src": "/assets/works/20211218_modane_mc.webp",
@@ -285,37 +285,37 @@
     "height": 256
   },
   "20220504_kregwin": {
-    "src": "/assets/works/20220504_kregwin.webp",
-    "width": 1800,
-    "height": 1013
+    "src": "/assets/works/20220504_kregwin.jpg",
+    "width": 1920,
+    "height": 1080
   },
   "20220611_modane_aa": {
-    "src": "/assets/works/20220611_modane_aa.webp",
-    "width": 1800,
-    "height": 465
+    "src": "/assets/works/20220611_modane_aa.jpg",
+    "width": 1948,
+    "height": 503
   },
   "20220630_modane_orgm": {
-    "src": "/assets/works/20220630_modane_orgm.webp",
+    "src": "/assets/works/20220630_modane_orgm.jpg",
     "width": 1400,
     "height": 1400
   },
   "20220807_modane_co2_watcher": {
-    "src": "/assets/works/20220807_modane_co2_watcher.webp",
+    "src": "/assets/works/20220807_modane_co2_watcher.jpg",
     "width": 1443,
     "height": 1443
   },
   "20220813_eeyan": {
-    "src": "/assets/works/20220813_eeyan.webp",
+    "src": "/assets/works/20220813_eeyan.jpg",
     "width": 1080,
     "height": 1080
   },
   "20221013_spinner": {
-    "src": "/assets/works/20221013_spinner.webp",
+    "src": "/assets/works/20221013_spinner.jpg",
     "width": 1080,
     "height": 1080
   },
   "20221108_hello_mastodon": {
-    "src": "/assets/works/20221108_hello_mastodon.webp",
+    "src": "/assets/works/20221108_hello_mastodon.jpg",
     "width": 1080,
     "height": 1080
   },
@@ -325,9 +325,9 @@
     "height": 1335
   },
   "20221218_modane_part": {
-    "src": "/assets/works/20221218_modane_part.webp",
-    "width": 1800,
-    "height": 1800
+    "src": "/assets/works/20221218_modane_part.jpg",
+    "width": 3000,
+    "height": 3000
   },
   "20231025_keppare": {
     "src": "/assets/works/20231025_keppare.webp",
@@ -340,17 +340,17 @@
     "height": 945
   },
   "20231216_todays_target": {
-    "src": "/assets/works/20231216_todays_target.webp",
-    "width": 1800,
-    "height": 2127
+    "src": "/assets/works/20231216_todays_target.jpg",
+    "width": 2563,
+    "height": 3028
   },
   "20231230_homecoming": {
-    "src": "/assets/works/20231230_homecoming.gif",
+    "src": "/assets/works/20231230_homecoming.webp",
     "width": 320,
     "height": 240
   },
   "20240106_homecoming_colored": {
-    "src": "/assets/works/20240106_homecoming_colored.gif",
+    "src": "/assets/works/20240106_homecoming_colored.webp",
     "width": 320,
     "height": 240
   },
@@ -360,8 +360,8 @@
     "height": 1800
   },
   "20240209_todays_target": {
-    "src": "/assets/works/20240209_todays_target.webp",
-    "width": 1800,
-    "height": 2034
+    "src": "/assets/works/20240209_todays_target.jpg",
+    "width": 2242,
+    "height": 2533
   }
 }
