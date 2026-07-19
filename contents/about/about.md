@@ -9,10 +9,6 @@ description:
 
 [KeM's Clew](/) (以下「当サイト」) は、管理人である KeM198 が趣味で制作・公開しているウェブサイトです。
 
-当サイトのソースコードは GitHub にて公開しています。
-
-- [kem198/kems-clew-next](https://github.com/kem198/kems-clew-next)
-
 ## 免責事項
 
 当サイトのコンテンツやリンク先の情報、サービス等について一切の責任を負いません。
