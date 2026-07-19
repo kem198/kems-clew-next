@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
@@ -17,13 +16,11 @@ export function HomeLink({
   ...props
 }: HomeLinkProps) {
   return (
-    <h2 className={cn("not-prose", className)}>
-      <Link {...props}>
-        <Button variant="link" size="lg">
-          {children} <ChevronRightIcon />
-        </Button>
-      </Link>
-      {description && <p>{description}</p>}
-    </h2>
+    <Link className={cn("not-prose", className)} {...props}>
+      <h2 className="flex w-28 items-center gap-1 border-b border-gray-800 text-2xl font-black">
+        {children} <ChevronRightIcon />
+      </h2>
+      {description && <p className="text-sm text-gray-400">{description}</p>}
+    </Link>
   );
 }
