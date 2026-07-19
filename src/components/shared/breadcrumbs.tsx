@@ -1,44 +1,58 @@
-import Link from "next/link";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { Fragment } from "react";
 
 type BreadcrumbsProps = {
   segments: string[];
   title?: string;
 };
 
-const labels: Record<string, string> = {
+const staticLabels: Record<string, string> = {
   notes: "Notes",
   works: "Works",
   about: "About",
 };
 
+function getLabel(segment: string) {
+  return staticLabels[segment] ?? segment;
+}
+
 export function Breadcrumbs({ segments, title }: BreadcrumbsProps) {
   return (
-    <nav aria-label="Breadcrumb">
-      <ol className="flex items-center gap-2 text-sm">
-        <li>
-          <Link href="/">Home</Link>
-        </li>
-
+    <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+        </BreadcrumbItem>
         {segments.map((segment, index) => {
           const isLast = index === segments.length - 1;
 
-          const label = isLast && title ? title : (labels[segment] ?? segment);
-
           return (
-            <li key={segment} className="flex items-center gap-2">
-              <span>/</span>
+            <Fragment key={`${segment}-${index}`}>
+              <BreadcrumbSeparator />
 
-              {isLast ? (
-                <span className="text-stone-400">{label}</span>
-              ) : (
-                <Link href={`/${segments.slice(0, index + 1).join("/")}`}>
-                  {label}
-                </Link>
-              )}
-            </li>
+              <BreadcrumbItem>
+                {isLast ? (
+                  <span className="text-stone-400">
+                    {title ?? getLabel(segment)}
+                  </span>
+                ) : (
+                  <BreadcrumbLink
+                    href={`/${segments.slice(0, index + 1).join("/")}`}
+                  >
+                    {getLabel(segment)}
+                  </BreadcrumbLink>
+                )}
+              </BreadcrumbItem>
+            </Fragment>
           );
         })}
-      </ol>
-    </nav>
+      </BreadcrumbList>
+    </Breadcrumb>
   );
 }
