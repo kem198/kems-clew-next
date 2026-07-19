@@ -1,5 +1,6 @@
 "use client";
 
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
@@ -9,7 +10,14 @@ export type HomeLinkProps = React.ComponentProps<typeof Link>;
 
 export function HomeLink({ className, children, ...props }: HomeLinkProps) {
   return (
-    <Link className={cn("flex gap-2", className)} {...props}>
+    <Link
+      className={cn(
+        "inline-flex w-auto items-center justify-start gap-2 self-start",
+        buttonVariants({ variant: "link", size: "lg" }),
+        className,
+      )}
+      {...props}
+    >
       {children} <ChevronRightIcon />
     </Link>
   );
