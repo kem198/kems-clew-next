@@ -34,15 +34,13 @@ export function NoteLayout({ frontmatter, title, children }: NoteLayoutProps) {
             </span>
           </li>
         </ul>
+        <div className="flex flex-col gap-1">
+          {displayTitle ? <h1 className="mb-2">{displayTitle}</h1> : null}
 
-        {displayTitle ? (
-          <div className="flex flex-col gap-1">
-            <h1 className="mb-2">{displayTitle}</h1>
-            {frontmatter?.tags ? (
-              <Tags tags={frontmatter?.tags} className="text-base" />
-            ) : null}
-          </div>
-        ) : null}
+          {frontmatter?.tags ? (
+            <Tags tags={frontmatter?.tags} className="text-base" />
+          ) : null}
+        </div>
       </div>
       <div>{children}</div>
     </div>
