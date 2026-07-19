@@ -33,12 +33,14 @@ export default async function NotesPage() {
               </Link>
 
               {note.frontmatter.preview ? (
-                <p className="text text-gray-400">{note.frontmatter.preview}</p>
+                <p className="text-sm text-gray-400">
+                  {note.frontmatter.preview}
+                </p>
               ) : null}
             </div>
 
             {/* TODO: タグで絞り込み可能にする */}
-            {<Tags tags={note.frontmatter.tags}></Tags>}
+            <Tags tags={note.frontmatter.tags} />
           </li>
         ))}
       </ul>

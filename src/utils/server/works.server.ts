@@ -11,9 +11,15 @@ type ManifestEntry = {
 };
 
 export async function getWorks(): Promise<WorkItem[]> {
-  const manifest = JSON.parse(
-    await readFile(join(WORKS_DIR, "manifest.json"), "utf8"),
-  ) as Record<string, ManifestEntry>;
+  let manifest: Record<string, ManifestEntry>;
+
+  try {
+    manifest = JSON.parse(
+      await readFile(join(WORKS_DIR, "manifest.json"), "utf8"),
+    ) as Record<string, ManifestEntry>;
+  } catch {
+    return [];
+  }
 
   const items: WorkItem[] = Object.entries(manifest).map(([slug, entry]) => {
     const match = slug.match(/^(\d{4})(\d{2})?(\d{2})?/);
