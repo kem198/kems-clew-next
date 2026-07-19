@@ -1,5 +1,10 @@
 import { WorksGallery } from "@/app/(contents)/works/_components/works-gallery";
+import { withSiteName } from "@/lib/seo";
 import { getWorks } from "@/utils/server/works.server";
+
+export const metadata = {
+  title: withSiteName("Works"),
+};
 
 export default async function WorksPage() {
   const items = await getWorks();
