@@ -5,6 +5,7 @@ import { RadioGroupItem } from "@/components/ui/radio-group";
 import { mapItemsToPhotos } from "@/lib/works";
 import type { AlbumPhoto, WorkItem } from "@/types/work";
 import { RadioGroup } from "@base-ui/react";
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import PhotoAlbum from "react-photo-album";
 import "react-photo-album/styles.css";
@@ -60,6 +61,24 @@ function WorksAlbum({ photos, onClick }: WorksAlbumProps) {
       columns={columns}
       breakpoints={[640, 768, 1024]}
       onClick={({ index }: { index: number }) => onClick(index)}
+      renderPhoto={({ photo, wrapperStyle, imageProps }) => (
+        <div
+          style={{
+            ...wrapperStyle,
+            position: "relative",
+          }}
+        >
+          <Image
+            src={photo.src}
+            alt={photo.alt ?? ""}
+            fill
+            sizes={imageProps?.sizes}
+            style={{
+              objectFit: "cover",
+            }}
+          />
+        </div>
+      )}
     />
   );
 }
@@ -77,7 +96,7 @@ function WorksLightbox({ index, slides, onClose }: WorksLightboxProps) {
       index={index}
       close={onClose}
       slides={slides.map((photo) => ({
-        src: photo.display ?? photo.src,
+        src: photo.src,
       }))}
       controller={{
         closeOnBackdropClick: true,
