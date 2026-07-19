@@ -21,7 +21,7 @@ export function WorksGallery({ items }: WorksGalleryProps) {
       <PhotoAlbum
         layout="masonry"
         photos={photos}
-        onClick={({ index }) => setIndex(index)}
+        onClick={({ index }: { index: number }) => setIndex(index)}
       />
 
       <Lightbox
