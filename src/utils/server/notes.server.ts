@@ -1,9 +1,7 @@
-import { readdir, readFile } from "node:fs/promises";
-import { join } from "node:path";
-
-import { getFrontmatter } from "next-mdx-remote-client/utils";
-
 import type { Note, NoteFrontmatter } from "@/types/note";
+import { getFrontmatter } from "next-mdx-remote-client/utils";
+import fs, { readdir, readFile } from "node:fs/promises";
+import path, { join } from "node:path";
 
 export async function getNotes(): Promise<Note[]> {
   const files = await readdir(NOTES_DIR);
@@ -93,9 +91,6 @@ export async function getPrevNextNote(slug: string) {
 
   return { prev, next };
 }
-
-import fs from "node:fs/promises";
-import path from "node:path";
 
 export type NoteIndexItem = {
   slug: string;
