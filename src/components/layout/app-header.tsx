@@ -13,7 +13,7 @@ export function AppHeader({ className, ...props }: AppHeaderProps) {
   return (
     <header
       className={cn(
-        `h-12 w-full items-center gap-2 bg-gray-800 p-2 font-normal text-white`,
+        `flex items-center gap-2 bg-gray-800 py-2 font-normal text-white`,
         className,
       )}
       {...props}
@@ -21,7 +21,7 @@ export function AppHeader({ className, ...props }: AppHeaderProps) {
       <Link
         href="/"
         className={cn(
-          "flex gap-2",
+          "inline-flex w-auto items-center gap-2 px-4 py-1",
           // resolvedIsHome && "text-4xl"
         )}
       >
