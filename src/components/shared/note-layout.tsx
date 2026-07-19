@@ -20,13 +20,14 @@ export function NoteLayout({ frontmatter, title, children }: NoteLayoutProps) {
       <div className="flex flex-col gap-4">
         {displayTitle ? <SetPageTitle title={displayTitle} /> : null}
 
-        <ul className="not-prose text-right text-gray-400">
+        <ul className="not-prose flex justify-end gap-2 text-sm text-gray-400">
           <li>
             作成日:{" "}
             <span className={`${ubuntuSans.className}`}>
               {formatDateToYYYYMMDD(frontmatter?.date)}
             </span>
           </li>
+          <li>/</li>
           <li>
             更新日:{" "}
             <span className={`${ubuntuSans.className}`}>
