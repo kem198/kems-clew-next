@@ -15,7 +15,7 @@ export default async function NotesPage() {
   const notes = await getSortedNotes("desc");
 
   return (
-    <ContentArea full>
+    <ContentArea>
       <h1>Notes</h1>
 
       <ul className="not-prose flex flex-col gap-12">
