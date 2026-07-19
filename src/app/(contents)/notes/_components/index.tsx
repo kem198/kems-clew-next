@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import type { Note } from "@/types/note";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
@@ -7,28 +8,32 @@ import type { TocItem } from "remark-flexible-toc";
 type NoteNavigationProps = {
   prev: Note | null;
   next: Note | null;
+  className?: string;
 };
 
-export function NoteNavigation({ prev, next }: NoteNavigationProps) {
+export function NoteNavigation({ prev, next, className }: NoteNavigationProps) {
   return (
-    <div className="not-prose mt-8 flex justify-between">
+    <div className={cn("not-prose flex justify-between gap-2", className)}>
       {next ? (
-        <Link href={`/notes/${next.slug}`}>
-          <Button variant="secondary" size="lg">
-            <ChevronLeftIcon /> Previous: {next.frontmatter.title}
+        <Link href={`/notes/${next.slug}`} className="min-w-36">
+          <Button variant="secondary" size="lg" className="w-full">
+            <ChevronLeftIcon />
+            新しい記事へ
           </Button>
         </Link>
       ) : (
-        <div />
+        <div className="flex-1" />
       )}
+
       {prev ? (
-        <Link href={`/notes/${prev.slug}`}>
-          <Button variant="secondary" size="lg">
-            Next: {prev.frontmatter.title} <ChevronRightIcon />
+        <Link href={`/notes/${prev.slug}`} className="min-w-36">
+          <Button variant="secondary" size="lg" className="w-full">
+            古い記事へ
+            <ChevronRightIcon />
           </Button>
         </Link>
       ) : (
-        <div />
+        <div className="flex-1" />
       )}
     </div>
   );
