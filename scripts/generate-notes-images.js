@@ -1,5 +1,5 @@
 import { constants } from "fs";
-import { access, mkdir, readdir } from "fs/promises";
+import { access, copyFile, mkdir, readdir } from "fs/promises";
 import { join } from "path";
 import sharp from "sharp";
 
@@ -20,6 +20,7 @@ async function main() {
   }
 
   const imageExt = /\.(png|jpe?g|webp|gif|avif)$/i;
+  const gifExt = /\.gif$/i;
 
   for (const dirent of folders) {
     if (!dirent.isDirectory()) continue;
@@ -45,8 +46,10 @@ async function main() {
     for (const file of files) {
       if (!imageExt.test(file)) continue;
       const name = file.replace(/\.[^.]+$/, "");
-      const outPath = join(outDir, `${name}.webp`);
       const inPath = join(srcDir, file);
+      const outPath = gifExt.test(file)
+        ? join(outDir, `${name}.gif`)
+        : join(outDir, `${name}.webp`);
 
       try {
         let exists = false;
@@ -60,6 +63,14 @@ async function main() {
           continue;
         }
 
+        if (gifExt.test(file)) {
+          // Copy GIF as-is to the public output directory (no conversion/upscaling)
+          await copyFile(inPath, outPath);
+          console.log("copied gif", inPath, "->", outPath);
+          continue;
+        }
+
+        // Default: use sharp to convert other formats to WebP (no upscaling)
         await sharp(inPath)
           .resize(TARGET_WIDTH, TARGET_HEIGHT, {
             fit: "inside",
