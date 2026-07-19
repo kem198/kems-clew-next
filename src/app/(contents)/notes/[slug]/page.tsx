@@ -1,6 +1,7 @@
 import ContentArea from "@/components/shared/content-area";
 import { SetPageTitle } from "@/components/shared/page-title-context";
 import { Tags } from "@/components/shared/tags";
+import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import { withSiteName } from "@/lib/seo";
 import type { NoteFrontmatter } from "@/types/note";
@@ -63,9 +64,19 @@ export default async function NotePage({ params }: Props) {
     <div className="flex gap-6">
       <ContentArea full>
         <SetPageTitle title={frontmatter?.title ?? slug} />
-        <ul className="not-prose text-right">
-          <li>作成日: {formatDateToYYYYMMDD(frontmatter.date)}</li>
-          <li>更新日: {formatDateToYYYYMMDD(frontmatter.lastmod)}</li>
+        <ul className="not-prose text-right text-gray-400">
+          <li>
+            作成日:{" "}
+            <span className={`${ubuntuSans.className}`}>
+              {formatDateToYYYYMMDD(frontmatter.date)}
+            </span>
+          </li>
+          <li>
+            更新日:{" "}
+            <span className={`${ubuntuSans.className}`}>
+              {formatDateToYYYYMMDD(frontmatter.lastmod)}
+            </span>
+          </li>
         </ul>
 
         <h1>{frontmatter.title}</h1>
