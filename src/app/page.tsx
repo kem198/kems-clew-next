@@ -39,13 +39,13 @@ export default async function Home() {
         </section>
 
         <section>
-          <HomeLink href={'/works'} description="制作物のページ">
+          <HomeLink href={"/works"} description="制作物のページ">
             Works
           </HomeLink>
         </section>
 
         <section>
-          <HomeLink href={'/about'} description="当サイトについて">
+          <HomeLink href={"/about"} description="当サイトについて">
             About
           </HomeLink>
         </section>
