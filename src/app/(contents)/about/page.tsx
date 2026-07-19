@@ -22,9 +22,7 @@ export default async function Page() {
 
   return (
     <ContentArea>
-      <NoteLayout frontmatter={frontmatter} className="prose">
-        {content}
-      </NoteLayout>
+      <NoteLayout frontmatter={frontmatter}>{content}</NoteLayout>
     </ContentArea>
   );
 }
