@@ -3,13 +3,19 @@ import { Tags } from "@/components/shared/tags";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import { withSiteName } from "@/lib/seo";
 import type { NoteFrontmatter } from "@/types/note";
-import { getNoteSource, getPrevNextNote } from "@/utils/server/notes.server";
+import {
+  getNoteSource as getNoteSourceUncached,
+  getPrevNextNote,
+} from "@/utils/server/notes.server";
 import { evaluate } from "next-mdx-remote-client/rsc";
 import { getFrontmatter } from "next-mdx-remote-client/utils";
+import { cache } from "react";
 import rehypeSlug from "rehype-slug";
 import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
 import remarkGfm from "remark-gfm";
 import { NoteNavigation, NoteToc } from "../_components";
+
+const getNoteSource = cache(getNoteSourceUncached);
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
