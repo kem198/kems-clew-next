@@ -26,7 +26,7 @@ export function AppHeader({ className, ...props }: AppHeaderProps) {
         )}
       >
         <Image
-          src="/icons/icon-192x192.png"
+          src="/assets/icons/icon-192x192.png"
           alt="icon"
           width={24}
           height={24}
