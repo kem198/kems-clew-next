@@ -26,7 +26,7 @@ type ManifestItem = {
  */
 
 // WebP 圧縮方式
-const WEBP_MODE: WebpMode = "lossy";
+const WEBP_MODE: WebpMode = "near-lossless";
 
 // 非可逆品質
 const WEBP_QUALITY = 90;
