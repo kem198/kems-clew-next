@@ -45,14 +45,12 @@ export function NoteToc({ toc }: NoteTocProps) {
   if (list.length === 0) return null;
 
   return (
-    <nav className="prose" aria-label="Table of contents">
-      <ul>
-        {list.map((item) => (
-          <li key={item.href}>
-            <a href={item.href}>{item.value}</a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <ul>
+      {list.map((item) => (
+        <li key={item.href}>
+          <a href={item.href}>{item.value}</a>
+        </li>
+      ))}
+    </ul>
   );
 }
