@@ -1,3 +1,4 @@
+import Article from "@/components/shared/article";
 import { SetPageTitle } from "@/components/shared/page-title-context";
 import { Tags } from "@/components/shared/tags";
 import { formatDateToYYYYMMDD } from "@/lib/date";
@@ -59,31 +60,29 @@ export default async function NotePage({ params }: Props) {
   });
 
   return (
-    <article>
-      <SetPageTitle title={frontmatter?.title ?? slug} />
-      <div className="flex gap-6">
-        <section className="prose rounded-md bg-white p-6">
-          <ul className="not-prose text-right">
-            <li>作成日: {formatDateToYYYYMMDD(frontmatter.date)}</li>
-            <li>更新日: {formatDateToYYYYMMDD(frontmatter.lastmod)}</li>
-          </ul>
+    <div className="flex gap-6">
+      <Article full>
+        <SetPageTitle title={frontmatter?.title ?? slug} />
+        <ul className="not-prose text-right">
+          <li>作成日: {formatDateToYYYYMMDD(frontmatter.date)}</li>
+          <li>更新日: {formatDateToYYYYMMDD(frontmatter.lastmod)}</li>
+        </ul>
 
-          <h1>{frontmatter.title}</h1>
+        <h1>{frontmatter.title}</h1>
 
-          <Tags tags={frontmatter.tags}></Tags>
+        <Tags tags={frontmatter.tags}></Tags>
 
-          {content}
+        {content}
 
-          <NoteNavigation prev={prev} next={next} />
-        </section>
+        <NoteNavigation prev={prev} next={next} />
+      </Article>
 
-        <aside>
-          <div className="prose sticky top-6 rounded-md bg-white p-6">
-            <h2>目次</h2>
-            <NoteToc toc={scope.toc} />
-          </div>
-        </aside>
-      </div>
-    </article>
+      <aside>
+        <div className="prose sticky top-6 min-w-72 rounded-md bg-white p-6">
+          <h2>目次</h2>
+          <NoteToc toc={scope.toc} />
+        </div>
+      </aside>
+    </div>
   );
 }
