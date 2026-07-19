@@ -31,10 +31,11 @@ export default async function NotesPage() {
                   </span>
                 </Link>
 
-                {/* // TODO: 記事の本分プレビューを表示する */}
-                {/* <p className="text-sm text-gray-400">
-                  あああああああああああああああああああああああああああああああああああaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaあ
-                </p> */}
+                {note.frontmatter.preview ? (
+                  <p className="text-sm text-gray-400">
+                    {note.frontmatter.preview}
+                  </p>
+                ) : null}
               </div>
 
               {/* TODO: タグで絞り込み可能にする */}
