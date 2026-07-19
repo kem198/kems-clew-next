@@ -1,5 +1,6 @@
+import GitHubIcon from "@/components/icons/github-icon";
 import { cn } from "@/lib/utils";
-import { ChevronUpIcon, ComputerIcon, PaletteIcon } from "lucide-react";
+import { ChevronUpIcon, PaletteIcon } from "lucide-react";
 import Link from "next/link";
 import * as React from "react";
 
@@ -17,7 +18,7 @@ export function AppFooter({ className, ...props }: AppFooterProps) {
       <ul className="flex gap-4">
         <li>
           <Link href="https://github.com/kem198" aria-label="GitHub">
-            <ComputerIcon className="h-6 w-6" />
+            <GitHubIcon className="h-6 w-6" />
           </Link>
         </li>
         <li>

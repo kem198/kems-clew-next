@@ -27,7 +27,7 @@ export function AppHeader({ className, ...props }: AppHeaderProps) {
         )}
       >
         <Image
-          src="/assets/icons/icon-192x192.png"
+          src="/assets/icons/kems-clew-192x192.png"
           alt=""
           aria-hidden="true"
           width={24}
