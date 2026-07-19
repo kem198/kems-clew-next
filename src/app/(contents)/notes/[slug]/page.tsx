@@ -1,7 +1,6 @@
 import ContentArea from "@/components/shared/content-area";
 import NoteLayout from "@/components/shared/note-layout";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { withSiteName } from "@/lib/seo";
 import type { NoteFrontmatter } from "@/types/note";
 import {
   getAllNotes,
@@ -9,7 +8,6 @@ import {
   getPrevNextNote,
 } from "@/utils/server/notes.server";
 import { evaluate } from "next-mdx-remote-client/rsc";
-import { getFrontmatter } from "next-mdx-remote-client/utils";
 import { cache } from "react";
 import rehypeSlug from "rehype-slug";
 import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
@@ -33,16 +31,10 @@ export async function generateStaticParams() {
   return notes.map((n) => ({ slug: n.slug }));
 }
 
-export async function generateMetadata({ params }: NotePageProps) {
-  const { slug } = await params;
-  try {
-    const src = await getNoteSource(slug);
-    const { frontmatter } = getFrontmatter<NoteFrontmatter>(src);
-    const title = frontmatter?.title ?? slug;
-    return { title: withSiteName(title) };
-  } catch {
-    return { title: withSiteName() };
-  }
+export async function generateMetadata() {
+  return {
+    title: "test",
+  };
 }
 
 export default async function NotePage({ params }: NotePageProps) {
