@@ -1,3 +1,4 @@
+import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import ContentArea from "@/components/shared/content-area";
 import NoteLayout from "@/components/shared/note-layout";
 import { NoteFrontmatter } from "@/types/note";
@@ -21,8 +22,11 @@ export default async function Page() {
   };
 
   return (
-    <ContentArea>
-      <NoteLayout frontmatter={frontmatter}>{content}</NoteLayout>
-    </ContentArea>
+    <>
+      <Breadcrumbs segments={["about"]} />
+      <ContentArea>
+        <NoteLayout frontmatter={frontmatter}>{content}</NoteLayout>
+      </ContentArea>
+    </>
   );
 }
