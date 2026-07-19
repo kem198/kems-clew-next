@@ -1,5 +1,7 @@
+import { HomeLink } from "@/components/shared/home-link";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import { getLatestNotes } from "@/utils/server/notes.server";
+import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 
 export default async function Home() {
@@ -8,7 +10,10 @@ export default async function Home() {
   return (
     <main className="prose">
       <div className="flex flex-col gap-4">
-        <Link href={"/notes"}>Notes</Link>
+        <Link href={"/notes"}>
+          <HomeLink href={"/notes"}>Notes</HomeLink>
+        </Link>
+
         <ul>
           {latest.map((n) => (
             <li key={n.slug}>
@@ -19,12 +24,15 @@ export default async function Home() {
             </li>
           ))}
           <li>
-            <Link href="/notes">More</Link>
+            <Link href="/notes" className="flex gap-2">
+              More <ChevronRightIcon />
+            </Link>
           </li>
         </ul>
 
-        <Link href={"/works"}>Works</Link>
-        <Link href={"/about"}>About</Link>
+        <HomeLink href={"/works"}>Works</HomeLink>
+
+        <HomeLink href={"/about"}>About</HomeLink>
       </div>
     </main>
   );
