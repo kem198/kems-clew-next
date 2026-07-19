@@ -30,7 +30,7 @@ export default async function Home() {
             <li>
               <Link
                 href="/notes"
-                className="inline-flex w-auto items-center gap-2"
+                className="inline-flex w-auto items-center gap-1"
               >
                 More <ChevronRightIcon />
               </Link>
