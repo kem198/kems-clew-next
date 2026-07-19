@@ -1,3 +1,4 @@
+import { AppFooter } from "@/components/layout/app-footer";
 import { AppHeader } from "@/components/layout/app-header";
 import { notoSansJp } from "@/constants/fonts";
 import { cn } from "@/lib/utils";
@@ -36,6 +37,7 @@ export default function RootLayout({
             </Link>
           </AppHeader>
           {children}
+          <AppFooter />
         </div>
       </body>
     </html>
