@@ -21,7 +21,7 @@ export default async function Page() {
   };
 
   return (
-    <ContentArea>
+    <ContentArea full>
       <NoteLayout frontmatter={frontmatter}>{content}</NoteLayout>
     </ContentArea>
   );
