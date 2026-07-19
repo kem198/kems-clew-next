@@ -74,7 +74,11 @@ async function main() {
     }
   }
 
-  await writeFile(WORKS_MANIFEST_PATH, JSON.stringify(manifest, null, 2), "utf8");
+  await writeFile(
+    WORKS_MANIFEST_PATH,
+    JSON.stringify(manifest, null, 2),
+    "utf8",
+  );
   console.log("Generated images and manifest at", WORKS_OUT_DIR);
 }
 

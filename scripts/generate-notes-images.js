@@ -14,7 +14,7 @@ async function main() {
   let folders = [];
   try {
     folders = await readdir(NOTES_SRC_DIR, { withFileTypes: true });
-    } catch (err) {
+  } catch (err) {
     console.error("Source notes directory not found:", NOTES_SRC_DIR);
     process.exit(1);
   }
