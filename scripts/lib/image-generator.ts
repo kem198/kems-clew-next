@@ -158,7 +158,9 @@ export async function generateImages(config: ImageGeneratorConfig) {
 
       totalInput += inputStat.size;
 
-      const metadata = await sharp(input, {
+      const isGif = extname(input).toLowerCase() === ".gif";
+
+      const inputMeta = await sharp(input, {
         animated: true,
       }).metadata();
 
@@ -178,9 +180,25 @@ export async function generateImages(config: ImageGeneratorConfig) {
 
       let result = "USE WEBP";
 
-      let reason = "generated webp is smaller";
+      let reason = "";
 
-      if (config.keepOriginalIfLarger && webpStat.size >= inputStat.size) {
+      if (isGif) {
+        reason =
+          webpStat.size < inputStat.size
+            ? "gif converted to webp"
+            : "gif forced to webp";
+      } else {
+        reason =
+          webpStat.size < inputStat.size
+            ? "generated webp is smaller"
+            : "generated webp is larger but original is not kept";
+      }
+
+      if (
+        config.keepOriginalIfLarger &&
+        !isGif &&
+        webpStat.size >= inputStat.size
+      ) {
         if (await exists(outputWebp)) {
           await unlink(outputWebp);
         }
@@ -198,16 +216,22 @@ export async function generateImages(config: ImageGeneratorConfig) {
 
       totalOutput += outputStat.size;
 
-      const outputMeta = await sharp(selectedPath, {
-        animated: true,
-      }).metadata();
+      /*
+       * manifest 用サイズ
+       *
+       * GIF の metadata は使用しない。
+       * 生成済み WebP の metadata を使用する。
+       */
+      const outputMeta = await sharp(outputWebp).metadata();
 
       const manifestKey = relativeFile.replace(extname(relativeFile), "");
+
+      const selectedExt = extname(selectedPath);
 
       manifest[manifestKey] = {
         src: `/assets/${config.name}/${relativeFile.replace(
           extname(relativeFile),
-          extname(selectedPath),
+          selectedExt,
         )}`,
         width: outputMeta.width ?? config.resize.width,
         height: outputMeta.height ?? config.resize.height,
@@ -222,7 +246,7 @@ export async function generateImages(config: ImageGeneratorConfig) {
           `  output      : ${formatBytes(outputStat.size)}`,
           `  reason      : ${reason}`,
           `  saved       : ${formatSaved(inputStat.size, outputStat.size)}`,
-          `  size        : ${metadata.width}x${metadata.height}`,
+          `  size        : ${inputMeta.width}x${inputMeta.height}`,
           `  time        : ${(performance.now() - start).toFixed(0)} ms`,
           "",
         ].join("\n"),
