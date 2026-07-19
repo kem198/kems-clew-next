@@ -64,7 +64,7 @@ export default async function NotePage({ params }: NotePageProps) {
   return (
     <div className="flex gap-6">
       <article>
-        <ContentArea full className="w-full md:max-w-4xl">
+        <ContentArea className="flex flex-col gap-4">
           <SetPageTitle title={frontmatter?.title ?? slug} />
           <ul className="not-prose text-right text-gray-400">
             <li>
@@ -81,9 +81,10 @@ export default async function NotePage({ params }: NotePageProps) {
             </li>
           </ul>
 
-          <h1>{frontmatter.title}</h1>
-
-          <Tags tags={frontmatter.tags}></Tags>
+          <div className="flex flex-col gap-1">
+            <h1 className="mb-2">{frontmatter.title}</h1>
+            <Tags tags={frontmatter.tags} className="text-base"></Tags>
+          </div>
 
           {content}
 
