@@ -1,14 +1,20 @@
 import { HomeLink } from "@/components/shared/home-link";
+import { ubuntuSans } from "@/constants/fonts";
+import { SITE_NAME } from "@/constants/site";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import { getLatestNotes } from "@/utils/server/notes.server";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 
+export const metadata = {
+  title: SITE_NAME,
+};
+
 export default async function Home() {
   const latest = await getLatestNotes(3);
 
   return (
-    <main className="prose">
+    <article className="prose">
       <div className="flex flex-col gap-8">
         <section>
           <HomeLink href={"/notes"} description="雑記いろいろ">
@@ -19,7 +25,9 @@ export default async function Home() {
             {latest.map((n) => (
               <li key={n.slug}>
                 <Link href={`/notes/${n.slug}`}>
-                  {formatDateToYYYYMMDD(n.frontmatter.date)} |{" "}
+                  <span className={`${ubuntuSans.className} text-gray-400`}>
+                    {formatDateToYYYYMMDD(n.frontmatter.date)} |{" "}
+                  </span>{" "}
                   {n.frontmatter.title}
                 </Link>
               </li>
@@ -27,7 +35,7 @@ export default async function Home() {
             <li>
               <Link
                 href="/notes"
-                className="inline-flex w-auto items-center gap-2"
+                className="inline-flex w-auto items-center gap-1"
               >
                 More <ChevronRightIcon />
               </Link>
@@ -47,6 +55,6 @@ export default async function Home() {
           </HomeLink>
         </section>
       </div>
-    </main>
+    </article>
   );
 }
