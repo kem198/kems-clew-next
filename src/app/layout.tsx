@@ -23,8 +23,8 @@ export default function RootLayout({
       data-google-analytics-opt-out=""
       className={cn("h-full", "antialiased", notoSansJp.className, "font-sans")}
     >
-      <body>
-        <div className="flex flex-col gap-2">
+      <body className="min-h-screen">
+        <div className="flex min-h-screen flex-col">
           <AppHeader>
             <Link href="/" className="flex gap-2">
               <Image
@@ -36,7 +36,7 @@ export default function RootLayout({
               KeM&apos;s Clew
             </Link>
           </AppHeader>
-          <div className="p-4">{children}</div>
+          <main className="flex-1 p-4">{children}</main>
           <AppFooter />
         </div>
       </body>
