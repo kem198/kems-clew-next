@@ -28,7 +28,8 @@ export function AppHeader({ className, ...props }: AppHeaderProps) {
       >
         <Image
           src="/assets/icons/icon-192x192.png"
-          alt="icon"
+          alt=""
+          aria-hidden="true"
           width={24}
           height={24}
         />
