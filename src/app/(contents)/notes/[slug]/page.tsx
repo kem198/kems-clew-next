@@ -18,9 +18,15 @@ import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
 import remarkGfm from "remark-gfm";
 import { NoteNavigation, NoteToc } from "../_components";
 
+type NotePageProps = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
+
 const getNoteSource = cache(getNoteSourceUncached);
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: NotePageProps) {
   const { slug } = await params;
   try {
     const src = await getNoteSource(slug);
@@ -32,13 +38,7 @@ export async function generateMetadata({ params }: Props) {
   }
 }
 
-type Props = {
-  params: Promise<{
-    slug: string;
-  }>;
-};
-
-export default async function NotePage({ params }: Props) {
+export default async function NotePage({ params }: NotePageProps) {
   const { slug } = await params;
 
   const source = await getNoteSource(slug);
@@ -63,31 +63,33 @@ export default async function NotePage({ params }: Props) {
 
   return (
     <div className="flex gap-6">
-      <ContentArea full>
-        <SetPageTitle title={frontmatter?.title ?? slug} />
-        <ul className="not-prose text-right text-gray-400">
-          <li>
-            作成日:{" "}
-            <span className={`${ubuntuSans.className}`}>
-              {formatDateToYYYYMMDD(frontmatter.date)}
-            </span>
-          </li>
-          <li>
-            更新日:{" "}
-            <span className={`${ubuntuSans.className}`}>
-              {formatDateToYYYYMMDD(frontmatter.lastmod)}
-            </span>
-          </li>
-        </ul>
+      <article>
+        <ContentArea full className="w-full md:max-w-4xl">
+          <SetPageTitle title={frontmatter?.title ?? slug} />
+          <ul className="not-prose text-right text-gray-400">
+            <li>
+              作成日:{" "}
+              <span className={`${ubuntuSans.className}`}>
+                {formatDateToYYYYMMDD(frontmatter.date)}
+              </span>
+            </li>
+            <li>
+              更新日:{" "}
+              <span className={`${ubuntuSans.className}`}>
+                {formatDateToYYYYMMDD(frontmatter.lastmod)}
+              </span>
+            </li>
+          </ul>
 
-        <h1>{frontmatter.title}</h1>
+          <h1>{frontmatter.title}</h1>
 
-        <Tags tags={frontmatter.tags}></Tags>
+          <Tags tags={frontmatter.tags}></Tags>
 
-        {content}
+          {content}
 
-        <NoteNavigation prev={prev} next={next} />
-      </ContentArea>
+          <NoteNavigation prev={prev} next={next} />
+        </ContentArea>
+      </article>
 
       <aside>
         <ContentArea className="sticky top-6 flex max-h-[calc(100vh-6rem)] min-h-0 min-w-72 flex-col">
