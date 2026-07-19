@@ -16,7 +16,7 @@ export default async function Home() {
 
   return (
     <ContentArea full>
-      <div className="flex flex-col gap-8 p-6">
+      <div className="flex flex-col gap-8">
         <section>
           <HomeLink href={"/notes"} description="雑記いろいろ">
             Notes
