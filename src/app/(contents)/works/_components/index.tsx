@@ -5,6 +5,7 @@ import type { WorkItem } from "@/types/work";
 import { useMemo, useState } from "react";
 import PhotoAlbum from "react-photo-album";
 import Lightbox from "yet-another-react-lightbox";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 
 type WorksGalleryProps = {
@@ -38,6 +39,10 @@ export function WorksGallery({ items }: WorksGalleryProps) {
         slides={photos.map((photo) => ({
           src: photo.display ?? photo.src,
         }))}
+        controller={{
+          closeOnBackdropClick: true,
+        }}
+        plugins={[Zoom]}
       />
     </>
   );
