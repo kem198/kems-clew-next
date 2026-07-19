@@ -14,18 +14,12 @@ export function AppHeader({ className, ...props }: AppHeaderProps) {
   return (
     <header
       className={cn(
-        `bg-primary flex items-center gap-2 py-2 font-normal text-white`,
+        `bg-primary flex items-center gap-2 px-6 py-3 font-normal text-white max-md:px-3`,
         className,
       )}
       {...props}
     >
-      <Link
-        href="/"
-        className={cn(
-          "inline-flex w-auto items-center gap-2 px-4 py-1",
-          // resolvedIsHome && "text-4xl"
-        )}
-      >
+      <Link href="/" className={cn("inline-flex w-auto items-center gap-2")}>
         <Image
           src="/assets/icons/kems-clew-192x192.png"
           alt=""

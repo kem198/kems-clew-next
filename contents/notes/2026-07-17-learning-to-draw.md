@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "お絵描きをオベンキョ中です"
+title: "お絵描きを勉強中です"
 description: ""
 preview: ""
 category: 日記

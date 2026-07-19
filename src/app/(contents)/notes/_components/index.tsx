@@ -36,15 +36,16 @@ export function NoteNavigation({ prev, next }: NoteNavigationProps) {
 
 type NoteTocProps = {
   toc?: TocItem[];
+  className?: string;
 };
 
-export function NoteToc({ toc }: NoteTocProps) {
+export function NoteToc({ toc, className }: NoteTocProps) {
   const list = Array.isArray(toc) ? toc : [];
 
   if (list.length === 0) return null;
 
   return (
-    <nav aria-label="Table of contents">
+    <nav aria-label="Table of contents" className={className}>
       <ul className="mt-0 p-2">
         {list.map((item) => (
           <li
@@ -55,7 +56,9 @@ export function NoteToc({ toc }: NoteTocProps) {
               marginLeft: `${Math.max(0, (item.depth - 1) * 16)}px`,
             }}
           >
-            <a href={item.href}>{item.value}</a>
+            <Link href={item.href} className="text-zinc-600">
+              {item.value}
+            </Link>
           </li>
         ))}
       </ul>
