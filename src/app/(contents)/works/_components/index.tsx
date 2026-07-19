@@ -7,7 +7,11 @@ import type { AlbumPhoto, WorkItem } from "@/types/work";
 import { RadioGroup } from "@base-ui/react";
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import PhotoAlbum from "react-photo-album";
+import PhotoAlbum, {
+  RenderImageContext,
+  RenderImageProps,
+} from "react-photo-album";
+import "react-photo-album/rows.css";
 import "react-photo-album/styles.css";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
@@ -48,6 +52,30 @@ function GroupToggle({ groupByYear, onChange }: GroupToggleProps) {
   );
 }
 
+function renderNextImage(
+  { alt = "", title, sizes }: RenderImageProps,
+  { photo, width, height }: RenderImageContext,
+) {
+  return (
+    <div
+      style={{
+        width: "100%",
+        position: "relative",
+        aspectRatio: `${width} / ${height}`,
+      }}
+    >
+      <Image
+        fill
+        src={photo}
+        alt={alt}
+        title={title}
+        sizes={sizes}
+        placeholder={"blurDataURL" in photo ? "blur" : undefined}
+      />
+    </div>
+  );
+}
+
 type WorksAlbumProps = {
   photos: AlbumPhoto[];
   onClick: (index: number) => void;
@@ -61,24 +89,8 @@ function WorksAlbum({ photos, onClick }: WorksAlbumProps) {
       columns={columns}
       breakpoints={[640, 768, 1024]}
       onClick={({ index }: { index: number }) => onClick(index)}
-      renderPhoto={({ photo, wrapperStyle, imageProps }) => (
-        <div
-          style={{
-            ...wrapperStyle,
-            position: "relative",
-          }}
-        >
-          <Image
-            src={photo.src}
-            alt={photo.alt ?? ""}
-            fill
-            sizes={imageProps?.sizes}
-            style={{
-              objectFit: "cover",
-            }}
-          />
-        </div>
-      )}
+
+      render={{ image: renderNextImage }}
     />
   );
 }
