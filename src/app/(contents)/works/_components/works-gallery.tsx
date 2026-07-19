@@ -3,6 +3,7 @@
 import { mapItemsToPhotos } from "@/lib/works";
 import { AlbumPhoto, WorkItem } from "@/types/work";
 import Image from "next/image";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import PhotoAlbum, { RenderPhotoProps } from "react-photo-album";
 import Lightbox from "yet-another-react-lightbox";
@@ -66,7 +67,7 @@ export function WorksMasonry({
     };
 
     return (
-      <a
+      <Link
         href={href}
         target="_blank"
         rel="noopener noreferrer"
@@ -80,9 +81,9 @@ export function WorksMasonry({
           width={photo.width}
           height={photo.height}
           sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
-          className="h-full w-full rounded object-cover"
+          className="h-full w-full rounded-md border border-gray-200 object-cover"
         />
-      </a>
+      </Link>
     );
   };
 
@@ -137,7 +138,9 @@ export function WorksGallery({ items }: WorksGalleryProps) {
         ) : (
           groups.map(([year, its]) => (
             <section key={year} className="mb-8">
-              <h2 className="mb-4 text-lg font-semibold">{year}</h2>
+              <div className="prose mb-4 max-w-none">
+                <h2>{year}</h2>
+              </div>
               <WorksMasonry items={its} onPhotoClick={handlePhotoClick} />
             </section>
           ))
