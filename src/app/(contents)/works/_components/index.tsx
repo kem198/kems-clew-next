@@ -42,18 +42,24 @@ export function GroupToggle({ groupByYear, setGroupByYear }: GroupToggleProps) {
 
 type WorksMasonryProps = {
   items: WorkItem[];
-  columns?: number;
+  columns?: number | ((containerWidth: number) => number);
   targetRowHeight?: number;
   onPhotoClick?: (photo: AlbumPhoto) => void;
 };
 
 export function WorksMasonry({
   items,
-  columns = 3,
+  columns,
   targetRowHeight = 300,
   onPhotoClick,
 }: WorksMasonryProps) {
   const photos = mapItemsToPhotos(items);
+
+  const columnsProp =
+    columns !== undefined
+      ? columns
+      : (containerWidth: number) =>
+          containerWidth >= 1024 ? 3 : containerWidth >= 768 ? 2 : 1;
 
   const renderPhoto = (props: RenderPhotoProps & { photo: AlbumPhoto }) => {
     const { photo, wrapperStyle } = props;
@@ -90,7 +96,7 @@ export function WorksMasonry({
   return (
     <PhotoAlbum
       layout="masonry"
-      columns={columns}
+      columns={columnsProp}
       photos={photos}
       renderPhoto={renderPhoto}
       targetRowHeight={targetRowHeight}
