@@ -174,7 +174,7 @@ export function WorksGallery({ items }: WorksGalleryProps) {
 
             return (
               <section key={year}>
-                <h2 className="mb-4 text-2xl font-bold">{year}</h2>
+                <h2>{year}</h2>
 
                 <WorksAlbum
                   photos={groupPhotos}
