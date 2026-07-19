@@ -1,4 +1,4 @@
-import { WorksGallery } from "@/app/(contents)/works/_components/works-gallery";
+import { WorksGallery } from "@/app/(contents)/works/_components";
 import { ContentArea } from "@/components/shared/content-area";
 import { withSiteName } from "@/lib/seo";
 import { getWorks } from "@/utils/server/works.server";
