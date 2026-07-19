@@ -12,6 +12,8 @@ async function main() {
 
   const THUMB_SIZES = [400, 800];
   const DISPLAY_SIZE = 1600;
+  const THUMB_QUALITY = 80;
+  const DISPLAY_QUALITY = 85;
 
   const force = process.argv.includes("--force");
 
@@ -49,7 +51,7 @@ async function main() {
         } else {
           await sharp(input)
             .resize({ width: w })
-            .webp({ quality: 75 })
+            .webp({ quality: THUMB_QUALITY })
             .toFile(outWebP);
         }
       }
@@ -63,13 +65,13 @@ async function main() {
         } else {
           await sharp(input)
             .resize({ width: DISPLAY_SIZE })
-            .webp({ quality: 80 })
+            .webp({ quality: DISPLAY_QUALITY })
             .toFile(outDisplayWebP);
         }
       } catch {
         await sharp(input)
           .resize({ width: DISPLAY_SIZE })
-          .webp({ quality: 80 })
+          .webp({ quality: DISPLAY_QUALITY })
           .toFile(outDisplayWebP);
       }
 
