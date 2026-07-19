@@ -16,8 +16,11 @@ export function HomeLink({
   ...props
 }: HomeLinkProps) {
   return (
-    <Link className={cn("not-prose", className)} {...props}>
-      <h2 className="flex w-28 items-center gap-1 border-b border-gray-800 text-2xl font-black">
+    <Link
+      className={cn("not-prose flex w-28 flex-col gap-1", className)}
+      {...props}
+    >
+      <h2 className="flex w-full items-center gap-1 border-b border-gray-800 text-2xl font-black">
         {children} <ChevronRightIcon />
       </h2>
       {description && <p className="text-sm text-gray-400">{description}</p>}
