@@ -17,7 +17,10 @@ export function HomeLink({
 }: HomeLinkProps) {
   return (
     <div className="not-prose flex flex-col gap-1">
-      <Link className={cn("w-28 hover:text-gray-500", className)} {...props}>
+      <Link
+        className={cn("text-primary hover:text-primary/75 w-28", className)}
+        {...props}
+      >
         <h2 className="flex w-full items-center gap-1 border-b border-gray-800 pb-1 text-2xl font-black">
           {children} <ChevronRightIcon />
         </h2>
