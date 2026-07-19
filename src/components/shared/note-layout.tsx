@@ -16,7 +16,7 @@ export function NoteLayout({ frontmatter, title, children }: NoteLayoutProps) {
   const displayTitle = title ?? frontmatter?.title;
 
   return (
-    <>
+    <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-4">
         {displayTitle ? <SetPageTitle title={displayTitle} /> : null}
 
@@ -45,7 +45,7 @@ export function NoteLayout({ frontmatter, title, children }: NoteLayoutProps) {
         ) : null}
       </div>
       <div>{children}</div>
-    </>
+    </div>
   );
 }
 
