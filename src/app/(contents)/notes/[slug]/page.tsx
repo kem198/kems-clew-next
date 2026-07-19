@@ -1,12 +1,33 @@
+import { SetPageTitle } from "@/components/shared/page-title-context";
 import { Tags } from "@/components/shared/tags";
 import { formatDateToYYYYMMDD } from "@/lib/date";
+import { withSiteName } from "@/lib/seo";
 import type { NoteFrontmatter } from "@/types/note";
-import { getNoteSource, getPrevNextNote } from "@/utils/server/notes.server";
+import {
+  getNoteSource as getNoteSourceUncached,
+  getPrevNextNote,
+} from "@/utils/server/notes.server";
 import { evaluate } from "next-mdx-remote-client/rsc";
+import { getFrontmatter } from "next-mdx-remote-client/utils";
+import { cache } from "react";
 import rehypeSlug from "rehype-slug";
 import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
 import remarkGfm from "remark-gfm";
 import { NoteNavigation, NoteToc } from "../_components";
+
+const getNoteSource = cache(getNoteSourceUncached);
+
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  try {
+    const src = await getNoteSource(slug);
+    const { frontmatter } = getFrontmatter<NoteFrontmatter>(src);
+    const title = frontmatter?.title ?? slug;
+    return { title: withSiteName(title) };
+  } catch {
+    return { title: withSiteName() };
+  }
+}
 
 type Props = {
   params: Promise<{
@@ -38,9 +59,10 @@ export default async function NotePage({ params }: Props) {
   });
 
   return (
-    <main>
+    <article>
+      <SetPageTitle title={frontmatter?.title ?? slug} />
       <div className="flex gap-4">
-        <article className="prose bg-red-200">
+        <section className="prose bg-red-200">
           <ul className="not-prose text-right">
             <li>作成日: {formatDateToYYYYMMDD(frontmatter.date)}</li>
             <li>更新日: {formatDateToYYYYMMDD(frontmatter.lastmod)}</li>
@@ -53,7 +75,7 @@ export default async function NotePage({ params }: Props) {
           {content}
 
           <NoteNavigation prev={prev} next={next} />
-        </article>
+        </section>
 
         <aside>
           <div className="bg-card sticky top-20 rounded-xl border p-6 shadow-sm">
@@ -62,6 +84,6 @@ export default async function NotePage({ params }: Props) {
           </div>
         </aside>
       </div>
-    </main>
+    </article>
   );
 }
