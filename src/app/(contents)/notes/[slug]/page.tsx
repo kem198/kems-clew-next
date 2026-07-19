@@ -68,6 +68,7 @@ export default async function NotePage({ params }: NotePageProps) {
         </NoteLayout>
       </ContentArea>
 
+      {/* PC 用目次  */}
       {scope.toc.length ? (
         <aside className="w-72 shrink-0 max-md:hidden">
           <ContentArea className="sticky top-6 flex max-h-[calc(100vh-6rem)] min-h-0">
