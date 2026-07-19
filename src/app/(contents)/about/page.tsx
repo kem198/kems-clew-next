@@ -1,3 +1,4 @@
+import { ContentArea } from "@/components/shared/content-area";
 import { withSiteName } from "@/lib/seo";
 
 export const metadata = {
@@ -6,9 +7,9 @@ export const metadata = {
 
 export default async function AboutPage() {
   return (
-    <article className="prose">
+    <ContentArea full>
       <h1>About</h1>
       <p>test</p>
-    </article>
+    </ContentArea>
   );
 }

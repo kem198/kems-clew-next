@@ -1,3 +1,4 @@
+import { ContentArea } from "@/components/shared/content-area";
 import { HomeLink } from "@/components/shared/home-link";
 import { ubuntuSans } from "@/constants/fonts";
 import { SITE_NAME } from "@/constants/site";
@@ -14,20 +15,20 @@ export default async function Home() {
   const latest = await getLatestNotes(3);
 
   return (
-    <article className="prose">
+    <ContentArea full>
       <div className="flex flex-col gap-8">
         <section>
           <HomeLink href={"/notes"} description="雑記いろいろ">
             Notes
           </HomeLink>
 
-          <ul className="mt-0">
+          <ul className="not-prose mt-2">
             {latest.map((n) => (
-              <li key={n.slug}>
-                <Link href={`/notes/${n.slug}`}>
+              <li key={n.slug} className="mb-0 ml-8 list-disc">
+                <Link href={`/notes/${n.slug}`} className="hover:underline">
                   <span className={`${ubuntuSans.className} text-gray-400`}>
                     {formatDateToYYYYMMDD(n.frontmatter.date)} |{" "}
-                  </span>{" "}
+                  </span>
                   {n.frontmatter.title}
                 </Link>
               </li>
@@ -35,9 +36,10 @@ export default async function Home() {
             <li>
               <Link
                 href="/notes"
-                className="inline-flex w-auto items-center gap-1"
+                className="mb-0 ml-2 inline-flex w-auto items-center gap-0 hover:underline"
               >
-                More <ChevronRightIcon />
+                More
+                <ChevronRightIcon height={16} width={16} />
               </Link>
             </li>
           </ul>
@@ -55,6 +57,6 @@ export default async function Home() {
           </HomeLink>
         </section>
       </div>
-    </article>
+    </ContentArea>
   );
 }
