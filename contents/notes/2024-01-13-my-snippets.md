@@ -24,7 +24,6 @@ lastmod: 2025-10-13
 - 思いついたら適宜追加していく。
 - 参考にする際は自己責任で！
 
-<!-- omit in toc -->
 ## テンプレート
 
 - タイトル
@@ -1312,8 +1311,8 @@ Composer version 2.6.6 2023-12-08 18:32:26
 
 ## 8. SQL
 
-- [標準 SQL 集]({% post_url 2022-11-24-sql-standard %})
-- [自作 SQL 集]({% post_url 2022-11-24-sql-made-by-me %})
+- [標準 SQL 集](/notes/2022-11-24-sql-standard)
+- [自作 SQL 集](/notes/2022-11-24-sql-made-by-me)
 
 ## 9. VS Code
 
