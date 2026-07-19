@@ -10,9 +10,7 @@ export default async function Home() {
   return (
     <main className="prose">
       <div className="flex flex-col gap-4">
-        <Link href={"/notes"}>
-          <HomeLink href={"/notes"}>Notes</HomeLink>
-        </Link>
+        <HomeLink href={"/notes"}>Notes</HomeLink>
 
         <ul>
           {latest.map((n) => (
