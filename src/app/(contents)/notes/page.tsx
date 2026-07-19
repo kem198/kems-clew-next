@@ -4,14 +4,14 @@ import { ContentArea } from "@/components/shared/content-area";
 import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import { withSiteName } from "@/lib/seo";
-import { getNotes } from "@/utils/server/notes.server";
+import { getSortedNotes } from "@/utils/server/notes.server";
 
 export const metadata = {
   title: withSiteName("Notes"),
 };
 
 export default async function NotesPage() {
-  const notes = await (await getNotes()).reverse();
+  const notes = await getSortedNotes("desc");
 
   return (
     <ContentArea full>
