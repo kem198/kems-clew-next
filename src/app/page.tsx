@@ -21,13 +21,13 @@ export default async function Home() {
             Notes
           </HomeLink>
 
-          <ul className="mt-0">
+          <ul className="not-prose mt-2">
             {latest.map((n) => (
-              <li key={n.slug}>
+              <li key={n.slug} className="mb-0 ml-8 list-disc hover:underline">
                 <Link href={`/notes/${n.slug}`}>
                   <span className={`${ubuntuSans.className} text-gray-400`}>
                     {formatDateToYYYYMMDD(n.frontmatter.date)} |{" "}
-                  </span>{" "}
+                  </span>
                   {n.frontmatter.title}
                 </Link>
               </li>
@@ -35,7 +35,7 @@ export default async function Home() {
             <li>
               <Link
                 href="/notes"
-                className="inline-flex w-auto items-center gap-1"
+                className="mb-0 ml-2 inline-flex w-auto items-center gap-1 hover:underline"
               >
                 More <ChevronRightIcon />
               </Link>
