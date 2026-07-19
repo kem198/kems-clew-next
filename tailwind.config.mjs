@@ -13,6 +13,9 @@ const config = {
         DEFAULT: {
           css: {
             color: theme("colors.gray.800"),
+            "h1, h2, h3, h4, h5, h6": {
+              color: theme("colors.primary"),
+            },
             h1: {
               fontWeight: theme("fontWeight.black"),
             },
