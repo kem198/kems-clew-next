@@ -1,12 +1,17 @@
 import { cn } from "@/lib/utils";
 import * as React from "react";
 
-type Props = React.HTMLAttributes<HTMLElement> & {
+type ContentAreaProps = React.HTMLAttributes<HTMLElement> & {
   full?: boolean;
   innerClassName?: string;
 };
 
-export function Article({ children, className, full, ...props }: Props) {
+export function ContentArea({
+  children,
+  className,
+  full,
+  ...props
+}: ContentAreaProps) {
   const innerBase = full ? "prose max-w-none" : "prose";
 
   return (
@@ -19,4 +24,4 @@ export function Article({ children, className, full, ...props }: Props) {
   );
 }
 
-export default Article;
+export default ContentArea;

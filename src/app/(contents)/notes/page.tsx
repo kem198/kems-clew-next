@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Article } from "@/components/shared/article";
+import { ContentArea } from "@/components/shared/content-area";
 import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import { withSiteName } from "@/lib/seo";
@@ -14,7 +14,7 @@ export default async function NotesPage() {
   const notes = await (await getNotes()).reverse();
 
   return (
-    <Article full>
+    <ContentArea full>
       <h1>Notes</h1>
 
       <ul className="not-prose flex flex-col gap-12">
@@ -43,6 +43,6 @@ export default async function NotesPage() {
           </li>
         ))}
       </ul>
-    </Article>
+    </ContentArea>
   );
 }
