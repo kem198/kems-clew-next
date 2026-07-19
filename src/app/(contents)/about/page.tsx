@@ -1,3 +1,4 @@
+import { Article } from "@/components/shared/article";
 import { withSiteName } from "@/lib/seo";
 
 export const metadata = {
@@ -6,9 +7,9 @@ export const metadata = {
 
 export default async function AboutPage() {
   return (
-    <article className="prose">
+    <Article full>
       <h1>About</h1>
       <p>test</p>
-    </article>
+    </Article>
   );
 }

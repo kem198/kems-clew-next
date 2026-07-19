@@ -1,4 +1,5 @@
 import { WorksGallery } from "@/app/(contents)/works/_components/works-gallery";
+import { Article } from "@/components/shared/article";
 import { withSiteName } from "@/lib/seo";
 import { getWorks } from "@/utils/server/works.server";
 
@@ -10,14 +11,12 @@ export default async function WorksPage() {
   const items = await getWorks();
 
   return (
-    <article className="w-full rounded-md bg-white p-6">
-      <div className="prose m-4">
-        <h1>Works</h1>
-      </div>
+    <Article full>
+      <h1>Works</h1>
 
       <section className="mt-8">
         <WorksGallery items={items} />
       </section>
-    </article>
+    </Article>
   );
 }
