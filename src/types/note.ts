@@ -1,9 +1,7 @@
 export type NoteFrontmatter = {
-  layout: string;
   title: string;
   description: string;
   preview: string;
-  category: string;
   tags: string[];
   date: string;
   lastmod: string;
