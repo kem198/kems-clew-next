@@ -16,6 +16,9 @@ const config = {
             h1: {
               fontWeight: theme("fontWeight.black"),
             },
+            h2: {
+              borderBottom: `1px solid ${theme("colors.gray.300")}`,
+            },
             a: {
               color: theme("colors.cyan.600"),
               "&:hover": {
