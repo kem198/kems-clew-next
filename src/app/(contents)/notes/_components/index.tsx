@@ -1,5 +1,6 @@
-import { buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import type { Note } from "@/types/note";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import type { TocItem } from "remark-flexible-toc";
 
@@ -11,22 +12,20 @@ type NoteNavigationProps = {
 export function NoteNavigation({ prev, next }: NoteNavigationProps) {
   return (
     <div className="not-prose mt-8 flex justify-between">
-      {prev ? (
-        <Link
-          href={`/notes/${prev.slug}`}
-          className={buttonVariants({ variant: "secondary" })}
-        >
-          前の記事
+      {next ? (
+        <Link href={`/notes/${next.slug}`}>
+          <Button variant="secondary" size="lg">
+            <ChevronLeftIcon /> Previous: {next.frontmatter.title}
+          </Button>
         </Link>
       ) : (
         <div />
       )}
-      {next ? (
-        <Link
-          href={`/notes/${next.slug}`}
-          className={buttonVariants({ variant: "secondary" })}
-        >
-          次の記事
+      {prev ? (
+        <Link href={`/notes/${prev.slug}`}>
+          <Button variant="secondary" size="lg">
+            Next: {prev.frontmatter.title} <ChevronRightIcon />
+          </Button>
         </Link>
       ) : (
         <div />
