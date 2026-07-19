@@ -63,31 +63,33 @@ export default async function NotePage({ params }: Props) {
 
   return (
     <div className="flex gap-6">
-      <ContentArea full>
-        <SetPageTitle title={frontmatter?.title ?? slug} />
-        <ul className="not-prose text-right text-gray-400">
-          <li>
-            作成日:{" "}
-            <span className={`${ubuntuSans.className}`}>
-              {formatDateToYYYYMMDD(frontmatter.date)}
-            </span>
-          </li>
-          <li>
-            更新日:{" "}
-            <span className={`${ubuntuSans.className}`}>
-              {formatDateToYYYYMMDD(frontmatter.lastmod)}
-            </span>
-          </li>
-        </ul>
+      <article>
+        <ContentArea full>
+          <SetPageTitle title={frontmatter?.title ?? slug} />
+          <ul className="not-prose text-right text-gray-400">
+            <li>
+              作成日:{" "}
+              <span className={`${ubuntuSans.className}`}>
+                {formatDateToYYYYMMDD(frontmatter.date)}
+              </span>
+            </li>
+            <li>
+              更新日:{" "}
+              <span className={`${ubuntuSans.className}`}>
+                {formatDateToYYYYMMDD(frontmatter.lastmod)}
+              </span>
+            </li>
+          </ul>
 
-        <h1>{frontmatter.title}</h1>
+          <h1>{frontmatter.title}</h1>
 
-        <Tags tags={frontmatter.tags}></Tags>
+          <Tags tags={frontmatter.tags}></Tags>
 
-        {content}
+          {content}
 
-        <NoteNavigation prev={prev} next={next} />
-      </ContentArea>
+          <NoteNavigation prev={prev} next={next} />
+        </ContentArea>
+      </article>
 
       <aside>
         <ContentArea className="sticky top-6 flex max-h-[calc(100vh-6rem)] min-h-0 min-w-72 flex-col">
