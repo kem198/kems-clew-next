@@ -63,6 +63,7 @@ export default async function NotePage({ params }: NotePageProps) {
       <ContentArea className="min-w-0 flex-1">
         <NoteLayout frontmatter={frontmatter} toc={scope.toc}>
           {content}
+          <hr className="not-prose mt-24 mb-6" />
           <NoteNavigation prev={prev} next={next} />
         </NoteLayout>
       </ContentArea>
