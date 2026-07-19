@@ -9,34 +9,43 @@ export default async function Home() {
 
   return (
     <main className="prose">
-      <div className="flex flex-col gap-4">
-        <HomeLink href={"/notes"} description="雑記いろいろ">
-          Notes
-        </HomeLink>
+      <div className="flex flex-col gap-8">
+        <section>
+          <HomeLink href={"/notes"} description="雑記いろいろ">
+            Notes
+          </HomeLink>
 
-        <ul>
-          {latest.map((n) => (
-            <li key={n.slug}>
-              <Link href={`/notes/${n.slug}`}>
-                {formatDateToYYYYMMDD(n.frontmatter.date)} |{" "}
-                {n.frontmatter.title}
+          <ul className="mt-0">
+            {latest.map((n) => (
+              <li key={n.slug}>
+                <Link href={`/notes/${n.slug}`}>
+                  {formatDateToYYYYMMDD(n.frontmatter.date)} |{" "}
+                  {n.frontmatter.title}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link
+                href="/notes"
+                className="inline-flex w-auto items-center gap-2"
+              >
+                More <ChevronRightIcon />
               </Link>
             </li>
-          ))}
-          <li>
-            <Link href="/notes" className="flex gap-2">
-              More <ChevronRightIcon />
-            </Link>
-          </li>
-        </ul>
+          </ul>
+        </section>
 
-        <HomeLink href={"/works"} description="制作物のページ">
-          Works
-        </HomeLink>
+        <section>
+          <HomeLink href={"/works"} description="制作物のページ">
+            Works
+          </HomeLink>
+        </section>
 
-        <HomeLink href={"/about"} description="当サイトについて">
-          About
-        </HomeLink>
+        <section>
+          <HomeLink href={"/about"} description="当サイトについて">
+            About
+          </HomeLink>
+        </section>
       </div>
     </main>
   );
