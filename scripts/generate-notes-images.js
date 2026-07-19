@@ -4,17 +4,18 @@ import { join } from "path";
 import sharp from "sharp";
 
 async function main() {
-  const SRC_BASE = join(process.cwd(), "assets_src", "notes");
-  const OUT_BASE = join(process.cwd(), "public", "assets", "notes");
-
-  const NOTES_QUALITY = 80;
+  const NOTES_SRC_DIR = join(process.cwd(), "assets_src", "notes");
+  const NOTES_OUT_DIR = join(process.cwd(), "public", "assets", "notes");
+  const OUTPUT_QUALITY = 80;
+  const TARGET_WIDTH = 1200;
+  const TARGET_HEIGHT = 1600;
   const force = process.argv.includes("--force");
 
   let folders = [];
   try {
-    folders = await readdir(SRC_BASE, { withFileTypes: true });
-  } catch (err) {
-    console.error("Source notes directory not found:", SRC_BASE);
+    folders = await readdir(NOTES_SRC_DIR, { withFileTypes: true });
+    } catch (err) {
+    console.error("Source notes directory not found:", NOTES_SRC_DIR);
     process.exit(1);
   }
 
@@ -23,8 +24,8 @@ async function main() {
   for (const dirent of folders) {
     if (!dirent.isDirectory()) continue;
     const folderName = dirent.name;
-    const srcDir = join(SRC_BASE, folderName);
-    const outDir = join(OUT_BASE, folderName);
+    const srcDir = join(NOTES_SRC_DIR, folderName);
+    const outDir = join(NOTES_OUT_DIR, folderName);
 
     try {
       await mkdir(outDir, { recursive: true });
@@ -59,7 +60,13 @@ async function main() {
           continue;
         }
 
-        await sharp(inPath).webp({ quality: NOTES_QUALITY }).toFile(outPath);
+        await sharp(inPath)
+          .resize(TARGET_WIDTH, TARGET_HEIGHT, {
+            fit: "inside",
+            withoutEnlargement: true,
+          })
+          .webp({ quality: OUTPUT_QUALITY })
+          .toFile(outPath);
         console.log("converted", inPath, "->", outPath);
       } catch (err) {
         console.error(
