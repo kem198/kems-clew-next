@@ -10,14 +10,8 @@ export type HomeLinkProps = React.ComponentProps<typeof Link>;
 
 export function HomeLink({ className, children, ...props }: HomeLinkProps) {
   return (
-    <h2 className="not-prose">
-      <Link
-        className={cn(
-          "inline-flex w-auto items-center justify-start gap-2 self-start",
-          className,
-        )}
-        {...props}
-      >
+    <h2 className={cn("not-prose", className)}>
+      <Link {...props}>
         <Button variant="link" size="lg">
           {children} <ChevronRightIcon />
         </Button>
