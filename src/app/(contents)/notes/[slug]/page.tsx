@@ -61,8 +61,8 @@ export default async function NotePage({ params }: Props) {
   return (
     <article>
       <SetPageTitle title={frontmatter?.title ?? slug} />
-      <div className="flex gap-4">
-        <section className="prose bg-red-200">
+      <div className="flex gap-6">
+        <section className="prose rounded-md bg-white p-6">
           <ul className="not-prose text-right">
             <li>作成日: {formatDateToYYYYMMDD(frontmatter.date)}</li>
             <li>更新日: {formatDateToYYYYMMDD(frontmatter.lastmod)}</li>
@@ -78,7 +78,7 @@ export default async function NotePage({ params }: Props) {
         </section>
 
         <aside>
-          <div className="bg-card sticky top-20 rounded-xl border p-6 shadow-sm">
+          <div className="prose sticky top-6 rounded-md bg-white p-6">
             <h2>目次</h2>
             <NoteToc toc={scope.toc} />
           </div>

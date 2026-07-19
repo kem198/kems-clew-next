@@ -15,7 +15,7 @@ export default async function Home() {
 
   return (
     <article className="prose">
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-8 p-6">
         <section>
           <HomeLink href={"/notes"} description="雑記いろいろ">
             Notes
@@ -23,8 +23,8 @@ export default async function Home() {
 
           <ul className="not-prose mt-2">
             {latest.map((n) => (
-              <li key={n.slug} className="mb-0 ml-8 list-disc hover:underline">
-                <Link href={`/notes/${n.slug}`}>
+              <li key={n.slug} className="mb-0 ml-8 list-disc">
+                <Link href={`/notes/${n.slug}`} className="hover:underline">
                   <span className={`${ubuntuSans.className} text-gray-400`}>
                     {formatDateToYYYYMMDD(n.frontmatter.date)} |{" "}
                   </span>
@@ -35,9 +35,10 @@ export default async function Home() {
             <li>
               <Link
                 href="/notes"
-                className="mb-0 ml-2 inline-flex w-auto items-center gap-1 hover:underline"
+                className="mb-0 ml-2 inline-flex w-auto items-center gap-0 hover:underline"
               >
-                More <ChevronRightIcon />
+                More
+                <ChevronRightIcon height={16} width={16} />
               </Link>
             </li>
           </ul>

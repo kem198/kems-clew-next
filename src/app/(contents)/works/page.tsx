@@ -10,8 +10,8 @@ export default async function WorksPage() {
   const items = await getWorks();
 
   return (
-    <article>
-      <div className="prose">
+    <article className="w-full rounded-md bg-white p-6">
+      <div className="prose m-4">
         <h1>Works</h1>
       </div>
 
