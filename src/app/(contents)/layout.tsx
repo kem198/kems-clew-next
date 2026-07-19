@@ -8,7 +8,7 @@ export default function ContentLayout({
 }>) {
   return (
     <PageTitleProvider>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 bg-gray-100 p-6">
         <Breadcrumbs />
         {children}
       </div>

@@ -1,5 +1,7 @@
+import ContentArea from "@/components/shared/content-area";
 import { SetPageTitle } from "@/components/shared/page-title-context";
 import { Tags } from "@/components/shared/tags";
+import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import { withSiteName } from "@/lib/seo";
 import type { NoteFrontmatter } from "@/types/note";
@@ -59,31 +61,39 @@ export default async function NotePage({ params }: Props) {
   });
 
   return (
-    <article>
-      <SetPageTitle title={frontmatter?.title ?? slug} />
-      <div className="flex gap-4">
-        <section className="prose bg-red-200">
-          <ul className="not-prose text-right">
-            <li>作成日: {formatDateToYYYYMMDD(frontmatter.date)}</li>
-            <li>更新日: {formatDateToYYYYMMDD(frontmatter.lastmod)}</li>
-          </ul>
+    <div className="flex gap-6">
+      <ContentArea full>
+        <SetPageTitle title={frontmatter?.title ?? slug} />
+        <ul className="not-prose text-right text-gray-400">
+          <li>
+            作成日:{" "}
+            <span className={`${ubuntuSans.className}`}>
+              {formatDateToYYYYMMDD(frontmatter.date)}
+            </span>
+          </li>
+          <li>
+            更新日:{" "}
+            <span className={`${ubuntuSans.className}`}>
+              {formatDateToYYYYMMDD(frontmatter.lastmod)}
+            </span>
+          </li>
+        </ul>
 
-          <h1>{frontmatter.title}</h1>
+        <h1>{frontmatter.title}</h1>
 
-          <Tags tags={frontmatter.tags}></Tags>
+        <Tags tags={frontmatter.tags}></Tags>
 
-          {content}
+        {content}
 
-          <NoteNavigation prev={prev} next={next} />
-        </section>
+        <NoteNavigation prev={prev} next={next} />
+      </ContentArea>
 
-        <aside>
-          <div className="bg-card sticky top-20 rounded-xl border p-6 shadow-sm">
-            <h2>目次</h2>
-            <NoteToc toc={scope.toc} />
-          </div>
-        </aside>
-      </div>
-    </article>
+      <aside>
+        <ContentArea className="sticky top-6 min-w-72">
+          <h2>目次</h2>
+          <NoteToc toc={scope.toc} />
+        </ContentArea>
+      </aside>
+    </div>
   );
 }
