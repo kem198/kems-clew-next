@@ -199,9 +199,7 @@ export async function generateImages(config: ImageGeneratorConfig) {
         !isGif &&
         webpStat.size >= inputStat.size
       ) {
-        if (await exists(outputWebp)) {
-          await unlink(outputWebp);
-        }
+        await unlink(outputWebp);
 
         await copyFile(input, outputOriginal);
 
@@ -217,12 +215,17 @@ export async function generateImages(config: ImageGeneratorConfig) {
       totalOutput += outputStat.size;
 
       /*
-       * manifest 用サイズ
+       * manifest 用 metadata
        *
-       * GIF の metadata は使用しない。
-       * 生成済み WebP の metadata を使用する。
+       * GIF:
+       *   必ず WebP 採用なので WebP metadata
+       *
+       * その他:
+       *   実際に採用したファイル metadata
        */
-      const outputMeta = await sharp(outputWebp).metadata();
+      const outputMeta = isGif
+        ? await sharp(outputWebp).metadata()
+        : await sharp(selectedPath).metadata();
 
       const manifestKey = relativeFile.replace(extname(relativeFile), "");
 
