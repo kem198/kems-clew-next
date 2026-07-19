@@ -5,11 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:clean": "rm -rf .next && next build",
     "gen:works": "node ./scripts/generate-works-images.js",
     "gen:works:force": "node ./scripts/generate-works-images.js --force",
     "start": "next start",
     "lint": "eslint",
-    "format": "npx prettier . --write"
+    "format": "npx prettier . --write",
+    "test": "echo No tests available.",
+    "clean": "rm -rf .next"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
