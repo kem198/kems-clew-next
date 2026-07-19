@@ -1,10 +1,9 @@
 "use client";
 
 import { Label } from "@/components/ui/label";
-import { RadioGroupItem } from "@/components/ui/radio-group";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { mapItemsToPhotos } from "@/lib/works";
 import type { AlbumPhoto, WorkItem } from "@/types/work";
-import { RadioGroup } from "@base-ui/react";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import PhotoAlbum from "react-photo-album";
@@ -49,13 +48,6 @@ function GroupToggle({ groupByYear, onChange }: GroupToggleProps) {
   );
 }
 
-/**
- *
- * @param param0
- * @param param1
- * @returns
- * @see https://react-photo-album.com/examples/nextjs
- */
 function renderNextImage(
   {
     alt = "",
