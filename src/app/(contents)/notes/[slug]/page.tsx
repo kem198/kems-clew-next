@@ -53,10 +53,10 @@ export default async function NotePage({ params }: Props) {
   });
 
   return (
-    <main>
+    <article>
       <SetPageTitle title={frontmatter?.title ?? slug} />
       <div className="flex gap-4">
-        <article className="prose bg-red-200">
+        <section className="prose bg-red-200">
           <ul className="not-prose text-right">
             <li>作成日: {formatDateToYYYYMMDD(frontmatter.date)}</li>
             <li>更新日: {formatDateToYYYYMMDD(frontmatter.lastmod)}</li>
@@ -69,7 +69,7 @@ export default async function NotePage({ params }: Props) {
           {content}
 
           <NoteNavigation prev={prev} next={next} />
-        </article>
+        </section>
 
         <aside>
           <div className="bg-card sticky top-20 rounded-xl border p-6 shadow-sm">
@@ -78,6 +78,6 @@ export default async function NotePage({ params }: Props) {
           </div>
         </aside>
       </div>
-    </main>
+    </article>
   );
 }
