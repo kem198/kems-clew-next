@@ -3,7 +3,6 @@ import * as React from "react";
 
 type ContentAreaProps = React.HTMLAttributes<HTMLElement> & {
   full?: boolean;
-  innerClassName?: string;
 };
 
 export function ContentArea({
