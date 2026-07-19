@@ -1,3 +1,4 @@
+import { SITE_NAME } from "@/constants/site";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -31,7 +32,7 @@ export function AppHeader({ className, ...props }: AppHeaderProps) {
           width={24}
           height={24}
         />
-        KeM&apos;s Clew
+        {SITE_NAME}
       </Link>
     </header>
   );
