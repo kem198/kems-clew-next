@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import {
   ChevronUpIcon,
   ComputerIcon,
@@ -9,10 +10,10 @@ import * as React from "react";
 
 export type AppFooterProps = React.HTMLAttributes<HTMLElement>;
 
-export function AppFooter({ className, children, ...props }: AppFooterProps) {
+export function AppFooter({ className, ...props }: AppFooterProps) {
   return (
-    <footer className={"site-footer h-card " + (className ?? "")} {...props}>
-      <ul className="footer-sns">
+    <footer className={cn("bg-gray-800 p-4 text-white", className)} {...props}>
+      <ul className="flex gap-4">
         <li>
           <Link href="https://github.com/kem198" aria-label="GitHub">
             <ComputerIcon className="h-5 w-5" />
@@ -29,8 +30,8 @@ export function AppFooter({ className, children, ...props }: AppFooterProps) {
           </Link>
         </li>
       </ul>
-      <p className="footer-copy">&copy; 2022 KeM198</p>
-      <div className="footer-jump">
+      <p>&copy; 2022 KeM198</p>
+      <div>
         <Link href="#" aria-label="Back to top">
           <ChevronUpIcon className="h-5 w-5" />
         </Link>
