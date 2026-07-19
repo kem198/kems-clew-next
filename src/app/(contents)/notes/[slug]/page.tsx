@@ -1,6 +1,7 @@
 import ContentArea from "@/components/shared/content-area";
 import { SetPageTitle } from "@/components/shared/page-title-context";
 import { Tags } from "@/components/shared/tags";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import { withSiteName } from "@/lib/seo";
@@ -89,9 +90,11 @@ export default async function NotePage({ params }: Props) {
       </ContentArea>
 
       <aside>
-        <ContentArea className="sticky top-6 min-w-72">
-          <h2 className="mb-2 border-none">TOC</h2>
-          <NoteToc toc={scope.toc} />
+        <ContentArea className="sticky top-6 flex max-h-[calc(100vh-6rem)] min-h-0 min-w-72 flex-col">
+          <ScrollArea className="min-h-0 flex-1 overflow-auto">
+            <h2 className="mt-0 mb-2 border-none">TOC</h2>
+            <NoteToc toc={scope.toc} />
+          </ScrollArea>
         </ContentArea>
       </aside>
     </div>
