@@ -1,9 +1,14 @@
 import { HomeLink } from "@/components/shared/home-link";
 import { ubuntuSans } from "@/constants/fonts";
+import { SITE_NAME } from "@/constants/site";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import { getLatestNotes } from "@/utils/server/notes.server";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
+
+export const metadata = {
+  title: SITE_NAME,
+};
 
 export default async function Home() {
   const latest = await getLatestNotes(3);

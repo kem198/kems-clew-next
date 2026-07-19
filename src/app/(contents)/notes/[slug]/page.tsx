@@ -1,12 +1,27 @@
+import { SetPageTitle } from "@/components/shared/page-title-context";
 import { Tags } from "@/components/shared/tags";
 import { formatDateToYYYYMMDD } from "@/lib/date";
+import { withSiteName } from "@/lib/seo";
 import type { NoteFrontmatter } from "@/types/note";
 import { getNoteSource, getPrevNextNote } from "@/utils/server/notes.server";
 import { evaluate } from "next-mdx-remote-client/rsc";
+import { getFrontmatter } from "next-mdx-remote-client/utils";
 import rehypeSlug from "rehype-slug";
 import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
 import remarkGfm from "remark-gfm";
 import { NoteNavigation, NoteToc } from "../_components";
+
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  try {
+    const src = await getNoteSource(slug);
+    const { frontmatter } = getFrontmatter<NoteFrontmatter>(src);
+    const title = frontmatter?.title ?? slug;
+    return { title: withSiteName(title) };
+  } catch {
+    return { title: withSiteName() };
+  }
+}
 
 type Props = {
   params: Promise<{
@@ -39,6 +54,7 @@ export default async function NotePage({ params }: Props) {
 
   return (
     <main>
+      <SetPageTitle title={frontmatter.title} />
       <div className="flex gap-4">
         <article className="prose bg-red-200">
           <ul className="not-prose text-right">
