@@ -10,7 +10,7 @@ async function main() {
 
   const TARGET_WIDTH = 1800;
   const TARGET_HEIGHT = 2400;
-  const OUTPUT_QUALITY = 85;
+  const OUTPUT_QUALITY = 90;
 
   const force = process.argv.includes("--force");
 
