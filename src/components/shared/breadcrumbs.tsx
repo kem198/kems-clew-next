@@ -91,7 +91,6 @@ function DynamicBreadcrumbLabel({
 
   useEffect(() => {
     let cancelled = false;
-    setTitle(null);
     async function fetchTitle() {
       if (!parent) return setTitle(segment);
       if (parent === "notes") {
