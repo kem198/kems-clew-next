@@ -2,8 +2,10 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
 @plugin "@tailwindcss/typography";
+@config "../../tailwind.config.mjs";
+
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
