@@ -10,7 +10,7 @@ async function main() {
 
   const TARGET_WIDTH = 1800;
   const TARGET_HEIGHT = 2400;
-  const OUTPUT_QUALITY = 90;
+  const OUTPUT_QUALITY = 85;
 
   const force = process.argv.includes("--force");
 
@@ -51,7 +51,12 @@ async function main() {
             fit: "inside",
             withoutEnlargement: true,
           })
-          .webp({ quality: OUTPUT_QUALITY })
+          .webp({
+            nearLossless: true,
+            quality: OUTPUT_QUALITY,
+            effort: 6,
+            alphaQuality: 90,
+          })
           .toFile(outDisplayWebP);
       }
 
