@@ -1,10 +1,5 @@
 import { cn } from "@/lib/utils";
-import {
-  ChevronUpIcon,
-  ComputerIcon,
-  PaletteIcon,
-  RssIcon,
-} from "lucide-react";
+import { ChevronUpIcon, ComputerIcon, PaletteIcon } from "lucide-react";
 import Link from "next/link";
 import * as React from "react";
 
@@ -30,11 +25,12 @@ export function AppFooter({ className, ...props }: AppFooterProps) {
             <PaletteIcon className="h-6 w-6" />
           </Link>
         </li>
-        <li>
+        {/* TODO: RSS の実装 */}
+        {/* <li>
           <Link href="#" aria-label="Feed">
             <RssIcon className="h-6 w-6" />
           </Link>
-        </li>
+        </li> */}
       </ul>
 
       <p>&copy; 2022 KeM198</p>
