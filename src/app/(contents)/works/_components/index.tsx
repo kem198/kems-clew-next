@@ -21,6 +21,13 @@ export function WorksGallery({ items }: WorksGalleryProps) {
       <PhotoAlbum
         layout="masonry"
         photos={photos}
+        columns={(containerWidth: number) => {
+          if (containerWidth < 640) return 1;
+          if (containerWidth < 768) return 2;
+          if (containerWidth < 1024) return 3;
+          return 4;
+        }}
+        breakpoints={[640, 768, 1024]}
         onClick={({ index }: { index: number }) => setIndex(index)}
       />
 
