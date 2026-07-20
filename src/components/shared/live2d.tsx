@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils";
+
 type ModaneLive2DWidgetProps = {
   className?: string;
 };
@@ -18,9 +20,10 @@ const LIVE2D_WIDGET_URL =
 export function ModaneLive2DWidget({ className }: ModaneLive2DWidgetProps) {
   return (
     <div
-      className={`pointer-events-none h-150 w-125 overflow-hidden ${
-        className ?? ""
-      }`}
+      className={cn(
+        "pointer-events-none h-150 w-125 overflow-hidden",
+        className,
+      )}
     >
       <div className="h-150 w-150">
         <iframe
