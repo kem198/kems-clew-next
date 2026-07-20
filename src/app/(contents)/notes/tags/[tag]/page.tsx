@@ -1,9 +1,12 @@
-import { NoteContentLayout } from "@/app/(contents)/notes/_components/note-content-layout";
+import { NoteCard } from "@/app/(contents)/notes/_components/note-card";
+import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
+import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
+import { TagCloud } from "@/app/(contents)/notes/_components/note-tag";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import ContentArea from "@/components/shared/content-area";
+import { SidebarArea } from "@/components/shared/sidebar-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { getNotes, getNoteTags } from "@/utils/server/notes.server";
-import Link from "next/link";
 
 type NoteTagPageProps = {
   params: Promise<{
@@ -38,21 +41,31 @@ export default async function NoteTagPage({ params }: NoteTagPageProps) {
         title={`#${tag}`}
       />
 
-      <NoteContentLayout tagCloud={tags}>
-        <ContentArea>
-          <h1>#{tag}</h1>
+      <NoteLayout>
+        <NoteLayout.Main>
+          <ContentArea>
+            <h1>#{tag}</h1>
 
-          <ul className="flex flex-col gap-4">
-            {filteredNotes.map((note) => (
-              <li key={note.slug}>
-                <Link href={`/notes/${note.slug}`} className="hover:underline">
-                  {note.frontmatter.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </ContentArea>
-      </NoteContentLayout>
+            <ul className="not-prose flex flex-col gap-12">
+              {filteredNotes.map((note) => (
+                <li key={note.slug}>
+                  <NoteCard note={note} />
+                </li>
+              ))}
+            </ul>
+          </ContentArea>
+        </NoteLayout.Main>
+
+        <NoteLayout.Sidebar>
+          <SidebarArea>
+            <NoteSidebar>
+              <NoteSidebar.Section title="Tags">
+                <TagCloud tags={tags} />
+              </NoteSidebar.Section>
+            </NoteSidebar>
+          </SidebarArea>
+        </NoteLayout.Sidebar>
+      </NoteLayout>
     </>
   );
 }
