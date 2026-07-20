@@ -8,6 +8,7 @@ import { NoteToc } from "@/app/(contents)/notes/_components/note-toc";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { CodeBlock } from "@/components/shared/code-block";
 import ContentArea from "@/components/shared/content-area";
+import { SidebarArea } from "@/components/shared/sidebar-area";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { rehypePrettyCodeOptions } from "@/lib/rehype-pretty-code";
@@ -111,7 +112,7 @@ export default async function NotePage({ params }: NotePageProps) {
         </NoteLayout.Main>
 
         <NoteLayout.Sidebar>
-          <ContentArea>
+          <SidebarArea>
             <NoteSidebar>
               {scope.toc?.length ? (
                 <NoteSidebar.Section title="TOC">
@@ -121,7 +122,7 @@ export default async function NotePage({ params }: NotePageProps) {
                 </NoteSidebar.Section>
               ) : null}
             </NoteSidebar>
-          </ContentArea>
+          </SidebarArea>
         </NoteLayout.Sidebar>
       </NoteLayout>
     </>
