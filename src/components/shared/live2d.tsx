@@ -21,19 +21,17 @@ export function ModaneLive2DWidget({ className }: ModaneLive2DWidgetProps) {
   return (
     <div
       className={cn(
-        "pointer-events-none h-150 w-125 overflow-hidden",
+        "pointer-events-none h-150 w-125 overflow-hidden max-md:w-75",
         className,
       )}
     >
-      <div className="h-150 w-150">
-        <iframe
-          src={LIVE2D_WIDGET_URL}
-          title="Live2D Widget"
-          referrerPolicy="no-referrer"
-          loading="lazy"
-          className="pointer-events-auto block h-300 w-250 origin-top-left scale-50 border-0"
-        />
-      </div>
+      <iframe
+        src={LIVE2D_WIDGET_URL}
+        title="Live2D Widget"
+        referrerPolicy="no-referrer"
+        loading="lazy"
+        className="pointer-events-auto block h-300 w-250 origin-top-left scale-50 border-0 max-md:w-150"
+      />
     </div>
   );
 }
