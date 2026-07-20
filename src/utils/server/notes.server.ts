@@ -14,29 +14,25 @@ export async function getNotes(): Promise<Note[]> {
 
         const { frontmatter } = getFrontmatter<NoteFrontmatter>(source);
 
-        let preview;
         // strip frontmatter block from source to get body
         const body = source.replace(/^---[\s\S]*?---\s*/m, "");
+
         // get first non-empty paragraph
-        const para =
+        const firstParagraph =
           body
             .split(/\n\s*\n/)
             .map((p) => p.trim())
             .find((p) => p.length > 0) ?? "";
 
-        // very small markdown-to-text conversion
-        const text = para
+        const text = firstParagraph
           .replace(/\[(.*?)\]\([^\)]+\)/g, "$1") // links
           .replace(/[#>*`~\-\[\]]/g, "")
           .replace(/\n+/g, " ")
           .trim();
 
         const MAX = 50;
-        if (text.length > MAX) {
-          preview = text.slice(0, MAX).trimEnd() + "…";
-        } else {
-          preview = text;
-        }
+        const preview =
+          text.length > MAX ? text.slice(0, MAX).trimEnd() + "…" : text;
 
         // ensure frontmatter.preview is set (types expect string)
         const fm = {
@@ -119,7 +115,6 @@ export async function getAllNotes(): Promise<NoteIndexItem[]> {
     }),
   );
 
-  // 必要なら日付順に
   notes.sort((a, b) => (a.date && b.date ? (a.date < b.date ? 1 : -1) : 0));
   return notes;
 }
