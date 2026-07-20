@@ -26,10 +26,7 @@ export default async function Page() {
 
   return (
     <>
-      <Breadcrumbs
-        segments={[BreadcrumbSegment.notes]}
-        title={frontmatter.title}
-      />
+      <Breadcrumbs segments={[BreadcrumbSegment.about]} />
       <NoteLayout>
         <NoteLayout.Main>
           <ContentArea>
