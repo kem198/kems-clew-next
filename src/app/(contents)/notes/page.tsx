@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { ContentArea } from "@/components/shared/content-area";
 import { Tags } from "@/components/shared/tags";
+import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import { withSiteName } from "@/lib/seo";
@@ -17,7 +18,7 @@ export default async function NotesPage() {
 
   return (
     <>
-      <Breadcrumbs segments={["notes"]} />
+      <Breadcrumbs segments={[BreadcrumbSegment.notes]} />
       <ContentArea>
         <h1>Notes</h1>
 

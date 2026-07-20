@@ -1,6 +1,7 @@
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import ContentArea from "@/components/shared/content-area";
 import NoteLayout from "@/components/shared/note-layout";
+import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { NoteFrontmatter } from "@/types/note";
 import { evaluate } from "next-mdx-remote-client/rsc";
 import { readFile } from "node:fs/promises";
@@ -23,7 +24,7 @@ export default async function Page() {
 
   return (
     <>
-      <Breadcrumbs segments={["about"]} />
+      <Breadcrumbs segments={[BreadcrumbSegment.about]} />
       <ContentArea>
         <NoteLayout frontmatter={frontmatter}>{content}</NoteLayout>
       </ContentArea>

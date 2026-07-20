@@ -1,6 +1,7 @@
 import { WorksGallery } from "@/app/(contents)/works/_components";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { ContentArea } from "@/components/shared/content-area";
+import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { withSiteName } from "@/lib/seo";
 import { getWorks } from "@/utils/server/works.server";
 
@@ -13,7 +14,7 @@ export default async function WorksPage() {
 
   return (
     <>
-      <Breadcrumbs segments={["works"]} />
+      <Breadcrumbs segments={[BreadcrumbSegment.works]} />
       <ContentArea>
         <h1>Works</h1>
 
