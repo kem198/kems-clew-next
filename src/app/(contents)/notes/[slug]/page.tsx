@@ -1,7 +1,9 @@
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
+import { CodeBlock } from "@/components/shared/code-block";
 import ContentArea from "@/components/shared/content-area";
 import NoteLayout from "@/components/shared/note-layout";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { rehypePrettyCodeOptions } from "@/lib/rehype-pretty-code";
 import { withSiteName } from "@/lib/seo";
 import type { NoteFrontmatter } from "@/types/note";
@@ -60,6 +62,9 @@ export default async function NotePage({ params }: NotePageProps) {
     { toc: TocItem[] }
   >({
     source,
+    components: {
+      pre: CodeBlock,
+    },
     options: {
       parseFrontmatter: true,
       mdxOptions: {
@@ -75,7 +80,11 @@ export default async function NotePage({ params }: NotePageProps) {
 
   return (
     <>
-      <Breadcrumbs segments={["notes", slug]} title={frontmatter.title} />
+      <Breadcrumbs
+        segments={[BreadcrumbSegment.notes]}
+        title={frontmatter.title}
+      />
+
       <div className="flex gap-6">
         <ContentArea className="min-w-0 flex-1">
           <NoteLayout frontmatter={frontmatter} toc={scope.toc}>
