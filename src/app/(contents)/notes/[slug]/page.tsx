@@ -2,6 +2,7 @@ import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import ContentArea from "@/components/shared/content-area";
 import NoteLayout from "@/components/shared/note-layout";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { rehypePrettyCodeOptions } from "@/lib/rehype-pretty-code";
 import { withSiteName } from "@/lib/seo";
 import type { NoteFrontmatter } from "@/types/note";
 import {
@@ -12,6 +13,7 @@ import {
 import { evaluate } from "next-mdx-remote-client/rsc";
 import { getFrontmatter } from "next-mdx-remote-client/utils";
 import { unstable_cache } from "next/cache";
+import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
 import remarkGfm from "remark-gfm";
@@ -62,7 +64,10 @@ export default async function NotePage({ params }: NotePageProps) {
       parseFrontmatter: true,
       mdxOptions: {
         remarkPlugins: [remarkGfm, remarkFlexibleToc],
-        rehypePlugins: [rehypeSlug],
+        rehypePlugins: [
+          rehypeSlug,
+          [rehypePrettyCode, rehypePrettyCodeOptions],
+        ],
       },
       vfileDataIntoScope: "toc",
     },
