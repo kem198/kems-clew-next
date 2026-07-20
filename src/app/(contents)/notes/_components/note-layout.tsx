@@ -1,5 +1,5 @@
-import { NoteToc } from "@/app/(contents)/notes/_components";
 import { TagBadgeList } from "@/app/(contents)/notes/_components/note-tag";
+import { NoteToc } from "@/app/(contents)/notes/_components/note-toc";
 import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import { cn } from "@/lib/utils";
