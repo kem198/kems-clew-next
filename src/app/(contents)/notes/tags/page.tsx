@@ -1,4 +1,4 @@
-import { NoteContentLayout } from "@/app/(contents)/notes/_components/note-content-layout";
+import { NotePageLayout } from "@/app/(contents)/notes/_components/note-page-layout";
 import { Tag } from "@/app/(contents)/notes/_components/note-tag";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { ContentArea } from "@/components/shared/content-area";
@@ -12,7 +12,7 @@ export default async function NotesTagsPage() {
   return (
     <>
       <Breadcrumbs segments={[BreadcrumbSegment.notes]} title="Tags" />
-      <NoteContentLayout tagCloud={tags}>
+      <NotePageLayout tagCloud={tags}>
         <ContentArea>
           <h1>Tags</h1>
 
@@ -25,7 +25,7 @@ export default async function NotesTagsPage() {
             ))}
           </ul>
         </ContentArea>
-      </NoteContentLayout>
+      </NotePageLayout>
     </>
   );
 }

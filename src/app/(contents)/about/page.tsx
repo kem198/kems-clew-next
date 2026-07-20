@@ -1,4 +1,4 @@
-import NoteLayout from "@/app/(contents)/notes/_components/note-layout";
+import NoteArticleLayout from "@/app/(contents)/notes/_components/note-article-layout";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import ContentArea from "@/components/shared/content-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
@@ -26,7 +26,9 @@ export default async function Page() {
     <>
       <Breadcrumbs segments={[BreadcrumbSegment.about]} />
       <ContentArea>
-        <NoteLayout frontmatter={frontmatter}>{content}</NoteLayout>
+        <NoteArticleLayout frontmatter={frontmatter}>
+          {content}
+        </NoteArticleLayout>
       </ContentArea>
     </>
   );

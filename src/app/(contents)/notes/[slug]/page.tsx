@@ -1,6 +1,6 @@
-import { NoteContentLayout } from "@/app/(contents)/notes/_components/note-content-layout";
-import NoteLayout from "@/app/(contents)/notes/_components/note-layout";
+import NoteArticleLayout from "@/app/(contents)/notes/_components/note-article-layout";
 import { NoteNavigation } from "@/app/(contents)/notes/_components/note-navigation";
+import { NotePageLayout } from "@/app/(contents)/notes/_components/note-page-layout";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { CodeBlock } from "@/components/shared/code-block";
 import ContentArea from "@/components/shared/content-area";
@@ -80,15 +80,15 @@ export default async function NotePage({ params }: NotePageProps) {
         title={frontmatter.title}
       />
 
-      <NoteContentLayout toc={scope.toc}>
+      <NotePageLayout toc={scope.toc}>
         <ContentArea className="min-w-0 flex-1">
-          <NoteLayout frontmatter={frontmatter} toc={scope.toc}>
+          <NoteArticleLayout frontmatter={frontmatter} toc={scope.toc}>
             {content}
             <hr className="not-prose mt-24 mb-6" />
             <NoteNavigation prev={prev} next={next} />
-          </NoteLayout>
+          </NoteArticleLayout>
         </ContentArea>
-      </NoteContentLayout>
+      </NotePageLayout>
     </>
   );
 }

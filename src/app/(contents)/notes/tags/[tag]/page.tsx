@@ -1,4 +1,4 @@
-import { NoteContentLayout } from "@/app/(contents)/notes/_components/note-content-layout";
+import { NotePageLayout } from "@/app/(contents)/notes/_components/note-page-layout";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import ContentArea from "@/components/shared/content-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
@@ -38,7 +38,7 @@ export default async function NoteTagPage({ params }: NoteTagPageProps) {
         title={`#${tag}`}
       />
 
-      <NoteContentLayout tagCloud={tags}>
+      <NotePageLayout tagCloud={tags}>
         <ContentArea>
           <h1>#{tag}</h1>
 
@@ -52,7 +52,7 @@ export default async function NoteTagPage({ params }: NoteTagPageProps) {
             ))}
           </ul>
         </ContentArea>
-      </NoteContentLayout>
+      </NotePageLayout>
     </>
   );
 }
