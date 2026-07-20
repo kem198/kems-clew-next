@@ -42,7 +42,7 @@ function Main({ children, className }: NoteLayoutItemProps) {
  */
 function Sidebar({ children, className }: NoteLayoutItemProps) {
   return (
-    <aside className={cn("w-72 shrink-0 max-md:hidden", className)}>
+    <aside className={cn("w-80 shrink-0 max-lg:w-72 max-md:hidden", className)}>
       {children}
     </aside>
   );
