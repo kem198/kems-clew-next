@@ -9,7 +9,7 @@ import { rehypePrettyCodeOptions } from "@/lib/rehype-pretty-code";
 import { withSiteName } from "@/lib/seo";
 import type { NoteFrontmatter } from "@/types/note";
 import {
-  getAllNotes,
+  getNotes,
   getNoteSource as getNoteSourceUncached,
   getPrevNextNote,
 } from "@/utils/server/notes.server";
@@ -34,7 +34,7 @@ const getNoteSource = unstable_cache(getNoteSourceUncached, ["note-source"]);
 
 // 事前生成する slug 一覧
 export async function generateStaticParams() {
-  const notes = await getAllNotes();
+  const notes = await getNotes();
   return notes.map((n) => ({ slug: n.slug }));
 }
 

@@ -1,6 +1,6 @@
 import type { Note, NoteFrontmatter, NoteTag } from "@/types/note";
 import { getFrontmatter } from "next-mdx-remote-client/utils";
-import fs, { readdir, readFile } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import path, { join } from "node:path";
 
 export async function getNotes(): Promise<Note[]> {
@@ -37,7 +37,7 @@ export async function getNotes(): Promise<Note[]> {
         // ensure frontmatter.preview is set (types expect string)
         const fm = {
           ...(frontmatter as NoteFrontmatter),
-          tags: frontmatter?.tags ?? [],
+          tags: Array.isArray(frontmatter?.tags) ? frontmatter.tags : [],
         };
 
         return {
@@ -95,41 +95,11 @@ export type NoteIndexItem = {
 
 const NOTES_DIR = path.join(process.cwd(), "contents", "notes");
 
-export async function getAllNotes(): Promise<NoteIndexItem[]> {
-  const files = await fs.readdir(NOTES_DIR);
-  const mdFiles = files.filter((f) => f.endsWith(".md") || f.endsWith(".mdx"));
-
-  const notes = await Promise.all(
-    mdFiles.map(async (file) => {
-      const slug = file.replace(/\.mdx?$/, "");
-      const fullPath = path.join(NOTES_DIR, file);
-      const src = await fs.readFile(fullPath, "utf-8");
-      const { frontmatter } = getFrontmatter<NoteFrontmatter>(src);
-      return {
-        slug,
-        title: frontmatter?.title,
-        tags: frontmatter?.tags ?? [],
-        date: frontmatter?.date,
-        lastmod: frontmatter?.lastmod,
-      };
-    }),
-  );
-
-  notes.sort((a, b) => (a.date && b.date ? (a.date < b.date ? 1 : -1) : 0));
-  return notes;
-}
-
 export function getNoteTags(notes: Note[]): NoteTag[] {
   const tagCounts = new Map<string, number>();
 
   for (const note of notes) {
-    const tags = Array.isArray(note.frontmatter.tags)
-      ? note.frontmatter.tags
-      : note.frontmatter.tags
-        ? [note.frontmatter.tags]
-        : [];
-
-    for (const tag of tags) {
+    for (const tag of note.frontmatter.tags) {
       tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
     }
   }
