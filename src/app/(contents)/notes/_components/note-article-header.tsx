@@ -1,0 +1,49 @@
+import { TagBadgeList } from "@/app/(contents)/notes/_components/note-tag";
+import { ubuntuSans } from "@/constants/fonts";
+import { formatDateToYYYYMMDD } from "@/lib/date";
+import type { NoteFrontmatter } from "@/types/note";
+
+type NoteArticleHeaderProps = {
+  frontmatter: Partial<NoteFrontmatter>;
+};
+
+/**
+ * 記事ヘッダー
+ *
+ * 表示内容:
+ * - 作成日
+ * - 更新日
+ * - タイトル
+ * - タグ
+ */
+export function NoteArticleHeader({ frontmatter }: NoteArticleHeaderProps) {
+  return (
+    <div className="flex flex-col gap-4">
+      <ul className="not-prose flex justify-end gap-2 text-sm text-gray-400">
+        <li>
+          作成日:{" "}
+          <span className={ubuntuSans.className}>
+            {formatDateToYYYYMMDD(frontmatter.date)}
+          </span>
+        </li>
+
+        <li>/</li>
+
+        <li>
+          更新日:{" "}
+          <span className={ubuntuSans.className}>
+            {formatDateToYYYYMMDD(frontmatter.lastmod)}
+          </span>
+        </li>
+      </ul>
+
+      <div className="flex flex-col gap-1">
+        <h1 className="mb-2">{frontmatter.title}</h1>
+
+        {frontmatter.tags ? (
+          <TagBadgeList tags={frontmatter.tags} className="text-base" />
+        ) : null}
+      </div>
+    </div>
+  );
+}

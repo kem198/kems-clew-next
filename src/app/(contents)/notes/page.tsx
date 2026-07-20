@@ -1,12 +1,11 @@
-import Link from "next/link";
-
-import { NoteContentLayout } from "@/app/(contents)/notes/_components/note-content-layout";
-import { TagBadgeList } from "@/app/(contents)/notes/_components/note-tag";
+import { NoteCard } from "@/app/(contents)/notes/_components/note-card";
+import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
+import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
+import { TagCloud } from "@/app/(contents)/notes/_components/note-tag";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { ContentArea } from "@/components/shared/content-area";
+import { SidebarArea } from "@/components/shared/sidebar-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
-import { ubuntuSans } from "@/constants/fonts";
-import { formatDateToYYYYMMDD } from "@/lib/date";
 import { withSiteName } from "@/lib/seo";
 import {
   getNotes,
@@ -26,36 +25,32 @@ export default async function NotesPage() {
   return (
     <>
       <Breadcrumbs segments={[BreadcrumbSegment.notes]} />
-      <NoteContentLayout tagCloud={tags}>
-        <ContentArea>
-          <h1>Notes</h1>
 
-          <ul className="not-prose flex flex-col gap-12">
-            {notes.map((note) => (
-              <li key={note.slug} className="flex flex-col gap-2">
-                <span
-                  className={`${ubuntuSans.className} text-sm text-gray-400`}
-                >
-                  {formatDateToYYYYMMDD(note.frontmatter.date)}
-                </span>
+      <NoteLayout>
+        <NoteLayout.Main>
+          <ContentArea>
+            <h1>Notes</h1>
 
-                <div className="flex flex-col gap-1">
-                  <Link href={`/notes/${note.slug}`}>
-                    <span className="text-primary/90 text-xl font-bold hover:underline">
-                      {note.frontmatter.title}
-                    </span>
-                  </Link>
+            <ul className="not-prose flex flex-col gap-12">
+              {notes.map((note) => (
+                <li key={note.slug}>
+                  <NoteCard note={note} />
+                </li>
+              ))}
+            </ul>
+          </ContentArea>
+        </NoteLayout.Main>
 
-                  {note.preview ? (
-                    <p className="text-sm text-gray-400">{note.preview}</p>
-                  ) : null}
-                </div>
-                <TagBadgeList tags={note.frontmatter.tags} />
-              </li>
-            ))}
-          </ul>
-        </ContentArea>
-      </NoteContentLayout>
+        <NoteLayout.Sidebar>
+          <SidebarArea className="min-h-0 flex-1">
+            <NoteSidebar>
+              <NoteSidebar.Section title="Tags">
+                <TagCloud tags={tags} />
+              </NoteSidebar.Section>
+            </NoteSidebar>
+          </SidebarArea>
+        </NoteLayout.Sidebar>
+      </NoteLayout>
     </>
   );
 }

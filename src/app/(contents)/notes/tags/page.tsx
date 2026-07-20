@@ -1,5 +1,6 @@
-import { NoteContentLayout } from "@/app/(contents)/notes/_components/note-content-layout";
-import { Tag } from "@/app/(contents)/notes/_components/note-tag";
+import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
+import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
+import { Tag, TagCloud } from "@/app/(contents)/notes/_components/note-tag";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { ContentArea } from "@/components/shared/content-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
@@ -12,20 +13,33 @@ export default async function NotesTagsPage() {
   return (
     <>
       <Breadcrumbs segments={[BreadcrumbSegment.notes]} title="Tags" />
-      <NoteContentLayout tagCloud={tags}>
-        <ContentArea>
-          <h1>Tags</h1>
 
-          <ul>
-            {tags.map((tag) => (
-              <li key={tag.name}>
-                <Tag tag={tag.name} />{" "}
-                <span className="text-zinc-400">({tag.count})</span>
-              </li>
-            ))}
-          </ul>
-        </ContentArea>
-      </NoteContentLayout>
+      <NoteLayout>
+        <NoteLayout.Main>
+          <ContentArea>
+            <h1>Tags</h1>
+
+            <ul>
+              {tags.map((tag) => (
+                <li key={tag.name}>
+                  <Tag tag={tag.name} />{" "}
+                  <span className="text-zinc-400">({tag.count})</span>
+                </li>
+              ))}
+            </ul>
+          </ContentArea>
+        </NoteLayout.Main>
+
+        <NoteLayout.Sidebar>
+          <ContentArea>
+            <NoteSidebar>
+              <NoteSidebar.Section title="Tags">
+                <TagCloud tags={tags} />
+              </NoteSidebar.Section>
+            </NoteSidebar>
+          </ContentArea>
+        </NoteLayout.Sidebar>
+      </NoteLayout>
     </>
   );
 }

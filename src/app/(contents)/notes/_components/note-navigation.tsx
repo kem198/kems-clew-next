@@ -4,44 +4,60 @@ import type { Note } from "@/types/note";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 
-type NoteNavigationProps = {
+export type NoteNavigationProps = {
   prev: Note | null;
   next: Note | null;
   className?: string;
 };
 
+type NavigationLinkProps = {
+  note: Note;
+  direction: "newer" | "older";
+};
+
+function NavigationLink({ note, direction }: NavigationLinkProps) {
+  const isNewer = direction === "newer";
+
+  return (
+    <Link
+      href={`/notes/${note.slug}`}
+      className={cn(
+        buttonVariants({
+          variant: "secondary",
+          size: "lg",
+        }),
+        "min-w-0 flex-1",
+      )}
+    >
+      {isNewer ? <ChevronLeftIcon /> : null}
+
+      {isNewer ? "新しい記事へ" : "古い記事へ"}
+
+      {!isNewer ? <ChevronRightIcon /> : null}
+    </Link>
+  );
+}
+
+/**
+ * 前後記事ナビゲーション
+ */
 export function NoteNavigation({ prev, next, className }: NoteNavigationProps) {
   return (
-    <div className={cn("not-prose flex justify-between gap-4", className)}>
+    <nav
+      aria-label="Note navigation"
+      className={cn("not-prose flex justify-between gap-4", className)}
+    >
       {next ? (
-        <Link
-          href={`/notes/${next.slug}`}
-          className={cn(
-            buttonVariants({ variant: "secondary", size: "lg" }),
-            "min-w-0 flex-1",
-          )}
-        >
-          <ChevronLeftIcon />
-          新しい記事へ
-        </Link>
+        <NavigationLink note={next} direction="newer" />
       ) : (
         <div className="flex-1" />
       )}
 
       {prev ? (
-        <Link
-          href={`/notes/${prev.slug}`}
-          className={cn(
-            buttonVariants({ variant: "secondary", size: "lg" }),
-            "min-w-0 flex-1",
-          )}
-        >
-          古い記事へ
-          <ChevronRightIcon />
-        </Link>
+        <NavigationLink note={prev} direction="older" />
       ) : (
         <div className="flex-1" />
       )}
-    </div>
+    </nav>
   );
 }

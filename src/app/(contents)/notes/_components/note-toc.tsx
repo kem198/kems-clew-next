@@ -1,26 +1,33 @@
 import Link from "next/link";
-import { TocItem } from "remark-flexible-toc";
+import type { TocItem } from "remark-flexible-toc";
 
-type NoteTocProps = {
+export type NoteTocProps = {
   toc?: TocItem[];
   className?: string;
 };
 
-export function NoteToc({ toc, className }: NoteTocProps) {
-  const list = Array.isArray(toc) ? toc : [];
+function getIndent(depth: number) {
+  return Math.max(0, (depth - 1) * 16);
+}
 
-  if (list.length === 0) return null;
+/**
+ * Table of contents
+ */
+export function NoteToc({ toc = [], className }: NoteTocProps) {
+  if (toc.length === 0) {
+    return null;
+  }
 
   return (
     <nav aria-label="Table of contents" className={className}>
       <ul className="mt-0 p-2">
-        {list.map((item) => (
+        {toc.map((item) => (
           <li
             key={item.href}
             style={{
               marginTop: 2,
               marginBottom: 2,
-              marginLeft: `${Math.max(0, (item.depth - 1) * 16)}px`,
+              marginLeft: `${getIndent(item.depth)}px`,
             }}
           >
             <Link href={item.href} className="text-zinc-600">
