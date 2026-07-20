@@ -5,7 +5,7 @@ export default function ContentLayout({
 }) {
   return (
     <div className="w-full">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-6 py-4 max-md:p-3">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-6 py-4 max-md:px-2">
         {children}
       </div>
     </div>
