@@ -1,21 +1,16 @@
+import { NoteCard } from "@/app/(contents)/notes/_components/note-card";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
 import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
-import {
-  TagBadgeList,
-  TagCloud,
-} from "@/app/(contents)/notes/_components/note-tag";
+import { TagCloud } from "@/app/(contents)/notes/_components/note-tag";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { ContentArea } from "@/components/shared/content-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
-import { ubuntuSans } from "@/constants/fonts";
-import { formatDateToYYYYMMDD } from "@/lib/date";
 import { withSiteName } from "@/lib/seo";
 import {
   getNotes,
   getNoteTags,
   getSortedNotes,
 } from "@/utils/server/notes.server";
-import Link from "next/link";
 
 export const metadata = {
   title: withSiteName("Notes"),
@@ -37,26 +32,8 @@ export default async function NotesPage() {
 
             <ul className="not-prose flex flex-col gap-12">
               {notes.map((note) => (
-                <li key={note.slug} className="flex flex-col gap-2">
-                  <span
-                    className={`${ubuntuSans.className} text-sm text-gray-400`}
-                  >
-                    {formatDateToYYYYMMDD(note.frontmatter.date)}
-                  </span>
-
-                  <div className="flex flex-col gap-1">
-                    <Link href={`/notes/${note.slug}`}>
-                      <span className="text-primary/90 text-xl font-bold hover:underline">
-                        {note.frontmatter.title}
-                      </span>
-                    </Link>
-
-                    {note.preview ? (
-                      <p className="text-sm text-gray-400">{note.preview}</p>
-                    ) : null}
-                  </div>
-
-                  <TagBadgeList tags={note.frontmatter.tags} />
+                <li key={note.slug}>
+                  <NoteCard note={note} />
                 </li>
               ))}
             </ul>
