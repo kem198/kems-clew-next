@@ -95,15 +95,17 @@ type WorksAlbumProps = {
 
 function WorksAlbum({ photos, onClick }: WorksAlbumProps) {
   return (
-    <PhotoAlbum
-      layout="masonry"
-      photos={photos}
-      columns={columns}
-      breakpoints={[640, 768, 1024]}
-      onClick={({ index }: { index: number }) => onClick(index)}
+    <div className="not-prose">
+      <PhotoAlbum
+        layout="masonry"
+        photos={photos}
+        columns={columns}
+        breakpoints={[640, 768, 1024]}
+        onClick={({ index }: { index: number }) => onClick(index)}
 
-      render={{ image: renderNextImage }}
-    />
+        render={{ image: renderNextImage }}
+      />
+    </div>
   );
 }
 
