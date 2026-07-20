@@ -14,7 +14,7 @@ export function AppHeader({ className, ...props }: AppHeaderProps) {
   return (
     <header
       className={cn(
-        `bg-primary flex items-center gap-2 px-6 py-3 font-normal text-white max-md:px-3`,
+        `bg-primary flex items-center gap-2 px-6 py-3 font-normal text-white max-md:px-2`,
         className,
       )}
       {...props}
