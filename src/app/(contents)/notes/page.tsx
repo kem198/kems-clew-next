@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { NoteContentLayout } from "@/app/(contents)/notes/_components/note-content-layout";
-import { Tags } from "@/app/(contents)/notes/_components/note-tag";
+import { TagBadgeList } from "@/app/(contents)/notes/_components/note-tag";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { ContentArea } from "@/components/shared/content-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
@@ -46,7 +46,7 @@ export default async function NotesPage() {
                     <p className="text-sm text-gray-400">{note.preview}</p>
                   ) : null}
                 </div>
-                <Tags tags={note.frontmatter.tags} />
+                <TagBadgeList tags={note.frontmatter.tags} />
               </li>
             ))}
           </ul>
