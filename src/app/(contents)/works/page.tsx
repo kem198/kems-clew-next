@@ -1,4 +1,4 @@
-import { WorksGallery } from "@/app/(contents)/works/_components";
+import { WorksGallery } from "@/app/(contents)/works/_components/works-gallery";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { ContentArea } from "@/components/shared/content-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
