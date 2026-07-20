@@ -18,21 +18,14 @@ export function Tag({ tag }: TagProps) {
   );
 }
 
-type TagsProps = {
-  tags?: string | string[] | NoteTag[];
+type TagBadgeListProps = {
+  tags?: string[];
   className?: string;
-  showCount?: boolean;
 };
 
-export function Tags({ tags, className, showCount = false }: TagsProps) {
-  const list = Array.isArray(tags)
-    ? tags
-    : typeof tags === "string"
-      ? [tags]
-      : [];
-
-  if (list.length === 0) {
-    return <div className={cn("not-prose text-sm", className)} />;
+export function TagBadgeList({ tags = [], className }: TagBadgeListProps) {
+  if (tags.length === 0) {
+    return null;
   }
 
   return (
@@ -40,13 +33,35 @@ export function Tags({ tags, className, showCount = false }: TagsProps) {
       <ul
         className={`${ubuntuSans.className} flex flex-wrap gap-2 text-cyan-600`}
       >
-        {list.map((tag) => (
-          <li key={typeof tag === "string" ? tag : tag.name}>
-            <Tag tag={typeof tag === "string" ? tag : tag.name} />
+        {tags.map((tag) => (
+          <li key={tag}>
+            <Tag tag={tag} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
-            {showCount && typeof tag !== "string" ? (
-              <span className="ml-1 text-zinc-400">({tag.count})</span>
-            ) : null}
+type TagCloudProps = {
+  tags?: NoteTag[];
+  className?: string;
+};
+
+export function TagCloud({ tags = [], className }: TagCloudProps) {
+  if (tags.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className={cn("not-prose text-sm", className)}>
+      <ul
+        className={`${ubuntuSans.className} flex flex-wrap gap-2 text-cyan-600`}
+      >
+        {tags.map((tag) => (
+          <li key={tag.name}>
+            <Tag tag={tag.name} />
+            <span className="ml-1 text-zinc-400">({tag.count})</span>
           </li>
         ))}
       </ul>
