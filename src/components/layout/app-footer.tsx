@@ -1,4 +1,4 @@
-import GitHubIcon from "@/components/icons/github-icon";
+import GitHubIcon from "@/components/shared/icon";
 import { cn } from "@/lib/utils";
 import { ChevronUpIcon, PaletteIcon } from "lucide-react";
 import Link from "next/link";
