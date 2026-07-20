@@ -26,9 +26,9 @@ export function ModaneLive2DWidget({ className }: ModaneLive2DWidgetProps) {
         <iframe
           src={LIVE2D_WIDGET_URL}
           title="Live2D Widget"
-          className="pointer-events-auto block h-300 w-250 origin-top-left scale-50 border-0"
-          allow="autoplay"
+          referrerPolicy="no-referrer"
           loading="lazy"
+          className="pointer-events-auto block h-300 w-250 origin-top-left scale-50 border-0"
         />
       </div>
     </div>
