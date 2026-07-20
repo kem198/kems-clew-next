@@ -28,6 +28,7 @@ export function ModaneLive2DWidget({ className }: ModaneLive2DWidgetProps) {
           title="Live2D Widget"
           className="pointer-events-auto block h-300 w-250 origin-top-left scale-50 border-0"
           allow="autoplay"
+          loading="lazy"
         />
       </div>
     </div>
