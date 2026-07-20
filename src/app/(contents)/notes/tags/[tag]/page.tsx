@@ -1,4 +1,4 @@
-import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
+import { NoteContentLayout } from "@/app/(contents)/notes/_components/note-content-layout";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import ContentArea from "@/components/shared/content-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
@@ -40,7 +40,7 @@ export default async function NoteTagPage({ params }: NoteTagPageProps) {
         title={`#${tag}`}
       />
 
-      <div className="flex gap-6">
+      <NoteContentLayout tags={tags}>
         <ContentArea>
           <h1>#{tag}</h1>
 
@@ -54,9 +54,7 @@ export default async function NoteTagPage({ params }: NoteTagPageProps) {
             ))}
           </ul>
         </ContentArea>
-
-        <NoteSidebar tags={tags} />
-      </div>
+      </NoteContentLayout>
     </>
   );
 }

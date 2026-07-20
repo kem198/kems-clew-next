@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
+import { NoteContentLayout } from "@/app/(contents)/notes/_components/note-content-layout";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { ContentArea } from "@/components/shared/content-area";
 import { Tags } from "@/components/shared/note-tag";
@@ -22,7 +22,7 @@ export default async function NotesPage() {
   return (
     <>
       <Breadcrumbs segments={[BreadcrumbSegment.notes]} />
-      <div className="flex gap-6">
+      <NoteContentLayout tags={tags}>
         <ContentArea>
           <h1>Notes</h1>
 
@@ -46,16 +46,12 @@ export default async function NotesPage() {
                     <p className="text-sm text-gray-400">{note.preview}</p>
                   ) : null}
                 </div>
-
-                {/* TODO: タグで絞り込み可能にする */}
                 <Tags tags={note.frontmatter.tags} />
               </li>
             ))}
           </ul>
         </ContentArea>
-
-        <NoteSidebar tags={tags} />
-      </div>
+      </NoteContentLayout>
     </>
   );
 }

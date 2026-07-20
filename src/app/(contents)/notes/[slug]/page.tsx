@@ -1,5 +1,5 @@
 import { NoteNavigation } from "@/app/(contents)/notes/_components";
-import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
+import { NoteContentLayout } from "@/app/(contents)/notes/_components/note-content-layout";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { CodeBlock } from "@/components/shared/code-block";
 import ContentArea from "@/components/shared/content-area";
@@ -85,7 +85,7 @@ export default async function NotePage({ params }: NotePageProps) {
         title={frontmatter.title}
       />
 
-      <div className="flex gap-6">
+      <NoteContentLayout toc={scope.toc}>
         <ContentArea className="min-w-0 flex-1">
           <NoteLayout frontmatter={frontmatter} toc={scope.toc}>
             {content}
@@ -93,10 +93,7 @@ export default async function NotePage({ params }: NotePageProps) {
             <NoteNavigation prev={prev} next={next} />
           </NoteLayout>
         </ContentArea>
-
-        {/* PC 用目次  */}
-        <NoteSidebar toc={scope.toc} />
-      </div>
+      </NoteContentLayout>
     </>
   );
 }
