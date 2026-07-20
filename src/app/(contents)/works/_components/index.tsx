@@ -161,7 +161,7 @@ export function WorksGallery({ items }: WorksGalleryProps) {
   };
 
   return (
-    <>
+    <div className="flex flex-col gap-8">
       <GroupToggle groupByYear={groupByYear} onChange={setGroupByYear} />
 
       {!groupByYear ? (
@@ -193,6 +193,6 @@ export function WorksGallery({ items }: WorksGalleryProps) {
         slides={slides}
         onClose={() => setIndex(-1)}
       />
-    </>
+    </div>
   );
 }
