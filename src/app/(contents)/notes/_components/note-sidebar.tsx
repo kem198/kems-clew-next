@@ -1,5 +1,5 @@
 import { NoteToc } from "@/app/(contents)/notes/_components";
-import { Tags } from "@/app/(contents)/notes/_components/note-tag";
+import { TagCloud } from "@/app/(contents)/notes/_components/note-tag";
 import ContentArea from "@/components/shared/content-area";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { NoteTag } from "@/types/note";
@@ -24,7 +24,7 @@ export function NoteSidebar({ tags, toc }: NoteSidebarProps) {
             <Link href="/notes/tags" className="pb-0 no-underline">
               <h2 className="mt-0 pb-2 text-xl font-bold">Tags</h2>
             </Link>
-            <Tags tags={tags} showCount />
+            <TagCloud tags={tags} />
           </div>
         ) : null}
 
