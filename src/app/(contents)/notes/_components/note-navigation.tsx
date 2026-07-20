@@ -12,11 +12,11 @@ type NoteNavigationProps = {
 
 type NavigationLinkProps = {
   note: Note;
-  direction: "prev" | "next";
+  direction: "newer" | "older";
 };
 
 function NavigationLink({ note, direction }: NavigationLinkProps) {
-  const isPrev = direction === "prev";
+  const isNewer = direction === "newer";
 
   return (
     <Link
@@ -29,11 +29,11 @@ function NavigationLink({ note, direction }: NavigationLinkProps) {
         "min-w-0 flex-1",
       )}
     >
-      {isPrev ? <ChevronLeftIcon /> : null}
+      {isNewer ? <ChevronLeftIcon /> : null}
 
-      {isPrev ? "新しい記事へ" : "古い記事へ"}
+      {isNewer ? "新しい記事へ" : "古い記事へ"}
 
-      {!isPrev ? <ChevronRightIcon /> : null}
+      {!isNewer ? <ChevronRightIcon /> : null}
     </Link>
   );
 }
@@ -44,17 +44,17 @@ function NavigationLink({ note, direction }: NavigationLinkProps) {
 export function NoteNavigation({ prev, next, className }: NoteNavigationProps) {
   return (
     <nav
-      className={cn("not-prose flex justify-between gap-4", className)}
       aria-label="Note navigation"
+      className={cn("not-prose flex justify-between gap-4", className)}
     >
       {next ? (
-        <NavigationLink note={next} direction="prev" />
+        <NavigationLink note={next} direction="newer" />
       ) : (
         <div className="flex-1" />
       )}
 
       {prev ? (
-        <NavigationLink note={prev} direction="next" />
+        <NavigationLink note={prev} direction="older" />
       ) : (
         <div className="flex-1" />
       )}
