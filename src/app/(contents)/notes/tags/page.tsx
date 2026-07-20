@@ -5,8 +5,6 @@ import { ContentArea } from "@/components/shared/content-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { getNotes, getNoteTags } from "@/utils/server/notes.server";
 
-export const dynamic = "force-static";
-
 export default async function NotesTagsPage() {
   const notes = await getNotes();
   const tags = getNoteTags(notes);

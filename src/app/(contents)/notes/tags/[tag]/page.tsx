@@ -11,8 +11,6 @@ type NoteTagPageProps = {
   }>;
 };
 
-export const dynamic = "force-static";
-
 export async function generateStaticParams() {
   const notes = await getNotes();
   const tags = getNoteTags(notes);
