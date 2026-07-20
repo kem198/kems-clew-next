@@ -2,10 +2,10 @@
 
 個人サイト [KeM's Clew](https://clew.kem198.net) の実体ファイルを管理しているリポジトリ。
 
-免責事項や技術スタックは下記を参照ください。
+## 免責事項・技術スタック
 
 - [About | KeM's Clew](https://clew.kem198.net/about)
 
-旧リポジトリはこちら。
+## 旧リポジトリ
 
 - [kem198/kems-clew](https://github.com/kem198/kems-clew)
