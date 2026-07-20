@@ -1,7 +1,8 @@
+import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import ContentArea from "@/components/shared/content-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
-import { getNotes } from "@/utils/server/notes.server";
+import { getNotes, getSortedNotes } from "@/utils/server/notes.server";
 import Link from "next/link";
 
 type NoteTagPageProps = {
@@ -28,6 +29,11 @@ export async function generateStaticParams() {
   }));
 }
 
+const notes = await getSortedNotes("desc");
+const tags = Array.from(
+  new Set(notes.flatMap((note) => note.frontmatter.tags ?? [])),
+).sort();
+
 export default async function NoteTagPage({ params }: NoteTagPageProps) {
   const { tag } = await params;
 
@@ -41,20 +47,22 @@ export default async function NoteTagPage({ params }: NoteTagPageProps) {
     <>
       {/* TODO: 階層を Notes > Tags > #aaa にする */}
       <Breadcrumbs segments={[BreadcrumbSegment.notes]} title={`#${tag}`} />
+      <div className="flex gap-6">
+        <ContentArea>
+          <h1>#{tag}</h1>
 
-      <ContentArea>
-        <h1>#{tag}</h1>
-
-        <ul className="flex flex-col gap-4">
-          {filteredNotes.map((note) => (
-            <li key={note.slug}>
-              <Link href={`/notes/${note.slug}`} className="hover:underline">
-                {note.frontmatter.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </ContentArea>
+          <ul className="flex flex-col gap-4">
+            {filteredNotes.map((note) => (
+              <li key={note.slug}>
+                <Link href={`/notes/${note.slug}`} className="hover:underline">
+                  {note.frontmatter.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </ContentArea>
+        <NoteSidebar tags={tags} />
+      </div>
     </>
   );
 }
