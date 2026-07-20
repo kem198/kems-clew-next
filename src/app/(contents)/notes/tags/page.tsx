@@ -14,7 +14,7 @@ export default async function NotesTagsPage() {
   return (
     <>
       <Breadcrumbs segments={[BreadcrumbSegment.notes]} title="Tags" />
-      <NoteContentLayout tags={tags}>
+      <NoteContentLayout tagCloud={tags}>
         <ContentArea>
           <h1>Tags</h1>
 
