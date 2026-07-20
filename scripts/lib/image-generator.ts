@@ -63,6 +63,14 @@ function formatSaved(input: number, output: number): string {
   return `${(((input - output) / input) * 100).toFixed(1)}%`;
 }
 
+function isNoOptFile(fileName: string): boolean {
+  return /\.noopt\.[^.]+$/i.test(fileName);
+}
+
+function removeNoOptSuffix(fileName: string): string {
+  return fileName.replace(/\.noopt(?=\.[^.]+$)/i, "");
+}
+
 async function exists(path: string) {
   return access(path, constants.F_OK)
     .then(() => true)
@@ -139,7 +147,11 @@ export async function generateImages(config: ImageGeneratorConfig) {
       ? relativeFile.substring(0, relativeFile.lastIndexOf("/"))
       : "";
 
-    const fileName = basename(relativeFile);
+    const sourceFileName = basename(relativeFile);
+
+    const noOpt = isNoOptFile(sourceFileName);
+
+    const fileName = noOpt ? removeNoOptSuffix(sourceFileName) : sourceFileName;
 
     const name = basename(fileName, extname(fileName));
 
@@ -157,6 +169,40 @@ export async function generateImages(config: ImageGeneratorConfig) {
       const inputStat = await stat(input);
 
       totalInput += inputStat.size;
+
+      if (noOpt) {
+        await copyFile(input, outputOriginal);
+
+        const outputStat = await stat(outputOriginal);
+
+        totalOutput += outputStat.size;
+
+        const outputMeta = await sharp(outputOriginal).metadata();
+
+        const manifestKey = relativeFile
+          .replace(extname(relativeFile), "")
+          .replace(/\.noopt$/i, "");
+
+        manifest[manifestKey] = {
+          src: `/assets/${config.name}/${relativeFile.replace(
+            /\.noopt(?=\.[^.]+$)/i,
+            "",
+          )}`,
+          width: outputMeta.width ?? config.resize.width,
+          height: outputMeta.height ?? config.resize.height,
+        };
+
+        console.log(
+          [
+            `[NOOPT] ${relativeFile}`,
+            `  output      : ${fileName}`,
+            `  size        : ${formatBytes(outputStat.size)}`,
+            "",
+          ].join("\n"),
+        );
+
+        continue;
+      }
 
       const isGif = extname(input).toLowerCase() === ".gif";
 
