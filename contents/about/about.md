@@ -55,6 +55,7 @@ description:
 
 - [next-mdx-remote-client](https://nmrc-in-pages-router.vercel.app/)
 - [Rehype Pretty Code](https://rehype-pretty.pages.dev/)
+- [Shiki](https://shiki.style/)
 
 ### フォント
 
