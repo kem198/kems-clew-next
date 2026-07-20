@@ -170,7 +170,7 @@ export function WorksGallery({ items }: WorksGalleryProps) {
           onClick={(index: number) => openLightbox(photos, index)}
         />
       ) : (
-        <div className="space-y-10">
+        <div>
           {groups.map(([year, groupItems]) => {
             const groupPhotos = mapItemsToPhotos(groupItems);
 
