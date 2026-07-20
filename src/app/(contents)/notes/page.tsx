@@ -8,7 +8,7 @@ import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import { withSiteName } from "@/lib/seo";
-import { getSortedNotes } from "@/utils/server/notes.server";
+import { getNoteTags, getSortedNotes } from "@/utils/server/notes.server";
 
 export const metadata = {
   title: withSiteName("Notes"),
@@ -17,9 +17,7 @@ export const metadata = {
 export default async function NotesPage() {
   const notes = await getSortedNotes("desc");
 
-  const tags = Array.from(
-    new Set(notes.flatMap((note) => note.frontmatter.tags ?? [])),
-  ).sort();
+  const tags = getNoteTags(notes);
 
   return (
     <>

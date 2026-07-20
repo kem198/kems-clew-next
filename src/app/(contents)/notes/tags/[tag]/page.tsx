@@ -2,7 +2,7 @@ import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import ContentArea from "@/components/shared/content-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
-import { getNotes, getSortedNotes } from "@/utils/server/notes.server";
+import { getNotes, getNoteTags } from "@/utils/server/notes.server";
 import Link from "next/link";
 
 type NoteTagPageProps = {
@@ -15,24 +15,12 @@ export const dynamic = "force-static";
 
 export async function generateStaticParams() {
   const notes = await getNotes();
+  const tags = getNoteTags(notes);
 
-  const tags = new Set<string>();
-
-  for (const note of notes) {
-    for (const tag of note.frontmatter.tags ?? []) {
-      tags.add(tag);
-    }
-  }
-
-  return Array.from(tags).map((tag) => ({
-    tag,
+  return tags.map((tag) => ({
+    tag: tag.name,
   }));
 }
-
-const notes = await getSortedNotes("desc");
-const tags = Array.from(
-  new Set(notes.flatMap((note) => note.frontmatter.tags ?? [])),
-).sort();
 
 export default async function NoteTagPage({ params }: NoteTagPageProps) {
   const { tag } = await params;
@@ -43,10 +31,13 @@ export default async function NoteTagPage({ params }: NoteTagPageProps) {
     note.frontmatter.tags?.includes(tag),
   );
 
+  const tags = getNoteTags(notes);
+
   return (
     <>
       {/* TODO: 階層を Notes > Tags > #aaa にする */}
       <Breadcrumbs segments={[BreadcrumbSegment.notes]} title={`#${tag}`} />
+
       <div className="flex gap-6">
         <ContentArea>
           <h1>#{tag}</h1>
@@ -61,6 +52,7 @@ export default async function NoteTagPage({ params }: NoteTagPageProps) {
             ))}
           </ul>
         </ContentArea>
+
         <NoteSidebar tags={tags} />
       </div>
     </>

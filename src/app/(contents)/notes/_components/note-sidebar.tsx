@@ -2,11 +2,12 @@ import { NoteToc } from "@/app/(contents)/notes/_components";
 import ContentArea from "@/components/shared/content-area";
 import { Tags } from "@/components/shared/note-tag";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { NoteTag } from "@/types/note";
 import Link from "next/link";
 import type { TocItem } from "remark-flexible-toc";
 
-type NoteSidebarProps = {
-  tags?: string[];
+export type NoteSidebarProps = {
+  tags?: NoteTag[];
   toc?: TocItem[];
 };
 
@@ -21,7 +22,7 @@ export function NoteSidebar({ tags, toc }: NoteSidebarProps) {
         {tags?.length ? (
           <div>
             <h2 className="mt-0 pb-2 text-xl font-bold">Tags</h2>
-            <Tags tags={tags} />
+            <Tags tags={tags.map((tag) => tag.name)} />
           </div>
         ) : null}
 

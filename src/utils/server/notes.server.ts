@@ -1,4 +1,4 @@
-import type { Note, NoteFrontmatter } from "@/types/note";
+import type { Note, NoteFrontmatter, NoteTag } from "@/types/note";
 import { getFrontmatter } from "next-mdx-remote-client/utils";
 import fs, { readdir, readFile } from "node:fs/promises";
 import path, { join } from "node:path";
@@ -117,4 +117,21 @@ export async function getAllNotes(): Promise<NoteIndexItem[]> {
 
   notes.sort((a, b) => (a.date && b.date ? (a.date < b.date ? 1 : -1) : 0));
   return notes;
+}
+
+export function getNoteTags(notes: Note[]): NoteTag[] {
+  const tagCounts = new Map<string, number>();
+
+  for (const note of notes) {
+    for (const tag of note.frontmatter.tags ?? []) {
+      tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+    }
+  }
+
+  return Array.from(tagCounts.entries())
+    .map(([name, count]) => ({
+      name,
+      count,
+    }))
+    .sort((a, b) => a.name.localeCompare(b.name));
 }
