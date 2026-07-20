@@ -1,8 +1,9 @@
+import { NoteNavigation } from "@/app/(contents)/notes/_components";
+import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { CodeBlock } from "@/components/shared/code-block";
 import ContentArea from "@/components/shared/content-area";
 import NoteLayout from "@/components/shared/note-layout";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { rehypePrettyCodeOptions } from "@/lib/rehype-pretty-code";
 import { withSiteName } from "@/lib/seo";
@@ -15,12 +16,10 @@ import {
 import { evaluate } from "next-mdx-remote-client/rsc";
 import { getFrontmatter } from "next-mdx-remote-client/utils";
 import { unstable_cache } from "next/cache";
-import Link from "next/link";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
 import remarkGfm from "remark-gfm";
-import { NoteNavigation, NoteToc } from "../_components";
 
 type NotePageProps = {
   params: Promise<{
@@ -96,22 +95,7 @@ export default async function NotePage({ params }: NotePageProps) {
         </ContentArea>
 
         {/* PC 用目次  */}
-        {scope.toc.length ? (
-          <aside className="w-72 shrink-0 max-md:hidden">
-            <ContentArea className="sticky top-6 flex max-h-[calc(100vh-6rem)] min-h-0 flex-col">
-              <Link
-                href="#top"
-                aria-label="Back to top"
-                className="pb-0 no-underline"
-              >
-                <h2 className="mt-0 mb-0 pb-2 text-xl font-bold">TOC</h2>
-              </Link>
-              <ScrollArea className="min-h-0 flex-1 overflow-auto">
-                <NoteToc toc={scope.toc} />
-              </ScrollArea>
-            </ContentArea>
-          </aside>
-        ) : null}
+        {scope.toc.length ? <NoteSidebar toc={scope.toc} /> : null}
       </div>
     </>
   );
