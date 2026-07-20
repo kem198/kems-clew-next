@@ -11,7 +11,7 @@ export function ContentArea({
   return (
     <article
       className={cn(
-        "prose w-full max-w-none rounded-md bg-white p-6 max-md:p-3",
+        "prose w-full max-w-none rounded-md bg-white p-6 max-md:p-2",
         className,
       )}
       {...props}
