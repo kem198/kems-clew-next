@@ -17,7 +17,7 @@ export default async function Home() {
 
   return (
     <ContentArea className="flex flex-1 max-md:p-3">
-      <div className="flex flex-col gap-8">
+      <div className="flex w-full flex-col gap-8">
         <section>
           <HomeLink href={"/notes"} description="雑記いろいろ">
             Notes
@@ -58,7 +58,7 @@ export default async function Home() {
           </HomeLink>
         </section>
 
-        <ModaneLive2DWidget className="static mx-auto mt-8 md:fixed md:right-0 md:bottom-0 md:mx-0 md:mt-0" />
+        <ModaneLive2DWidget className="fixed right-0 bottom-0 max-md:static max-md:mt-8 max-md:self-center" />
       </div>
     </ContentArea>
   );

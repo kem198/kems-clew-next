@@ -18,7 +18,7 @@ const LIVE2D_WIDGET_URL =
 export function ModaneLive2DWidget({ className }: ModaneLive2DWidgetProps) {
   return (
     <div
-      className={`pointer-events-none h-150 w-150 overflow-hidden ${
+      className={`pointer-events-none h-150 w-125 overflow-hidden ${
         className ?? ""
       }`}
     >
@@ -26,7 +26,7 @@ export function ModaneLive2DWidget({ className }: ModaneLive2DWidgetProps) {
         <iframe
           src={LIVE2D_WIDGET_URL}
           title="Live2D Widget"
-          className="pointer-events-auto block h-300 w-300 origin-top-left scale-50 border-0"
+          className="pointer-events-auto block h-300 w-250 origin-top-left scale-50 border-0"
           allow="autoplay"
         />
       </div>
