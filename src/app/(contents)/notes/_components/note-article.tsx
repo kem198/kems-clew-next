@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
-type NoteArticleProps = {
+export type NoteArticleProps = {
   children: ReactNode;
   className?: string;
 };
@@ -48,9 +48,9 @@ function Header({ children, className }: NoteArticleSectionProps) {
 }
 
 /**
- * モバイル TOC 表示領域
+ * 記事内 TOC 表示領域
  */
-function MobileToc({ children, className }: NoteArticleSectionProps) {
+function Toc({ children, className }: NoteArticleSectionProps) {
   return <div className={cn("md:hidden", className)}>{children}</div>;
 }
 
@@ -71,7 +71,7 @@ function Navigation({ children, className }: NoteArticleSectionProps) {
 }
 
 NoteArticle.Header = Header;
-NoteArticle.MobileToc = MobileToc;
+NoteArticle.Toc = Toc;
 NoteArticle.Content = Content;
 NoteArticle.Navigation = Navigation;
 
