@@ -4,6 +4,7 @@ import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
 import { TagCloud } from "@/app/(contents)/notes/_components/note-tag";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { ContentArea } from "@/components/shared/content-area";
+import { SidebarArea } from "@/components/shared/sidebar-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { withSiteName } from "@/lib/seo";
 import {
@@ -41,13 +42,13 @@ export default async function NotesPage() {
         </NoteLayout.Main>
 
         <NoteLayout.Sidebar>
-          <ContentArea>
+          <SidebarArea className="min-h-0 flex-1">
             <NoteSidebar>
               <NoteSidebar.Section title="Tags">
                 <TagCloud tags={tags} />
               </NoteSidebar.Section>
             </NoteSidebar>
-          </ContentArea>
+          </SidebarArea>
         </NoteLayout.Sidebar>
       </NoteLayout>
     </>
