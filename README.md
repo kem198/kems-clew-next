@@ -4,7 +4,7 @@
 
 免責事項や技術スタックは下記を参照ください。
 
-- <[About | KeM's Clew](ttps://clew.kem198.net)
+- [About | KeM's Clew](https://clew.kem198.net)
 
 旧リポジトリはこちら。
 
