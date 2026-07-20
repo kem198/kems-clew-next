@@ -16,7 +16,7 @@ export default async function Home() {
   const latest = await getLatestNotes(3);
 
   return (
-    <ContentArea className="flex flex-1">
+    <ContentArea className="flex flex-1 max-md:p-3">
       <div className="flex flex-col gap-8">
         <section>
           <HomeLink href={"/notes"} description="雑記いろいろ">
@@ -58,7 +58,7 @@ export default async function Home() {
           </HomeLink>
         </section>
 
-        <ModaneLive2DWidget className="pointer-events-none fixed z-40 mx-auto mt-8 md:right-0 md:bottom-0 md:mx-0 md:mt-0" />
+        <ModaneLive2DWidget className="static mx-auto mt-8 md:fixed md:right-0 md:bottom-0 md:mx-0 md:mt-0" />
       </div>
     </ContentArea>
   );
