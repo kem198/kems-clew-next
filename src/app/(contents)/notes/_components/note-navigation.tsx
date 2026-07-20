@@ -4,7 +4,7 @@ import type { Note } from "@/types/note";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 
-type NoteNavigationProps = {
+export type NoteNavigationProps = {
   prev: Note | null;
   next: Note | null;
   className?: string;

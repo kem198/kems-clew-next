@@ -1,12 +1,12 @@
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
-type NoteLayoutProps = {
+export type NoteLayoutProps = {
   children: ReactNode;
   className?: string;
 };
 
-type NoteLayoutSectionProps = {
+type NoteLayoutItemProps = {
   children: ReactNode;
   className?: string;
 };
@@ -33,14 +33,14 @@ function NoteLayout({ children, className }: NoteLayoutProps) {
 /**
  * メインコンテンツ領域
  */
-function Main({ children, className }: NoteLayoutSectionProps) {
+function Main({ children, className }: NoteLayoutItemProps) {
   return <div className={cn("min-w-0 flex-1", className)}>{children}</div>;
 }
 
 /**
  * サイドバー領域
  */
-function Sidebar({ children, className }: NoteLayoutSectionProps) {
+function Sidebar({ children, className }: NoteLayoutItemProps) {
   return (
     <aside className={cn("w-72 shrink-0 max-md:hidden", className)}>
       {children}

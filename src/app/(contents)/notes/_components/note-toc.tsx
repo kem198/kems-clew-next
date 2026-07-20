@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { TocItem } from "remark-flexible-toc";
 
-type NoteTocProps = {
+export type NoteTocProps = {
   toc?: TocItem[];
   className?: string;
 };
