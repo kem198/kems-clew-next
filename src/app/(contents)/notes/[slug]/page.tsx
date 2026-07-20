@@ -95,7 +95,7 @@ export default async function NotePage({ params }: NotePageProps) {
         </ContentArea>
 
         {/* PC 用目次  */}
-        {scope.toc.length ? <NoteSidebar toc={scope.toc} /> : null}
+        <NoteSidebar toc={scope.toc} />
       </div>
     </>
   );
