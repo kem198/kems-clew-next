@@ -10,3 +10,8 @@ export type Note = {
   frontmatter: NoteFrontmatter;
   preview: string;
 };
+
+export type NoteTag = {
+  name: string;
+  count: number;
+};
