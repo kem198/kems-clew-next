@@ -4,6 +4,7 @@ import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
 import { TagCloud } from "@/app/(contents)/notes/_components/note-tag";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { ContentArea } from "@/components/shared/content-area";
+import { NavigationArea } from "@/components/shared/navigation-area";
 import { SidebarArea } from "@/components/shared/sidebar-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { withSiteName } from "@/lib/seo";
@@ -24,7 +25,9 @@ export default async function NotesPage() {
 
   return (
     <>
-      <Breadcrumbs segments={[BreadcrumbSegment.notes]} />
+      <NavigationArea>
+        <Breadcrumbs segments={[BreadcrumbSegment.notes]} />
+      </NavigationArea>
 
       <NoteLayout>
         <NoteLayout.Main>

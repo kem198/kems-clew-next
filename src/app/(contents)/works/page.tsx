@@ -1,6 +1,7 @@
 import { WorksGallery } from "@/app/(contents)/works/_components/works-gallery";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { ContentArea } from "@/components/shared/content-area";
+import { NavigationArea } from "@/components/shared/navigation-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { withSiteName } from "@/lib/seo";
 import { getWorks } from "@/utils/server/works.server";
@@ -14,7 +15,10 @@ export default async function WorksPage() {
 
   return (
     <>
-      <Breadcrumbs segments={[BreadcrumbSegment.works]} />
+      <NavigationArea>
+        <Breadcrumbs segments={[BreadcrumbSegment.works]} />
+      </NavigationArea>
+
       <ContentArea>
         <h1>Works</h1>
 

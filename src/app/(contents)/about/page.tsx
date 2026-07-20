@@ -3,6 +3,7 @@ import { NoteArticleHeader } from "@/app/(contents)/notes/_components/note-artic
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import ContentArea from "@/components/shared/content-area";
+import { NavigationArea } from "@/components/shared/navigation-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { NoteFrontmatter } from "@/types/note";
 import { evaluate } from "next-mdx-remote-client/rsc";
@@ -26,7 +27,10 @@ export default async function Page() {
 
   return (
     <>
-      <Breadcrumbs segments={[BreadcrumbSegment.about]} />
+      <NavigationArea>
+        <Breadcrumbs segments={[BreadcrumbSegment.about]} />{" "}
+      </NavigationArea>
+
       <NoteLayout>
         <NoteLayout.Main>
           <ContentArea>
