@@ -98,15 +98,15 @@ export default async function NotePage({ params }: NotePageProps) {
         {/* PC 用目次  */}
         {scope.toc.length ? (
           <aside className="w-72 shrink-0 max-md:hidden">
-            <ContentArea className="sticky top-6 flex max-h-[calc(100vh-6rem)] min-h-0">
+            <ContentArea className="sticky top-6 flex max-h-[calc(100vh-6rem)] min-h-0 flex-col">
+              <Link
+                href="#top"
+                aria-label="Back to top"
+                className="pb-0 no-underline"
+              >
+                <h2 className="mt-0 mb-0 pb-2 text-xl font-bold">TOC</h2>
+              </Link>
               <ScrollArea className="min-h-0 flex-1 overflow-auto">
-                <Link
-                  href="#top"
-                  aria-label="Back to top"
-                  className="not-prose"
-                >
-                  <h2 className="text-xl font-bold">TOC</h2>
-                </Link>
                 <NoteToc toc={scope.toc} />
               </ScrollArea>
             </ContentArea>
