@@ -8,6 +8,7 @@ import { NoteToc } from "@/app/(contents)/notes/_components/note-toc";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { CodeBlock } from "@/components/shared/code-block";
 import ContentArea from "@/components/shared/content-area";
+import { NavigationArea } from "@/components/shared/navigation-area";
 import { SidebarArea } from "@/components/shared/sidebar-area";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
@@ -85,10 +86,12 @@ export default async function NotePage({ params }: NotePageProps) {
 
   return (
     <>
-      <Breadcrumbs
-        segments={[BreadcrumbSegment.notes]}
-        title={frontmatter.title}
-      />
+      <NavigationArea>
+        <Breadcrumbs
+          segments={[BreadcrumbSegment.notes]}
+          title={frontmatter.title}
+        />
+      </NavigationArea>
 
       <NoteLayout>
         <NoteLayout.Main>
