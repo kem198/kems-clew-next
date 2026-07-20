@@ -8,21 +8,25 @@ import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import { withSiteName } from "@/lib/seo";
-import { getNoteTags, getSortedNotes } from "@/utils/server/notes.server";
+import {
+  getNotes,
+  getNoteTags,
+  getSortedNotes,
+} from "@/utils/server/notes.server";
 
 export const metadata = {
   title: withSiteName("Notes"),
 };
 
 export default async function NotesPage() {
-  const notes = await getSortedNotes("desc");
-
+  const allNotes = await getNotes();
+  const notes = getSortedNotes(allNotes, "desc");
   const tags = getNoteTags(notes);
 
   return (
     <>
       <Breadcrumbs segments={[BreadcrumbSegment.notes]} />
-      <NoteContentLayout tags={tags}>
+      <NoteContentLayout tagCloud={tags}>
         <ContentArea>
           <h1>Notes</h1>
 

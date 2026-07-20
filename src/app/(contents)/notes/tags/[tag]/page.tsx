@@ -40,7 +40,7 @@ export default async function NoteTagPage({ params }: NoteTagPageProps) {
         title={`#${tag}`}
       />
 
-      <NoteContentLayout tags={tags}>
+      <NoteContentLayout tagCloud={tags}>
         <ContentArea>
           <h1>#{tag}</h1>
 

@@ -5,19 +5,19 @@ import type { TocItem } from "remark-flexible-toc";
 
 type NoteContentLayoutProps = {
   children: ReactNode;
-  tags?: NoteTag[];
+  tagCloud?: NoteTag[];
   toc?: TocItem[];
 };
 
 export function NoteContentLayout({
   children,
-  tags,
+  tagCloud,
   toc,
 }: NoteContentLayoutProps) {
   return (
     <div className="flex gap-6">
       {children}
-      <NoteSidebar tags={tags} toc={toc} />
+      <NoteSidebar tags={tagCloud} toc={toc} />
     </div>
   );
 }

@@ -27,7 +27,6 @@ type NotePageProps = {
 };
 
 export const dynamic = "force-static";
-export const revalidate = 3600;
 
 // 事前生成する slug 一覧
 export async function generateStaticParams() {
@@ -52,7 +51,8 @@ export default async function NotePage({ params }: NotePageProps) {
   const source = await getNoteSource(slug);
 
   // 記事一覧を取得して 次の記事へ / 前の記事へ 用に加工する
-  const { prev, next } = await getPrevNextNote(slug);
+  const notes = await getNotes();
+  const { prev, next } = getPrevNextNote(notes, slug);
 
   const { content, frontmatter, scope } = await evaluate<
     NoteFrontmatter,
