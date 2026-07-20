@@ -135,5 +135,6 @@ body {
   html {
     @apply font-sans;
     background-color: var(--primary);
+    overflow-y: scroll;
   }
 }
