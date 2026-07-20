@@ -97,9 +97,9 @@ export default async function NotePage({ params }: NotePageProps) {
                 <NoteArticleHeader frontmatter={frontmatter} />
               </NoteArticle.Header>
 
-              <NoteArticle.MobileToc>
+              <NoteArticle.Toc>
                 <NoteArticleToc toc={scope.toc} />
-              </NoteArticle.MobileToc>
+              </NoteArticle.Toc>
 
               <NoteArticle.Content>{content}</NoteArticle.Content>
 

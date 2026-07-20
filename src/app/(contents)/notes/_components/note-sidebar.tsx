@@ -1,12 +1,12 @@
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
-type NoteSidebarProps = {
+export type NoteSidebarProps = {
   children: ReactNode;
   className?: string;
 };
 
-type NoteSidebarSectionProps = {
+type SidebarSectionProps = {
   title?: string;
   children: ReactNode;
   className?: string;
@@ -25,7 +25,7 @@ function NoteSidebar({ children, className }: NoteSidebarProps) {
   );
 }
 
-function Section({ title, children, className }: NoteSidebarSectionProps) {
+function Section({ title, children, className }: SidebarSectionProps) {
   return (
     <section className={cn(className)}>
       {title ? <h2 className="mt-0 mb-2 text-xl font-bold">{title}</h2> : null}

@@ -20,6 +20,26 @@ export function Tag({ tag, className }: TagProps) {
   );
 }
 
+type TagListProps = {
+  children: React.ReactNode;
+  className?: string;
+};
+
+function TagList({ children, className }: TagListProps) {
+  return (
+    <div className={cn("not-prose text-sm", className)}>
+      <ul
+        className={cn(
+          ubuntuSans.className,
+          "flex flex-wrap gap-2 text-cyan-600",
+        )}
+      >
+        {children}
+      </ul>
+    </div>
+  );
+}
+
 export type TagBadgeListProps = {
   tags?: string[];
   className?: string;
@@ -61,25 +81,5 @@ export function TagCloud({ tags = [], className }: TagCloudProps) {
         </li>
       ))}
     </TagList>
-  );
-}
-
-type TagListProps = {
-  children: React.ReactNode;
-  className?: string;
-};
-
-function TagList({ children, className }: TagListProps) {
-  return (
-    <div className={cn("not-prose text-sm", className)}>
-      <ul
-        className={cn(
-          ubuntuSans.className,
-          "flex flex-wrap gap-2 text-cyan-600",
-        )}
-      >
-        {children}
-      </ul>
-    </div>
   );
 }
