@@ -1,7 +1,9 @@
-import Link from "next/link";
-
-import { NotePageLayout } from "@/app/(contents)/notes/_components/note-page-layout";
-import { TagBadgeList } from "@/app/(contents)/notes/_components/note-tag";
+import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
+import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
+import {
+  TagBadgeList,
+  TagCloud,
+} from "@/app/(contents)/notes/_components/note-tag";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { ContentArea } from "@/components/shared/content-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
@@ -13,6 +15,7 @@ import {
   getNoteTags,
   getSortedNotes,
 } from "@/utils/server/notes.server";
+import Link from "next/link";
 
 export const metadata = {
   title: withSiteName("Notes"),
@@ -26,36 +29,50 @@ export default async function NotesPage() {
   return (
     <>
       <Breadcrumbs segments={[BreadcrumbSegment.notes]} />
-      <NotePageLayout tagCloud={tags}>
-        <ContentArea>
-          <h1>Notes</h1>
 
-          <ul className="not-prose flex flex-col gap-12">
-            {notes.map((note) => (
-              <li key={note.slug} className="flex flex-col gap-2">
-                <span
-                  className={`${ubuntuSans.className} text-sm text-gray-400`}
-                >
-                  {formatDateToYYYYMMDD(note.frontmatter.date)}
-                </span>
+      <NoteLayout>
+        <NoteLayout.Main>
+          <ContentArea>
+            <h1>Notes</h1>
 
-                <div className="flex flex-col gap-1">
-                  <Link href={`/notes/${note.slug}`}>
-                    <span className="text-primary/90 text-xl font-bold hover:underline">
-                      {note.frontmatter.title}
-                    </span>
-                  </Link>
+            <ul className="not-prose flex flex-col gap-12">
+              {notes.map((note) => (
+                <li key={note.slug} className="flex flex-col gap-2">
+                  <span
+                    className={`${ubuntuSans.className} text-sm text-gray-400`}
+                  >
+                    {formatDateToYYYYMMDD(note.frontmatter.date)}
+                  </span>
 
-                  {note.preview ? (
-                    <p className="text-sm text-gray-400">{note.preview}</p>
-                  ) : null}
-                </div>
-                <TagBadgeList tags={note.frontmatter.tags} />
-              </li>
-            ))}
-          </ul>
-        </ContentArea>
-      </NotePageLayout>
+                  <div className="flex flex-col gap-1">
+                    <Link href={`/notes/${note.slug}`}>
+                      <span className="text-primary/90 text-xl font-bold hover:underline">
+                        {note.frontmatter.title}
+                      </span>
+                    </Link>
+
+                    {note.preview ? (
+                      <p className="text-sm text-gray-400">{note.preview}</p>
+                    ) : null}
+                  </div>
+
+                  <TagBadgeList tags={note.frontmatter.tags} />
+                </li>
+              ))}
+            </ul>
+          </ContentArea>
+        </NoteLayout.Main>
+
+        <NoteLayout.Sidebar>
+          <ContentArea>
+            <NoteSidebar>
+              <NoteSidebar.Section title="Tags">
+                <TagCloud tags={tags} />
+              </NoteSidebar.Section>
+            </NoteSidebar>
+          </ContentArea>
+        </NoteLayout.Sidebar>
+      </NoteLayout>
     </>
   );
 }
