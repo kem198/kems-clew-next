@@ -1,5 +1,6 @@
 import { ContentArea } from "@/components/shared/content-area";
 import { HomeLink } from "@/components/shared/home-link";
+import { ModaneLive2DWidget } from "@/components/shared/live2d";
 import { ubuntuSans } from "@/constants/fonts";
 import { SITE_NAME } from "@/constants/site";
 import { formatDateToYYYYMMDD } from "@/lib/date";
@@ -56,6 +57,8 @@ export default async function Home() {
             About
           </HomeLink>
         </section>
+
+        <ModaneLive2DWidget className="pointer-events-none fixed z-40 mx-auto mt-8 md:right-0 md:bottom-0 md:mx-0 md:mt-0" />
       </div>
     </ContentArea>
   );
