@@ -3,17 +3,17 @@ import type { NoteTag } from "@/types/note";
 import type { ReactNode } from "react";
 import type { TocItem } from "remark-flexible-toc";
 
-type NoteContentLayoutProps = {
+type NotePageLayoutProps = {
   children: ReactNode;
   tagCloud?: NoteTag[];
   toc?: TocItem[];
 };
 
-export function NoteContentLayout({
+export function NotePageLayout({
   children,
   tagCloud,
   toc,
-}: NoteContentLayoutProps) {
+}: NotePageLayoutProps) {
   return (
     <div className="flex gap-6">
       {children}
