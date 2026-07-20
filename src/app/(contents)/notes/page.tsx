@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { ContentArea } from "@/components/shared/content-area";
-import { Tags } from "@/components/shared/tags";
+import { Tags } from "@/components/shared/note-tag";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
