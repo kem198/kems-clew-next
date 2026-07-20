@@ -3,6 +3,10 @@ export const BreadcrumbSegment = {
     slug: "notes",
     label: "Notes",
   },
+  tags: {
+    slug: "tags",
+    label: "Tags",
+  },
   works: {
     slug: "works",
     label: "Works",

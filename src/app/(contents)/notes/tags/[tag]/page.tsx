@@ -35,8 +35,10 @@ export default async function NoteTagPage({ params }: NoteTagPageProps) {
 
   return (
     <>
-      {/* TODO: 階層を Notes > Tags > #aaa にする */}
-      <Breadcrumbs segments={[BreadcrumbSegment.notes]} title={`#${tag}`} />
+      <Breadcrumbs
+        segments={[BreadcrumbSegment.notes, BreadcrumbSegment.tags]}
+        title={`#${tag}`}
+      />
 
       <div className="flex gap-6">
         <ContentArea>
