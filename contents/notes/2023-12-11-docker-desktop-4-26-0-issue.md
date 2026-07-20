@@ -1,11 +1,8 @@
 ---
-layout: post
-page-category: note
 title: Docker で version `GLIBC_2.32' not found が出たのでなんとかした
-description: ""
-preview: ""
 category: 情報技術
-tags: docker
+tags:
+  - docker
 date: 2023-12-11
 lastmod: 2023-12-29
 ---

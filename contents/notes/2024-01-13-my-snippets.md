@@ -1,10 +1,5 @@
 ---
-layout: post
-page-category: note
 title: 便利スニペット集
-description: ""
-preview: ""
-category: 情報技術
 tags:
   - excel
   - docker

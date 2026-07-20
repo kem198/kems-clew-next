@@ -1,11 +1,7 @@
 ---
-layout: post
-page-category: note
 title: 即座に結論を出せるようになりたい
-description: ""
-preview: ""
-category: 日記
-tags: misc
+tags:
+  - misc
 date: 2023-09-13
 lastmod: 2023-09-13
 ---
