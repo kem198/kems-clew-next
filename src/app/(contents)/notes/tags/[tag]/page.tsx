@@ -1,4 +1,6 @@
-import { NotePageLayout } from "@/app/(contents)/notes/_components/note-page-layout";
+import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
+import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
+import { TagCloud } from "@/app/(contents)/notes/_components/note-tag";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import ContentArea from "@/components/shared/content-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
@@ -38,21 +40,36 @@ export default async function NoteTagPage({ params }: NoteTagPageProps) {
         title={`#${tag}`}
       />
 
-      <NotePageLayout tagCloud={tags}>
-        <ContentArea>
-          <h1>#{tag}</h1>
+      <NoteLayout>
+        <NoteLayout.Main>
+          <ContentArea>
+            <h1>#{tag}</h1>
 
-          <ul className="flex flex-col gap-4">
-            {filteredNotes.map((note) => (
-              <li key={note.slug}>
-                <Link href={`/notes/${note.slug}`} className="hover:underline">
-                  {note.frontmatter.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </ContentArea>
-      </NotePageLayout>
+            <ul className="flex flex-col gap-4">
+              {filteredNotes.map((note) => (
+                <li key={note.slug}>
+                  <Link
+                    href={`/notes/${note.slug}`}
+                    className="hover:underline"
+                  >
+                    {note.frontmatter.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </ContentArea>
+        </NoteLayout.Main>
+
+        <NoteLayout.Sidebar>
+          <ContentArea>
+            <NoteSidebar>
+              <NoteSidebar.Section title="Tags">
+                <TagCloud tags={tags} />
+              </NoteSidebar.Section>
+            </NoteSidebar>
+          </ContentArea>
+        </NoteLayout.Sidebar>
+      </NoteLayout>
     </>
   );
 }

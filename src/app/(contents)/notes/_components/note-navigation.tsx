@@ -10,38 +10,54 @@ type NoteNavigationProps = {
   className?: string;
 };
 
+type NavigationLinkProps = {
+  note: Note;
+  direction: "prev" | "next";
+};
+
+function NavigationLink({ note, direction }: NavigationLinkProps) {
+  const isPrev = direction === "prev";
+
+  return (
+    <Link
+      href={`/notes/${note.slug}`}
+      className={cn(
+        buttonVariants({
+          variant: "secondary",
+          size: "lg",
+        }),
+        "min-w-0 flex-1",
+      )}
+    >
+      {isPrev ? <ChevronLeftIcon /> : null}
+
+      {isPrev ? "新しい記事へ" : "古い記事へ"}
+
+      {!isPrev ? <ChevronRightIcon /> : null}
+    </Link>
+  );
+}
+
+/**
+ * 前後記事ナビゲーション
+ */
 export function NoteNavigation({ prev, next, className }: NoteNavigationProps) {
   return (
-    <div className={cn("not-prose flex justify-between gap-4", className)}>
+    <nav
+      className={cn("not-prose flex justify-between gap-4", className)}
+      aria-label="Note navigation"
+    >
       {next ? (
-        <Link
-          href={`/notes/${next.slug}`}
-          className={cn(
-            buttonVariants({ variant: "secondary", size: "lg" }),
-            "min-w-0 flex-1",
-          )}
-        >
-          <ChevronLeftIcon />
-          新しい記事へ
-        </Link>
+        <NavigationLink note={next} direction="prev" />
       ) : (
         <div className="flex-1" />
       )}
 
       {prev ? (
-        <Link
-          href={`/notes/${prev.slug}`}
-          className={cn(
-            buttonVariants({ variant: "secondary", size: "lg" }),
-            "min-w-0 flex-1",
-          )}
-        >
-          古い記事へ
-          <ChevronRightIcon />
-        </Link>
+        <NavigationLink note={prev} direction="next" />
       ) : (
         <div className="flex-1" />
       )}
-    </div>
+    </nav>
   );
 }
