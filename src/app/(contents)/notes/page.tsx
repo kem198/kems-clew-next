@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 import { NoteContentLayout } from "@/app/(contents)/notes/_components/note-content-layout";
+import { Tags } from "@/app/(contents)/notes/_components/note-tag";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { ContentArea } from "@/components/shared/content-area";
-import { Tags } from "@/components/shared/note-tag";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
