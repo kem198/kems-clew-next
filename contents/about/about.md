@@ -9,6 +9,10 @@ description:
 
 [KeM's Clew](/) (以下「当サイト」) は、管理人である KeM198 が趣味で制作・公開しているウェブサイトです。
 
+当サイトのソースコードは GitHub にて公開しています。
+
+- [kenkenpa198/kems-clew-next](https://github.com/kenkenpa198/kems-clew-next)
+
 ## 免責事項
 
 当サイトのコンテンツやリンク先の情報、サービス等について一切の責任を負いません。
@@ -21,7 +25,9 @@ description:
 
 当サイトで掲載している画像や文章を含むコンテンツは無断転載することを禁止します。
 
-なお当サイトではファンアート及び二次創作物を多く扱います。これらの制作物の著作権に関しては作者である KeM198 と版権元の企業両者に帰属します。
+なお当サイトではファンアート及び二次創作物を多く扱います。
+
+これらの制作物の著作権に関しては、作者である KeM198 と版権元の企業・個人両者に帰属します。
 
 ## 使用している技術・素材
 
@@ -40,14 +46,14 @@ description:
 - [Yet Another React Lightbox](https://yet-another-react-lightbox.com/)
 - [React Photo Album](https://react-photo-album.com/)
 
-### Markdown 対応
-
-- [next-mdx-remote-client](https://nmrc-in-pages-router.vercel.app/)
-
 ### スタイリング
 
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Tailwind CSS Typography](https://tailwindcss-typography.vercel.app/)
+
+### Markdown 対応
+
+- [next-mdx-remote-client](https://nmrc-in-pages-router.vercel.app/)
 - [Rehype Pretty Code](https://rehype-pretty.pages.dev/)
 
 ### フォント
