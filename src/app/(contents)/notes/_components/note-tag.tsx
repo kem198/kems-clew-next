@@ -11,6 +11,7 @@ export function Tag({ tag }: TagProps) {
   return (
     <Link
       href={`/notes/tags/${tag}`}
+      prefetch={false}
       className={`hover:underline ${ubuntuSans.className}`}
     >
       #{tag}
