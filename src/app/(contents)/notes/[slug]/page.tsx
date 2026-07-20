@@ -1,9 +1,9 @@
 import { NoteNavigation } from "@/app/(contents)/notes/_components";
 import { NoteContentLayout } from "@/app/(contents)/notes/_components/note-content-layout";
+import NoteLayout from "@/app/(contents)/notes/_components/note-layout";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { CodeBlock } from "@/components/shared/code-block";
 import ContentArea from "@/components/shared/content-area";
-import NoteLayout from "@/components/shared/note-layout";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { rehypePrettyCodeOptions } from "@/lib/rehype-pretty-code";
 import { withSiteName } from "@/lib/seo";
