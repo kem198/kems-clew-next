@@ -26,8 +26,6 @@ type NotePageProps = {
   }>;
 };
 
-export const dynamic = "force-static";
-
 // 事前生成する slug 一覧
 export async function generateStaticParams() {
   const notes = await getNotes();
