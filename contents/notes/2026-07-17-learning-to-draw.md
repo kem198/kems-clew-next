@@ -1,9 +1,5 @@
 ---
-layout: post
 title: "お絵描きを勉強中です"
-description: ""
-preview: ""
-category: 日記
 tags:
   - misc
   - drawing

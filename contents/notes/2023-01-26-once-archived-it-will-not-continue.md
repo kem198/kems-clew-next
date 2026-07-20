@@ -1,11 +1,7 @@
 ---
-layout: post
-page-category: note
 title: 「達成したら続かないですよね」
-description: ""
-preview: ""
-category: 日記
-tags: misc
+tags:
+  - misc
 date: 2023-01-26
 lastmod: 2023-01-26
 ---

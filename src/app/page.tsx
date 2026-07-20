@@ -4,7 +4,7 @@ import { ModaneLive2DWidget } from "@/components/shared/live2d";
 import { ubuntuSans } from "@/constants/fonts";
 import { SITE_NAME } from "@/constants/site";
 import { formatDateToYYYYMMDD } from "@/lib/date";
-import { getLatestNotes } from "@/utils/server/notes.server";
+import { getLatestNotes, getNotes } from "@/utils/server/notes.server";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 
@@ -13,7 +13,8 @@ export const metadata = {
 };
 
 export default async function Home() {
-  const latest = await getLatestNotes(3);
+  const notes = await getNotes();
+  const latest = getLatestNotes(notes, 3);
 
   return (
     <ContentArea className="flex flex-1 max-md:p-3">

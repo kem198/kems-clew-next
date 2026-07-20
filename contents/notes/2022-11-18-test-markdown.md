@@ -1,8 +1,5 @@
 ---
 title: マークダウンのテスト用ページ
-layout: post
-page-category: note
-category: 情報技術
 tags:
   - markdown
 date: 2022-11-18 09:00:00

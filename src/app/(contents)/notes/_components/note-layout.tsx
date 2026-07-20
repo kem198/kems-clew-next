@@ -1,5 +1,5 @@
 import { NoteToc } from "@/app/(contents)/notes/_components";
-import { Tags } from "@/components/shared/tags";
+import { TagBadgeList } from "@/app/(contents)/notes/_components/note-tag";
 import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import { cn } from "@/lib/utils";
@@ -46,7 +46,7 @@ export function NoteLayout({
           {displayTitle ? <h1 className="mb-2">{displayTitle}</h1> : null}
 
           {frontmatter?.tags ? (
-            <Tags tags={frontmatter?.tags} className="text-base" />
+            <TagBadgeList tags={frontmatter?.tags} className="text-base" />
           ) : null}
         </div>
 
