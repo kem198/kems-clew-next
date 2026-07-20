@@ -15,6 +15,7 @@ import {
 import { evaluate } from "next-mdx-remote-client/rsc";
 import { getFrontmatter } from "next-mdx-remote-client/utils";
 import { unstable_cache } from "next/cache";
+import Link from "next/link";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
@@ -99,7 +100,13 @@ export default async function NotePage({ params }: NotePageProps) {
           <aside className="w-72 shrink-0 max-md:hidden">
             <ContentArea className="sticky top-6 flex max-h-[calc(100vh-6rem)] min-h-0">
               <ScrollArea className="min-h-0 flex-1 overflow-auto">
-                <h2 className="mt-0 mb-2 border-none">TOC</h2>
+                <Link
+                  href="#top"
+                  aria-label="Back to top"
+                  className="not-prose"
+                >
+                  <h2 className="text-xl font-bold">TOC</h2>
+                </Link>
                 <NoteToc toc={scope.toc} />
               </ScrollArea>
             </ContentArea>
