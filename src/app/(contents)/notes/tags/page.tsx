@@ -1,7 +1,7 @@
 import { NoteContentLayout } from "@/app/(contents)/notes/_components/note-content-layout";
+import { Tag } from "@/app/(contents)/notes/_components/note-tag";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { ContentArea } from "@/components/shared/content-area";
-import { Tag } from "@/components/shared/note-tag";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { getNotes, getNoteTags } from "@/utils/server/notes.server";
 
