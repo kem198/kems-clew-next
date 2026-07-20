@@ -123,7 +123,13 @@ export function getNoteTags(notes: Note[]): NoteTag[] {
   const tagCounts = new Map<string, number>();
 
   for (const note of notes) {
-    for (const tag of note.frontmatter.tags ?? []) {
+    const tags = Array.isArray(note.frontmatter.tags)
+      ? note.frontmatter.tags
+      : note.frontmatter.tags
+        ? [note.frontmatter.tags]
+        : [];
+
+    for (const tag of tags) {
       tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
     }
   }
