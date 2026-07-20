@@ -70,6 +70,7 @@ function renderNextImage(
 ) {
   return (
     <div
+      className="overflow-hidden rounded border border-zinc-100"
       style={{
         position: "relative",
         width: "100%",
@@ -83,6 +84,7 @@ function renderNextImage(
         title={title}
         sizes={sizes}
         quality={80}
+        className="object-cover"
       />
     </div>
   );
