@@ -36,10 +36,8 @@ export default async function NotesPage() {
                   </span>
                 </Link>
 
-                {note.frontmatter.preview ? (
-                  <p className="text-sm text-gray-400">
-                    {note.frontmatter.preview}
-                  </p>
+                {note.preview ? (
+                  <p className="text-sm text-gray-400">{note.preview}</p>
                 ) : null}
               </div>
 

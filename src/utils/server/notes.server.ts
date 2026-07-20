@@ -14,44 +14,40 @@ export async function getNotes(): Promise<Note[]> {
 
         const { frontmatter } = getFrontmatter<NoteFrontmatter>(source);
 
-        // ensure preview exists: use frontmatter.preview if present,
-        // otherwise generate from the markdown body (first paragraph)
-        let preview = frontmatter?.preview;
-        if (!preview || preview.length === 0) {
-          // strip frontmatter block from source to get body
-          const body = source.replace(/^---[\s\S]*?---\s*/m, "");
-          // get first non-empty paragraph
-          const para =
-            body
-              .split(/\n\s*\n/)
-              .map((p) => p.trim())
-              .find((p) => p.length > 0) ?? "";
+        let preview;
+        // strip frontmatter block from source to get body
+        const body = source.replace(/^---[\s\S]*?---\s*/m, "");
+        // get first non-empty paragraph
+        const para =
+          body
+            .split(/\n\s*\n/)
+            .map((p) => p.trim())
+            .find((p) => p.length > 0) ?? "";
 
-          // very small markdown-to-text conversion
-          const text = para
-            .replace(/\[(.*?)\]\([^\)]+\)/g, "$1") // links
-            .replace(/[#>*`~\-\[\]]/g, "")
-            .replace(/\n+/g, " ")
-            .trim();
+        // very small markdown-to-text conversion
+        const text = para
+          .replace(/\[(.*?)\]\([^\)]+\)/g, "$1") // links
+          .replace(/[#>*`~\-\[\]]/g, "")
+          .replace(/\n+/g, " ")
+          .trim();
 
-          const MAX = 50;
-          if (text.length > MAX) {
-            preview = text.slice(0, MAX).trimEnd() + "…";
-          } else {
-            preview = text;
-          }
+        const MAX = 50;
+        if (text.length > MAX) {
+          preview = text.slice(0, MAX).trimEnd() + "…";
+        } else {
+          preview = text;
         }
 
         // ensure frontmatter.preview is set (types expect string)
         const fm = {
           ...(frontmatter as NoteFrontmatter),
-          preview: preview ?? "",
           tags: frontmatter?.tags ?? [],
         };
 
         return {
           slug: file.replace(/\.md$/, ""),
           frontmatter: fm,
+          preview: preview ?? "",
         };
       }),
   );

@@ -1,8 +1,6 @@
 export type NoteFrontmatter = {
-  title: string;
-  description: string;
-  preview: string;
   tags: string[];
+  title: string;
   date: string;
   lastmod: string;
 };
@@ -10,4 +8,5 @@ export type NoteFrontmatter = {
 export type Note = {
   slug: string;
   frontmatter: NoteFrontmatter;
+  preview: string;
 };
