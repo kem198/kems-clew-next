@@ -1,4 +1,4 @@
-type Live2DWidgetProps = {
+type ModaneLive2DWidgetProps = {
   className?: string;
 };
 
@@ -12,7 +12,7 @@ const LIVE2D_WIDGET_URL =
  * 1. 子要素 iframe を 2 倍のサイズで書き出した後に 1/2 サイズへ縮小して表示する。
  * 2. このままだと領域が 2 倍のままなので親要素 wrapper の overflow: hidden でクリッピングする。
  */
-export function Live2DWidget({ className }: Live2DWidgetProps) {
+export function ModaneLive2DWidget({ className }: ModaneLive2DWidgetProps) {
   return (
     <div className={`h-150 w-150 overflow-hidden ${className ?? ""} `}>
       <div className="h-150 w-150">
