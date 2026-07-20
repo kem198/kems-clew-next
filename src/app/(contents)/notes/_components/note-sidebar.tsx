@@ -1,5 +1,5 @@
-import { NoteToc } from "@/app/(contents)/notes/_components";
 import { TagCloud } from "@/app/(contents)/notes/_components/note-tag";
+import { NoteToc } from "@/app/(contents)/notes/_components/note-toc";
 import ContentArea from "@/components/shared/content-area";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { NoteTag } from "@/types/note";
