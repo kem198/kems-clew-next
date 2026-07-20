@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -5,22 +7,12 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Fragment } from "react";
+import type { BreadcrumbSegment } from "@/constants/breadcrumbs";
 
 type BreadcrumbsProps = {
-  segments: string[];
+  segments: BreadcrumbSegment[];
   title?: string;
 };
-
-const staticLabels: Record<string, string> = {
-  notes: "Notes",
-  works: "Works",
-  about: "About",
-};
-
-function getLabel(segment: string) {
-  return staticLabels[segment] ?? segment;
-}
 
 export function Breadcrumbs({ segments, title }: BreadcrumbsProps) {
   return (
@@ -29,29 +21,41 @@ export function Breadcrumbs({ segments, title }: BreadcrumbsProps) {
         <BreadcrumbItem>
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
+
         {segments.map((segment, index) => {
-          const isLast = index === segments.length - 1;
+          const isLast = index === segments.length - 1 && !title;
 
           return (
-            <Fragment key={`${segment}-${index}`}>
+            <Fragment key={segment.slug}>
               <BreadcrumbSeparator />
 
               <BreadcrumbItem>
                 {isLast ? (
-                  <span className="text-stone-400">
-                    {title ?? getLabel(segment)}
-                  </span>
+                  <span className="text-stone-400">{segment.label}</span>
                 ) : (
                   <BreadcrumbLink
-                    href={`/${segments.slice(0, index + 1).join("/")}`}
+                    href={`/${segments
+                      .slice(0, index + 1)
+                      .map((s) => s.slug)
+                      .join("/")}`}
                   >
-                    {getLabel(segment)}
+                    {segment.label}
                   </BreadcrumbLink>
                 )}
               </BreadcrumbItem>
             </Fragment>
           );
         })}
+
+        {title ? (
+          <>
+            <BreadcrumbSeparator />
+
+            <BreadcrumbItem>
+              <span className="text-stone-400">{title}</span>
+            </BreadcrumbItem>
+          </>
+        ) : null}
       </BreadcrumbList>
     </Breadcrumb>
   );
