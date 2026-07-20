@@ -1,6 +1,6 @@
-import { NoteNavigation } from "@/app/(contents)/notes/_components";
 import { NoteContentLayout } from "@/app/(contents)/notes/_components/note-content-layout";
 import NoteLayout from "@/app/(contents)/notes/_components/note-layout";
+import { NoteNavigation } from "@/app/(contents)/notes/_components/note-navigation";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { CodeBlock } from "@/components/shared/code-block";
 import ContentArea from "@/components/shared/content-area";
