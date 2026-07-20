@@ -1,5 +1,18 @@
 import { ubuntuSans } from "@/constants/fonts";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
+
+type TagProps = {
+  tag: string;
+};
+
+export function Tag({ tag }: TagProps) {
+  return (
+    <Link href={`/notes/tags/${tag}`} className="hover:underline">
+      #{tag}
+    </Link>
+  );
+}
 
 // Accept either a single tag string or an array from frontmatter
 type Props = {
@@ -23,7 +36,9 @@ export function Tags({ tags, className }: Props) {
         className={`${ubuntuSans.className} flex flex-wrap gap-2 text-cyan-600`}
       >
         {list.map((tag) => (
-          <li key={tag}>#{tag}</li>
+          <li key={tag}>
+            <Tag tag={tag} />
+          </li>
         ))}
       </ul>
     </div>
