@@ -46,6 +46,7 @@ export async function getNotes(): Promise<Note[]> {
         const fm = {
           ...(frontmatter as NoteFrontmatter),
           preview: preview ?? "",
+          tags: frontmatter?.tags ?? [],
         };
 
         return {
@@ -95,6 +96,7 @@ export async function getPrevNextNote(slug: string) {
 export type NoteIndexItem = {
   slug: string;
   title?: string;
+  tags: string[];
   date?: string;
   lastmod?: string;
 };
@@ -114,6 +116,7 @@ export async function getAllNotes(): Promise<NoteIndexItem[]> {
       return {
         slug,
         title: frontmatter?.title,
+        tags: frontmatter?.tags ?? [],
         date: frontmatter?.date,
         lastmod: frontmatter?.lastmod,
       };
