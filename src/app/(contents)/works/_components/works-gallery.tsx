@@ -18,7 +18,7 @@ type WorksGalleryProps = {
 };
 
 const columns = (containerWidth: number) => {
-  if (containerWidth < 640) return 1;
+  // if (containerWidth < 640) return 1;
   if (containerWidth < 768) return 2;
   if (containerWidth < 1024) return 3;
   return 4;
