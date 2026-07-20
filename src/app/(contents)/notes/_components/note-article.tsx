@@ -12,7 +12,7 @@ type NoteArticleSectionProps = {
 };
 
 /**
- * Note 記事レイアウト
+ * Notes 記事レイアウト
  *
  * 使用例:
  *
@@ -24,6 +24,10 @@ type NoteArticleSectionProps = {
  *   <NoteArticle.Content>
  *     ...
  *   </NoteArticle.Content>
+ *
+ *   <NoteArticle.Navigation>
+ *     ...
+ *   </NoteArticle.Navigation>
  * </NoteArticle>
  */
 function NoteArticle({ children, className }: NoteArticleProps) {
@@ -58,10 +62,12 @@ function Content({ children, className }: NoteArticleSectionProps) {
 }
 
 /**
- * 記事下部ナビゲーション領域
+ * 記事ナビゲーション領域
  */
 function Navigation({ children, className }: NoteArticleSectionProps) {
-  return <div className={cn("not-prose mt-24", className)}>{children}</div>;
+  return (
+    <section className={cn("not-prose mt-24", className)}>{children}</section>
+  );
 }
 
 NoteArticle.Header = Header;
