@@ -1,9 +1,9 @@
 import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
-import { NoteContentHeader } from "@/app/(contents)/notes/_components/note-content-header";
 import { NoteContentToc } from "@/app/(contents)/notes/_components/note-content-toc";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
-import { NoteNavigation } from "@/app/(contents)/notes/_components/note-navigation";
+import { NotePager } from "@/app/(contents)/notes/_components/note-pager";
 import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
+import { NoteSlugHeader } from "@/app/(contents)/notes/_components/note-slug-header";
 import { NoteToc } from "@/app/(contents)/notes/_components/note-toc";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { CodeBlock } from "@/components/shared/code-block";
@@ -18,7 +18,6 @@ import type { NoteFrontmatter } from "@/types/note";
 import {
   getNotes,
   getNoteSource,
-  getNoteTags,
   getPrevNextNote,
 } from "@/utils/server/notes.server";
 import { evaluate } from "next-mdx-remote-client/rsc";
@@ -61,8 +60,6 @@ export default async function NoteSlugPage({ params }: NoteContentProps) {
   const notes = await getNotes();
   const { prev, next } = getPrevNextNote(notes, slug);
 
-  const tags = getNoteTags(notes);
-
   const { content, frontmatter, scope } = await evaluate<
     NoteFrontmatter,
     { toc: TocItem[] }
@@ -98,17 +95,17 @@ export default async function NoteSlugPage({ params }: NoteContentProps) {
           <ContentArea>
             <NoteContent>
               <NoteContent.Header>
-                <NoteContentHeader frontmatter={frontmatter} />
+                <NoteSlugHeader frontmatter={frontmatter} />
               </NoteContent.Header>
 
               <NoteContent.Navigation>
                 <NoteContentToc toc={scope.toc} />
               </NoteContent.Navigation>
 
-              <NoteContent.Content>{content}</NoteContent.Content>
+              <NoteContent.Main>{content}</NoteContent.Main>
 
               <NoteContent.Footer>
-                <NoteNavigation prev={prev} next={next} />
+                <NotePager prev={prev} next={next} />
               </NoteContent.Footer>
             </NoteContent>
           </ContentArea>

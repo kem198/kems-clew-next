@@ -1,4 +1,6 @@
 import { NoteCard } from "@/app/(contents)/notes/_components/note-card";
+import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
+import { NoteH1 } from "@/app/(contents)/notes/_components/note-h1";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
 import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
 import { TagCloud } from "@/app/(contents)/notes/_components/note-tag";
@@ -50,15 +52,21 @@ export default async function NoteTagPage({ params }: NoteTagPageProps) {
       <NoteLayout>
         <NoteLayout.Main>
           <ContentArea>
-            <h1>#{tag}</h1>
+            <NoteContent>
+              <NoteContent.Header>
+                <NoteH1>#{tag}</NoteH1>
+              </NoteContent.Header>
 
-            <ul className="not-prose flex flex-col gap-12">
-              {filteredNotes.map((note) => (
-                <li key={note.slug}>
-                  <NoteCard note={note} />
-                </li>
-              ))}
-            </ul>
+              <NoteContent.Main>
+                <ul className="not-prose flex flex-col gap-12">
+                  {filteredNotes.map((note) => (
+                    <li key={note.slug}>
+                      <NoteCard note={note} />
+                    </li>
+                  ))}
+                </ul>
+              </NoteContent.Main>
+            </NoteContent>
           </ContentArea>
         </NoteLayout.Main>
 
