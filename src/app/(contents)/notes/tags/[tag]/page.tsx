@@ -40,7 +40,7 @@ export default async function NoteTagPage({ params }: NoteTagPageProps) {
       <NavigationArea>
         <Breadcrumbs
           segments={[BreadcrumbSegment.notes, BreadcrumbSegment.tags]}
-          title={`#${tag}`}
+          current={`#${tag}`}
         />
       </NavigationArea>
 

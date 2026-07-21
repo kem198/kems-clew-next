@@ -11,10 +11,10 @@ import type { BreadcrumbSegment } from "@/constants/breadcrumbs";
 
 type BreadcrumbsProps = {
   segments: BreadcrumbSegment[];
-  title?: string;
+  current?: string;
 };
 
-export function Breadcrumbs({ segments, title }: BreadcrumbsProps) {
+export function Breadcrumbs({ segments, current: title }: BreadcrumbsProps) {
   return (
     <Breadcrumb>
       <BreadcrumbList>

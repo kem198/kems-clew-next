@@ -89,7 +89,7 @@ export default async function NotePage({ params }: NotePageProps) {
       <NavigationArea>
         <Breadcrumbs
           segments={[BreadcrumbSegment.notes]}
-          title={frontmatter.title}
+          current={frontmatter.title}
         />
       </NavigationArea>
 
