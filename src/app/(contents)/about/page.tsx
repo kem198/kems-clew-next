@@ -1,6 +1,6 @@
 import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
-import { NoteContentHeader } from "@/app/(contents)/notes/_components/note-content-header";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
+import { NoteSlugHeader } from "@/app/(contents)/notes/_components/note-slug-header";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import ContentArea from "@/components/shared/content-area";
 import { NavigationArea } from "@/components/shared/navigation-area";
@@ -36,10 +36,10 @@ export default async function Page() {
           <ContentArea>
             <NoteContent>
               <NoteContent.Header>
-                <NoteContentHeader frontmatter={frontmatter} />
+                <NoteSlugHeader frontmatter={frontmatter} />
               </NoteContent.Header>
 
-              <NoteContent.Content>{content}</NoteContent.Content>
+              <NoteContent.Main>{content}</NoteContent.Main>
             </NoteContent>
           </ContentArea>
         </NoteLayout.Main>

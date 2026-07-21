@@ -1,9 +1,10 @@
+import { NoteH1 } from "@/app/(contents)/notes/_components/note-h1";
 import { TagBadgeList } from "@/app/(contents)/notes/_components/note-tag";
 import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import type { NoteFrontmatter } from "@/types/note";
 
-type NoteContentHeaderProps = {
+type NoteSlugHeaderProps = {
   frontmatter: Partial<NoteFrontmatter>;
 };
 
@@ -16,7 +17,7 @@ type NoteContentHeaderProps = {
  * - タイトル
  * - タグ
  */
-export function NoteContentHeader({ frontmatter }: NoteContentHeaderProps) {
+export function NoteSlugHeader({ frontmatter }: NoteSlugHeaderProps) {
   return (
     <div className="flex flex-col gap-4">
       <ul className="not-prose flex justify-end gap-2 text-sm text-zinc-400">
@@ -38,7 +39,7 @@ export function NoteContentHeader({ frontmatter }: NoteContentHeaderProps) {
       </ul>
 
       <div className="flex flex-col gap-1">
-        <h1 className="mb-2">{frontmatter.title}</h1>
+        <NoteH1>{frontmatter.title}</NoteH1>
 
         {frontmatter.tags ? (
           <TagBadgeList tags={frontmatter.tags} className="text-base" />

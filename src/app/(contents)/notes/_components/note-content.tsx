@@ -32,7 +32,7 @@ type NoteContentSectionProps = {
  */
 function NoteContent({ children, className }: NoteContentProps) {
   return (
-    <article className={cn("flex flex-col gap-8", className)}>
+    <article className={cn("flex flex-col gap-12", className)}>
       {children}
     </article>
   );
@@ -48,7 +48,8 @@ function Header({ children, className }: NoteContentSectionProps) {
 }
 
 /**
- * 記事内 TOC 表示領域
+ * 記事内ナビゲーション表示領域
+ * モバイルでは非表示にする
  */
 function Navigation({ children, className }: NoteContentSectionProps) {
   return <div className={cn("md:hidden", className)}>{children}</div>;
@@ -57,7 +58,7 @@ function Navigation({ children, className }: NoteContentSectionProps) {
 /**
  * 記事本文領域
  */
-function Content({ children, className }: NoteContentSectionProps) {
+function Main({ children, className }: NoteContentSectionProps) {
   return <div className={cn(className)}>{children}</div>;
 }
 
@@ -72,7 +73,7 @@ function Footer({ children, className }: NoteContentSectionProps) {
 
 NoteContent.Header = Header;
 NoteContent.Navigation = Navigation;
-NoteContent.Content = Content;
+NoteContent.Main = Main;
 NoteContent.Footer = Footer;
 
 export { NoteContent };
