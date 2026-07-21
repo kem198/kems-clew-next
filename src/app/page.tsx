@@ -28,7 +28,7 @@ export default async function Home() {
             {latest.map((n) => (
               <li key={n.slug} className="mb-0 ml-8 list-disc">
                 <Link href={`/notes/${n.slug}`} className="hover:underline">
-                  <span className={`${ubuntuSans.className} text-gray-400`}>
+                  <span className={`${ubuntuSans.className} text-zinc-400`}>
                     {formatDateToYYYYMMDD(n.frontmatter.date)} |{" "}
                   </span>
                   {n.frontmatter.title}

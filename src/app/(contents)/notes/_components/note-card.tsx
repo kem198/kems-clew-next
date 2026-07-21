@@ -12,7 +12,7 @@ export type NoteCardProps = {
 export function NoteCard({ note, className }: NoteCardProps) {
   return (
     <article className={className}>
-      <span className={`${ubuntuSans.className} text-sm text-gray-400`}>
+      <span className={`${ubuntuSans.className} text-sm text-zinc-400`}>
         {formatDateToYYYYMMDD(note.frontmatter.date)}
       </span>
 
@@ -24,7 +24,7 @@ export function NoteCard({ note, className }: NoteCardProps) {
         </Link>
 
         {note.preview ? (
-          <p className="text-sm text-gray-400">{note.preview}</p>
+          <p className="text-sm text-zinc-400">{note.preview}</p>
         ) : null}
       </div>
 

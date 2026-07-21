@@ -19,7 +19,7 @@ type NoteArticleHeaderProps = {
 export function NoteArticleHeader({ frontmatter }: NoteArticleHeaderProps) {
   return (
     <div className="flex flex-col gap-4">
-      <ul className="not-prose flex justify-end gap-2 text-sm text-gray-400">
+      <ul className="not-prose flex justify-end gap-2 text-sm text-zinc-400">
         <li>
           作成日:{" "}
           <span className={ubuntuSans.className}>
