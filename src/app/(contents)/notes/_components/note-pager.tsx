@@ -4,18 +4,18 @@ import type { Note } from "@/types/note";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 
-export type NoteNavigationProps = {
+export type NotePagerProps = {
   prev: Note | null;
   next: Note | null;
   className?: string;
 };
 
-type NavigationLinkProps = {
+type PagerLinkProps = {
   note: Note;
   direction: "newer" | "older";
 };
 
-function NavigationLink({ note, direction }: NavigationLinkProps) {
+function PagerLink({ note, direction }: PagerLinkProps) {
   const isNewer = direction === "newer";
 
   return (
@@ -41,19 +41,19 @@ function NavigationLink({ note, direction }: NavigationLinkProps) {
 /**
  * 前後記事ナビゲーション
  */
-export function NoteNavigation({ prev, next, className }: NoteNavigationProps) {
+export function NotePager({ prev, next, className }: NotePagerProps) {
   return (
     <nav aria-label="Note navigation" className={cn("not-prose", className)}>
       <hr />
       <div className="flex justify-between gap-4 pt-9 pb-3 max-md:pb-6">
         {next ? (
-          <NavigationLink note={next} direction="newer" />
+          <PagerLink note={next} direction="newer" />
         ) : (
           <div className="flex-1" />
         )}
 
         {prev ? (
-          <NavigationLink note={prev} direction="older" />
+          <PagerLink note={prev} direction="older" />
         ) : (
           <div className="flex-1" />
         )}

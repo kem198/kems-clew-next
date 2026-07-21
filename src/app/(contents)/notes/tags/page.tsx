@@ -1,3 +1,5 @@
+import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
+import { NoteH1 } from "@/app/(contents)/notes/_components/note-h1";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
 import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
 import { Tag, TagCloud } from "@/app/(contents)/notes/_components/note-tag";
@@ -20,16 +22,22 @@ export default async function NotesTagsPage() {
       <NoteLayout>
         <NoteLayout.Main>
           <ContentArea>
-            <h1>Tags</h1>
+            <NoteContent>
+              <NoteContent.Header>
+                <NoteH1>Tags</NoteH1>
+              </NoteContent.Header>
 
-            <ul>
-              {tags.map((tag) => (
-                <li key={tag.name}>
-                  <Tag tag={tag.name} />{" "}
-                  <span className="text-zinc-400">({tag.count})</span>
-                </li>
-              ))}
-            </ul>
+              <NoteContent.Main>
+                <ul>
+                  {tags.map((tag) => (
+                    <li key={tag.name}>
+                      <Tag tag={tag.name} />{" "}
+                      <span className="text-zinc-400">({tag.count})</span>
+                    </li>
+                  ))}
+                </ul>
+              </NoteContent.Main>
+            </NoteContent>
           </ContentArea>
         </NoteLayout.Main>
 

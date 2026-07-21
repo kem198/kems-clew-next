@@ -2,7 +2,7 @@ import { TagCloud } from "@/app/(contents)/notes/_components/note-tag";
 import { cn } from "@/lib/utils";
 import { NoteTag } from "@/types/note";
 
-type NoteArticleTagCloudProps = {
+type NoteContentTagCloudProps = {
   tags?: NoteTag[];
   className?: string;
 };
@@ -10,10 +10,10 @@ type NoteArticleTagCloudProps = {
 /**
  * 記事内用タグクラウド
  */
-export function NoteArticleTagCloud({
+export function NoteContentTagCloud({
   tags,
   className,
-}: NoteArticleTagCloudProps) {
+}: NoteContentTagCloudProps) {
   if (!tags?.length) {
     return null;
   }
