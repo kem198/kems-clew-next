@@ -43,21 +43,21 @@ function NavigationLink({ note, direction }: NavigationLinkProps) {
  */
 export function NoteNavigation({ prev, next, className }: NoteNavigationProps) {
   return (
-    <nav
-      aria-label="Note navigation"
-      className={cn("not-prose flex justify-between gap-4", className)}
-    >
-      {next ? (
-        <NavigationLink note={next} direction="newer" />
-      ) : (
-        <div className="flex-1" />
-      )}
+    <nav aria-label="Note navigation" className={cn("not-prose", className)}>
+      <hr />
+      <div className="flex justify-between gap-4 pt-9 pb-3 max-md:pb-6">
+        {next ? (
+          <NavigationLink note={next} direction="newer" />
+        ) : (
+          <div className="flex-1" />
+        )}
 
-      {prev ? (
-        <NavigationLink note={prev} direction="older" />
-      ) : (
-        <div className="flex-1" />
-      )}
+        {prev ? (
+          <NavigationLink note={prev} direction="older" />
+        ) : (
+          <div className="flex-1" />
+        )}
+      </div>
     </nav>
   );
 }
