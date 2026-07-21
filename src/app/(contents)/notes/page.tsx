@@ -1,6 +1,6 @@
-import { NoteArticle } from "@/app/(contents)/notes/_components/note-article";
-import { NoteArticleTagCloud } from "@/app/(contents)/notes/_components/note-article-tag-cloud";
 import { NoteCard } from "@/app/(contents)/notes/_components/note-card";
+import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
+import { NoteContentTagCloud } from "@/app/(contents)/notes/_components/note-content-tag-cloud";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
 import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
 import { TagCloud } from "@/app/(contents)/notes/_components/note-tag";
@@ -35,9 +35,9 @@ export default async function NotesPage() {
           <ContentArea>
             <h1>Notes</h1>
 
-            <NoteArticle.Toc className="mb-8">
-              <NoteArticleTagCloud tags={tags} />
-            </NoteArticle.Toc>
+            <NoteContent.Toc className="mb-8">
+              <NoteContentTagCloud tags={tags} />
+            </NoteContent.Toc>
 
             <ul className="not-prose flex flex-col gap-12">
               {notes.map((note) => (

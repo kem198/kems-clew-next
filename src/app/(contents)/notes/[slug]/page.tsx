@@ -1,6 +1,6 @@
-import { NoteArticle } from "@/app/(contents)/notes/_components/note-article";
-import { NoteArticleHeader } from "@/app/(contents)/notes/_components/note-article-header";
-import { NoteArticleToc } from "@/app/(contents)/notes/_components/note-article-toc";
+import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
+import { NoteContentHeader } from "@/app/(contents)/notes/_components/note-content-header";
+import { NoteContentToc } from "@/app/(contents)/notes/_components/note-content-toc";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
 import { NoteNavigation } from "@/app/(contents)/notes/_components/note-navigation";
 import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
@@ -28,7 +28,7 @@ import rehypeSlug from "rehype-slug";
 import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
 import remarkGfm from "remark-gfm";
 
-type NotePageProps = {
+type NoteContentProps = {
   params: Promise<{
     slug: string;
   }>;
@@ -42,7 +42,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: NotePageProps) {
+export async function generateMetadata({ params }: NoteContentProps) {
   const { slug } = await params;
 
   const source = await getNoteSource(slug);
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: NotePageProps) {
   };
 }
 
-export default async function NotePage({ params }: NotePageProps) {
+export default async function NoteSlugPage({ params }: NoteContentProps) {
   const { slug } = await params;
 
   const source = await getNoteSource(slug);
@@ -96,21 +96,21 @@ export default async function NotePage({ params }: NotePageProps) {
       <NoteLayout>
         <NoteLayout.Main>
           <ContentArea>
-            <NoteArticle>
-              <NoteArticle.Header>
-                <NoteArticleHeader frontmatter={frontmatter} />
-              </NoteArticle.Header>
+            <NoteContent>
+              <NoteContent.Header>
+                <NoteContentHeader frontmatter={frontmatter} />
+              </NoteContent.Header>
 
-              <NoteArticle.Toc>
-                <NoteArticleToc toc={scope.toc} />
-              </NoteArticle.Toc>
+              <NoteContent.Toc>
+                <NoteContentToc toc={scope.toc} />
+              </NoteContent.Toc>
 
-              <NoteArticle.Content>{content}</NoteArticle.Content>
+              <NoteContent.Content>{content}</NoteContent.Content>
 
-              <NoteArticle.Navigation>
+              <NoteContent.Navigation>
                 <NoteNavigation prev={prev} next={next} />
-              </NoteArticle.Navigation>
-            </NoteArticle>
+              </NoteContent.Navigation>
+            </NoteContent>
           </ContentArea>
         </NoteLayout.Main>
 
