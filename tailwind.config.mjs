@@ -21,7 +21,7 @@ const config = {
               lineHeight: "1.4",
             },
             h2: {
-              borderBottom: `1px solid ${theme("colors.gray.300")}`,
+              borderBottom: `1px solid ${theme("colors.zinc.300")}`,
             },
             a: {
               color: theme("colors.cyan.600"),
