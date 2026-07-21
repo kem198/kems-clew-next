@@ -12,16 +12,16 @@ import { NavigationArea } from "@/components/shared/navigation-area";
 import { SidebarArea } from "@/components/shared/sidebar-area";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
+import { SITE_NAME, SITE_URL } from "@/constants/site";
 import { rehypePrettyCodeOptions } from "@/lib/rehype-pretty-code";
-import { withSiteName } from "@/lib/seo";
 import type { NoteFrontmatter } from "@/types/note";
 import {
   getNotes,
   getNoteSource,
   getPrevNextNote,
 } from "@/utils/server/notes.server";
+import { Metadata } from "next";
 import { evaluate } from "next-mdx-remote-client/rsc";
-import { getFrontmatter } from "next-mdx-remote-client/utils";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
@@ -41,14 +41,51 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: NoteContentProps) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const { slug } = await params;
 
-  const source = await getNoteSource(slug);
-  const { frontmatter } = getFrontmatter<NoteFrontmatter>(source);
+  const notes = await getNotes();
+  const note = notes.find((note) => note.slug === slug);
+
+  if (!note) {
+    return {};
+  }
+
+  const title = note.frontmatter.title;
+  const description = note.preview;
+  const url = `${SITE_URL}/notes/${slug}`;
 
   return {
-    title: withSiteName(frontmatter?.title ?? slug),
+    title,
+    description,
+
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: SITE_NAME,
+      locale: "ja_JP",
+      type: "article",
+      images: [
+        {
+          url: "/assets/icons/kems-clew-512x512.png",
+          width: 512,
+          height: 512,
+          alt: title,
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary",
+      title,
+      description,
+      images: ["/assets/icons/kems-clew-512x512.png"],
+    },
   };
 }
 
