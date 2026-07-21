@@ -1,12 +1,13 @@
 import { AppFooter } from "@/components/layout/app-footer";
 import { AppHeader } from "@/components/layout/app-header";
 import { notoSansJp } from "@/constants/fonts";
-import { SITE_DESCRIPTION, SITE_NAME } from "@/constants/site";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/constants/site";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: SITE_NAME,
   description: SITE_DESCRIPTION,
 
