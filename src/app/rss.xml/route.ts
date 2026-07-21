@@ -1,6 +1,8 @@
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/constants/site";
 import { getNotes, getSortedNotes } from "@/utils/server/notes.server";
 
+export const dynamic = "force-static";
+
 export async function GET() {
   const notes = getSortedNotes(await getNotes(), "desc");
 
