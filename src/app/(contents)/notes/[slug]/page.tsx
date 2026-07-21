@@ -101,15 +101,15 @@ export default async function NoteSlugPage({ params }: NoteContentProps) {
                 <NoteContentHeader frontmatter={frontmatter} />
               </NoteContent.Header>
 
-              <NoteContent.Toc>
+              <NoteContent.Navigation>
                 <NoteContentToc toc={scope.toc} />
-              </NoteContent.Toc>
+              </NoteContent.Navigation>
 
               <NoteContent.Content>{content}</NoteContent.Content>
 
-              <NoteContent.Navigation>
+              <NoteContent.Footer>
                 <NoteNavigation prev={prev} next={next} />
-              </NoteContent.Navigation>
+              </NoteContent.Footer>
             </NoteContent>
           </ContentArea>
         </NoteLayout.Main>
