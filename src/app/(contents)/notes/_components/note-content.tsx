@@ -1,12 +1,12 @@
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
-export type NoteArticleProps = {
+export type NoteContentProps = {
   children: ReactNode;
   className?: string;
 };
 
-type NoteArticleSectionProps = {
+type NoteContentSectionProps = {
   children: ReactNode;
   className?: string;
 };
@@ -16,21 +16,21 @@ type NoteArticleSectionProps = {
  *
  * 使用例:
  *
- * <NoteArticle>
- *   <NoteArticle.Header>
+ * <NoteContent>
+ *   <NoteContent.Header>
  *     ...
- *   </NoteArticle.Header>
+ *   </NoteContent.Header>
  *
- *   <NoteArticle.Content>
+ *   <NoteContent.Content>
  *     ...
- *   </NoteArticle.Content>
+ *   </NoteContent.Content>
  *
- *   <NoteArticle.Navigation>
+ *   <NoteContent.Navigation>
  *     ...
- *   </NoteArticle.Navigation>
- * </NoteArticle>
+ *   </NoteContent.Navigation>
+ * </NoteContent>
  */
-function NoteArticle({ children, className }: NoteArticleProps) {
+function NoteContent({ children, className }: NoteContentProps) {
   return (
     <article className={cn("flex flex-col gap-8", className)}>
       {children}
@@ -41,7 +41,7 @@ function NoteArticle({ children, className }: NoteArticleProps) {
 /**
  * 記事ヘッダー領域
  */
-function Header({ children, className }: NoteArticleSectionProps) {
+function Header({ children, className }: NoteContentSectionProps) {
   return (
     <header className={cn("flex flex-col gap-4", className)}>{children}</header>
   );
@@ -50,29 +50,29 @@ function Header({ children, className }: NoteArticleSectionProps) {
 /**
  * 記事内 TOC 表示領域
  */
-function Toc({ children, className }: NoteArticleSectionProps) {
+function Toc({ children, className }: NoteContentSectionProps) {
   return <div className={cn("md:hidden", className)}>{children}</div>;
 }
 
 /**
  * 記事本文領域
  */
-function Content({ children, className }: NoteArticleSectionProps) {
+function Content({ children, className }: NoteContentSectionProps) {
   return <div className={cn(className)}>{children}</div>;
 }
 
 /**
  * 記事ナビゲーション領域
  */
-function Navigation({ children, className }: NoteArticleSectionProps) {
+function Navigation({ children, className }: NoteContentSectionProps) {
   return (
     <section className={cn("not-prose mt-24", className)}>{children}</section>
   );
 }
 
-NoteArticle.Header = Header;
-NoteArticle.Toc = Toc;
-NoteArticle.Content = Content;
-NoteArticle.Navigation = Navigation;
+NoteContent.Header = Header;
+NoteContent.Toc = Toc;
+NoteContent.Content = Content;
+NoteContent.Navigation = Navigation;
 
-export { NoteArticle };
+export { NoteContent };

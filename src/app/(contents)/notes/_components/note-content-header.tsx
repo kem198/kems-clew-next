@@ -3,7 +3,7 @@ import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import type { NoteFrontmatter } from "@/types/note";
 
-type NoteArticleHeaderProps = {
+type NoteContentHeaderProps = {
   frontmatter: Partial<NoteFrontmatter>;
 };
 
@@ -16,7 +16,7 @@ type NoteArticleHeaderProps = {
  * - タイトル
  * - タグ
  */
-export function NoteArticleHeader({ frontmatter }: NoteArticleHeaderProps) {
+export function NoteContentHeader({ frontmatter }: NoteContentHeaderProps) {
   return (
     <div className="flex flex-col gap-4">
       <ul className="not-prose flex justify-end gap-2 text-sm text-zinc-400">
