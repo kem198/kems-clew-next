@@ -9,6 +9,30 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: SITE_NAME,
   description: SITE_DESCRIPTION,
+
+  openGraph: {
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    siteName: SITE_NAME,
+    locale: "ja_JP",
+    type: "website",
+    images: [
+      {
+        url: "/assets/icons/kems-clew-512x512.png",
+        width: 512,
+        height: 512,
+        alt: SITE_NAME,
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    images: ["/assets/icons/kems-clew-512x512.png"],
+  },
+
   alternates: {
     types: {
       "application/rss+xml": [
