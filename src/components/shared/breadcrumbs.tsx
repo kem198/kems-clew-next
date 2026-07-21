@@ -31,7 +31,7 @@ export function Breadcrumbs({ segments, title }: BreadcrumbsProps) {
 
               <BreadcrumbItem>
                 {isLast ? (
-                  <span className="text-stone-400">{segment.label}</span>
+                  <span className="text-zinc-400">{segment.label}</span>
                 ) : (
                   <BreadcrumbLink
                     href={`/${segments
@@ -52,7 +52,7 @@ export function Breadcrumbs({ segments, title }: BreadcrumbsProps) {
             <BreadcrumbSeparator />
 
             <BreadcrumbItem>
-              <span className="text-stone-400">{title}</span>
+              <span className="text-zinc-400">{title}</span>
             </BreadcrumbItem>
           </>
         ) : null}
