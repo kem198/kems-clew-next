@@ -5,6 +5,7 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
+  BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import type { BreadcrumbSegment } from "@/constants/breadcrumbs";
@@ -31,7 +32,7 @@ export function Breadcrumbs({ segments, current: current }: BreadcrumbsProps) {
               <BreadcrumbSeparator />
               <BreadcrumbItem>
                 {isLast ? (
-                  <span className="text-zinc-400">{segment.label}</span>
+                  <BreadcrumbPage>{segment.label}</BreadcrumbPage>
                 ) : (
                   <BreadcrumbLink
                     render={
@@ -55,7 +56,7 @@ export function Breadcrumbs({ segments, current: current }: BreadcrumbsProps) {
           <>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <span className="text-zinc-400">{current}</span>
+              <BreadcrumbPage>{current}</BreadcrumbPage>
             </BreadcrumbItem>
           </>
         ) : null}
