@@ -35,9 +35,9 @@ export default async function NotesPage() {
           <ContentArea>
             <h1>Notes</h1>
 
-            <NoteContent.Toc className="mb-8">
+            <NoteContent.Navigation className="mb-8">
               <NoteContentTagCloud tags={tags} />
-            </NoteContent.Toc>
+            </NoteContent.Navigation>
 
             <ul className="not-prose flex flex-col gap-12">
               {notes.map((note) => (
