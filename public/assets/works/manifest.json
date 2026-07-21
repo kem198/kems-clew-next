@@ -363,5 +363,65 @@
     "src": "/assets/works/20240209_todays_target.jpg",
     "width": 2242,
     "height": 2533
+  },
+  "20260131-kiritan": {
+    "src": "/assets/works/20260131-kiritan.webp",
+    "width": 1584,
+    "height": 2397
+  },
+  "20260302-aichang01": {
+    "src": "/assets/works/20260302-aichang01.webp",
+    "width": 1697,
+    "height": 2400
+  },
+  "20260313-aichang02": {
+    "src": "/assets/works/20260313-aichang02.webp",
+    "width": 1697,
+    "height": 2400
+  },
+  "20260313-aichang03": {
+    "src": "/assets/works/20260313-aichang03.webp",
+    "width": 1576,
+    "height": 2400
+  },
+  "20260318_kanikani": {
+    "src": "/assets/works/20260318_kanikani.webp",
+    "width": 1576,
+    "height": 2400
+  },
+  "20260515-runaria": {
+    "src": "/assets/works/20260515-runaria.webp",
+    "width": 1748,
+    "height": 2400
+  },
+  "20260527-lilleroll01": {
+    "src": "/assets/works/20260527-lilleroll01.webp",
+    "width": 1800,
+    "height": 1800
+  },
+  "20260527-lilleroll02": {
+    "src": "/assets/works/20260527-lilleroll02.webp",
+    "width": 1576,
+    "height": 2400
+  },
+  "20260604-darkhunter": {
+    "src": "/assets/works/20260604-darkhunter.webp",
+    "width": 1800,
+    "height": 1458
+  },
+  "20260610-swordman": {
+    "src": "/assets/works/20260610-swordman.webp",
+    "width": 1697,
+    "height": 2400
+  },
+  "20260710-yunyun": {
+    "src": "/assets/works/20260710-yunyun.webp",
+    "width": 1800,
+    "height": 2399
+  },
+  "20260718-shirusumayu": {
+    "src": "/assets/works/20260718-shirusumayu.webp",
+    "width": 1800,
+    "height": 2400
   }
 }
