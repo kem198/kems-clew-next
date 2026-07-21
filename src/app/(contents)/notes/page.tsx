@@ -19,8 +19,7 @@ export const metadata = {
 };
 
 export default async function NotesPage() {
-  const allNotes = await getNotes();
-  const notes = getSortedNotes(allNotes, "desc");
+  const notes = getSortedNotes(await getNotes(), "desc");
   const tags = getNoteTags(notes);
 
   return (
