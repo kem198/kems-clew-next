@@ -1,7 +1,7 @@
 ---
 title: About
-date: 2022-11-24 09:00:00
-lastmod: 2026-07-09 22:43:55
+date: 2022-11-24
+lastmod: 2026-07-21
 description:
 ---
 
