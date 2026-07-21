@@ -35,6 +35,8 @@ export type ImageGeneratorConfig = {
   };
 
   keepOriginalIfLarger?: boolean;
+
+  force?: boolean;
 };
 
 type ManifestItem = {
@@ -165,11 +167,52 @@ export async function generateImages(config: ImageGeneratorConfig) {
 
     const outputOriginal = join(outputDir, fileName);
 
+    let selectedPath: string | undefined;
+
+    if (await exists(outputWebp)) {
+      selectedPath = outputWebp;
+    } else if (await exists(outputOriginal)) {
+      selectedPath = outputOriginal;
+    }
+
+    const inputStat = await stat(input);
+
+    totalInput += inputStat.size;
+
+    if (!config.force && selectedPath) {
+      const outputStat = await stat(selectedPath);
+      const outputMeta = await sharp(selectedPath).metadata();
+
+      const manifestKey = noOpt
+        ? relativeFile
+            .replace(extname(relativeFile), "")
+            .replace(/\.noopt$/i, "")
+        : relativeFile.replace(extname(relativeFile), "");
+
+      const src = noOpt
+        ? `/assets/${config.name}/${relativeFile.replace(
+            /\.noopt(?=\.[^.]+$)/i,
+            "",
+          )}`
+        : `/assets/${config.name}/${relativeFile.replace(
+            extname(relativeFile),
+            extname(selectedPath),
+          )}`;
+
+      manifest[manifestKey] = {
+        src,
+        width: outputMeta.width ?? config.resize.width,
+        height: outputMeta.height ?? config.resize.height,
+      };
+
+      totalOutput += outputStat.size;
+
+      console.log(`[SKIP] ${relativeFile}`);
+
+      continue;
+    }
+
     try {
-      const inputStat = await stat(input);
-
-      totalInput += inputStat.size;
-
       if (noOpt) {
         await copyFile(input, outputOriginal);
 
