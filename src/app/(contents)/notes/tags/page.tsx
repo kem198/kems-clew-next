@@ -14,7 +14,7 @@ export default async function NotesTagsPage() {
   return (
     <>
       <NavigationArea>
-        <Breadcrumbs segments={[BreadcrumbSegment.notes]} title="Tags" />
+        <Breadcrumbs segments={[BreadcrumbSegment.notes]} current="Tags" />
       </NavigationArea>
 
       <NoteLayout>
