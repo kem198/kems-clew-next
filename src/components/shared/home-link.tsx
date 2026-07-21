@@ -21,11 +21,11 @@ export function HomeLink({
         className={cn("text-primary hover:text-primary/75 w-28", className)}
         {...props}
       >
-        <h2 className="flex w-full items-center gap-1 border-b border-gray-800 pb-1 text-2xl font-black">
+        <h2 className="flex w-full items-center gap-1 border-b border-zinc-800 pb-1 text-2xl font-black">
           {children} <ChevronRightIcon />
         </h2>
       </Link>
-      {description && <p className="text-sm text-gray-500">{description}</p>}
+      {description && <p className="text-sm text-zinc-500">{description}</p>}
     </div>
   );
 }
