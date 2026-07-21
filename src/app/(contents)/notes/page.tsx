@@ -37,11 +37,10 @@ export default async function NotesPage() {
             <NoteContent>
               <NoteContent.Header>
                 <NoteH1>Notes</NoteH1>
+                <NoteContent.Navigation>
+                  <NoteContentTagCloud tags={tags} />
+                </NoteContent.Navigation>
               </NoteContent.Header>
-
-              <NoteContent.Navigation>
-                <NoteContentTagCloud tags={tags} />
-              </NoteContent.Navigation>
 
               <NoteContent.Main>
                 <ul className="not-prose flex flex-col gap-12">
