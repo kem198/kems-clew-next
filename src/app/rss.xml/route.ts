@@ -17,7 +17,10 @@ export async function GET() {
       <link>${url}</link>
       <guid isPermaLink="true">${url}</guid>
       <pubDate>${new Date(date).toUTCString()}</pubDate>
-      <description><![CDATA[${note.preview}]]></description>
+      <description><![CDATA[
+      <img src="${SITE_URL}/assets/icons/kems-clew-512x512.png" alt="${SITE_NAME}" />
+      ${note.preview}
+      ]]></description>
     </item>`;
     })
     .join("");
