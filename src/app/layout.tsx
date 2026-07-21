@@ -1,14 +1,24 @@
 import { AppFooter } from "@/components/layout/app-footer";
 import { AppHeader } from "@/components/layout/app-header";
 import { notoSansJp } from "@/constants/fonts";
-import { SITE_NAME } from "@/constants/site";
+import { SITE_DESCRIPTION, SITE_NAME } from "@/constants/site";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: SITE_NAME,
-  description: "@KeM198 のホームページ。",
+  description: SITE_DESCRIPTION,
+  alternates: {
+    types: {
+      "application/rss+xml": [
+        {
+          url: "/rss.xml",
+          title: `${SITE_NAME} RSS Feed`,
+        },
+      ],
+    },
+  },
 };
 
 export default function RootLayout({
