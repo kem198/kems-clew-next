@@ -1,6 +1,8 @@
 import { join } from "node:path";
 import { generateImages } from "./lib/image-generator";
 
+const force = process.argv.includes("--force");
+
 generateImages({
   name: "notes",
 
@@ -21,4 +23,6 @@ generateImages({
   },
 
   keepOriginalIfLarger: false,
+
+  force,
 });
