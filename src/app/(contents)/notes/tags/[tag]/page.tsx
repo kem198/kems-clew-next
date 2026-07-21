@@ -7,7 +7,11 @@ import ContentArea from "@/components/shared/content-area";
 import { NavigationArea } from "@/components/shared/navigation-area";
 import { SidebarArea } from "@/components/shared/sidebar-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
-import { getNotes, getNoteTags } from "@/utils/server/notes.server";
+import {
+  getNotes,
+  getNoteTags,
+  getSortedNotes,
+} from "@/utils/server/notes.server";
 
 type NoteTagPageProps = {
   params: Promise<{
@@ -26,8 +30,7 @@ export async function generateStaticParams() {
 
 export default async function NoteTagPage({ params }: NoteTagPageProps) {
   const { tag } = await params;
-
-  const notes = await getNotes();
+  const notes = getSortedNotes(await getNotes(), "desc");
 
   const filteredNotes = notes.filter((note) =>
     note.frontmatter.tags?.includes(tag),
