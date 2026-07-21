@@ -1,6 +1,6 @@
-import { NoteArticle } from "@/app/(contents)/notes/_components/note-article";
-import { NoteArticleHeader } from "@/app/(contents)/notes/_components/note-article-header";
+import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
+import { NoteSlugHeader } from "@/app/(contents)/notes/_components/note-slug-header";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import ContentArea from "@/components/shared/content-area";
 import { NavigationArea } from "@/components/shared/navigation-area";
@@ -34,13 +34,13 @@ export default async function Page() {
       <NoteLayout>
         <NoteLayout.Main>
           <ContentArea>
-            <NoteArticle>
-              <NoteArticle.Header>
-                <NoteArticleHeader frontmatter={frontmatter} />
-              </NoteArticle.Header>
+            <NoteContent>
+              <NoteContent.Header>
+                <NoteSlugHeader frontmatter={frontmatter} />
+              </NoteContent.Header>
 
-              <NoteArticle.Content>{content}</NoteArticle.Content>
-            </NoteArticle>
+              <NoteContent.Main>{content}</NoteContent.Main>
+            </NoteContent>
           </ContentArea>
         </NoteLayout.Main>
       </NoteLayout>

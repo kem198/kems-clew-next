@@ -1,14 +1,14 @@
 import { NoteToc } from "@/app/(contents)/notes/_components/note-toc";
 import type { TocItem } from "remark-flexible-toc";
 
-type NoteArticleTocProps = {
+type NoteContentTocProps = {
   toc?: TocItem[];
 };
 
 /**
  * モバイル用記事 TOC
  */
-export function NoteArticleToc({ toc }: NoteArticleTocProps) {
+export function NoteContentToc({ toc }: NoteContentTocProps) {
   if (!toc?.length) {
     return null;
   }

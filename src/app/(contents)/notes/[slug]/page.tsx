@@ -1,9 +1,9 @@
-import { NoteArticle } from "@/app/(contents)/notes/_components/note-article";
-import { NoteArticleHeader } from "@/app/(contents)/notes/_components/note-article-header";
-import { NoteArticleToc } from "@/app/(contents)/notes/_components/note-article-toc";
+import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
+import { NoteContentToc } from "@/app/(contents)/notes/_components/note-content-toc";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
-import { NoteNavigation } from "@/app/(contents)/notes/_components/note-navigation";
+import { NotePager } from "@/app/(contents)/notes/_components/note-pager";
 import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
+import { NoteSlugHeader } from "@/app/(contents)/notes/_components/note-slug-header";
 import { NoteToc } from "@/app/(contents)/notes/_components/note-toc";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { CodeBlock } from "@/components/shared/code-block";
@@ -18,7 +18,6 @@ import type { NoteFrontmatter } from "@/types/note";
 import {
   getNotes,
   getNoteSource,
-  getNoteTags,
   getPrevNextNote,
 } from "@/utils/server/notes.server";
 import { evaluate } from "next-mdx-remote-client/rsc";
@@ -28,7 +27,7 @@ import rehypeSlug from "rehype-slug";
 import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
 import remarkGfm from "remark-gfm";
 
-type NotePageProps = {
+type NoteContentProps = {
   params: Promise<{
     slug: string;
   }>;
@@ -42,7 +41,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: NotePageProps) {
+export async function generateMetadata({ params }: NoteContentProps) {
   const { slug } = await params;
 
   const source = await getNoteSource(slug);
@@ -53,15 +52,13 @@ export async function generateMetadata({ params }: NotePageProps) {
   };
 }
 
-export default async function NotePage({ params }: NotePageProps) {
+export default async function NoteSlugPage({ params }: NoteContentProps) {
   const { slug } = await params;
 
   const source = await getNoteSource(slug);
 
   const notes = await getNotes();
   const { prev, next } = getPrevNextNote(notes, slug);
-
-  const tags = getNoteTags(notes);
 
   const { content, frontmatter, scope } = await evaluate<
     NoteFrontmatter,
@@ -96,21 +93,20 @@ export default async function NotePage({ params }: NotePageProps) {
       <NoteLayout>
         <NoteLayout.Main>
           <ContentArea>
-            <NoteArticle>
-              <NoteArticle.Header>
-                <NoteArticleHeader frontmatter={frontmatter} />
-              </NoteArticle.Header>
+            <NoteContent>
+              <NoteContent.Header>
+                <NoteSlugHeader frontmatter={frontmatter} />
+                <NoteContent.Navigation>
+                  <NoteContentToc toc={scope.toc} />
+                </NoteContent.Navigation>
+              </NoteContent.Header>
 
-              <NoteArticle.Toc>
-                <NoteArticleToc toc={scope.toc} />
-              </NoteArticle.Toc>
+              <NoteContent.Main>{content}</NoteContent.Main>
 
-              <NoteArticle.Content>{content}</NoteArticle.Content>
-
-              <NoteArticle.Navigation>
-                <NoteNavigation prev={prev} next={next} />
-              </NoteArticle.Navigation>
-            </NoteArticle>
+              <NoteContent.Footer>
+                <NotePager prev={prev} next={next} />
+              </NoteContent.Footer>
+            </NoteContent>
           </ContentArea>
         </NoteLayout.Main>
 
