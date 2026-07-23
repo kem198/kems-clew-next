@@ -429,20 +429,10 @@
     "width": 317,
     "height": 317
   },
-  "20260714_140838": {
-    "src": "/assets/works/20260714_140838.webp",
-    "width": 317,
-    "height": 317
-  },
   "20260714_163032": {
     "src": "/assets/works/20260714_163032.webp",
     "width": 317,
     "height": 317
-  },
-  "20260716_230355": {
-    "src": "/assets/works/20260716_230355.webp",
-    "width": 300,
-    "height": 300
   },
   "20260717_020823": {
     "src": "/assets/works/20260717_020823.webp",
@@ -454,9 +444,24 @@
     "width": 1800,
     "height": 2400
   },
+  "20260718-shirusumayux": {
+    "src": "/assets/works/20260718-shirusumayux.webp",
+    "width": 317,
+    "height": 317
+  },
+  "20260718-shirusumayuy": {
+    "src": "/assets/works/20260718-shirusumayuy.webp",
+    "width": 300,
+    "height": 300
+  },
   "20260722_042500": {
     "src": "/assets/works/20260722_042500.webp",
     "width": 300,
     "height": 300
+  },
+  "20260723-paradisered": {
+    "src": "/assets/works/20260723-paradisered.webp",
+    "width": 1800,
+    "height": 2400
   }
 }
