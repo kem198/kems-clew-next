@@ -43,8 +43,8 @@ description:
 
 - [React](https://react.dev/)
 - [shadcn/ui](https://ui.shadcn.com/)
-- [Yet Another React Lightbox](https://yet-another-react-lightbox.com/)
 - [React Photo Album](https://react-photo-album.com/)
+- [Yet Another React Lightbox](https://yet-another-react-lightbox.com/)
 
 ### スタイリング
 
