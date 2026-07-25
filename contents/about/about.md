@@ -11,7 +11,7 @@ description:
 
 当サイトのソースコードは GitHub にて公開しています。
 
-- [kenkenpa198/kems-clew-next](https://github.com/kenkenpa198/kems-clew-next)
+- [kem198/kems-clew-next](https://github.com/kem198/kems-clew-next)
 
 ## 免責事項
 
@@ -29,7 +29,7 @@ description:
 
 これらの制作物の著作権に関しては、作者である KeM198 と版権元の企業・個人両者に帰属します。
 
-## 使用している技術・素材
+## 技術スタック・素材
 
 ### フレームワーク
 
@@ -71,9 +71,9 @@ description:
 
 - [Vercel](https://vercel.com/)
 
-### ドメイン取得
+### ドメイン取得 / DNS 管理
 
-- [Xserverドメイン](https://www.xdomain.ne.jp/)
+- [Xserver Domain](https://www.xdomain.ne.jp/)
 
 ---
 
