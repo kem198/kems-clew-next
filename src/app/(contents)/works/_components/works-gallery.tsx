@@ -10,6 +10,7 @@ import PhotoAlbum from "react-photo-album";
 import "react-photo-album/rows.css";
 import "react-photo-album/styles.css";
 import Lightbox from "yet-another-react-lightbox";
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 
@@ -129,7 +130,7 @@ function WorksLightbox({ index, slides, onClose }: WorksLightboxProps) {
       controller={{
         closeOnBackdropClick: true,
       }}
-      plugins={[Zoom]}
+      plugins={[Zoom, Fullscreen]}
     />
   );
 }
