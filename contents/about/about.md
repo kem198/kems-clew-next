@@ -11,7 +11,7 @@ description:
 
 当サイトのソースコードは GitHub にて公開しています。
 
-- [kenkenpa198/kems-clew-next](https://github.com/kenkenpa198/kems-clew-next)
+- [kem198/kems-clew-next](https://github.com/kem198/kems-clew-next)
 
 ## 免責事項
 
