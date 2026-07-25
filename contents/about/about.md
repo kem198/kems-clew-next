@@ -71,9 +71,9 @@ description:
 
 - [Vercel](https://vercel.com/)
 
-### ドメイン取得
+### ドメイン取得 / DNS 管理
 
-- [Xserverドメイン](https://www.xdomain.ne.jp/)
+- [Xserver Domain](https://www.xdomain.ne.jp/)
 
 ---
 
