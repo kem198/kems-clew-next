@@ -1,6 +1,6 @@
 import GitHubIcon from "@/components/shared/icon";
 import { cn } from "@/lib/utils";
-import { ChevronUpIcon, PaletteIcon, RssIcon } from "lucide-react";
+import { ChevronUpIcon, HomeIcon, RssIcon } from "lucide-react";
 import Link from "next/link";
 import * as React from "react";
 
@@ -12,13 +12,13 @@ export function AppFooter({ className, ...props }: AppFooterProps) {
       <div className="relative isolate z-50 flex flex-col items-center gap-8">
         <ul className="flex gap-4">
           <li>
-            <Link href="https://github.com/kem198" aria-label="GitHub">
-              <GitHubIcon className="h-6 w-6" />
+            <Link href="https://kem198.net" aria-label="Home">
+              <HomeIcon className="h-6 w-6" />
             </Link>
           </li>
           <li>
-            <Link href="https://www.pixiv.net/users/7791923" aria-label="Pixiv">
-              <PaletteIcon className="h-6 w-6" />
+            <Link href="https://github.com/kem198" aria-label="GitHub">
+              <GitHubIcon className="h-6 w-6" />
             </Link>
           </li>
           <li>
