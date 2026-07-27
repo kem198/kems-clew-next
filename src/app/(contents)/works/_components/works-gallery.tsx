@@ -38,7 +38,7 @@ function GroupToggle({ groupByYear, onChange }: GroupToggleProps) {
     >
       <div className="flex items-center gap-2">
         <RadioGroupItem value="all" id="group-all" />
-        <Label htmlFor="group-all">すべて</Label>
+        <Label htmlFor="group-all">未分類</Label>
       </div>
 
       <div className="flex items-center gap-2">
