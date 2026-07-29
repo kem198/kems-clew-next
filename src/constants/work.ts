@@ -26,7 +26,6 @@ export const WORK_TAGS_BY_SLUG: Partial<Record<WorkSlug, WorkTag[]>> = {
   "20200830_kagayaku_zelda": ["fanart"],
   "20201006_my_kenk": ["fanart"],
   "20201006_my_modane": ["fanart"],
-  "20201203_discordbot_mdn_tube": ["engineering"],
   "20201224_modane_sakura": ["original"],
   "20201224_modane_wallpaper": ["original"],
 
