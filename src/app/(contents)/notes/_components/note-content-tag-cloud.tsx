@@ -19,7 +19,7 @@ export function NoteContentTagCloud({
   }
 
   return (
-    <div className={cn(`bg-zinc-100 p-4`, className)}>
+    <div className={cn(`rounded-md bg-zinc-100 p-4`, className)}>
       <TagCloud tags={tags} />
     </div>
   );
