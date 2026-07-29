@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { WORK_TAGS } from "@/constants/work";
@@ -172,6 +173,11 @@ export function WorksGallery({ items }: WorksGalleryProps) {
   const [slides, setSlides] = useState<AlbumPhoto[]>([]);
   const [selectedTag, setSelectedTag] = useState<WorkTag | null>(null);
 
+  const resetFilter = () => {
+    setSelectedTag(null);
+    setGroupByYear(false);
+  };
+
   const filteredItems = useMemo(() => {
     if (!selectedTag) {
       return items;
@@ -208,10 +214,21 @@ export function WorksGallery({ items }: WorksGalleryProps) {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="not-prose flex flex-col gap-4 rounded-md bg-zinc-100 p-4 font-extralight">
-        <GroupToggle groupByYear={groupByYear} onChange={setGroupByYear} />
-        <hr />
-        <TagFilter selectedTag={selectedTag} onChange={setSelectedTag} />
+      <div className="not-prose flex flex-col gap-8 rounded-md bg-zinc-100 p-4">
+        <div className="flex flex-col gap-4">
+          <GroupToggle groupByYear={groupByYear} onChange={setGroupByYear} />
+          <hr />
+          <TagFilter selectedTag={selectedTag} onChange={setSelectedTag} />
+        </div>
+
+        <Button
+          type="button"
+          variant="outline"
+          className="w-fit border-zinc-200"
+          onClick={resetFilter}
+        >
+          リセット
+        </Button>
       </div>
 
       {!groupByYear ? (
