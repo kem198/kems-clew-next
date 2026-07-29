@@ -6,6 +6,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { WORK_TAGS } from "@/constants/work";
 import { mapItemsToPhotos } from "@/lib/works";
 import type { AlbumPhoto, WorkItem, WorkTag } from "@/types/work";
+import { FilterIcon } from "lucide-react";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import PhotoAlbum from "react-photo-album";
@@ -214,22 +215,26 @@ export function WorksGallery({ items }: WorksGalleryProps) {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="not-prose flex flex-col gap-8 rounded-md bg-zinc-100 p-4">
-        <div className="flex flex-col gap-4">
-          <GroupToggle groupByYear={groupByYear} onChange={setGroupByYear} />
-          <hr />
-          <TagFilter selectedTag={selectedTag} onChange={setSelectedTag} />
-        </div>
+      <GroupToggle groupByYear={groupByYear} onChange={setGroupByYear} />
 
-        <Button
-          type="button"
-          variant="outline"
-          className="w-fit border-zinc-200"
-          onClick={resetFilter}
-        >
-          リセット
-        </Button>
-      </div>
+      <details className="flex flex-col rounded-md bg-zinc-100 p-4">
+        <summary className="flex cursor-pointer list-none items-center gap-1 font-bold">
+          <FilterIcon height={16} width={16} /> 絞り込み
+        </summary>
+
+        <div className="not-prose flex flex-col gap-4 p-4 pb-0">
+          <TagFilter selectedTag={selectedTag} onChange={setSelectedTag} />
+
+          <Button
+            type="button"
+            variant="outline"
+            className="w-fit border-zinc-200"
+            onClick={resetFilter}
+          >
+            リセット
+          </Button>
+        </div>
+      </details>
 
       {!groupByYear ? (
         <WorksAlbum
