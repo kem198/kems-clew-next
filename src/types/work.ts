@@ -1,3 +1,12 @@
+export type WorkTag =
+  | "engineering"
+  | "original"
+  | "fanart"
+  | "parody"
+  | "flipnote-studio"
+  | "misc"
+  | "axnos-paint";
+
 export type WorkItem = {
   slug: string;
   title: string;
@@ -5,6 +14,7 @@ export type WorkItem = {
   src: string;
   width: number;
   height: number;
+  tags: WorkTag[];
 };
 
 export type AlbumPhoto = {

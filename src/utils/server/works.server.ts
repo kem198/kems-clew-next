@@ -1,3 +1,4 @@
+import { WORK_TAGS_BY_SLUG } from "@/constants/work";
 import type { WorkItem } from "@/types/work";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
@@ -37,6 +38,7 @@ export async function getWorks(): Promise<WorkItem[]> {
       src: entry.src,
       width: entry.width,
       height: entry.height,
+      tags: WORK_TAGS_BY_SLUG[slug] ?? [],
     };
   });
 
