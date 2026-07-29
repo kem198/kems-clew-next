@@ -32,15 +32,15 @@ function GroupToggle({ groupByYear, onChange }: GroupToggleProps) {
     <RadioGroup
       value={groupByYear ? "year" : "all"}
       onValueChange={(value) => onChange(value === "year")}
-      className="flex items-center gap-6"
+      className="not-prose flex items-center gap-6"
     >
       <div className="flex items-center gap-2">
-        <RadioGroupItem value="all" id="group-all" />
+        <RadioGroupItem value="all" id="group-all" className="bg-zinc-50" />
         <Label htmlFor="group-all">未分類</Label>
       </div>
 
       <div className="flex items-center gap-2">
-        <RadioGroupItem value="year" id="group-year" />
+        <RadioGroupItem value="year" id="group-year" className="bg-zinc-50" />
         <Label htmlFor="group-year">年度ごとに表示</Label>
       </div>
     </RadioGroup>
@@ -62,13 +62,13 @@ function TagFilter({ selectedTag, onChange }: TagFilterProps) {
       className="flex flex-wrap gap-4"
     >
       <div className="flex items-center gap-2">
-        <RadioGroupItem value="" id="tag-all" />
+        <RadioGroupItem value="" id="tag-all" className="bg-zinc-50" />
         <Label htmlFor="tag-all">すべて</Label>
       </div>
 
       {WORK_TAGS.map((tag) => (
         <div key={tag.id} className="flex items-center gap-2">
-          <RadioGroupItem value={tag.id} id={tag.id} />
+          <RadioGroupItem value={tag.id} id={tag.id} className="bg-zinc-50" />
           <Label htmlFor={tag.id}>{tag.label}</Label>
         </div>
       ))}
@@ -208,9 +208,11 @@ export function WorksGallery({ items }: WorksGalleryProps) {
 
   return (
     <div className="flex flex-col gap-8">
-      <GroupToggle groupByYear={groupByYear} onChange={setGroupByYear} />
-
-      <TagFilter selectedTag={selectedTag} onChange={setSelectedTag} />
+      <div className="not-prose flex flex-col gap-4 rounded-md bg-zinc-100 p-4 font-extralight">
+        <GroupToggle groupByYear={groupByYear} onChange={setGroupByYear} />
+        <hr />
+        <TagFilter selectedTag={selectedTag} onChange={setSelectedTag} />
+      </div>
 
       {!groupByYear ? (
         <WorksAlbum
