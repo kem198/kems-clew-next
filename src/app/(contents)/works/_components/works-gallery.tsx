@@ -176,7 +176,7 @@ export function WorksGallery({ items }: WorksGalleryProps) {
 
   const resetFilter = () => {
     setSelectedTag(null);
-    setGroupByYear(false);
+    // setGroupByYear(false);
   };
 
   const filteredItems = useMemo(() => {
