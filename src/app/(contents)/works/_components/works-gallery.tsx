@@ -13,8 +13,8 @@ import PhotoAlbum from "react-photo-album";
 import "react-photo-album/rows.css";
 import "react-photo-album/styles.css";
 import Lightbox from "yet-another-react-lightbox";
-import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
-import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import { Captions, Fullscreen, Zoom } from "yet-another-react-lightbox/plugins";
+import "yet-another-react-lightbox/plugins/captions.css";
 import "yet-another-react-lightbox/styles.css";
 
 const columns = (containerWidth: number) => {
@@ -155,11 +155,17 @@ function WorksLightbox({ index, slides, onClose }: WorksLightboxProps) {
       close={onClose}
       slides={slides.map((photo) => ({
         src: photo.src,
+        description: [
+          photo.tags?.map((tag) => `#${tag}`).join(" "),
+          `${new Date(photo.date!).getFullYear()}`,
+        ]
+          .filter(Boolean)
+          .join(" | "),
       }))}
       controller={{
         closeOnBackdropClick: true,
       }}
-      plugins={[Zoom, Fullscreen]}
+      plugins={[Zoom, Fullscreen, Captions]}
     />
   );
 }

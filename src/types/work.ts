@@ -26,5 +26,8 @@ export type AlbumPhoto = {
   width: number;
   height: number;
   alt?: string;
+  slug?: string;
+  date?: string;
+  tags?: WorkTag[];
   [key: string]: unknown;
 };
