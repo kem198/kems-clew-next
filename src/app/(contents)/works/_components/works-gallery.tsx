@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { WORK_TAGS } from "@/constants/work";
@@ -180,11 +179,6 @@ export function WorksGallery({ items }: WorksGalleryProps) {
   const [slides, setSlides] = useState<AlbumPhoto[]>([]);
   const [selectedTag, setSelectedTag] = useState<WorkTag | null>(null);
 
-  const resetFilter = () => {
-    setSelectedTag(null);
-    // setGroupByYear(false);
-  };
-
   const filteredItems = useMemo(() => {
     if (!selectedTag) {
       return items;
@@ -228,17 +222,8 @@ export function WorksGallery({ items }: WorksGalleryProps) {
           <FilterIcon height={16} width={16} /> 絞り込み
         </summary>
 
-        <div className="not-prose flex flex-col gap-4 p-4 pb-0">
+        <div className="not-prose flex flex-col gap-4 p-4">
           <TagFilter selectedTag={selectedTag} onChange={setSelectedTag} />
-
-          <Button
-            type="button"
-            variant="outline"
-            className="w-fit border-zinc-200"
-            onClick={resetFilter}
-          >
-            リセット
-          </Button>
         </div>
       </details>
 
