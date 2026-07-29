@@ -1,5 +1,5 @@
 import { WORK_TAGS_BY_SLUG } from "@/constants/work";
-import type { WorkItem } from "@/types/work";
+import type { WorkItem, WorkSlug, WorkTag } from "@/types/work";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
@@ -10,6 +10,10 @@ type ManifestEntry = {
   width: number;
   height: number;
 };
+
+function getWorkTags(slug: string): WorkTag[] {
+  return WORK_TAGS_BY_SLUG[slug as WorkSlug] ?? [];
+}
 
 export async function getWorks(): Promise<WorkItem[]> {
   let manifest: Record<string, ManifestEntry>;
@@ -38,7 +42,7 @@ export async function getWorks(): Promise<WorkItem[]> {
       src: entry.src,
       width: entry.width,
       height: entry.height,
-      tags: WORK_TAGS_BY_SLUG[slug] ?? [],
+      tags: getWorkTags(slug),
     };
   });
 
