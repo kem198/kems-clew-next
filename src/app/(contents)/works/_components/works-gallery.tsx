@@ -14,10 +14,6 @@ import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 
-type WorksGalleryProps = {
-  items: WorkItem[];
-};
-
 const columns = (containerWidth: number) => {
   // if (containerWidth < 640) return 1;
   if (containerWidth < 768) return 2;
@@ -134,6 +130,10 @@ function WorksLightbox({ index, slides, onClose }: WorksLightboxProps) {
     />
   );
 }
+
+type WorksGalleryProps = {
+  items: WorkItem[];
+};
 
 export function WorksGallery({ items }: WorksGalleryProps) {
   const [groupByYear, setGroupByYear] = useState(false);
