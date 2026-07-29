@@ -1,6 +1,6 @@
-import { WorkTag } from "@/types/work";
+import { WorkSlug, WorkTag } from "@/types/work";
 
-export const WORK_TAGS_BY_SLUG: Record<string, WorkTag[]> = {
+export const WORK_TAGS_BY_SLUG: Partial<Record<WorkSlug, WorkTag[]>> = {
   "20130724_ikaku": ["fanart", "flipnote-studio"],
   "20130724_lagia": ["fanart", "flipnote-studio"],
   "20130724_mismagius": ["fanart", "flipnote-studio"],
