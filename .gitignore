@@ -41,4 +41,4 @@ yarn-error.log*
 next-env.d.ts
 
 # ignore working source images
-assets_src/
+public_src/
