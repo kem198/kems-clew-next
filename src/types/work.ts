@@ -1,3 +1,7 @@
+import manifest from "@/../public/assets/works/manifest.json";
+
+export type WorkSlug = keyof typeof manifest;
+
 export type WorkTag =
   | "engineering"
   | "original"
