@@ -19,8 +19,8 @@ generateImages({
   ),
 
   resize: {
-    width: 1800,
-    height: 2400,
+    width: 2000,
+    height: 2560,
   },
 
   webp: {
