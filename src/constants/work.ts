@@ -10,7 +10,7 @@ export const WORK_TAGS_BY_SLUG: Partial<Record<WorkSlug, WorkTag[]>> = {
   "20170616_fj": ["fanart"],
 
   "20180103_nid": ["fanart"],
-  "20180427_429": [],
+  "20180427_429": ["fanart"],
   "20180714_swordman": ["fanart"],
 
   "20190119_rkgk_zelda": ["fanart"],
@@ -75,12 +75,12 @@ export const WORK_TAGS_BY_SLUG: Partial<Record<WorkSlug, WorkTag[]>> = {
 
   "20231025_keppare": ["fanart"],
   "20231027_modane_live2d_widget": ["original"],
-  "20231216_todays_target": ["misc"],
+  "20231216_todays_target": [],
   "20231230_homecoming": ["original", "flipnote-studio"],
 
   "20240106_homecoming_colored": ["original", "flipnote-studio"],
   "20240127_tarumaechan": ["fanart"],
-  "20240209_todays_target": ["misc"],
+  "20240209_todays_target": [],
 
   "20260131-kiritan": ["fanart"],
   "20260302-aichang01": ["original"],
@@ -132,9 +132,5 @@ export const WORK_TAGS: { id: WorkTag; label: string }[] = [
   {
     id: "engineering",
     label: "エンジニアリング",
-  },
-  {
-    id: "misc",
-    label: "未分類",
   },
 ] as const;

@@ -8,7 +8,6 @@ export type WorkTag =
   | "fanart"
   | "parody"
   | "flipnote-studio"
-  | "misc"
   | "axnos-paint";
 
 export type WorkItem = {
