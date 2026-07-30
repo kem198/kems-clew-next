@@ -384,6 +384,21 @@
     "width": 1576,
     "height": 2400
   },
+  "20260401-kirby": {
+    "src": "/assets/works/20260401-kirby.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20260402-roundsowrd-tsukareta": {
+    "src": "/assets/works/20260402-roundsowrd-tsukareta.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20260402-roundsowrd": {
+    "src": "/assets/works/20260402-roundsowrd.webp",
+    "width": 320,
+    "height": 240
+  },
   "20260515-runaria": {
     "src": "/assets/works/20260515-runaria.webp",
     "width": 1748,
