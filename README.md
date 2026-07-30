@@ -1,6 +1,6 @@
 # kems-clew-next
 
-個人サイト [KeM's Clew](https://clew.kem198.net) の実体ファイルを管理しているリポジトリ。
+個人サイト [KeM's Clew](https://clew.kem198.net) の実体ファイルを管理しています。
 
 ## 使用技術
 
