@@ -29,6 +29,6 @@ description:
 
 ## 技術情報
 
-当サイトのソースコードや制作に関する情報を下記リポジトリにて公開しています。
+当サイトのソースコードや使用技術を公開しています。
 
 - [kem198/kems-clew-next](https://github.com/kem198/kems-clew-next)
