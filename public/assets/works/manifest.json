@@ -104,11 +104,6 @@
     "width": 1225,
     "height": 1700
   },
-  "20201203_discordbot_mdn_tube": {
-    "src": "/assets/works/20201203_discordbot_mdn_tube.jpg",
-    "width": 1280,
-    "height": 720
-  },
   "20201224_modane_sakura": {
     "src": "/assets/works/20201224_modane_sakura.jpg",
     "width": 1080,
@@ -389,6 +384,21 @@
     "width": 1576,
     "height": 2400
   },
+  "20260401-kirby": {
+    "src": "/assets/works/20260401-kirby.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20260402-roundsowrd-tsukareta": {
+    "src": "/assets/works/20260402-roundsowrd-tsukareta.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20260402-roundsowrd": {
+    "src": "/assets/works/20260402-roundsowrd.webp",
+    "width": 320,
+    "height": 240
+  },
   "20260515-runaria": {
     "src": "/assets/works/20260515-runaria.webp",
     "width": 1748,
@@ -466,7 +476,7 @@
   },
   "20260730-tarumae": {
     "src": "/assets/works/20260730-tarumae.webp",
-    "width": 1697,
-    "height": 2400
+    "width": 1810,
+    "height": 2560
   }
 }

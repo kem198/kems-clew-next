@@ -1,3 +1,15 @@
+import manifest from "@/../public/assets/works/manifest.json";
+
+export type WorkSlug = keyof typeof manifest;
+
+export type WorkTag =
+  | "engineering"
+  | "original"
+  | "fanart"
+  | "parody"
+  | "flipnote-studio"
+  | "axnos-paint";
+
 export type WorkItem = {
   slug: string;
   title: string;
@@ -5,6 +17,7 @@ export type WorkItem = {
   src: string;
   width: number;
   height: number;
+  tags: WorkTag[];
 };
 
 export type AlbumPhoto = {
@@ -12,5 +25,8 @@ export type AlbumPhoto = {
   width: number;
   height: number;
   alt?: string;
+  slug?: string;
+  date?: string;
+  tags?: WorkTag[];
   [key: string]: unknown;
 };

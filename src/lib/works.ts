@@ -7,5 +7,7 @@ export function mapItemsToPhotos(items: WorkItem[]): AlbumPhoto[] {
     height: item.height,
     alt: item.title,
     slug: item.slug,
+    date: item.date,
+    tags: item.tags,
   }));
 }

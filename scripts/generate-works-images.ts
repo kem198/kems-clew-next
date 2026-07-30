@@ -6,7 +6,7 @@ const force = process.argv.includes("--force");
 generateImages({
   name: "works",
 
-  srcDir: join(process.cwd(), "assets_src", "works"),
+  srcDir: join(process.cwd(), "public_src", "assets", "works"),
 
   outDir: join(process.cwd(), "public", "assets", "works"),
 
@@ -19,8 +19,8 @@ generateImages({
   ),
 
   resize: {
-    width: 1800,
-    height: 2400,
+    width: 2000,
+    height: 2560,
   },
 
   webp: {

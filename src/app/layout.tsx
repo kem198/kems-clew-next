@@ -1,6 +1,11 @@
 import { AppFooter } from "@/components/layout/app-footer";
 import { AppHeader } from "@/components/layout/app-header";
-import { notoSansJp } from "@/constants/fonts";
+import {
+  geistMono,
+  geistSans,
+  notoSansJp,
+  ubuntuSans,
+} from "@/constants/fonts";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/constants/site";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
@@ -55,7 +60,14 @@ export default function RootLayout({
     <html
       lang="ja"
       data-google-analytics-opt-out=""
-      className={cn("h-full", "antialiased", notoSansJp.className, "font-sans")}
+      className={cn(
+        "h-full",
+        "antialiased",
+        notoSansJp.variable,
+        ubuntuSans.variable,
+        geistSans.variable,
+        geistMono.variable,
+      )}
     >
       <body id="top" className="min-h-screen overflow-x-hidden">
         <div className="flex min-h-screen flex-col">

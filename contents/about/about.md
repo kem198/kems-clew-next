@@ -1,17 +1,14 @@
 ---
 title: About
 date: 2022-11-24
-lastmod: 2026-07-21
+lastmod: 2026-07-30
 description:
 ---
 
 ## このサイトは何？
 
-[KeM's Clew](/) (以下「当サイト」) は、管理人である KeM198 が趣味で制作・公開しているウェブサイトです。
-
-当サイトのソースコードは GitHub にて公開しています。
-
-- [kem198/kems-clew-next](https://github.com/kem198/kems-clew-next)
+[KeM's Clew](/) (以下「当サイト」) は、管理人である KeM198 が趣味で制作しているウェブサイトです。  
+イラストや技術記事などを掲載しています。
 
 ## 免責事項
 
@@ -23,58 +20,15 @@ description:
 
 ## 著作権について
 
-当サイトで掲載している画像や文章を含むコンテンツは無断転載することを禁止します。
+当サイトに掲載している画像、文章、その他のコンテンツの著作権は、各権利者に帰属します。
 
-なお当サイトではファンアート及び二次創作物を多く扱います。
+当サイト内のコンテンツについて、権利者の許可なく転載・配布することは禁止しています。
 
-これらの制作物の著作権に関しては、作者である KeM198 と版権元の企業・個人両者に帰属します。
+なお、当サイトではファンアートなどの二次創作も扱っています。  
+それらの原作に関する権利は各原作者・権利者に帰属します。
 
-## 技術スタック・素材
+## 技術情報
 
-### フレームワーク
+当サイトのソースコードや使用技術を公開しています。
 
-- [Next.js](https://nextjs.org/)
-
-### 言語
-
-- [TypeScript](https://www.typescriptlang.org/)
-
-### UI 構築
-
-- [React](https://react.dev/)
-- [shadcn/ui](https://ui.shadcn.com/)
-- [React Photo Album](https://react-photo-album.com/)
-- [Yet Another React Lightbox](https://yet-another-react-lightbox.com/)
-
-### スタイリング
-
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind CSS Typography](https://tailwindcss-typography.vercel.app/)
-
-### Markdown 対応
-
-- [next-mdx-remote-client](https://nmrc-in-pages-router.vercel.app/)
-- [Rehype Pretty Code](https://rehype-pretty.pages.dev/)
-- [Shiki](https://shiki.style/)
-
-### フォント
-
-- [Google Fonts](https://fonts.google.com/)
-    - [Ubuntu Sans](https://fonts.google.com/specimen/Ubuntu+Sans)
-    - [Noto Sans Japanese](https://fonts.google.com/noto/specimen/Noto+Sans+JP?query=noto+sans)
-
-### アイコン
-
-- [Lucide](https://lucide.dev/)
-
-### ホスティング
-
-- [Vercel](https://vercel.com/)
-
-### ドメイン取得 / DNS 管理
-
-- [Xserver Domain](https://www.xdomain.ne.jp/)
-
----
-
-© 2022 KeM198
+- [kem198/kems-clew-next](https://github.com/kem198/kems-clew-next)

@@ -6,7 +6,7 @@ const force = process.argv.includes("--force");
 generateImages({
   name: "notes",
 
-  srcDir: join(process.cwd(), "assets_src", "notes"),
+  srcDir: join(process.cwd(), "public_src", "assets", "notes"),
 
   outDir: join(process.cwd(), "public", "assets", "notes"),
 
