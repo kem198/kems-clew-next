@@ -48,9 +48,11 @@ function GroupToggle({ groupByYear, onChange }: GroupToggleProps) {
   );
 }
 
+type TagFilterValue = WorkTag | "untagged" | null;
+
 type TagFilterProps = {
-  selectedTag: WorkTag | null;
-  onChange: (tag: WorkTag | null) => void;
+  selectedTag: TagFilterValue;
+  onChange: (tag: TagFilterValue) => void;
 };
 
 function TagFilter({ selectedTag, onChange }: TagFilterProps) {
@@ -58,7 +60,7 @@ function TagFilter({ selectedTag, onChange }: TagFilterProps) {
     <RadioGroup
       value={selectedTag ?? ""}
       onValueChange={(value) =>
-        onChange(value === "" ? null : (value as WorkTag))
+        onChange(value === "" ? null : (value as TagFilterValue))
       }
       className="flex flex-wrap gap-4"
     >
@@ -73,6 +75,11 @@ function TagFilter({ selectedTag, onChange }: TagFilterProps) {
           <Label htmlFor={tag.id}>{tag.label}</Label>
         </div>
       ))}
+
+      <div className="flex items-center gap-2">
+        <RadioGroupItem value="untagged" id="tag-untagged" />
+        <Label htmlFor="tag-untagged">未分類</Label>
+      </div>
     </RadioGroup>
   );
 }
@@ -177,11 +184,15 @@ export function WorksGallery({ items }: WorksGalleryProps) {
   const [groupByYear, setGroupByYear] = useState(false);
   const [index, setIndex] = useState(-1);
   const [slides, setSlides] = useState<AlbumPhoto[]>([]);
-  const [selectedTag, setSelectedTag] = useState<WorkTag | null>(null);
+  const [selectedTag, setSelectedTag] = useState<TagFilterValue>(null);
 
   const filteredItems = useMemo(() => {
-    if (!selectedTag) {
+    if (selectedTag === null) {
       return items;
+    }
+
+    if (selectedTag === "untagged") {
+      return items.filter((item) => item.tags.length === 0);
     }
 
     return items.filter((item) => item.tags.includes(selectedTag));
