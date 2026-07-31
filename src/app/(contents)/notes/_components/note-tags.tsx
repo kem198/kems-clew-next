@@ -20,26 +20,6 @@ export function NoteTag({ tag, className }: NoteTagProps) {
   );
 }
 
-type TagListProps = {
-  children: React.ReactNode;
-  className?: string;
-};
-
-function TagList({ children, className }: TagListProps) {
-  return (
-    <div className={cn("not-prose text-sm", className)}>
-      <ul
-        className={cn(
-          ubuntuSans.className,
-          "flex flex-wrap gap-2 text-cyan-600",
-        )}
-      >
-        {children}
-      </ul>
-    </div>
-  );
-}
-
 export type NoteTagListProps = {
   tags?: string[];
   className?: string;
@@ -51,13 +31,20 @@ export function NoteTagList({ tags = [], className }: NoteTagListProps) {
   }
 
   return (
-    <TagList className={className}>
-      {tags.map((tag) => (
-        <li key={tag}>
-          <NoteTag tag={tag} />
-        </li>
-      ))}
-    </TagList>
+    <div className={cn("not-prose text-sm", className)}>
+      <ul
+        className={cn(
+          ubuntuSans.className,
+          "flex flex-wrap gap-2 text-cyan-600",
+        )}
+      >
+        {tags.map((tag) => (
+          <li key={tag}>
+            <NoteTag tag={tag} />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -75,13 +62,43 @@ export function NoteTagSummaryList({
   }
 
   return (
-    <TagList className={className}>
+    <ul className={className}>
       {tags.map((tag) => (
         <li key={tag.name}>
-          <NoteTag tag={tag.name} />
-          <span className="ml-1 text-zinc-400">({tag.count})</span>
+          <NoteTag tag={tag.name} />{" "}
+          <span className="text-zinc-400">({tag.count})</span>
         </li>
       ))}
-    </TagList>
+    </ul>
+  );
+}
+
+export type NoteTagCloudProps = {
+  tags?: NoteTagSummary[];
+  className?: string;
+};
+
+export function NoteTagCloud({ tags = [], className }: NoteTagCloudProps) {
+  if (tags.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className={cn("not-prose text-sm", className)}>
+      <ul
+        className={cn(
+          ubuntuSans.className,
+          "flex flex-wrap gap-2 text-cyan-600",
+        )}
+      >
+        {tags.map((tag) => (
+          <li key={tag.name}>
+            <NoteTag tag={tag.name} />
+
+            <span className="ml-1 text-zinc-400">({tag.count})</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
