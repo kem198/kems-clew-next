@@ -28,7 +28,7 @@ export default async function Page() {
   return (
     <>
       <NavigationArea>
-        <Breadcrumbs segments={[BreadcrumbSegment.about]} />{" "}
+        <Breadcrumbs segments={[BreadcrumbSegment.about]} />
       </NavigationArea>
 
       <NoteLayout>

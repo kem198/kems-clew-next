@@ -1,3 +1,4 @@
+import { CodeBlock } from "@/app/(contents)/notes/_components/code-block";
 import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
 import { NoteContentToc } from "@/app/(contents)/notes/_components/note-content-toc";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
@@ -8,7 +9,6 @@ import { NoteToc } from "@/app/(contents)/notes/_components/note-toc";
 import { ArticleSurface } from "@/components/shared/article-surface";
 import { AsideSurface } from "@/components/shared/aside-surface";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
-import { CodeBlock } from "@/components/shared/code-block";
 import { NavigationArea } from "@/components/shared/navigation-area";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
