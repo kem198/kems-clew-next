@@ -1,9 +1,9 @@
 import { NoteCard } from "@/app/(contents)/notes/_components/note-card";
 import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
-import { NoteH1 } from "@/app/(contents)/notes/_components/note-h1";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
 import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
 import { TagCloud } from "@/app/(contents)/notes/_components/note-tag";
+import { NoteH1 } from "@/app/(contents)/notes/_components/note-typography";
 import { ArticleSurface } from "@/components/shared/article-surface";
 import { AsideSurface } from "@/components/shared/aside-surface";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";

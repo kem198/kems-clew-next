@@ -1,5 +1,5 @@
-import { NoteH1 } from "@/app/(contents)/notes/_components/note-h1";
 import { TagBadgeList } from "@/app/(contents)/notes/_components/note-tag";
+import { NoteH1 } from "@/app/(contents)/notes/_components/note-typography";
 import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import type { NoteFrontmatter } from "@/types/note";
