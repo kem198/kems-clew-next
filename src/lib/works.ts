@@ -48,7 +48,7 @@ export function formatWorkDescription(work: Work): string {
   const parts: string[] = [];
 
   if (work.title) {
-    parts.push(`「${work.title}」`);
+    parts.push(`${work.title}`);
   }
 
   if (work.tags.length > 0) {
