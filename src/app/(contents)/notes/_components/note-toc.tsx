@@ -40,14 +40,14 @@ export function NoteToc({ toc = [], className }: NoteTocProps) {
   );
 }
 
-type NoteContentTocProps = {
+type NoteMobileTocProps = {
   toc?: TocItem[];
 };
 
 /**
  * モバイル用記事 TOC
  */
-export function NoteContentToc({ toc }: NoteContentTocProps) {
+export function NoteMobileToc({ toc }: NoteMobileTocProps) {
   if (!toc?.length) {
     return null;
   }

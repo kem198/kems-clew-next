@@ -2,10 +2,10 @@ import { NoteHeader } from "@/app/(contents)/notes/_components/note-header";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
 import { NotePager } from "@/app/(contents)/notes/_components/note-pager";
 
+import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
 import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
-import { NoteContent } from "@/app/(contents)/notes/_components/note-slug-content";
 import {
-  NoteContentToc,
+  NoteMobileToc,
   NoteToc,
 } from "@/app/(contents)/notes/_components/note-toc";
 import { ArticleSurface } from "@/components/shared/article-surface";
@@ -30,7 +30,7 @@ import rehypeSlug from "rehype-slug";
 import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
 import remarkGfm from "remark-gfm";
 
-type NoteContentProps = {
+type NotePageProps = {
   params: Promise<{
     slug: string;
   }>;
@@ -92,7 +92,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function NoteSlugPage({ params }: NoteContentProps) {
+export default async function NotePage({ params }: NotePageProps) {
   const { slug } = await params;
 
   const source = await getNoteSource(slug);
@@ -137,7 +137,7 @@ export default async function NoteSlugPage({ params }: NoteContentProps) {
               <NoteContent.Header>
                 <NoteHeader frontmatter={frontmatter} />
                 <NoteContent.Navigation>
-                  <NoteContentToc toc={scope.toc} />
+                  <NoteMobileToc toc={scope.toc} />
                 </NoteContent.Navigation>
               </NoteContent.Header>
 
