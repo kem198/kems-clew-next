@@ -8,6 +8,7 @@ import {
 } from "@/constants/fonts";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/constants/site";
 import { cn } from "@/lib/cn";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -76,6 +77,7 @@ export default function RootLayout({
           <AppFooter />
         </div>
       </body>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!} />
     </html>
   );
 }
