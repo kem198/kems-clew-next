@@ -1,7 +1,8 @@
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/cn";
 import { Note } from "@/types/note";
-import { ChevronLeftIcon, ChevronRightIcon, Link } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import Link from "next/link";
 
 type PagerLinkProps = {
   note: Note;
