@@ -2,7 +2,7 @@ import { NoteCard } from "@/app/(contents)/notes/_components/note-card";
 import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
 import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
-import { NoteTagCloud } from "@/app/(contents)/notes/_components/note-tags";
+import { NoteTagSummaryList } from "@/app/(contents)/notes/_components/note-tags";
 import { NoteTitle } from "@/app/(contents)/notes/_components/note-typography";
 import { ArticleSurface } from "@/components/shared/article-surface";
 import { AsideSurface } from "@/components/shared/aside-surface";
@@ -74,7 +74,7 @@ export default async function NoteTagPage({ params }: NoteTagPageProps) {
           <AsideSurface>
             <NoteSidebar>
               <NoteSidebar.Section title="Tags">
-                <NoteTagCloud tags={tags} />
+                <NoteTagSummaryList tags={tags} />
               </NoteSidebar.Section>
             </NoteSidebar>
           </AsideSurface>
