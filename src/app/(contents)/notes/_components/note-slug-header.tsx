@@ -1,4 +1,4 @@
-import { TagBadgeList } from "@/app/(contents)/notes/_components/note-tag";
+import { TagBadgeList } from "@/app/(contents)/notes/_components/note-navigation";
 import { NoteH1 } from "@/app/(contents)/notes/_components/note-typography";
 import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
