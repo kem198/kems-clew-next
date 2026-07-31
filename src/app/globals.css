@@ -141,5 +141,5 @@ body {
 
 /* yet-another-react-lightbox */
 .yarl__slide_description {
-  font-family: var(--font-ubuntu-sans);
+  font-family: var(--font-ubuntu-sans), var(--font-sans);
 }
