@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import type { HTMLAttributes } from "react";
 
 export type NavigationAreaProps = HTMLAttributes<HTMLElement>;

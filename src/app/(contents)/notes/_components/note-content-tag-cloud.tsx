@@ -1,5 +1,5 @@
 import { TagCloud } from "@/app/(contents)/notes/_components/note-tag";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { NoteTag } from "@/types/note";
 
 type NoteContentTagCloudProps = {

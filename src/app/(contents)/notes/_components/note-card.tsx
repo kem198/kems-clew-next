@@ -1,7 +1,7 @@
 import { TagBadgeList } from "@/app/(contents)/notes/_components/note-tag";
 import { ubuntuSans } from "@/constants/fonts";
+import { cn } from "@/lib/cn";
 import { formatDateToYYYYMMDD } from "@/lib/date";
-import { cn } from "@/lib/utils";
 import type { Note } from "@/types/note";
 import Link from "next/link";
 

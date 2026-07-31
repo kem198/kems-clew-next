@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import * as React from "react";
 
 type ContentAreaProps = React.HTMLAttributes<HTMLElement>;
