@@ -1,6 +1,6 @@
 import { WorksGallery } from "@/app/(contents)/works/_components/works-gallery";
+import { ArticleSurface } from "@/components/shared/article-surface";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
-import { ContentArea } from "@/components/shared/content-area";
 import { NavigationArea } from "@/components/shared/navigation-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { getWorks } from "@/lib/content/works";
@@ -19,13 +19,13 @@ export default function WorksPage() {
         <Breadcrumbs segments={[BreadcrumbSegment.works]} />
       </NavigationArea>
 
-      <ContentArea>
+      <ArticleSurface>
         <h1>Works</h1>
 
         <section className="mt-8">
           <WorksGallery works={works} />
         </section>
-      </ContentArea>
+      </ArticleSurface>
     </>
   );
 }

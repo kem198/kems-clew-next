@@ -1,4 +1,4 @@
-import { ContentArea } from "@/components/shared/content-area";
+import { ArticleSurface } from "@/components/shared/article-surface";
 import { HomeLink } from "@/components/shared/home-link";
 import { ModaneLive2DWidget } from "@/components/shared/live2d";
 import { ubuntuSans } from "@/constants/fonts";
@@ -17,7 +17,7 @@ export default async function Home() {
   const latest = getLatestNotes(notes, 3);
 
   return (
-    <ContentArea className="flex flex-1">
+    <ArticleSurface className="flex flex-1">
       <div className="flex w-full flex-col gap-8">
         <section>
           <HomeLink href={"/notes"} description="雑記いろいろ">
@@ -61,6 +61,6 @@ export default async function Home() {
 
         <ModaneLive2DWidget className="fixed right-0 bottom-0 max-md:static max-md:mt-8 max-md:self-center" />
       </div>
-    </ContentArea>
+    </ArticleSurface>
   );
 }

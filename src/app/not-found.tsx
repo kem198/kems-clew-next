@@ -1,9 +1,9 @@
-import { ContentArea } from "@/components/shared/content-area";
+import { ArticleSurface } from "@/components/shared/article-surface";
 import Link from "next/link";
 
 export default async function NotFoundPage() {
   return (
-    <ContentArea className="flex flex-1">
+    <ArticleSurface className="flex flex-1">
       <div>
         <h1>404</h1>
         <p>ページが見つかりません。</p>
@@ -11,6 +11,6 @@ export default async function NotFoundPage() {
           <Link href="/">トップへ戻る</Link>
         </p>
       </div>
-    </ContentArea>
+    </ArticleSurface>
   );
 }
