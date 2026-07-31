@@ -3,8 +3,8 @@ import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { ContentArea } from "@/components/shared/content-area";
 import { NavigationArea } from "@/components/shared/navigation-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
+import { getWorks } from "@/lib/content/works";
 import { withSiteName } from "@/lib/seo";
-import { getWorks } from "@/lib/works";
 
 export const metadata = {
   title: withSiteName("Works"),

@@ -3,8 +3,8 @@ import { HomeLink } from "@/components/shared/home-link";
 import { ModaneLive2DWidget } from "@/components/shared/live2d";
 import { ubuntuSans } from "@/constants/fonts";
 import { SITE_NAME } from "@/constants/site";
+import { getLatestNotes, getNotes } from "@/lib/content/notes.server";
 import { formatDateToYYYYMMDD } from "@/lib/date";
-import { getLatestNotes, getNotes } from "@/utils/server/notes.server";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 

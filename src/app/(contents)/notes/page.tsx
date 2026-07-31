@@ -10,12 +10,12 @@ import { ContentArea } from "@/components/shared/content-area";
 import { NavigationArea } from "@/components/shared/navigation-area";
 import { SidebarArea } from "@/components/shared/sidebar-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
-import { withSiteName } from "@/lib/seo";
 import {
   getNotes,
   getNoteTags,
   getSortedNotes,
-} from "@/utils/server/notes.server";
+} from "@/lib/content/notes.server";
+import { withSiteName } from "@/lib/seo";
 
 export const metadata = {
   title: withSiteName("Notes"),

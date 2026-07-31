@@ -7,7 +7,7 @@ import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { ContentArea } from "@/components/shared/content-area";
 import { NavigationArea } from "@/components/shared/navigation-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
-import { getNotes, getNoteTags } from "@/utils/server/notes.server";
+import { getNotes, getNoteTags } from "@/lib/content/notes.server";
 
 export default async function NotesTagsPage() {
   const notes = await getNotes();

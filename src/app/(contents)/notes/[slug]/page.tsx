@@ -13,13 +13,13 @@ import { SidebarArea } from "@/components/shared/sidebar-area";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { SITE_NAME, SITE_URL } from "@/constants/site";
-import { rehypePrettyCodeOptions } from "@/lib/rehype-pretty-code";
-import type { NoteFrontmatter } from "@/types/note";
 import {
   getNotes,
   getNoteSource,
   getPrevNextNote,
-} from "@/utils/server/notes.server";
+} from "@/lib/content/notes.server";
+import { rehypePrettyCodeOptions } from "@/lib/rehype-pretty-code";
+import type { NoteFrontmatter } from "@/types/note";
 import { Metadata } from "next";
 import { evaluate } from "next-mdx-remote-client/rsc";
 import rehypePrettyCode from "rehype-pretty-code";

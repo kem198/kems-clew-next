@@ -13,7 +13,7 @@ import {
   getNotes,
   getNoteTags,
   getSortedNotes,
-} from "@/utils/server/notes.server";
+} from "@/lib/content/notes.server";
 
 type NoteTagPageProps = {
   params: Promise<{
