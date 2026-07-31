@@ -1,6 +1,6 @@
 import { ubuntuSans } from "@/constants/fonts";
 import { cn } from "@/lib/cn";
-import type { NoteTag } from "@/types/note";
+import type { NoteTagSummary } from "@/types/note";
 import Link from "next/link";
 
 export type TagProps = {
@@ -62,7 +62,7 @@ export function TagBadgeList({ tags = [], className }: TagBadgeListProps) {
 }
 
 export type TagCloudProps = {
-  tags?: NoteTag[];
+  tags?: NoteTagSummary[];
   className?: string;
 };
 
