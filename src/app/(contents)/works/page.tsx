@@ -4,14 +4,14 @@ import { ContentArea } from "@/components/shared/content-area";
 import { NavigationArea } from "@/components/shared/navigation-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { withSiteName } from "@/lib/seo";
-import { getWorks } from "@/utils/server/works.server";
+import { getWorks } from "@/lib/works";
 
 export const metadata = {
   title: withSiteName("Works"),
 };
 
-export default async function WorksPage() {
-  const items = await getWorks();
+export default function WorksPage() {
+  const works = getWorks();
 
   return (
     <>
@@ -23,7 +23,7 @@ export default async function WorksPage() {
         <h1>Works</h1>
 
         <section className="mt-8">
-          <WorksGallery items={items} />
+          <WorksGallery works={works} />
         </section>
       </ContentArea>
     </>
