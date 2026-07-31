@@ -1,8 +1,8 @@
 import { NoteCard } from "@/app/(contents)/notes/_components/note-card";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
-import { TagCloud } from "@/app/(contents)/notes/_components/note-navigation";
 import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
 import { NoteContent } from "@/app/(contents)/notes/_components/note-slug-content";
+import { TagCloud } from "@/app/(contents)/notes/_components/note-tags";
 import { NoteH1 } from "@/app/(contents)/notes/_components/note-typography";
 import { ArticleSurface } from "@/components/shared/article-surface";
 import { AsideSurface } from "@/components/shared/aside-surface";

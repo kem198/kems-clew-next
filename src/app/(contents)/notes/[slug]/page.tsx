@@ -1,12 +1,13 @@
+import { NoteHeader } from "@/app/(contents)/notes/_components/note-header";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
-import {
-  NoteContentToc,
-  NotePager,
-  NoteToc,
-} from "@/app/(contents)/notes/_components/note-navigation";
+import { NotePager } from "@/app/(contents)/notes/_components/note-pager";
+
 import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
 import { NoteContent } from "@/app/(contents)/notes/_components/note-slug-content";
-import { NoteSlugHeader } from "@/app/(contents)/notes/_components/note-slug-header";
+import {
+  NoteContentToc,
+  NoteToc,
+} from "@/app/(contents)/notes/_components/note-toc";
 import { ArticleSurface } from "@/components/shared/article-surface";
 import { AsideSurface } from "@/components/shared/aside-surface";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
@@ -134,7 +135,7 @@ export default async function NoteSlugPage({ params }: NoteContentProps) {
           <ArticleSurface>
             <NoteContent>
               <NoteContent.Header>
-                <NoteSlugHeader frontmatter={frontmatter} />
+                <NoteHeader frontmatter={frontmatter} />
                 <NoteContent.Navigation>
                   <NoteContentToc toc={scope.toc} />
                 </NoteContent.Navigation>
