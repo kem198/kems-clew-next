@@ -1,8 +1,7 @@
 import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
 import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
-import { NoteTag } from "@/app/(contents)/notes/_components/note-tag";
-import { NoteTagCloud } from "@/app/(contents)/notes/_components/note-tags";
+import { NoteTagSummaryList } from "@/app/(contents)/notes/_components/note-tags";
 import { NoteTitle } from "@/app/(contents)/notes/_components/note-typography";
 import { ArticleSurface } from "@/components/shared/article-surface";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
@@ -29,14 +28,7 @@ export default async function NotesTagsPage() {
               </NoteContent.Header>
 
               <NoteContent.Main>
-                <ul>
-                  {tags.map((tag) => (
-                    <li key={tag.name}>
-                      <NoteTag tag={tag.name} />{" "}
-                      <span className="text-zinc-400">({tag.count})</span>
-                    </li>
-                  ))}
-                </ul>
+                <NoteTagSummaryList tags={tags} />
               </NoteContent.Main>
             </NoteContent>
           </ArticleSurface>
@@ -46,7 +38,7 @@ export default async function NotesTagsPage() {
           <ArticleSurface>
             <NoteSidebar>
               <NoteSidebar.Section title="Tags">
-                <NoteTagCloud tags={tags} />
+                <NoteTagSummaryList tags={tags} />
               </NoteSidebar.Section>
             </NoteSidebar>
           </ArticleSurface>
