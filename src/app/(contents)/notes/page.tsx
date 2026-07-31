@@ -5,10 +5,10 @@ import { NoteH1 } from "@/app/(contents)/notes/_components/note-h1";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
 import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
 import { TagCloud } from "@/app/(contents)/notes/_components/note-tag";
+import { ArticleSurface } from "@/components/shared/article-surface";
+import { AsideSurface } from "@/components/shared/aside-surface";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
-import { ContentArea } from "@/components/shared/content-area";
 import { NavigationArea } from "@/components/shared/navigation-area";
-import { SidebarArea } from "@/components/shared/sidebar-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import {
   getNotes,
@@ -33,7 +33,7 @@ export default async function NotesPage() {
 
       <NoteLayout>
         <NoteLayout.Main>
-          <ContentArea>
+          <ArticleSurface>
             <NoteContent>
               <NoteContent.Header>
                 <NoteH1>Notes</NoteH1>
@@ -52,17 +52,17 @@ export default async function NotesPage() {
                 </ul>
               </NoteContent.Main>
             </NoteContent>
-          </ContentArea>
+          </ArticleSurface>
         </NoteLayout.Main>
 
         <NoteLayout.Sidebar>
-          <SidebarArea className="min-h-0 flex-1">
+          <AsideSurface className="min-h-0 flex-1">
             <NoteSidebar>
               <NoteSidebar.Section title="Tags">
                 <TagCloud tags={tags} />
               </NoteSidebar.Section>
             </NoteSidebar>
-          </SidebarArea>
+          </AsideSurface>
         </NoteLayout.Sidebar>
       </NoteLayout>
     </>

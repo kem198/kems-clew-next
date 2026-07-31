@@ -5,11 +5,11 @@ import { NotePager } from "@/app/(contents)/notes/_components/note-pager";
 import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
 import { NoteSlugHeader } from "@/app/(contents)/notes/_components/note-slug-header";
 import { NoteToc } from "@/app/(contents)/notes/_components/note-toc";
+import { ArticleSurface } from "@/components/shared/article-surface";
+import { AsideSurface } from "@/components/shared/aside-surface";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { CodeBlock } from "@/components/shared/code-block";
-import ContentArea from "@/components/shared/content-area";
 import { NavigationArea } from "@/components/shared/navigation-area";
-import { SidebarArea } from "@/components/shared/sidebar-area";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { SITE_NAME, SITE_URL } from "@/constants/site";
@@ -129,7 +129,7 @@ export default async function NoteSlugPage({ params }: NoteContentProps) {
 
       <NoteLayout>
         <NoteLayout.Main>
-          <ContentArea>
+          <ArticleSurface>
             <NoteContent>
               <NoteContent.Header>
                 <NoteSlugHeader frontmatter={frontmatter} />
@@ -144,11 +144,11 @@ export default async function NoteSlugPage({ params }: NoteContentProps) {
                 <NotePager prev={prev} next={next} />
               </NoteContent.Footer>
             </NoteContent>
-          </ContentArea>
+          </ArticleSurface>
         </NoteLayout.Main>
 
         <NoteLayout.Sidebar>
-          <SidebarArea>
+          <AsideSurface>
             <NoteSidebar>
               {scope.toc?.length ? (
                 <NoteSidebar.Section title="TOC">
@@ -158,7 +158,7 @@ export default async function NoteSlugPage({ params }: NoteContentProps) {
                 </NoteSidebar.Section>
               ) : null}
             </NoteSidebar>
-          </SidebarArea>
+          </AsideSurface>
         </NoteLayout.Sidebar>
       </NoteLayout>
     </>
