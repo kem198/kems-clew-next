@@ -52,6 +52,8 @@ export const metadata: Metadata = {
   },
 };
 
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -77,7 +79,7 @@ export default function RootLayout({
           <AppFooter />
         </div>
       </body>
-      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!} />
+      {gaId && <GoogleAnalytics gaId={gaId} />}
     </html>
   );
 }
