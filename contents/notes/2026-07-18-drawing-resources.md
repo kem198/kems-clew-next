@@ -73,6 +73,7 @@ lastmod: 2026-08-01
 
 - [桜井政博のゲーム作るには / モヤっとさせるな 【エフェクト】](https://www.youtube.com/watch?v=7vGEEUjCJdY)
 - [桜井政博のゲーム作るには / 素材を描かず、光を描く 【グラフィック】](https://www.youtube.com/watch?v=WqwtzP-TCnw)
+- [桜井政博のゲーム作るには / 攻撃ポーズ 【モーション】](https://www.youtube.com/watch?v=CPHDs10giQI)
 - [桜井政博のゲーム作るには / ポージングのススメ 【モーション】](https://www.youtube.com/watch?v=rUm_-UTcpHE)
 
 ### メンタル管理
