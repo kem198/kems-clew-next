@@ -1,5 +1,5 @@
+import { HomeLink } from "@/app/_components/home-link";
 import { ArticleSurface } from "@/components/shared/article-surface";
-import { HomeLink } from "@/components/shared/home-link";
 import { ModaneLive2DWidget } from "@/components/shared/live2d";
 import { ubuntuSans } from "@/constants/fonts";
 import { SITE_NAME } from "@/constants/site";
