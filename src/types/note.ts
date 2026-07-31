@@ -11,7 +11,7 @@ export type Note = {
   preview: string;
 };
 
-export type NoteTag = {
+export type NoteTagSummary = {
   name: string;
   count: number;
 };

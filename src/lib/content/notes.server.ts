@@ -1,4 +1,4 @@
-import type { Note, NoteFrontmatter, NoteTag } from "@/types/note";
+import type { Note, NoteFrontmatter, NoteTagSummary } from "@/types/note";
 import { getFrontmatter } from "next-mdx-remote-client/utils";
 import { readdir, readFile } from "node:fs/promises";
 import path, { join } from "node:path";
@@ -100,7 +100,7 @@ export type NoteIndexItem = {
 
 const NOTES_DIR = path.join(process.cwd(), "contents", "notes");
 
-export function getNoteTags(notes: Note[]): NoteTag[] {
+export function getNoteTags(notes: Note[]): NoteTagSummary[] {
   const tagCounts = new Map<string, number>();
 
   for (const note of notes) {
