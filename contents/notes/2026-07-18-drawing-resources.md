@@ -3,7 +3,7 @@ title: "お絵描き参考資料集"
 tags:
   - drawing
 date: 2026-07-18
-lastmod: 2026-07-18
+lastmod: 2026-08-01
 ---
 
 お絵描き初心者が参考にしているサイトや資料のブックマーク。適宜更新しています。
@@ -73,6 +73,7 @@ lastmod: 2026-07-18
 
 - [桜井政博のゲーム作るには / モヤっとさせるな 【エフェクト】](https://www.youtube.com/watch?v=7vGEEUjCJdY)
 - [桜井政博のゲーム作るには / 素材を描かず、光を描く 【グラフィック】](https://www.youtube.com/watch?v=WqwtzP-TCnw)
+- [桜井政博のゲーム作るには / ポージングのススメ 【モーション】](https://www.youtube.com/watch?v=rUm_-UTcpHE)
 
 ### メンタル管理
 
