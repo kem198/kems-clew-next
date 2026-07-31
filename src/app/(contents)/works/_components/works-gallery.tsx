@@ -3,7 +3,7 @@
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { WORK_TAGS } from "@/constants/work-metadata";
-import { formatWorkDescription, mapWorksToPhotos } from "@/lib/works";
+import { formatWorkDescription, mapWorksToPhotos } from "@/lib/content/works";
 import { AlbumPhoto, Work, WorkTag } from "@/types/work";
 import { FilterIcon } from "lucide-react";
 import Image from "next/image";
