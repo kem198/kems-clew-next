@@ -1,6 +1,6 @@
+import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
 import { NoteHeader } from "@/app/(contents)/notes/_components/note-header";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
-import { NoteContent } from "@/app/(contents)/notes/_components/note-slug-content";
 import { ArticleSurface } from "@/components/shared/article-surface";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { NavigationArea } from "@/components/shared/navigation-area";

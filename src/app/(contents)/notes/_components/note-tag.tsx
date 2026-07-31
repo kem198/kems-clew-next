@@ -2,12 +2,12 @@ import { ubuntuSans } from "@/constants/fonts";
 import { cn } from "@/lib/cn";
 import Link from "next/link";
 
-export type TagProps = {
+export type NoteTagProps = {
   tag: string;
   className?: string;
 };
 
-export function Tag({ tag, className }: TagProps) {
+export function NoteTag({ tag, className }: NoteTagProps) {
   return (
     <Link
       href={`/notes/tags/${tag}`}

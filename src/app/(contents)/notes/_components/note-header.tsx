@@ -1,5 +1,5 @@
-import { TagBadgeList } from "@/app/(contents)/notes/_components/note-tags";
-import { NoteH1 } from "@/app/(contents)/notes/_components/note-typography";
+import { NoteTagList } from "@/app/(contents)/notes/_components/note-tags";
+import { NoteTitle } from "@/app/(contents)/notes/_components/note-typography";
 import { ubuntuSans } from "@/constants/fonts";
 import { formatDateToYYYYMMDD } from "@/lib/date";
 import type { NoteFrontmatter } from "@/types/note";
@@ -39,10 +39,10 @@ export function NoteHeader({ frontmatter }: NoteHeaderProps) {
       </ul>
 
       <div className="flex flex-col gap-1">
-        <NoteH1>{frontmatter.title}</NoteH1>
+        <NoteTitle>{frontmatter.title}</NoteTitle>
 
         {frontmatter.tags ? (
-          <TagBadgeList tags={frontmatter.tags} className="text-base" />
+          <NoteTagList tags={frontmatter.tags} className="text-base" />
         ) : null}
       </div>
     </div>

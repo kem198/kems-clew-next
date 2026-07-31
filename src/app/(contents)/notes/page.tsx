@@ -1,13 +1,10 @@
 import { NoteCard } from "@/app/(contents)/notes/_components/note-card";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
 
+import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
 import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
-import { NoteContent } from "@/app/(contents)/notes/_components/note-slug-content";
-import {
-  NoteContentTagCloud,
-  TagCloud,
-} from "@/app/(contents)/notes/_components/note-tags";
-import { NoteH1 } from "@/app/(contents)/notes/_components/note-typography";
+import { NoteTagCloud } from "@/app/(contents)/notes/_components/note-tags";
+import { NoteTitle } from "@/app/(contents)/notes/_components/note-typography";
 import { ArticleSurface } from "@/components/shared/article-surface";
 import { AsideSurface } from "@/components/shared/aside-surface";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
@@ -39,9 +36,9 @@ export default async function NotesPage() {
           <ArticleSurface>
             <NoteContent>
               <NoteContent.Header>
-                <NoteH1>Notes</NoteH1>
+                <NoteTitle>Notes</NoteTitle>
                 <NoteContent.Navigation>
-                  <NoteContentTagCloud tags={tags} />
+                  <NoteTagCloud tags={tags} />
                 </NoteContent.Navigation>
               </NoteContent.Header>
 
@@ -62,7 +59,7 @@ export default async function NotesPage() {
           <AsideSurface className="min-h-0 flex-1">
             <NoteSidebar>
               <NoteSidebar.Section title="Tags">
-                <TagCloud tags={tags} />
+                <NoteTagCloud tags={tags} />
               </NoteSidebar.Section>
             </NoteSidebar>
           </AsideSurface>

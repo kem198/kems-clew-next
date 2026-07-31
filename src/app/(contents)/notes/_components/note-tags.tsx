@@ -1,53 +1,7 @@
-import { Tag } from "@/app/(contents)/notes/_components/note-tag";
+import { NoteTag } from "@/app/(contents)/notes/_components/note-tag";
 import { ubuntuSans } from "@/constants/fonts";
 import { cn } from "@/lib/cn";
-import { NoteTagSummary } from "@/types/note";
-
-type NoteContentTagCloudProps = {
-  tags?: NoteTagSummary[];
-  className?: string;
-};
-
-export type TagCloudProps = {
-  tags?: NoteTagSummary[];
-  className?: string;
-};
-
-export function TagCloud({ tags = [], className }: TagCloudProps) {
-  if (tags.length === 0) {
-    return null;
-  }
-
-  return (
-    <TagList className={className}>
-      {tags.map((tag) => (
-        <li key={tag.name}>
-          <Tag tag={tag.name} />
-
-          <span className="ml-1 text-zinc-400">({tag.count})</span>
-        </li>
-      ))}
-    </TagList>
-  );
-}
-
-/**
- * 記事内用タグクラウド
- */
-export function NoteContentTagCloud({
-  tags,
-  className,
-}: NoteContentTagCloudProps) {
-  if (!tags?.length) {
-    return null;
-  }
-
-  return (
-    <div className={cn(`rounded-md bg-zinc-100 p-4`, className)}>
-      <TagCloud tags={tags} />
-    </div>
-  );
-}
+import type { NoteTagSummary } from "@/types/note";
 
 type TagListProps = {
   children: React.ReactNode;
@@ -69,12 +23,12 @@ function TagList({ children, className }: TagListProps) {
   );
 }
 
-export type TagBadgeListProps = {
+export type NoteTagListProps = {
   tags?: string[];
   className?: string;
 };
 
-export function TagBadgeList({ tags = [], className }: TagBadgeListProps) {
+export function NoteTagList({ tags = [], className }: NoteTagListProps) {
   if (tags.length === 0) {
     return null;
   }
@@ -83,7 +37,29 @@ export function TagBadgeList({ tags = [], className }: TagBadgeListProps) {
     <TagList className={className}>
       {tags.map((tag) => (
         <li key={tag}>
-          <Tag tag={tag} />
+          <NoteTag tag={tag} />
+        </li>
+      ))}
+    </TagList>
+  );
+}
+
+export type NoteTagCloudProps = {
+  tags?: NoteTagSummary[];
+  className?: string;
+};
+
+export function NoteTagCloud({ tags = [], className }: NoteTagCloudProps) {
+  if (tags.length === 0) {
+    return null;
+  }
+
+  return (
+    <TagList className={className}>
+      {tags.map((tag) => (
+        <li key={tag.name}>
+          <NoteTag tag={tag.name} />
+          <span className="ml-1 text-zinc-400">({tag.count})</span>
         </li>
       ))}
     </TagList>

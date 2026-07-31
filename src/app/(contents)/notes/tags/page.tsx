@@ -1,9 +1,9 @@
+import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
 import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
-import { NoteContent } from "@/app/(contents)/notes/_components/note-slug-content";
-import { Tag } from "@/app/(contents)/notes/_components/note-tag";
-import { TagCloud } from "@/app/(contents)/notes/_components/note-tags";
-import { NoteH1 } from "@/app/(contents)/notes/_components/note-typography";
+import { NoteTag } from "@/app/(contents)/notes/_components/note-tag";
+import { NoteTagCloud } from "@/app/(contents)/notes/_components/note-tags";
+import { NoteTitle } from "@/app/(contents)/notes/_components/note-typography";
 import { ArticleSurface } from "@/components/shared/article-surface";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { NavigationArea } from "@/components/shared/navigation-area";
@@ -25,14 +25,14 @@ export default async function NotesTagsPage() {
           <ArticleSurface>
             <NoteContent>
               <NoteContent.Header>
-                <NoteH1>Tags</NoteH1>
+                <NoteTitle>Tags</NoteTitle>
               </NoteContent.Header>
 
               <NoteContent.Main>
                 <ul>
                   {tags.map((tag) => (
                     <li key={tag.name}>
-                      <Tag tag={tag.name} />{" "}
+                      <NoteTag tag={tag.name} />{" "}
                       <span className="text-zinc-400">({tag.count})</span>
                     </li>
                   ))}
@@ -46,7 +46,7 @@ export default async function NotesTagsPage() {
           <ArticleSurface>
             <NoteSidebar>
               <NoteSidebar.Section title="Tags">
-                <TagCloud tags={tags} />
+                <NoteTagCloud tags={tags} />
               </NoteSidebar.Section>
             </NoteSidebar>
           </ArticleSurface>
