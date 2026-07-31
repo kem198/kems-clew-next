@@ -1,5 +1,5 @@
 import { ubuntuSans } from "@/constants/fonts";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import type { NoteTag } from "@/types/note";
 import Link from "next/link";
 
