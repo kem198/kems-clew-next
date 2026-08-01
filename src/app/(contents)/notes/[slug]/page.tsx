@@ -12,6 +12,7 @@ import { ArticleSurface } from "@/components/shared/article-surface";
 import { AsideSurface } from "@/components/shared/aside-surface";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { CodeBlock } from "@/components/shared/code-block";
+import { ImageRow } from "@/components/shared/image-row";
 import { NavigationArea } from "@/components/shared/navigation-area";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
@@ -30,11 +31,8 @@ import rehypeSlug from "rehype-slug";
 import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
 import remarkGfm from "remark-gfm";
 
-type NotePageProps = {
-  params: Promise<{
-    slug: string;
-  }>;
-};
+export const dynamic = "force-static";
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const notes = await getNotes();
@@ -92,6 +90,12 @@ export async function generateMetadata({
   };
 }
 
+type NotePageProps = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
+
 export default async function NotePage({ params }: NotePageProps) {
   const { slug } = await params;
 
@@ -107,6 +111,7 @@ export default async function NotePage({ params }: NotePageProps) {
     source,
     components: {
       pre: CodeBlock,
+      ImageRow,
     },
     options: {
       parseFrontmatter: true,

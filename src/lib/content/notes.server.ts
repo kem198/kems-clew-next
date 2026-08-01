@@ -8,7 +8,7 @@ export async function getNotes(): Promise<Note[]> {
 
   return Promise.all(
     files
-      .filter((file) => file.endsWith(".md"))
+      .filter((file) => file.endsWith(".mdx"))
       .map(async (file) => {
         const source = await readFile(join(NOTES_DIR, file), "utf-8");
 
@@ -41,7 +41,7 @@ export async function getNotes(): Promise<Note[]> {
         };
 
         return {
-          slug: file.replace(/\.md$/, ""),
+          slug: file.replace(/\.mdx$/, ""),
           frontmatter: fm,
           preview: preview ?? "",
         };
@@ -50,7 +50,7 @@ export async function getNotes(): Promise<Note[]> {
 }
 
 export async function getNoteSource(slug: string) {
-  return readFile(join(NOTES_DIR, `${slug}.md`), "utf-8");
+  return readFile(join(NOTES_DIR, `${slug}.mdx`), "utf-8");
 }
 
 export function getSortedNotes(

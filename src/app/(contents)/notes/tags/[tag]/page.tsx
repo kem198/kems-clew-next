@@ -15,11 +15,8 @@ import {
   getSortedNotes,
 } from "@/lib/content/notes.server";
 
-type NoteTagPageProps = {
-  params: Promise<{
-    tag: string;
-  }>;
-};
+export const dynamic = "force-static";
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const notes = await getNotes();
@@ -29,6 +26,12 @@ export async function generateStaticParams() {
     tag: tag.name,
   }));
 }
+
+type NoteTagPageProps = {
+  params: Promise<{
+    tag: string;
+  }>;
+};
 
 export default async function NoteTagPage({ params }: NoteTagPageProps) {
   const { tag } = await params;
