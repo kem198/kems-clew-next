@@ -230,7 +230,7 @@ export function WorksGallery({ works }: WorksGalleryProps) {
       <GroupToggle groupByYear={groupByYear} onChange={setGroupByYear} />
 
       <details className="flex flex-col rounded-md bg-zinc-100 p-4">
-        <summary className="flex cursor-pointer list-none items-center gap-1 font-bold">
+        <summary className="-m-2 flex cursor-pointer list-none items-center gap-1 p-2 font-bold">
           <FilterIcon height={16} width={16} /> 絞り込み
         </summary>
 

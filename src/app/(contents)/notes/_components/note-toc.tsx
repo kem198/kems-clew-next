@@ -55,7 +55,7 @@ export function NoteMobileToc({ toc }: NoteMobileTocProps) {
 
   return (
     <details className="rounded-md bg-zinc-100">
-      <summary className="flex cursor-pointer list-none items-center gap-1 font-bold">
+      <summary className="-m-2 flex cursor-pointer list-none items-center gap-1 p-2 font-bold">
         <TableOfContentsIcon height={16} width={16} /> TOC
       </summary>
 
