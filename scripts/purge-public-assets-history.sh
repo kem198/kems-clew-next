@@ -11,11 +11,13 @@ set -euo pipefail
 TARGET_PATHS=(
   "public/assets/works/"
   "public/assets/notes/"
+  "contents/notes/"
 )
 
 RESTORE_PATHS=(
   "public/assets/works"
   "public/assets/notes"
+  "contents/notes/"
 )
 
 REPO_NAME=$(basename "$(pwd)")
