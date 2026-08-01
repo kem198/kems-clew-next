@@ -174,7 +174,7 @@ echo
 echo "Commit restored assets:"
 echo
 echo "  git add public/assets"
-echo "  git commit -m \"Restore public assets after history cleanup\""
+echo "  git commit -m \"Restore site content after history cleanup\""
 echo
 
 echo "Restore remote repository if needed:"

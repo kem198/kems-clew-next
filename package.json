@@ -15,7 +15,7 @@
     "format": "npx prettier . --write",
     "test": "echo No tests available.",
     "clean": "rm -rf .next",
-    "git:purge-public-assets": "./scripts/purge-public-assets-history.sh"
+    "git:purge-site-content-history": "./scripts/purge-site-content-history.sh"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
