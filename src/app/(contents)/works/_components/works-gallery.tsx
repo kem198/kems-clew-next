@@ -5,14 +5,14 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { WORK_TAGS } from "@/constants/work-metadata";
 import { formatWorkDescription, mapWorksToPhotos } from "@/lib/content/works";
 import { AlbumPhoto, Work, WorkTag } from "@/types/work";
-import { FilterIcon } from "lucide-react";
+import { ChevronLeft, ChevronRight, FilterIcon, XIcon } from "lucide-react";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import PhotoAlbum from "react-photo-album";
 import "react-photo-album/rows.css";
 import "react-photo-album/styles.css";
 import Lightbox from "yet-another-react-lightbox";
-import { Captions, Fullscreen, Zoom } from "yet-another-react-lightbox/plugins";
+import { Captions, Zoom } from "yet-another-react-lightbox/plugins";
 import "yet-another-react-lightbox/plugins/captions.css";
 import "yet-another-react-lightbox/styles.css";
 
@@ -166,7 +166,13 @@ function WorksLightbox({ index, slides, onClose }: WorksLightboxProps) {
         src: photo.src,
         description: formatWorkDescription(photo.work),
       }))}
-      plugins={[Zoom, Fullscreen, Captions]}
+      render={{
+        buttonZoom: () => null,
+        iconClose: () => <XIcon />,
+        iconPrev: () => <ChevronLeft />,
+        iconNext: () => <ChevronRight />,
+      }}
+      plugins={[Zoom, Captions]}
     />
   );
 }
