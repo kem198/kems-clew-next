@@ -26,6 +26,7 @@ import { rehypePrettyCodeOptions } from "@/lib/rehype-pretty-code";
 import type { NoteFrontmatter } from "@/types/note";
 import { Metadata } from "next";
 import { evaluate } from "next-mdx-remote-client/rsc";
+import Image from "next/image";
 import Link from "next/link";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
@@ -112,6 +113,9 @@ export default async function NotePage({ params }: NotePageProps) {
     source,
     components: {
       pre: CodeBlock,
+      img: ({ src, alt }) => (
+        <Image src={src ?? ""} alt={alt ?? ""} width={1200} height={1600} />
+      ),
       ImageRow,
     },
     options: {
