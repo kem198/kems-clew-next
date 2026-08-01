@@ -308,6 +308,9 @@ export const WORKS: Partial<Record<WorkSlug, WorkMetadata>> = {
   "20260730-tarumae": {
     tags: ["fanart"],
   },
+  "20260801-momo": {
+    tags: ["original"],
+  },
 };
 
 export const WORK_TAGS: { id: WorkTag; label: string }[] = [
