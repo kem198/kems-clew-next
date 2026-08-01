@@ -159,6 +159,9 @@ function WorksLightbox({ index, slides, onClose }: WorksLightboxProps) {
       open={index >= 0}
       index={index}
       close={onClose}
+      controller={{
+        closeOnBackdropClick: true,
+      }}
       slides={slides.map((photo) => ({
         src: photo.src,
         description: formatWorkDescription(photo.work),
