@@ -1,25 +1,28 @@
-import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
-import { NoteContentToc } from "@/app/(contents)/notes/_components/note-content-toc";
+import { NoteHeader } from "@/app/(contents)/notes/_components/note-header";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
 import { NotePager } from "@/app/(contents)/notes/_components/note-pager";
+
+import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
 import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
-import { NoteSlugHeader } from "@/app/(contents)/notes/_components/note-slug-header";
-import { NoteToc } from "@/app/(contents)/notes/_components/note-toc";
+import {
+  NoteMobileToc,
+  NoteToc,
+} from "@/app/(contents)/notes/_components/note-toc";
+import { ArticleSurface } from "@/components/shared/article-surface";
+import { AsideSurface } from "@/components/shared/aside-surface";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { CodeBlock } from "@/components/shared/code-block";
-import ContentArea from "@/components/shared/content-area";
 import { NavigationArea } from "@/components/shared/navigation-area";
-import { SidebarArea } from "@/components/shared/sidebar-area";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { SITE_NAME, SITE_URL } from "@/constants/site";
-import { rehypePrettyCodeOptions } from "@/lib/rehype-pretty-code";
-import type { NoteFrontmatter } from "@/types/note";
 import {
   getNotes,
   getNoteSource,
   getPrevNextNote,
-} from "@/utils/server/notes.server";
+} from "@/lib/content/notes.server";
+import { rehypePrettyCodeOptions } from "@/lib/rehype-pretty-code";
+import type { NoteFrontmatter } from "@/types/note";
 import { Metadata } from "next";
 import { evaluate } from "next-mdx-remote-client/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -27,7 +30,7 @@ import rehypeSlug from "rehype-slug";
 import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
 import remarkGfm from "remark-gfm";
 
-type NoteContentProps = {
+type NotePageProps = {
   params: Promise<{
     slug: string;
   }>;
@@ -89,7 +92,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function NoteSlugPage({ params }: NoteContentProps) {
+export default async function NotePage({ params }: NotePageProps) {
   const { slug } = await params;
 
   const source = await getNoteSource(slug);
@@ -129,12 +132,12 @@ export default async function NoteSlugPage({ params }: NoteContentProps) {
 
       <NoteLayout>
         <NoteLayout.Main>
-          <ContentArea>
+          <ArticleSurface>
             <NoteContent>
               <NoteContent.Header>
-                <NoteSlugHeader frontmatter={frontmatter} />
+                <NoteHeader frontmatter={frontmatter} />
                 <NoteContent.Navigation>
-                  <NoteContentToc toc={scope.toc} />
+                  <NoteMobileToc toc={scope.toc} />
                 </NoteContent.Navigation>
               </NoteContent.Header>
 
@@ -144,11 +147,11 @@ export default async function NoteSlugPage({ params }: NoteContentProps) {
                 <NotePager prev={prev} next={next} />
               </NoteContent.Footer>
             </NoteContent>
-          </ContentArea>
+          </ArticleSurface>
         </NoteLayout.Main>
 
         <NoteLayout.Sidebar>
-          <SidebarArea>
+          <AsideSurface>
             <NoteSidebar>
               {scope.toc?.length ? (
                 <NoteSidebar.Section title="TOC">
@@ -158,7 +161,7 @@ export default async function NoteSlugPage({ params }: NoteContentProps) {
                 </NoteSidebar.Section>
               ) : null}
             </NoteSidebar>
-          </SidebarArea>
+          </AsideSurface>
         </NoteLayout.Sidebar>
       </NoteLayout>
     </>

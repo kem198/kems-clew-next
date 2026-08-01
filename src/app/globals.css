@@ -139,7 +139,15 @@ body {
   }
 }
 
-/* yet-another-react-lightbox */
+/******************************
+ yet-another-react-lightbox
+ ******************************/
+/* description のフォントを指定する */
 .yarl__slide_description {
-  font-family: var(--font-ubuntu-sans);
+  font-family: var(--font-ubuntu-sans), var(--font-sans);
+}
+/* 閉じる / 進むボタンを縦に広げる */
+.yarl__navigation_prev,
+.yarl__navigation_next {
+  inset-block: 0;
 }

@@ -1,5 +1,8 @@
 import manifest from "@/../public/assets/works/manifest.json";
 
+/**
+ * 作品を一意に識別する ID
+ */
 export type WorkSlug = keyof typeof manifest;
 
 export type WorkTag =
@@ -10,13 +13,15 @@ export type WorkTag =
   | "flipnote-studio"
   | "axnos-paint";
 
-export type WorkItem = {
-  slug: string;
-  title: string;
-  date: string;
+/**
+ * 一作品のモデル
+ */
+export type Work = {
+  slug: WorkSlug;
   src: string;
   width: number;
   height: number;
+  title?: string;
   tags: WorkTag[];
 };
 
@@ -24,9 +29,5 @@ export type AlbumPhoto = {
   src: string;
   width: number;
   height: number;
-  alt?: string;
-  slug?: string;
-  date?: string;
-  tags?: WorkTag[];
-  [key: string]: unknown;
+  work: Work;
 };

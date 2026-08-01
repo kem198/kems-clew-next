@@ -1,14 +1,8 @@
 import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import type { Note } from "@/types/note";
+import { cn } from "@/lib/cn";
+import { Note } from "@/types/note";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
-
-export type NotePagerProps = {
-  prev: Note | null;
-  next: Note | null;
-  className?: string;
-};
 
 type PagerLinkProps = {
   note: Note;
@@ -37,6 +31,12 @@ function PagerLink({ note, direction }: PagerLinkProps) {
     </Link>
   );
 }
+
+export type NotePagerProps = {
+  prev: Note | null;
+  next: Note | null;
+  className?: string;
+};
 
 /**
  * 前後記事ナビゲーション

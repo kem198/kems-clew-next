@@ -3,7 +3,7 @@ title: "お絵描き参考資料集"
 tags:
   - drawing
 date: 2026-07-18
-lastmod: 2026-07-18
+lastmod: 2026-08-01
 ---
 
 お絵描き初心者が参考にしているサイトや資料のブックマーク。適宜更新しています。
@@ -73,14 +73,14 @@ lastmod: 2026-07-18
 
 - [桜井政博のゲーム作るには / モヤっとさせるな 【エフェクト】](https://www.youtube.com/watch?v=7vGEEUjCJdY)
 - [桜井政博のゲーム作るには / 素材を描かず、光を描く 【グラフィック】](https://www.youtube.com/watch?v=WqwtzP-TCnw)
+- [桜井政博のゲーム作るには / 攻撃ポーズ 【モーション】](https://www.youtube.com/watch?v=CPHDs10giQI)
+- [桜井政博のゲーム作るには / ポージングのススメ 【モーション】](https://www.youtube.com/watch?v=rUm_-UTcpHE)
 
-### メンタル
+### メンタル管理
 
 - [さいとうなおき / 絵で燃え尽きてしまいます。やる気を持続させる方法は？](https://www.youtube.com/watch?v=m1yUED8Fcow&t=352s)
 - [さいとうなおき / 【意外!】絵が上手くなると、描くのが遅くなります。](https://www.youtube.com/watch?v=v6myZhanRas)
 - [絵葉ましろのちゃんねる / 【継続10年超】兼業ガチ勢が気づいた創作時間の錬金術](https://www.youtube.com/watch?v=CQnOzQGqyPM&list=FLJ8bxXEc4pZQ7KlFkVBsgyg&index=6&t=386s)
-- [ザクレイ / スマブラや人生に本気になれない視聴者にアツいアドバイスをするザ…](https://www.youtube.com/watch?v=9AZxvlgYltI)
-- [さとら / 誰も知らない全てが残念なデュエマ漫画をボロクソレビュー【デュ…](https://www.youtube.com/watch?v=nE7xENYSOZo&list=FLJ8bxXEc4pZQ7KlFkVBsgyg&index=91)
 
 ## 実践
 

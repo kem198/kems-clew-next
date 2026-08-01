@@ -1,7 +1,7 @@
-import { TagBadgeList } from "@/app/(contents)/notes/_components/note-tag";
+import { NoteTagList } from "@/app/(contents)/notes/_components/note-tags";
 import { ubuntuSans } from "@/constants/fonts";
+import { cn } from "@/lib/cn";
 import { formatDateToYYYYMMDD } from "@/lib/date";
-import { cn } from "@/lib/utils";
 import type { Note } from "@/types/note";
 import Link from "next/link";
 
@@ -27,7 +27,7 @@ export function NoteCard({ note, className }: NoteCardProps) {
         <p className="text-sm text-zinc-400">{note.preview}</p>
       ) : null}
 
-      <TagBadgeList tags={note.frontmatter.tags} />
+      <NoteTagList tags={note.frontmatter.tags} />
     </article>
   );
 }

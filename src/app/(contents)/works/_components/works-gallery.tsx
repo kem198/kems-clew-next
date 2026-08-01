@@ -2,17 +2,17 @@
 
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { WORK_TAGS } from "@/constants/work";
-import { mapItemsToPhotos } from "@/lib/works";
-import type { AlbumPhoto, WorkItem, WorkTag } from "@/types/work";
-import { FilterIcon } from "lucide-react";
+import { WORK_TAGS } from "@/constants/work-metadata";
+import { formatWorkDescription, mapWorksToPhotos } from "@/lib/content/works";
+import { AlbumPhoto, Work, WorkTag } from "@/types/work";
+import { ChevronLeft, ChevronRight, FilterIcon, XIcon } from "lucide-react";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import PhotoAlbum from "react-photo-album";
 import "react-photo-album/rows.css";
 import "react-photo-album/styles.css";
 import Lightbox from "yet-another-react-lightbox";
-import { Captions, Fullscreen, Zoom } from "yet-another-react-lightbox/plugins";
+import { Captions, Zoom } from "yet-another-react-lightbox/plugins";
 import "yet-another-react-lightbox/plugins/captions.css";
 import "yet-another-react-lightbox/styles.css";
 
@@ -159,55 +159,56 @@ function WorksLightbox({ index, slides, onClose }: WorksLightboxProps) {
       open={index >= 0}
       index={index}
       close={onClose}
-      slides={slides.map((photo) => ({
-        src: photo.src,
-        description: [
-          photo.tags?.map((tag) => `#${tag}`).join(" "),
-          `${new Date(photo.date!).getFullYear()}`,
-        ]
-          .filter(Boolean)
-          .join(" | "),
-      }))}
       controller={{
         closeOnBackdropClick: true,
       }}
-      plugins={[Zoom, Fullscreen, Captions]}
+      slides={slides.map((photo) => ({
+        src: photo.src,
+        description: formatWorkDescription(photo.work),
+      }))}
+      render={{
+        buttonZoom: () => null,
+        iconClose: () => <XIcon />,
+        iconPrev: () => <ChevronLeft />,
+        iconNext: () => <ChevronRight />,
+      }}
+      plugins={[Zoom, Captions]}
     />
   );
 }
 
 type WorksGalleryProps = {
-  items: WorkItem[];
+  works: Work[];
 };
 
-export function WorksGallery({ items }: WorksGalleryProps) {
+export function WorksGallery({ works }: WorksGalleryProps) {
   const [groupByYear, setGroupByYear] = useState(false);
   const [index, setIndex] = useState(-1);
   const [slides, setSlides] = useState<AlbumPhoto[]>([]);
   const [selectedTag, setSelectedTag] = useState<TagFilterValue>(null);
 
-  const filteredItems = useMemo(() => {
+  const filteredWorks = useMemo(() => {
     if (selectedTag === null) {
-      return items;
+      return works;
     }
 
     if (selectedTag === "untagged") {
-      return items.filter((item) => item.tags.length === 0);
+      return works.filter((item) => item.tags.length === 0);
     }
 
-    return items.filter((item) => item.tags.includes(selectedTag));
-  }, [items, selectedTag]);
+    return works.filter((item) => item.tags.includes(selectedTag));
+  }, [works, selectedTag]);
 
   const photos = useMemo(
-    () => mapItemsToPhotos(filteredItems),
-    [filteredItems],
+    () => mapWorksToPhotos(filteredWorks),
+    [filteredWorks],
   );
 
   const groups = useMemo(() => {
-    const grouped = new Map<number, WorkItem[]>();
+    const grouped = new Map<number, Work[]>();
 
-    for (const item of filteredItems) {
-      const year = new Date(item.date).getFullYear();
+    for (const item of filteredWorks) {
+      const year = Number(item.slug.substring(0, 4));
 
       if (!grouped.has(year)) {
         grouped.set(year, []);
@@ -217,7 +218,7 @@ export function WorksGallery({ items }: WorksGalleryProps) {
     }
 
     return [...grouped.entries()].sort((a, b) => b[0] - a[0]);
-  }, [filteredItems]);
+  }, [filteredWorks]);
 
   const openLightbox = (photos: AlbumPhoto[], index: number) => {
     setSlides(photos);
@@ -245,8 +246,8 @@ export function WorksGallery({ items }: WorksGalleryProps) {
         />
       ) : (
         <div>
-          {groups.map(([year, groupItems]) => {
-            const groupPhotos = mapItemsToPhotos(groupItems);
+          {groups.map(([year, groupWorks]) => {
+            const groupPhotos = mapWorksToPhotos(groupWorks);
 
             return (
               <section key={year}>

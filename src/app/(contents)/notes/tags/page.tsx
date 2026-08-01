@@ -1,13 +1,16 @@
 import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
-import { NoteH1 } from "@/app/(contents)/notes/_components/note-h1";
 import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
 import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
-import { Tag, TagCloud } from "@/app/(contents)/notes/_components/note-tag";
+import {
+  NoteTagCloud,
+  NoteTagSummaryList,
+} from "@/app/(contents)/notes/_components/note-tags";
+import { NoteTitle } from "@/app/(contents)/notes/_components/note-typography";
+import { ArticleSurface } from "@/components/shared/article-surface";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
-import { ContentArea } from "@/components/shared/content-area";
 import { NavigationArea } from "@/components/shared/navigation-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
-import { getNotes, getNoteTags } from "@/utils/server/notes.server";
+import { getNotes, getNoteTags } from "@/lib/content/notes.server";
 
 export default async function NotesTagsPage() {
   const notes = await getNotes();
@@ -21,34 +24,27 @@ export default async function NotesTagsPage() {
 
       <NoteLayout>
         <NoteLayout.Main>
-          <ContentArea>
+          <ArticleSurface>
             <NoteContent>
               <NoteContent.Header>
-                <NoteH1>Tags</NoteH1>
+                <NoteTitle>Tags</NoteTitle>
               </NoteContent.Header>
 
               <NoteContent.Main>
-                <ul>
-                  {tags.map((tag) => (
-                    <li key={tag.name}>
-                      <Tag tag={tag.name} />{" "}
-                      <span className="text-zinc-400">({tag.count})</span>
-                    </li>
-                  ))}
-                </ul>
+                <NoteTagSummaryList tags={tags} />
               </NoteContent.Main>
             </NoteContent>
-          </ContentArea>
+          </ArticleSurface>
         </NoteLayout.Main>
 
         <NoteLayout.Sidebar>
-          <ContentArea>
+          <ArticleSurface>
             <NoteSidebar>
               <NoteSidebar.Section title="Tags">
-                <TagCloud tags={tags} />
+                <NoteTagCloud tags={tags} />
               </NoteSidebar.Section>
             </NoteSidebar>
-          </ContentArea>
+          </ArticleSurface>
         </NoteLayout.Sidebar>
       </NoteLayout>
     </>
