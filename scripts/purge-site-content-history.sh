@@ -171,9 +171,11 @@ echo
 echo "  git status"
 echo
 
-echo "Commit restored assets:"
+echo "Commit restored content:"
 echo
-echo "  git add public/assets"
+printf "  git add"
+printf " %s" "${RESTORE_PATHS[@]}"
+echo
 echo "  git commit -m \"Restore site content after history cleanup\""
 echo
 
