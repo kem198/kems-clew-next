@@ -19,9 +19,9 @@ $ docker
 ## 実行環境
 
 - OS: Windows 11
-    - Windows 環境へ Docker Desktop の最新版 (4.26.0) をインストールした。
+  - Windows 環境へ Docker Desktop の最新版 (4.26.0) をインストールした。
 - 実行環境: WSL (Ubuntu 20.04.6 LTS)
-    - 通常 Docker Desktop を立ち上げた状態であれば WSL 環境にて Docker CLI が使用できるはずだが、前述のエラーが出力される。
+  - 通常 Docker Desktop を立ち上げた状態であれば WSL 環境にて Docker CLI が使用できるはずだが、前述のエラーが出力される。
 
 ## 原因
 
@@ -29,11 +29,11 @@ $ docker
 
 - [Docker Desktop release notes \| Docker Docs](https://docs.docker.com/desktop/release-notes/#known-issues)
 
-    > Known issues
-    >
-    > For Windows
-    >
-    > - Docker CLI doesn’t work when using WSL 2 integration on an older Linux distribution (for example, Ubuntu 20.04) which uses a `glibc` version older than `2.32`. This will be fixed in future releases. See  [docker/for-win#13824](https://github.com/docker/for-win/issues/13824).
+  > Known issues
+  >
+  > For Windows
+  >
+  > - Docker CLI doesn’t work when using WSL 2 integration on an older Linux distribution (for example, Ubuntu 20.04) which uses a `glibc` version older than `2.32`. This will be fixed in future releases. See [docker/for-win#13824](https://github.com/docker/for-win/issues/13824).
 
 ## 解決方法
 
@@ -57,8 +57,8 @@ Common Commands:
 ## 参考文献
 
 - [Update to 4.26.0 broke docker on WSL2 (Ubuntu 20.04) in Win11 · Issue #13824 · docker/for-win](https://github.com/docker/for-win/issues/13824)
-    - リリースノートでリンクが貼られている issue 。
-    - [4.25.2 版のインストールに関するコメント](https://github.com/docker/for-win/issues/13824#issuecomment-1846510859) を参考にした。
+  - リリースノートでリンクが貼られている issue 。
+  - [4.25.2 版のインストールに関するコメント](https://github.com/docker/for-win/issues/13824#issuecomment-1846510859) を参考にした。
 - [Docker Desktop for Windows をダウングレードしたい！ #docker-for-windows - Qiita](https://qiita.com/iwaiktos/items/b37a23598946e0db9bcb)
 
 ---
@@ -73,11 +73,11 @@ Common Commands:
 
 - [Docker Desktop release notes \| Docker Docs](https://docs.docker.com/desktop/release-notes/#4261)
 
-    > Bug fixes and enhancements
-    >
-    > For Windows
-    >
-    > - Switch the CLI binaries to a version compatible with older versions of glibc, such as used in Ubuntu 20.04 fixes [docker/for-win#13824](https://github.com/docker/for-win/issues/13824)
+  > Bug fixes and enhancements
+  >
+  > For Windows
+  >
+  > - Switch the CLI binaries to a version compatible with older versions of glibc, such as used in Ubuntu 20.04 fixes [docker/for-win#13824](https://github.com/docker/for-win/issues/13824)
 
 ![docker-4261](/assets/notes/2023-12-11-docker-desktop-4-26-0-issue/docker-4261.webp)
 
