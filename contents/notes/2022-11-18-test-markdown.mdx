@@ -2,8 +2,8 @@
 title: マークダウンのテスト用ページ
 tags:
   - tech
-date: 2022-11-18 09:00:00
-lastmod: 2023-01-06 22:43:55
+date: 2022-11-18
+lastmod: 2026-08-01
 description: マークダウンのテスト用ページです。
 ---
 
@@ -72,6 +72,24 @@ _イタリック_
 大きい画像 (1080x1080):
 
 ![2](/assets/notes/2022-11-18-test-markdown/large.webp)
+
+自作コンポーネント (画像を横に並べる)
+
+```tsx
+<ImageRow
+  images={[
+    "/assets/notes/2022-11-18-test-markdown/small.webp",
+    "/assets/notes/2022-11-18-test-markdown/large.webp",
+  ]}
+/>
+```
+
+<ImageRow
+  images={[
+    "/assets/notes/2022-11-18-test-markdown/small.webp",
+    "/assets/notes/2022-11-18-test-markdown/large.webp",
+  ]}
+/>
 
 ## テーブル
 
