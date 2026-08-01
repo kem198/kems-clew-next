@@ -52,7 +52,11 @@ function Header({ children, className }: NoteContentSectionProps) {
  * モバイルでは非表示にする
  */
 function Navigation({ children, className }: NoteContentSectionProps) {
-  return <div className={cn("md:hidden", className)}>{children}</div>;
+  return (
+    <div className={cn("rounded-md bg-zinc-100 p-4 md:hidden", className)}>
+      {children}
+    </div>
+  );
 }
 
 /**
