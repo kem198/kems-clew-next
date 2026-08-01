@@ -22,37 +22,37 @@ export const WORKS: Partial<Record<WorkSlug, WorkMetadata>> = {
 
   // 2017
   "20170611_sqiq": {
-    tags: ["fanart"],
+    tags: ["fanart", "analog"],
   },
   "20170616_fj": {
-    tags: ["fanart"],
+    tags: ["fanart", "analog"],
   },
 
   "20180103_nid": {
     tags: ["fanart"],
   },
   "20180427_429": {
-    tags: ["fanart"],
+    tags: ["fanart", "analog"],
   },
   "20180714_swordman": {
-    tags: ["fanart"],
+    tags: ["fanart", "analog"],
   },
 
   // 2019
   "20190119_rkgk_zelda": {
-    tags: ["fanart"],
+    tags: ["fanart", "analog"],
   },
   "20190403_coo": {
-    tags: ["fanart"],
+    tags: ["fanart", "analog"],
   },
   "20190403_minu_inu_spinner": {
-    tags: ["fanart"],
+    tags: ["fanart", "analog"],
   },
   "20190403_wakuwaku_bubble": {
-    tags: ["fanart"],
+    tags: ["fanart", "analog"],
   },
   "20190625_lady_fashion_selection": {
-    tags: ["fanart"],
+    tags: ["fanart", "analog"],
   },
   "20191116_odango": {
     tags: ["fanart"],
@@ -170,7 +170,7 @@ export const WORKS: Partial<Record<WorkSlug, WorkMetadata>> = {
     tags: ["original"],
   },
   "20211016_modane_nendoro": {
-    tags: ["original"],
+    tags: ["original", "analog"],
   },
   "20211123_modane_komarigao": {
     tags: ["original"],
@@ -193,10 +193,10 @@ export const WORKS: Partial<Record<WorkSlug, WorkMetadata>> = {
     tags: ["original", "parody"],
   },
   "20220630_modane_orgm": {
-    tags: ["original"],
+    tags: ["original", "analog"],
   },
   "20220807_modane_co2_watcher": {
-    tags: ["engineering"],
+    tags: ["original", "engineering", "analog"],
   },
   "20220813_eeyan": {
     tags: ["fanart"],
@@ -219,9 +219,11 @@ export const WORKS: Partial<Record<WorkSlug, WorkMetadata>> = {
     tags: ["fanart"],
   },
   "20231027_modane_live2d_widget": {
-    tags: ["original"],
+    tags: ["original", "engineering"],
   },
-  "20231216_todays_target": {},
+  "20231216_todays_target": {
+    tags: ["analog"],
+  },
   "20231230_homecoming": {
     tags: ["original", "flipnote-studio"],
   },
@@ -233,7 +235,9 @@ export const WORKS: Partial<Record<WorkSlug, WorkMetadata>> = {
   "20240127_tarumaechan": {
     tags: ["fanart"],
   },
-  "20240209_todays_target": {},
+  "20240209_todays_target": {
+    tags: ["analog"],
+  },
 
   // 2026
   "20260131-kiritan": {
@@ -333,6 +337,10 @@ export const WORK_TAGS: { id: WorkTag; label: string }[] = [
   {
     id: "axnos-paint",
     label: "AXNOS Paint",
+  },
+  {
+    id: "analog",
+    label: "アナログ / 現物",
   },
   {
     id: "engineering",
