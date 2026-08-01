@@ -29,7 +29,7 @@ export default async function Home() {
               <li key={n.slug} className="mb-0 ml-8 list-disc">
                 <Link
                   href={`/notes/${n.slug}`}
-                  className="flex flex-wrap gap-x-1 gap-y-0 hover:underline"
+                  className="inline-flex flex-wrap gap-x-1 gap-y-0 hover:underline"
                 >
                   <span className={`${ubuntuSans.className} text-zinc-400`}>
                     {formatDateToYYYYMMDD(n.frontmatter.date)}
