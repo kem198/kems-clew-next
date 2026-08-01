@@ -27,11 +27,17 @@ export default async function Home() {
           <ul className="not-prose mt-2">
             {latest.map((n) => (
               <li key={n.slug} className="mb-0 ml-8 list-disc">
-                <Link href={`/notes/${n.slug}`} className="hover:underline">
+                <Link
+                  href={`/notes/${n.slug}`}
+                  className="flex flex-wrap gap-x-1 gap-y-0 hover:underline"
+                >
                   <span className={`${ubuntuSans.className} text-zinc-400`}>
-                    {formatDateToYYYYMMDD(n.frontmatter.date)} |{" "}
+                    {formatDateToYYYYMMDD(n.frontmatter.date)}
                   </span>
-                  {n.frontmatter.title}
+                  <span className={`${ubuntuSans.className} text-zinc-400`}>
+                    |
+                  </span>
+                  <span>{n.frontmatter.title}</span>
                 </Link>
               </li>
             ))}
