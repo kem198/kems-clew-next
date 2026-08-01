@@ -14,6 +14,7 @@ import {
   getNoteTags,
   getSortedNotes,
 } from "@/lib/content/notes.server";
+import Link from "next/link";
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
@@ -76,7 +77,13 @@ export default async function NoteTagPage({ params }: NoteTagPageProps) {
         <NoteLayout.Sidebar>
           <AsideSurface>
             <NoteSidebar>
-              <NoteSidebar.Section title="Tags">
+              <NoteSidebar.Section
+                heading={
+                  <Link href="/notes/tags" className="not-prose">
+                    Tags
+                  </Link>
+                }
+              >
                 <NoteTagCloud tags={tags} />
               </NoteSidebar.Section>
             </NoteSidebar>

@@ -16,6 +16,7 @@ import {
   getSortedNotes,
 } from "@/lib/content/notes.server";
 import { withSiteName } from "@/lib/seo";
+import Link from "next/link";
 
 export const metadata = {
   title: withSiteName("Notes"),
@@ -58,7 +59,13 @@ export default async function NotesPage() {
         <NoteLayout.Sidebar>
           <AsideSurface className="min-h-0 flex-1">
             <NoteSidebar>
-              <NoteSidebar.Section title="Tags">
+              <NoteSidebar.Section
+                heading={
+                  <Link href="/notes/tags" className="not-prose">
+                    Tags
+                  </Link>
+                }
+              >
                 <NoteTagCloud tags={tags} />
               </NoteSidebar.Section>
             </NoteSidebar>

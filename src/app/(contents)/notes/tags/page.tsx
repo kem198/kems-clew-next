@@ -11,6 +11,7 @@ import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { NavigationArea } from "@/components/shared/navigation-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { getNotes, getNoteTags } from "@/lib/content/notes.server";
+import Link from "next/link";
 
 export default async function NotesTagsPage() {
   const notes = await getNotes();
@@ -40,7 +41,13 @@ export default async function NotesTagsPage() {
         <NoteLayout.Sidebar>
           <ArticleSurface>
             <NoteSidebar>
-              <NoteSidebar.Section title="Tags">
+              <NoteSidebar.Section
+                heading={
+                  <Link href="/notes/tags" className="not-prose">
+                    Tags
+                  </Link>
+                }
+              >
                 <NoteTagCloud tags={tags} />
               </NoteSidebar.Section>
             </NoteSidebar>

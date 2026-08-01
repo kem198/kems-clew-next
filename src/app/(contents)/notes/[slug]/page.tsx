@@ -26,6 +26,7 @@ import { rehypePrettyCodeOptions } from "@/lib/rehype-pretty-code";
 import type { NoteFrontmatter } from "@/types/note";
 import { Metadata } from "next";
 import { evaluate } from "next-mdx-remote-client/rsc";
+import Link from "next/link";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
@@ -159,7 +160,13 @@ export default async function NotePage({ params }: NotePageProps) {
           <AsideSurface>
             <NoteSidebar>
               {scope.toc?.length ? (
-                <NoteSidebar.Section title="TOC">
+                <NoteSidebar.Section
+                  heading={
+                    <Link href="#top" className="not-prose">
+                      TOC
+                    </Link>
+                  }
+                >
                   <ScrollArea className="min-h-0 flex-1 overflow-auto">
                     <NoteToc toc={scope.toc} />
                   </ScrollArea>
