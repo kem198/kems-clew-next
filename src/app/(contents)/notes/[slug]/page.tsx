@@ -12,6 +12,7 @@ import { ArticleSurface } from "@/components/shared/article-surface";
 import { AsideSurface } from "@/components/shared/aside-surface";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { CodeBlock } from "@/components/shared/code-block";
+import { ImageRow } from "@/components/shared/image-row";
 import { NavigationArea } from "@/components/shared/navigation-area";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
@@ -107,6 +108,7 @@ export default async function NotePage({ params }: NotePageProps) {
     source,
     components: {
       pre: CodeBlock,
+      ImageRow,
     },
     options: {
       parseFrontmatter: true,
