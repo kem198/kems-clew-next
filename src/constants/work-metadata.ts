@@ -279,6 +279,9 @@ export const WORKS: Partial<Record<WorkSlug, WorkMetadata>> = {
   "20260610-swordman": {
     tags: ["fanart"],
   },
+  "20260616-modaneswimsuit": {
+    tags: ["original", "analog"],
+  },
   "20260710-yunyun": {
     tags: ["fanart"],
   },
