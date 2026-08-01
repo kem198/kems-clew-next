@@ -31,11 +31,8 @@ import rehypeSlug from "rehype-slug";
 import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
 import remarkGfm from "remark-gfm";
 
-type NotePageProps = {
-  params: Promise<{
-    slug: string;
-  }>;
-};
+export const dynamic = "force-static";
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const notes = await getNotes();
@@ -92,6 +89,12 @@ export async function generateMetadata({
     },
   };
 }
+
+type NotePageProps = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
 
 export default async function NotePage({ params }: NotePageProps) {
   const { slug } = await params;
