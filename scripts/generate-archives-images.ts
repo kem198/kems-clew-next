@@ -4,17 +4,17 @@ import { generateImages } from "./lib/image-generator";
 const force = process.argv.includes("--force");
 
 generateImages({
-  name: "works",
+  name: "archives",
 
-  srcDir: join(process.cwd(), "public_src", "assets", "works"),
+  srcDir: join(process.cwd(), "public_src", "assets", "archives"),
 
-  outDir: join(process.cwd(), "public", "assets", "works"),
+  outDir: join(process.cwd(), "public", "assets", "archives"),
 
   manifestPath: join(
     process.cwd(),
     "public",
     "assets",
-    "works",
+    "archives",
     "manifest.json",
   ),
 

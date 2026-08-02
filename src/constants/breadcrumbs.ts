@@ -7,9 +7,9 @@ export const BreadcrumbSegment = {
     slug: "tags",
     label: "Tags",
   },
-  works: {
-    slug: "works",
-    label: "Works",
+  archives: {
+    slug: "archives",
+    label: "Archives",
   },
   about: {
     slug: "about",

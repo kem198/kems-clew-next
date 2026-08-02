@@ -1,11 +1,11 @@
-import { WorkSlug, WorkTag } from "@/types/work";
+import { ArchiveSlug, ArchiveTag } from "@/types/archive";
 
-export type WorkMetadata = {
+export type ArchiveMetadata = {
   title?: string;
-  tags?: WorkTag[];
+  tags?: ArchiveTag[];
 };
 
-export const WORKS: Partial<Record<WorkSlug, WorkMetadata>> = {
+export const WORKS: Partial<Record<ArchiveSlug, ArchiveMetadata>> = {
   // 2013
   "20130724_ikaku": {
     tags: ["fanart", "flipnote-studio"],
@@ -320,7 +320,7 @@ export const WORKS: Partial<Record<WorkSlug, WorkMetadata>> = {
   },
 };
 
-export const WORK_TAGS: { id: WorkTag; label: string }[] = [
+export const WORK_TAGS: { id: ArchiveTag; label: string }[] = [
   {
     id: "original",
     label: "オリジナル",

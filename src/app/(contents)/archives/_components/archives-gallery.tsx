@@ -2,9 +2,12 @@
 
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { WORK_TAGS } from "@/constants/work-metadata";
-import { formatWorkDescription, mapWorksToPhotos } from "@/lib/content/works";
-import { AlbumPhoto, Work, WorkTag } from "@/types/work";
+import { WORK_TAGS } from "@/constants/archive-metadata";
+import {
+  formatArchiveDescription,
+  mapArchivesToPhotos,
+} from "@/lib/content/archives";
+import { AlbumPhoto, Archive, ArchiveTag } from "@/types/archive";
 import { ChevronLeft, ChevronRight, FilterIcon, XIcon } from "lucide-react";
 import Image from "next/image";
 import { useMemo, useState } from "react";
@@ -48,7 +51,7 @@ function GroupToggle({ groupByYear, onChange }: GroupToggleProps) {
   );
 }
 
-type TagFilterValue = WorkTag | "untagged" | null;
+type TagFilterValue = ArchiveTag | "untagged" | null;
 
 type TagFilterProps = {
   selectedTag: TagFilterValue;
@@ -126,12 +129,12 @@ function renderNextImage(
   );
 }
 
-type WorksAlbumProps = {
+type ArchivesAlbumProps = {
   photos: AlbumPhoto[];
   onClick: (index: number) => void;
 };
 
-function WorksAlbum({ photos, onClick }: WorksAlbumProps) {
+function ArchivesAlbum({ photos, onClick }: ArchivesAlbumProps) {
   return (
     <div className="not-prose">
       <PhotoAlbum
@@ -147,13 +150,13 @@ function WorksAlbum({ photos, onClick }: WorksAlbumProps) {
   );
 }
 
-type WorksLightboxProps = {
+type ArchivesLightboxProps = {
   index: number;
   slides: AlbumPhoto[];
   onClose: () => void;
 };
 
-function WorksLightbox({ index, slides, onClose }: WorksLightboxProps) {
+function ArchivesLightbox({ index, slides, onClose }: ArchivesLightboxProps) {
   return (
     <Lightbox
       open={index >= 0}
@@ -164,7 +167,7 @@ function WorksLightbox({ index, slides, onClose }: WorksLightboxProps) {
       }}
       slides={slides.map((photo) => ({
         src: photo.src,
-        description: formatWorkDescription(photo.work),
+        description: formatArchiveDescription(photo.archive),
       }))}
       render={{
         buttonZoom: () => null,
@@ -177,37 +180,37 @@ function WorksLightbox({ index, slides, onClose }: WorksLightboxProps) {
   );
 }
 
-type WorksGalleryProps = {
-  works: Work[];
+type ArchivesGalleryProps = {
+  archives: Archive[];
 };
 
-export function WorksGallery({ works }: WorksGalleryProps) {
+export function ArchivesGallery({ archives }: ArchivesGalleryProps) {
   const [groupByYear, setGroupByYear] = useState(false);
   const [index, setIndex] = useState(-1);
   const [slides, setSlides] = useState<AlbumPhoto[]>([]);
   const [selectedTag, setSelectedTag] = useState<TagFilterValue>(null);
 
-  const filteredWorks = useMemo(() => {
+  const filteredArchives = useMemo(() => {
     if (selectedTag === null) {
-      return works;
+      return archives;
     }
 
     if (selectedTag === "untagged") {
-      return works.filter((item) => item.tags.length === 0);
+      return archives.filter((item) => item.tags.length === 0);
     }
 
-    return works.filter((item) => item.tags.includes(selectedTag));
-  }, [works, selectedTag]);
+    return archives.filter((item) => item.tags.includes(selectedTag));
+  }, [archives, selectedTag]);
 
   const photos = useMemo(
-    () => mapWorksToPhotos(filteredWorks),
-    [filteredWorks],
+    () => mapArchivesToPhotos(filteredArchives),
+    [filteredArchives],
   );
 
   const groups = useMemo(() => {
-    const grouped = new Map<number, Work[]>();
+    const grouped = new Map<number, Archive[]>();
 
-    for (const item of filteredWorks) {
+    for (const item of filteredArchives) {
       const year = Number(item.slug.substring(0, 4));
 
       if (!grouped.has(year)) {
@@ -218,7 +221,7 @@ export function WorksGallery({ works }: WorksGalleryProps) {
     }
 
     return [...grouped.entries()].sort((a, b) => b[0] - a[0]);
-  }, [filteredWorks]);
+  }, [filteredArchives]);
 
   const openLightbox = (photos: AlbumPhoto[], index: number) => {
     setSlides(photos);
@@ -240,20 +243,20 @@ export function WorksGallery({ works }: WorksGalleryProps) {
       </details>
 
       {!groupByYear ? (
-        <WorksAlbum
+        <ArchivesAlbum
           photos={photos}
           onClick={(index: number) => openLightbox(photos, index)}
         />
       ) : (
         <div>
-          {groups.map(([year, groupWorks]) => {
-            const groupPhotos = mapWorksToPhotos(groupWorks);
+          {groups.map(([year, groupArchives]) => {
+            const groupPhotos = mapArchivesToPhotos(groupArchives);
 
             return (
               <section key={year}>
                 <h2>{year}</h2>
 
-                <WorksAlbum
+                <ArchivesAlbum
                   photos={groupPhotos}
                   onClick={(index: number) => openLightbox(groupPhotos, index)}
                 />
@@ -263,7 +266,7 @@ export function WorksGallery({ works }: WorksGalleryProps) {
         </div>
       )}
 
-      <WorksLightbox
+      <ArchivesLightbox
         index={index}
         slides={slides}
         onClose={() => setIndex(-1)}
