@@ -11,7 +11,12 @@ import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { NavigationArea } from "@/components/shared/navigation-area";
 import { BreadcrumbSegment } from "@/constants/breadcrumbs";
 import { getNotes, getNoteTags } from "@/lib/content/notes.server";
+import { withSiteName } from "@/lib/seo";
 import Link from "next/link";
+
+export const metadata = {
+  title: withSiteName("Tags"),
+};
 
 export default async function NotesTagsPage() {
   const notes = await getNotes();

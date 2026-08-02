@@ -23,6 +23,7 @@ import {
   getPrevNextNote,
 } from "@/lib/content/notes.server";
 import { rehypePrettyCodeOptions } from "@/lib/rehype-pretty-code";
+import { withSiteName } from "@/lib/seo";
 import type { NoteFrontmatter } from "@/types/note";
 import { Metadata } from "next";
 import { evaluate } from "next-mdx-remote-client/rsc";
@@ -58,7 +59,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const title = note.frontmatter.title;
+  const title = withSiteName(note.frontmatter.title);
   const description = note.preview;
   const url = `${SITE_URL}/notes/${slug}`;
 

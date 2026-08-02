@@ -14,6 +14,7 @@ import {
   getNoteTags,
   getSortedNotes,
 } from "@/lib/content/notes.server";
+import { Metadata } from "next";
 import Link from "next/link";
 
 export const dynamic = "force-static";
@@ -33,6 +34,15 @@ type NoteTagPageProps = {
     tag: string;
   }>;
 };
+
+export async function generateMetadata({
+  params,
+}: NoteTagPageProps): Promise<Metadata> {
+  const { tag } = await params;
+  return {
+    title: tag,
+  };
+}
 
 export default async function NoteTagPage({ params }: NoteTagPageProps) {
   const { tag } = await params;
