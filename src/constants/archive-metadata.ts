@@ -6,6 +6,45 @@ export type ArchiveMetadata = {
 };
 
 export const WORKS: Partial<Record<ArchiveSlug, ArchiveMetadata>> = {
+  // 2010
+  "20100205-torterra": {
+    tags: ["fanart", "animation"],
+  },
+  "20100209-kirby": {
+    tags: ["fanart", "animation"],
+  },
+  "20100513-chatot": {
+    tags: ["fanart", "animation"],
+  },
+  "20100803-leviathan": {
+    tags: ["fanart", "animation"],
+  },
+  "20100808-flour": {
+    tags: ["fanart", "animation"],
+  },
+  "20100826-noctowl": {
+    tags: ["fanart", "animation"],
+  },
+  "20100916-glaceon2": {
+    tags: ["fanart", "animation"],
+  },
+  "20101203-mawile": {
+    tags: ["fanart", "animation"],
+  },
+
+  // 2011
+  "20110308-scolipede": {
+    tags: ["fanart", "animation"],
+  },
+
+  //2012
+  "20120626-swordman": {
+    tags: ["fanart", "animation"],
+  },
+  "20120916-gunner": {
+    tags: ["fanart", "animation"],
+  },
+
   // 2013
   "20130724_ikaku": {
     tags: ["fanart", "animation"],
@@ -320,7 +359,10 @@ export const WORKS: Partial<Record<ArchiveSlug, ArchiveMetadata>> = {
   },
 };
 
-export const WORK_TAGS: { id: ArchiveTag; label: string }[] = [
+export const WORK_TAGS: {
+  id: ArchiveTag;
+  label: string;
+}[] = [
   {
     id: "original",
     label: "オリジナル",
