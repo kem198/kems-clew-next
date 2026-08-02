@@ -8,16 +8,16 @@ export type ArchiveMetadata = {
 export const WORKS: Partial<Record<ArchiveSlug, ArchiveMetadata>> = {
   // 2013
   "20130724_ikaku": {
-    tags: ["fanart", "flipnote-studio"],
+    tags: ["fanart", "animation"],
   },
   "20130724_lagia": {
-    tags: ["fanart", "flipnote-studio"],
+    tags: ["fanart", "animation"],
   },
   "20130724_mismagius": {
-    tags: ["fanart", "flipnote-studio"],
+    tags: ["fanart", "animation"],
   },
   "20130724_ugo3d": {
-    tags: ["original", "flipnote-studio"],
+    tags: ["original", "animation"],
   },
 
   // 2017
@@ -95,7 +95,7 @@ export const WORKS: Partial<Record<ArchiveSlug, ArchiveMetadata>> = {
     tags: ["original"],
   },
   "20210130_modane_ugo": {
-    tags: ["original", "flipnote-studio"],
+    tags: ["original", "animation"],
   },
   "20210321_modane_kisei": {
     tags: ["original"],
@@ -107,19 +107,19 @@ export const WORKS: Partial<Record<ArchiveSlug, ArchiveMetadata>> = {
     tags: ["original"],
   },
   "20210523_nhnk": {
-    tags: ["fanart", "flipnote-studio"],
+    tags: ["fanart", "animation"],
   },
   "20210523_rl": {
-    tags: ["fanart", "flipnote-studio"],
+    tags: ["fanart", "animation"],
   },
   "20210523_tomu_tachi": {
     tags: ["fanart"],
   },
   "20210526_mtp": {
-    tags: ["fanart", "flipnote-studio"],
+    tags: ["fanart", "animation"],
   },
   "20210526_smyi_2": {
-    tags: ["fanart", "flipnote-studio"],
+    tags: ["fanart", "animation"],
   },
   "20210529_modane_art": {
     tags: ["original"],
@@ -225,12 +225,12 @@ export const WORKS: Partial<Record<ArchiveSlug, ArchiveMetadata>> = {
     tags: ["analog"],
   },
   "20231230_homecoming": {
-    tags: ["original", "flipnote-studio"],
+    tags: ["original", "animation"],
   },
 
   // 2024
   "20240106_homecoming_colored": {
-    tags: ["original", "flipnote-studio"],
+    tags: ["original", "animation"],
   },
   "20240127_tarumaechan": {
     tags: ["fanart"],
@@ -256,13 +256,13 @@ export const WORKS: Partial<Record<ArchiveSlug, ArchiveMetadata>> = {
     tags: ["original"],
   },
   "20260401-kirby": {
-    tags: ["fanart", "flipnote-studio"],
+    tags: ["fanart", "animation"],
   },
   "20260402-roundsowrd-tsukareta": {
-    tags: ["fanart", "flipnote-studio"],
+    tags: ["fanart", "animation"],
   },
   "20260402-roundsowrd": {
-    tags: ["fanart", "flipnote-studio"],
+    tags: ["fanart", "animation"],
   },
   "20260515-runaria": {
     tags: ["fanart"],
@@ -289,25 +289,25 @@ export const WORKS: Partial<Record<ArchiveSlug, ArchiveMetadata>> = {
     tags: ["original"],
   },
   "20260713_205657": {
-    tags: ["original", "axnos-paint"],
+    tags: ["original"],
   },
   "20260714_163032": {
-    tags: ["original", "axnos-paint"],
+    tags: ["original"],
   },
   "20260717_020823": {
-    tags: ["original", "axnos-paint"],
+    tags: ["original"],
   },
   "20260718-shirusumayu": {
     tags: ["fanart"],
   },
   "20260718-shirusumayux": {
-    tags: ["fanart", "axnos-paint"],
+    tags: ["fanart"],
   },
   "20260718-shirusumayuy": {
-    tags: ["fanart", "axnos-paint"],
+    tags: ["fanart"],
   },
   "20260722_042500": {
-    tags: ["original", "axnos-paint"],
+    tags: ["original"],
   },
   "20260725-paradisered": {
     tags: ["fanart"],
@@ -329,17 +329,14 @@ export const WORK_TAGS: { id: ArchiveTag; label: string }[] = [
     id: "fanart",
     label: "ファンアート",
   },
+
+  {
+    id: "animation",
+    label: "アニメーション",
+  },
   {
     id: "parody",
     label: "パロディ",
-  },
-  {
-    id: "flipnote-studio",
-    label: "うごくメモ帳",
-  },
-  {
-    id: "axnos-paint",
-    label: "AXNOS Paint",
   },
   {
     id: "analog",

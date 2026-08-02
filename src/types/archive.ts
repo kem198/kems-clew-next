@@ -6,13 +6,7 @@ import manifest from "@/../public/assets/archives/manifest.json";
 export type ArchiveSlug = keyof typeof manifest;
 
 export type ArchiveTag =
-  | "original"
-  | "fanart"
-  | "parody"
-  | "flipnote-studio"
-  | "axnos-paint"
-  | "analog"
-  | "engineering";
+  "original" | "fanart" | "parody" | "animation" | "analog" | "engineering";
 
 /**
  * 一作品のモデル
