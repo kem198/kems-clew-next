@@ -15,6 +15,10 @@ export const BreadcrumbSegment = {
     slug: "about",
     label: "About",
   },
+  rss: {
+    slug: "rss",
+    label: "RSS",
+  },
 } as const;
 
 export type BreadcrumbSegment =

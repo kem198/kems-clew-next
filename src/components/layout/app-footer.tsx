@@ -22,7 +22,7 @@ export function AppFooter({ className, ...props }: AppFooterProps) {
             </Link>
           </li>
           <li>
-            <Link href="/rss.xml" aria-label="Feed">
+            <Link href="/rss" aria-label="rss">
               <RssIcon className="h-6 w-6" />
             </Link>
           </li>

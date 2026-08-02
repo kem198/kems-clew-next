@@ -12,11 +12,11 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 
 export const metadata = {
-  title: withSiteName("About"),
+  title: withSiteName("RSS"),
 };
 
 export default async function Page() {
-  const filePath = path.join(process.cwd(), "contents/about/about.md");
+  const filePath = path.join(process.cwd(), "contents/rss/rss.md");
 
   const source = await readFile(filePath, "utf-8");
 
@@ -33,7 +33,7 @@ export default async function Page() {
   return (
     <>
       <NavigationArea>
-        <Breadcrumbs segments={[BreadcrumbSegment.about]} />
+        <Breadcrumbs segments={[BreadcrumbSegment.rss]} />
       </NavigationArea>
 
       <NoteLayout>
