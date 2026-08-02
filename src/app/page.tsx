@@ -54,8 +54,8 @@ export default async function Home() {
         </section>
 
         <section>
-          <HomeLink href={"/works"} description="制作物のページ">
-            Works
+          <HomeLink href={"/archives"} description="制作物のページ">
+            Archives
           </HomeLink>
         </section>
 

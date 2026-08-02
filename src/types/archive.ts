@@ -1,11 +1,11 @@
-import manifest from "@/../public/assets/works/manifest.json";
+import manifest from "@/../public/assets/archives/manifest.json";
 
 /**
  * 作品を一意に識別する ID
  */
-export type WorkSlug = keyof typeof manifest;
+export type ArchiveSlug = keyof typeof manifest;
 
-export type WorkTag =
+export type ArchiveTag =
   | "original"
   | "fanart"
   | "parody"
@@ -17,18 +17,18 @@ export type WorkTag =
 /**
  * 一作品のモデル
  */
-export type Work = {
-  slug: WorkSlug;
+export type Archive = {
+  slug: ArchiveSlug;
   src: string;
   width: number;
   height: number;
   title?: string;
-  tags: WorkTag[];
+  tags: ArchiveTag[];
 };
 
 export type AlbumPhoto = {
   src: string;
   width: number;
   height: number;
-  work: Work;
+  archive: Archive;
 };

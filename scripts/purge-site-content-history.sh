@@ -9,13 +9,13 @@ set -euo pipefail
 # ========================================
 
 TARGET_PATHS=(
-  "public/assets/works/"
+  "public/assets/archives/"
   "public/assets/notes/"
   "contents/notes/"
 )
 
 RESTORE_PATHS=(
-  "public/assets/works"
+  "public/assets/archives"
   "public/assets/notes"
   "contents/notes/"
 )
