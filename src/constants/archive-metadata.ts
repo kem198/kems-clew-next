@@ -298,7 +298,7 @@ export const WORKS: Partial<Record<ArchiveSlug, ArchiveMetadata>> = {
     tags: ["fanart", "animation"],
   },
   "20260402-roundsowrd-tsukareta": {
-    tags: ["fanart", "animation"],
+    tags: ["fanart"],
   },
   "20260402-roundsowrd": {
     tags: ["fanart", "animation"],
