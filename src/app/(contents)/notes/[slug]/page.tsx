@@ -1,30 +1,23 @@
-import { NoteHeader } from "@/app/(contents)/notes/_components/note-header";
-import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
-import { NotePager } from "@/app/(contents)/notes/_components/note-pager";
-
-import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
-import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
-import {
-  NoteMobileToc,
-  NoteToc,
-} from "@/app/(contents)/notes/_components/note-toc";
-import { ArticleSurface } from "@/components/shared/article-surface";
-import { AsideSurface } from "@/components/shared/aside-surface";
-import { Breadcrumbs } from "@/components/shared/breadcrumbs";
-import { CodeBlock } from "@/components/shared/code-block";
-import { ImageRow } from "@/components/shared/image-row";
-import { NavigationArea } from "@/components/shared/navigation-area";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { BreadcrumbSegment } from "@/constants/breadcrumbs";
-import { SITE_NAME, SITE_URL } from "@/constants/site";
-import {
-  getNotes,
-  getNoteSource,
-  getPrevNextNote,
-} from "@/lib/content/notes.server";
-import { rehypePrettyCodeOptions } from "@/lib/rehype-pretty-code";
-import { withSiteName } from "@/lib/seo";
-import type { NoteFrontmatter } from "@/types/note";
+import { NoteContent } from "@/features/notes/components/note-content";
+import { NoteHeader } from "@/features/notes/components/note-header";
+import { NoteLayout } from "@/features/notes/components/note-layout";
+import { NotePager } from "@/features/notes/components/note-pager";
+import { NoteSidebar } from "@/features/notes/components/note-sidebar";
+import { NoteMobileToc, NoteToc } from "@/features/notes/components/note-toc";
+import type { NoteFrontmatter } from "@/features/notes/note";
+import { getNotes, getNoteSource } from "@/features/notes/repository";
+import { getPrevNextNote } from "@/features/notes/selector";
+import { ArticleSurface } from "@/shared/components/article-surface";
+import { AsideSurface } from "@/shared/components/aside-surface";
+import { Breadcrumbs } from "@/shared/components/breadcrumbs";
+import { CodeBlock } from "@/shared/components/code-block";
+import { ImageRow } from "@/shared/components/image-row";
+import { NavigationArea } from "@/shared/components/navigation-area";
+import { ScrollArea } from "@/shared/components/ui/scroll-area";
+import { BreadcrumbSegment } from "@/shared/constants/breadcrumbs";
+import { SITE_NAME, SITE_URL } from "@/shared/constants/site";
+import { rehypePrettyCodeOptions } from "@/shared/lib/rehype-pretty-code";
+import { withSiteName } from "@/shared/lib/seo";
 import { Metadata } from "next";
 import { evaluate } from "next-mdx-remote-client/rsc";
 import Image from "next/image";

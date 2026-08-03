@@ -1,13 +1,13 @@
-import { AppFooter } from "@/components/layout/app-footer";
-import { AppHeader } from "@/components/layout/app-header";
+import { AppFooter } from "@/shared/components/layout/app-footer";
+import { AppHeader } from "@/shared/components/layout/app-header";
 import {
   geistMono,
   geistSans,
   notoSansJp,
   ubuntuSans,
-} from "@/constants/fonts";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/constants/site";
-import { cn } from "@/lib/cn";
+} from "@/shared/constants/fonts";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/shared/constants/site";
+import { cn } from "@/shared/lib/cn";
 import type { Metadata } from "next";
 import "./globals.css";
 

@@ -1,21 +1,17 @@
-import { NoteCard } from "@/app/(contents)/notes/_components/note-card";
-import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
-
-import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
-import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
-import { NoteTagCloud } from "@/app/(contents)/notes/_components/note-tags";
-import { NoteTitle } from "@/app/(contents)/notes/_components/note-typography";
-import { ArticleSurface } from "@/components/shared/article-surface";
-import { AsideSurface } from "@/components/shared/aside-surface";
-import { Breadcrumbs } from "@/components/shared/breadcrumbs";
-import { NavigationArea } from "@/components/shared/navigation-area";
-import { BreadcrumbSegment } from "@/constants/breadcrumbs";
-import {
-  getNotes,
-  getNoteTags,
-  getSortedNotes,
-} from "@/lib/content/notes.server";
-import { withSiteName } from "@/lib/seo";
+import { NoteCard } from "@/features/notes/components/note-card";
+import { NoteContent } from "@/features/notes/components/note-content";
+import { NoteLayout } from "@/features/notes/components/note-layout";
+import { NoteSidebar } from "@/features/notes/components/note-sidebar";
+import { NoteTagCloud } from "@/features/notes/components/note-tags";
+import { NoteTitle } from "@/features/notes/components/note-typography";
+import { getNotes } from "@/features/notes/repository";
+import { getNoteTags, getSortedNotes } from "@/features/notes/selector";
+import { ArticleSurface } from "@/shared/components/article-surface";
+import { AsideSurface } from "@/shared/components/aside-surface";
+import { Breadcrumbs } from "@/shared/components/breadcrumbs";
+import { NavigationArea } from "@/shared/components/navigation-area";
+import { BreadcrumbSegment } from "@/shared/constants/breadcrumbs";
+import { withSiteName } from "@/shared/lib/seo";
 import Link from "next/link";
 
 export const metadata = {

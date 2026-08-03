@@ -1,10 +1,10 @@
-import { ArchivesGallery } from "@/app/(contents)/archives/_components/archives-gallery";
-import { ArticleSurface } from "@/components/shared/article-surface";
-import { Breadcrumbs } from "@/components/shared/breadcrumbs";
-import { NavigationArea } from "@/components/shared/navigation-area";
-import { BreadcrumbSegment } from "@/constants/breadcrumbs";
-import { getArchives } from "@/lib/content/archives";
-import { withSiteName } from "@/lib/seo";
+import { ArchivesGallery } from "@/features/archives/components/archives-gallery";
+import { getArchives } from "@/features/archives/repository";
+import { ArticleSurface } from "@/shared/components/article-surface";
+import { Breadcrumbs } from "@/shared/components/breadcrumbs";
+import { NavigationArea } from "@/shared/components/navigation-area";
+import { BreadcrumbSegment } from "@/shared/constants/breadcrumbs";
+import { withSiteName } from "@/shared/lib/seo";
 
 export const metadata = {
   title: withSiteName("Archives"),
