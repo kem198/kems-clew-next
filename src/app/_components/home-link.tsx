@@ -18,7 +18,7 @@ export function HomeLink({
   return (
     <div className="not-prose flex flex-col gap-1">
       <Link
-        className={cn("text-primary hover:text-primary/75 w-32", className)}
+        className={cn("text-primary hover:text-primary/75 w-fit", className)}
         {...props}
       >
         <h2 className="flex w-full items-center gap-1 border-b border-zinc-800 pb-1 text-2xl font-black">
