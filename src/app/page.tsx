@@ -20,7 +20,7 @@ export default async function Home() {
     <ArticleSurface className="flex w-full flex-1">
       <div className="flex w-full flex-col gap-8">
         <section>
-          <HomeLink href={"/notes"} description="雑記いろいろ">
+          <HomeLink href={"/notes"} description="備忘録いろいろ">
             Notes
           </HomeLink>
 
