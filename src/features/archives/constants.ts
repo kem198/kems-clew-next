@@ -1,0 +1,484 @@
+import { ArchiveSlug, ArchiveTag } from "@/features/archives/archive";
+
+export type ArchiveMetadata = {
+  title?: string;
+  tags?: ArchiveTag[];
+};
+
+export const WORKS: Partial<Record<ArchiveSlug, ArchiveMetadata>> = {
+  // 2010
+  "20100126-pokemonshiritori": {
+    tags: ["fanart", "animation"],
+  },
+  "20100205-torterra": {
+    tags: ["fanart", "animation"],
+  },
+  "20100209-kirby": {
+    tags: ["fanart", "animation"],
+  },
+  "20100210-ugomemo": {
+    tags: ["fanart", "animation"],
+  },
+  "20100305-furiko": {
+    tags: ["animation"],
+  },
+  "20100305-garchomp": {
+    tags: ["fanart", "animation"],
+  },
+  "20100320-bird": {
+    tags: ["fanart", "animation"],
+  },
+  "20100326-charizard": {
+    tags: ["fanart", "animation"],
+  },
+  "20100327-venusaur": {
+    tags: ["fanart", "animation"],
+  },
+  "20100331-touchkirby": {
+    tags: ["fanart", "animation"],
+  },
+  "20100401-zoukin": {
+    tags: ["fanart", "animation"],
+  },
+  "20100406-steelix": {
+    tags: ["fanart", "animation"],
+  },
+  "20100417-jirachi": {
+    tags: ["fanart", "animation"],
+  },
+  "20100422-mettrio": {
+    tags: ["fanart", "animation"],
+  },
+  "20100513-chatot": {
+    tags: ["fanart", "animation"],
+  },
+  "20100615-honchkrow": {
+    tags: ["fanart", "animation"],
+  },
+  "20100624-aaaa": {
+    tags: ["animation"],
+  },
+  "20100627-rathalos": {
+    tags: ["fanart", "animation"],
+  },
+  "20100629-eevee": {
+    tags: ["fanart", "animation"],
+  },
+  "20100630-booster": {
+    tags: ["fanart", "animation"],
+  },
+  "20100630-espeon": {
+    tags: ["fanart", "animation"],
+  },
+  "20100630-glaceon": {
+    tags: ["fanart", "animation"],
+  },
+  "20100630-jolteon": {
+    tags: ["fanart", "animation"],
+  },
+  "20100630-leafeon": {
+    tags: ["fanart", "animation"],
+  },
+  "20100630-umbreon": {
+    tags: ["fanart", "animation"],
+  },
+  "20100630-vaporeon": {
+    tags: ["fanart", "animation"],
+  },
+  "20100803-leviathan": {
+    tags: ["fanart", "animation"],
+  },
+  "20100808-flour": {
+    tags: ["fanart", "animation"],
+  },
+  "20100816-reuniclus": {
+    tags: ["fanart", "animation"],
+  },
+  "20100826-noctowl": {
+    tags: ["fanart", "animation"],
+  },
+  "20100916-glaceon2": {
+    tags: ["fanart", "animation"],
+  },
+  "20101127-volcarona": {
+    tags: ["fanart", "animation"],
+  },
+  "20101203-mawile": {
+    tags: ["fanart", "animation"],
+  },
+  "20101203-venomoth": {
+    tags: ["fanart", "animation"],
+  },
+  "20101204-garchomp2": {
+    tags: ["fanart", "animation"],
+  },
+  "20101204-yanmega": {
+    tags: ["fanart", "animation"],
+  },
+  "20101231-blacklockshooter": {
+    tags: ["fanart", "animation"],
+  },
+
+  // 2011
+  "20110308-scolipede": {
+    tags: ["fanart", "animation"],
+  },
+  "20111031-lagiacrus": {
+    tags: ["fanart", "animation"],
+  },
+
+  // 2012
+  "20120626-swordman": {
+    tags: ["fanart", "animation"],
+  },
+  "20120729-mawile2": {
+    tags: ["fanart", "animation"],
+  },
+  "20120916-gunner": {
+    tags: ["fanart", "animation"],
+  },
+
+  // 2013
+  "20130724_ikaku": {
+    tags: ["fanart", "animation"],
+  },
+  "20130724_lagia": {
+    tags: ["fanart", "animation"],
+  },
+  "20130724_mismagius": {
+    tags: ["fanart", "animation"],
+  },
+  "20130724_ugo3d": {
+    tags: ["original", "animation"],
+  },
+
+  // 2017
+  "20170611_sqiq": {
+    tags: ["fanart", "analog"],
+  },
+  "20170616_fj": {
+    tags: ["fanart", "analog"],
+  },
+
+  "20180103_nid": {
+    tags: ["fanart"],
+  },
+  "20180427_429": {
+    tags: ["fanart", "analog"],
+  },
+  "20180714_swordman": {
+    tags: ["fanart", "analog"],
+  },
+
+  // 2019
+  "20190119_rkgk_zelda": {
+    tags: ["fanart", "analog"],
+  },
+  "20190403_coo": {
+    tags: ["fanart", "analog"],
+  },
+  "20190403_minu_inu_spinner": {
+    tags: ["fanart", "analog"],
+  },
+  "20190403_wakuwaku_bubble": {
+    tags: ["fanart", "analog"],
+  },
+  "20190625_lady_fashion_selection": {
+    tags: ["fanart", "analog"],
+  },
+  "20191116_odango": {
+    tags: ["fanart"],
+  },
+  "20191201_sq4_on_sale": {
+    tags: ["fanart"],
+  },
+
+  // 2020
+  "20200101_morinezumi": {
+    tags: ["fanart"],
+  },
+  "20200220_exp": {
+    tags: ["fanart"],
+  },
+  "20200830_kagayaku_zelda": {
+    tags: ["fanart"],
+  },
+  "20201006_my_kenk": {
+    tags: ["fanart"],
+  },
+  "20201006_my_modane": {
+    tags: ["fanart"],
+  },
+  "20201224_modane_sakura": {
+    tags: ["original"],
+  },
+  "20201224_modane_wallpaper": {
+    tags: ["original"],
+  },
+
+  // 2021
+  "20210101_modane_kotoyoro": {
+    tags: ["original"],
+  },
+  "20210114_pickup_zelda": {
+    tags: ["fanart"],
+  },
+  "20210120_modane_aki": {
+    tags: ["original"],
+  },
+  "20210130_modane_ugo": {
+    tags: ["original", "animation"],
+  },
+  "20210321_modane_kisei": {
+    tags: ["original"],
+  },
+  "20210508_modane_yumi": {
+    tags: ["fanart"],
+  },
+  "20210515_modane_yahho": {
+    tags: ["original"],
+  },
+  "20210523_nhnk": {
+    tags: ["fanart", "animation"],
+  },
+  "20210523_rl": {
+    tags: ["fanart", "animation"],
+  },
+  "20210523_tomu_tachi": {
+    tags: ["fanart"],
+  },
+  "20210526_mtp": {
+    tags: ["fanart", "animation"],
+  },
+  "20210526_smyi_2": {
+    tags: ["fanart", "animation"],
+  },
+  "20210529_modane_art": {
+    tags: ["original"],
+  },
+  "20210619_mochio": {
+    tags: ["fanart"],
+  },
+  "20210710_modane_moda": {
+    tags: ["original"],
+  },
+  "20210711_dual_ichigo": {
+    tags: ["fanart"],
+  },
+  "20210717_modane_nandemo": {
+    tags: ["original", "parody"],
+  },
+  "20210723_modane_amonus": {
+    tags: ["original", "parody"],
+  },
+  "20210723_modane_sleep": {
+    tags: ["original"],
+  },
+  "20210731_chikara": {
+    tags: ["fanart"],
+  },
+  "20210731_discordbot_mdn": {
+    tags: ["engineering"],
+  },
+  "20210806_omochi_logo": {
+    tags: ["fanart"],
+  },
+  "20210806_omochi_yukkuri": {
+    tags: ["fanart"],
+  },
+  "20210807_setoha": {
+    tags: ["fanart"],
+  },
+  "20210824_modane_wado": {
+    tags: ["original", "fanart"],
+  },
+  "20210923_rphpb": {
+    tags: ["fanart"],
+  },
+  "20211014_moda": {
+    tags: ["original"],
+  },
+  "20211015_modane_kanzenrikai": {
+    tags: ["original"],
+  },
+  "20211016_modane_nendoro": {
+    tags: ["original", "analog"],
+  },
+  "20211123_modane_komarigao": {
+    tags: ["original"],
+  },
+  "20211218_modane_mc": {
+    tags: ["original"],
+  },
+
+  // 2022
+  "20220108_modane_cur_close": {
+    tags: ["original"],
+  },
+  "20220108_modane_cur_open": {
+    tags: ["original"],
+  },
+  "20220504_kregwin": {
+    tags: ["fanart"],
+  },
+  "20220611_modane_aa": {
+    tags: ["original", "parody"],
+  },
+  "20220630_modane_orgm": {
+    tags: ["original", "analog"],
+  },
+  "20220807_modane_co2_watcher": {
+    tags: ["original", "engineering", "analog"],
+  },
+  "20220813_eeyan": {
+    tags: ["fanart"],
+  },
+  "20221013_spinner": {
+    tags: ["fanart"],
+  },
+  "20221108_hello_mastodon": {
+    tags: ["original", "fanart"],
+  },
+  "20221123_kems_clew": {
+    tags: ["engineering"],
+  },
+  "20221218_modane_part": {
+    tags: ["original"],
+  },
+
+  // 2023
+  "20231025_keppare": {
+    tags: ["fanart"],
+  },
+  "20231027_modane_live2d_widget": {
+    tags: ["original", "engineering"],
+  },
+  "20231216_todays_target": {
+    tags: ["analog"],
+  },
+  "20231230_homecoming": {
+    tags: ["original", "animation"],
+  },
+
+  // 2024
+  "20240106_homecoming_colored": {
+    tags: ["original", "animation"],
+  },
+  "20240127_tarumaechan": {
+    tags: ["fanart"],
+  },
+  "20240209_todays_target": {
+    tags: ["analog"],
+  },
+
+  // 2026
+  "20260131-kiritan": {
+    tags: ["fanart"],
+  },
+  "20260302-aichang01": {
+    tags: ["original"],
+  },
+  "20260313-aichang02": {
+    tags: ["original"],
+  },
+  "20260313-aichang03": {
+    tags: ["original"],
+  },
+  "20260318_kanikani": {
+    tags: ["original"],
+  },
+  "20260401-kirby": {
+    tags: ["fanart", "animation"],
+  },
+  "20260402-roundsowrd-tsukareta": {
+    tags: ["fanart"],
+  },
+  "20260402-roundsowrd": {
+    tags: ["fanart", "animation"],
+  },
+  "20260515-runaria": {
+    tags: ["fanart"],
+  },
+  "20260527-lilleroll01": {
+    tags: ["fanart"],
+  },
+  "20260527-lilleroll02": {
+    tags: ["fanart"],
+  },
+  "20260604-darkhunter": {
+    tags: ["fanart"],
+  },
+  "20260610-swordman": {
+    tags: ["fanart"],
+  },
+  "20260616-modaneswimsuit": {
+    tags: ["original", "analog"],
+  },
+  "20260710-yunyun": {
+    tags: ["fanart"],
+  },
+  "20260712-mo": {
+    tags: ["original"],
+  },
+  "20260713_205657": {
+    tags: ["original"],
+  },
+  "20260714_163032": {
+    tags: ["original"],
+  },
+  "20260717_020823": {
+    tags: ["original"],
+  },
+  "20260718-shirusumayu": {
+    tags: ["fanart"],
+  },
+  "20260718-shirusumayux": {
+    tags: ["fanart"],
+  },
+  "20260718-shirusumayuy": {
+    tags: ["fanart"],
+  },
+  "20260722_042500": {
+    tags: ["original"],
+  },
+  "20260725-paradisered": {
+    tags: ["fanart"],
+  },
+  "20260730-tarumae": {
+    tags: ["fanart"],
+  },
+  "20260801-modaneringo": {
+    tags: ["original"],
+  },
+};
+
+export const WORK_TAGS: {
+  id: ArchiveTag;
+  label: string;
+}[] = [
+  {
+    id: "original",
+    label: "オリジナル",
+  },
+  {
+    id: "fanart",
+    label: "ファンアート",
+  },
+
+  {
+    id: "animation",
+    label: "アニメーション",
+  },
+  {
+    id: "parody",
+    label: "パロディ",
+  },
+  {
+    id: "analog",
+    label: "アナログ / 現物",
+  },
+  {
+    id: "engineering",
+    label: "エンジニアリング",
+  },
+] as const;

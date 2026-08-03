@@ -1,5 +1,6 @@
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/constants/site";
-import { getNotes, getSortedNotes } from "@/lib/content/notes.server";
+import { getNotes } from "@/features/notes/repository";
+import { getSortedNotes } from "@/features/notes/selector";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/shared/constants/site";
 
 export const dynamic = "force-static";
 

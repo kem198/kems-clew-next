@@ -1,17 +1,18 @@
-import { NoteContent } from "@/app/(contents)/notes/_components/note-content";
-import { NoteLayout } from "@/app/(contents)/notes/_components/note-layout";
-import { NoteSidebar } from "@/app/(contents)/notes/_components/note-sidebar";
+import { NoteContent } from "@/features/notes/components/note-content";
+import { NoteLayout } from "@/features/notes/components/note-layout";
+import { NoteSidebar } from "@/features/notes/components/note-sidebar";
 import {
   NoteTagCloud,
   NoteTagSummaryList,
-} from "@/app/(contents)/notes/_components/note-tags";
-import { NoteTitle } from "@/app/(contents)/notes/_components/note-typography";
-import { ArticleSurface } from "@/components/shared/article-surface";
-import { Breadcrumbs } from "@/components/shared/breadcrumbs";
-import { NavigationArea } from "@/components/shared/navigation-area";
-import { BreadcrumbSegment } from "@/constants/breadcrumbs";
-import { getNotes, getNoteTags } from "@/lib/content/notes.server";
-import { withSiteName } from "@/lib/seo";
+} from "@/features/notes/components/note-tags";
+import { NoteTitle } from "@/features/notes/components/note-typography";
+import { getNotes } from "@/features/notes/repository";
+import { getNoteTags } from "@/features/notes/selector";
+import { ArticleSurface } from "@/shared/components/article-surface";
+import { Breadcrumbs } from "@/shared/components/breadcrumbs";
+import { NavigationArea } from "@/shared/components/navigation-area";
+import { BreadcrumbSegment } from "@/shared/constants/breadcrumbs";
+import { withSiteName } from "@/shared/lib/seo";
 import Link from "next/link";
 
 export const metadata = {

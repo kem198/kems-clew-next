@@ -1,4 +1,4 @@
-import { ArticleSurface } from "@/components/shared/article-surface";
+import { ArticleSurface } from "@/shared/components/article-surface";
 import Link from "next/link";
 
 export default async function NotFoundPage() {

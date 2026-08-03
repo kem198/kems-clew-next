@@ -1,10 +1,11 @@
-import { HomeLink } from "@/app/_components/home-link";
-import { ArticleSurface } from "@/components/shared/article-surface";
-import { ModaneLive2DWidget } from "@/components/shared/live2d";
-import { ubuntuSans } from "@/constants/fonts";
-import { SITE_NAME } from "@/constants/site";
-import { getLatestNotes, getNotes } from "@/lib/content/notes.server";
-import { formatDateToYYYYMMDD } from "@/lib/date";
+import { HomeLink } from "@/features/home/components/home-link";
+import { getNotes } from "@/features/notes/repository";
+import { getLatestNotes } from "@/features/notes/selector";
+import { ArticleSurface } from "@/shared/components/article-surface";
+import { ModaneLive2DWidget } from "@/shared/components/live2d";
+import { ubuntuSans } from "@/shared/constants/fonts";
+import { SITE_NAME } from "@/shared/constants/site";
+import { formatDateToYYYYMMDD } from "@/shared/lib/date";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 
