@@ -33,8 +33,8 @@
 ### フォント
 
 - [Google Fonts](https://fonts.google.com/)
-    - [Ubuntu Sans](https://fonts.google.com/specimen/Ubuntu+Sans)
-    - [Noto Sans Japanese](https://fonts.google.com/noto/specimen/Noto+Sans+JP?query=noto+sans)
+  - [Ubuntu Sans](https://fonts.google.com/specimen/Ubuntu+Sans)
+  - [Noto Sans Japanese](https://fonts.google.com/noto/specimen/Noto+Sans+JP?query=noto+sans)
 
 ### アイコン
 
@@ -47,6 +47,10 @@
 ### ドメイン取得 / DNS 管理
 
 - [Xserver Domain](https://www.xdomain.ne.jp/)
+
+## 参考文献
+
+- [【Flipnote Archive】ガキの頃のうごメモ動画を保存する｜きくぴぃ](https://note.com/kk09020/n/neeefcbfcafae)
 
 ## 旧リポジトリ
 
