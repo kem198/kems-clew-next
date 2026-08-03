@@ -7,13 +7,82 @@ export type ArchiveMetadata = {
 
 export const WORKS: Partial<Record<ArchiveSlug, ArchiveMetadata>> = {
   // 2010
+  "20100126-pokemonshiritori": {
+    tags: ["fanart", "animation"],
+  },
   "20100205-torterra": {
     tags: ["fanart", "animation"],
   },
   "20100209-kirby": {
     tags: ["fanart", "animation"],
   },
+  "20100210-ugomemo": {
+    tags: ["fanart", "animation"],
+  },
+  "20100305-furiko": {
+    tags: ["animation"],
+  },
+  "20100305-garchomp": {
+    tags: ["fanart", "animation"],
+  },
+  "20100320-bird": {
+    tags: ["fanart", "animation"],
+  },
+  "20100326-charizard": {
+    tags: ["fanart", "animation"],
+  },
+  "20100327-venusaur": {
+    tags: ["fanart", "animation"],
+  },
+  "20100331-touchkirby": {
+    tags: ["fanart", "animation"],
+  },
+  "20100401-zoukin": {
+    tags: ["fanart", "animation"],
+  },
+  "20100406-steelix": {
+    tags: ["fanart", "animation"],
+  },
+  "20100417-jirachi": {
+    tags: ["fanart", "animation"],
+  },
+  "20100422-mettrio": {
+    tags: ["fanart", "animation"],
+  },
   "20100513-chatot": {
+    tags: ["fanart", "animation"],
+  },
+  "20100615-honchkrow": {
+    tags: ["fanart", "animation"],
+  },
+  "20100624-aaaa": {
+    tags: ["animation"],
+  },
+  "20100627-rathalos": {
+    tags: ["fanart", "animation"],
+  },
+  "20100629-eevee": {
+    tags: ["fanart", "animation"],
+  },
+  "20100630-booster": {
+    tags: ["fanart", "animation"],
+  },
+  "20100630-espeon": {
+    tags: ["fanart", "animation"],
+  },
+  "20100630-glaceon": {
+    tags: ["fanart", "animation"],
+  },
+  "20100630-jolteon": {
+    tags: ["fanart", "animation"],
+  },
+  "20100630-leafeon": {
+    tags: ["fanart", "animation"],
+  },
+  "20100630-umbreon": {
+    tags: ["fanart", "animation"],
+  },
+  "20100630-vaporeon": {
     tags: ["fanart", "animation"],
   },
   "20100803-leviathan": {
@@ -22,13 +91,31 @@ export const WORKS: Partial<Record<ArchiveSlug, ArchiveMetadata>> = {
   "20100808-flour": {
     tags: ["fanart", "animation"],
   },
+  "20100816-reuniclus": {
+    tags: ["fanart", "animation"],
+  },
   "20100826-noctowl": {
     tags: ["fanart", "animation"],
   },
   "20100916-glaceon2": {
     tags: ["fanart", "animation"],
   },
+  "20101127-volcarona": {
+    tags: ["fanart", "animation"],
+  },
   "20101203-mawile": {
+    tags: ["fanart", "animation"],
+  },
+  "20101203-venomoth": {
+    tags: ["fanart", "animation"],
+  },
+  "20101204-garchomp2": {
+    tags: ["fanart", "animation"],
+  },
+  "20101204-yanmega": {
+    tags: ["fanart", "animation"],
+  },
+  "20101231-blacklockshooter": {
     tags: ["fanart", "animation"],
   },
 
@@ -36,9 +123,15 @@ export const WORKS: Partial<Record<ArchiveSlug, ArchiveMetadata>> = {
   "20110308-scolipede": {
     tags: ["fanart", "animation"],
   },
+  "20111031-lagiacrus": {
+    tags: ["fanart", "animation"],
+  },
 
-  //2012
+  // 2012
   "20120626-swordman": {
+    tags: ["fanart", "animation"],
+  },
+  "20120729-mawile2": {
     tags: ["fanart", "animation"],
   },
   "20120916-gunner": {

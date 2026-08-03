@@ -1,4 +1,9 @@
 {
+  "20100126-pokemonshiritori": {
+    "src": "/assets/archives/20100126-pokemonshiritori.webp",
+    "width": 320,
+    "height": 240
+  },
   "20100205-torterra": {
     "src": "/assets/archives/20100205-torterra.webp",
     "width": 320,
@@ -9,8 +14,118 @@
     "width": 320,
     "height": 240
   },
+  "20100210-ugomemo": {
+    "src": "/assets/archives/20100210-ugomemo.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100305-furiko": {
+    "src": "/assets/archives/20100305-furiko.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100305-garchomp": {
+    "src": "/assets/archives/20100305-garchomp.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100320-bird": {
+    "src": "/assets/archives/20100320-bird.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100326-charizard": {
+    "src": "/assets/archives/20100326-charizard.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100327-venusaur": {
+    "src": "/assets/archives/20100327-venusaur.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100331-touchkirby": {
+    "src": "/assets/archives/20100331-touchkirby.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100401-zoukin": {
+    "src": "/assets/archives/20100401-zoukin.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100406-steelix": {
+    "src": "/assets/archives/20100406-steelix.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100417-jirachi": {
+    "src": "/assets/archives/20100417-jirachi.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100422-mettrio": {
+    "src": "/assets/archives/20100422-mettrio.webp",
+    "width": 320,
+    "height": 240
+  },
   "20100513-chatot": {
     "src": "/assets/archives/20100513-chatot.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100615-honchkrow": {
+    "src": "/assets/archives/20100615-honchkrow.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100624-aaaa": {
+    "src": "/assets/archives/20100624-aaaa.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100627-rathalos": {
+    "src": "/assets/archives/20100627-rathalos.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100629-eevee": {
+    "src": "/assets/archives/20100629-eevee.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100630-booster": {
+    "src": "/assets/archives/20100630-booster.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100630-espeon": {
+    "src": "/assets/archives/20100630-espeon.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100630-glaceon": {
+    "src": "/assets/archives/20100630-glaceon.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100630-jolteon": {
+    "src": "/assets/archives/20100630-jolteon.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100630-leafeon": {
+    "src": "/assets/archives/20100630-leafeon.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100630-umbreon": {
+    "src": "/assets/archives/20100630-umbreon.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20100630-vaporeon": {
+    "src": "/assets/archives/20100630-vaporeon.webp",
     "width": 320,
     "height": 240
   },
@@ -24,6 +139,11 @@
     "width": 320,
     "height": 240
   },
+  "20100816-reuniclus": {
+    "src": "/assets/archives/20100816-reuniclus.webp",
+    "width": 320,
+    "height": 240
+  },
   "20100826-noctowl": {
     "src": "/assets/archives/20100826-noctowl.webp",
     "width": 320,
@@ -34,8 +154,33 @@
     "width": 320,
     "height": 240
   },
+  "20101127-volcarona": {
+    "src": "/assets/archives/20101127-volcarona.webp",
+    "width": 320,
+    "height": 240
+  },
   "20101203-mawile": {
     "src": "/assets/archives/20101203-mawile.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20101203-venomoth": {
+    "src": "/assets/archives/20101203-venomoth.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20101204-garchomp2": {
+    "src": "/assets/archives/20101204-garchomp2.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20101204-yanmega": {
+    "src": "/assets/archives/20101204-yanmega.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20101231-blacklockshooter": {
+    "src": "/assets/archives/20101231-blacklockshooter.webp",
     "width": 320,
     "height": 240
   },
@@ -44,8 +189,18 @@
     "width": 320,
     "height": 240
   },
+  "20111031-lagiacrus": {
+    "src": "/assets/archives/20111031-lagiacrus.webp",
+    "width": 320,
+    "height": 240
+  },
   "20120626-swordman": {
     "src": "/assets/archives/20120626-swordman.webp",
+    "width": 320,
+    "height": 240
+  },
+  "20120729-mawile2": {
+    "src": "/assets/archives/20120729-mawile2.webp",
     "width": 320,
     "height": 240
   },
