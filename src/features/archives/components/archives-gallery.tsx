@@ -249,7 +249,7 @@ export function ArchivesGallery({ archives }: ArchivesGalleryProps) {
       <GroupToggle groupByYear={groupByYear} onChange={setGroupByYear} />
 
       <details className="flex flex-col rounded-md bg-zinc-100 p-4">
-        <summary className="-m-2 flex cursor-pointer list-none items-center gap-1 p-2 font-bold">
+        <summary className="-m-4 flex cursor-pointer list-none items-center gap-1 p-4 font-bold">
           <FilterIcon height={16} width={16} /> 絞り込み
         </summary>
 
