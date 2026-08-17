@@ -4,6 +4,7 @@ import {
   copyFile,
   mkdir,
   readdir,
+  readFile,
   stat,
   unlink,
   writeFile,
@@ -131,7 +132,20 @@ export async function generateImages(config: ImageGeneratorConfig) {
 
   const imageRegex = /\.(png|jpe?g|gif|webp|avif)$/i;
 
-  const manifest: Record<string, ManifestItem> = {};
+  let manifest: Record<string, ManifestItem> = {};
+  if (config.manifestPath && (await exists(config.manifestPath))) {
+    try {
+      const manifestContent = await readFile(config.manifestPath, "utf8");
+      manifest = JSON.parse(manifestContent);
+      console.log(`[INFO] Loaded existing manifest: ${config.manifestPath}\n`);
+    } catch (error) {
+      console.warn(
+        `[WARN] Failed to load existing manifest: ${config.manifestPath}`,
+        error,
+      );
+      console.log("");
+    }
+  }
 
   let totalInput = 0;
   let totalOutput = 0;
