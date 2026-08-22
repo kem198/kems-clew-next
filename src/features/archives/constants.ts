@@ -450,6 +450,9 @@ export const WORKS: Partial<Record<ArchiveSlug, ArchiveMetadata>> = {
   "20260801-modaneringo": {
     tags: ["original"],
   },
+  "20260821-komochifuku": {
+    tags: ["fanart", "animation"],
+  },
 };
 
 export const WORK_TAGS: {
