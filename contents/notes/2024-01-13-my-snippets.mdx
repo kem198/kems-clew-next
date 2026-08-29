@@ -375,112 +375,114 @@ lastmod: 2026-08-30
 
 ### 3.10. magick (ImageMagick 7)
 
-```shell
-magick ./briefcase.svg -resize 10x10 ./out/briefcase.png
-       ^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^^^
-       入力ファイル    リサイズ指定  出力ファイル
+- 画像を変換してリサイズなどを行う
 
-オプション:
-  -resize 10x10                   画像を 10x10px にリサイズする
-  -background none                背景を透明にする
-  -density 1200                   SVG を高解像度でラスタライズする
-  -size 16x16                     キャンバスを 16x16px にする
-  xc:none                         透明なキャンバスを作成
-  -fill '#496369'                 塗りつぶし色を指定
-  -draw 'roundrectangle ...'      角丸の四角形を描画
-  -gravity center                 画像を中央に配置
-  -composite                      画像を重ね合わせる
-```
+  ```shell
+  magick ./briefcase.svg -resize 10x10 ./out/briefcase.png
+        ^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^^^
+        入力ファイル    リサイズ指定  出力ファイル
 
-```shell
-# e.g. ウェブサイト用の各種アイコンファイルを作成する例
-# - PWA 用 icon-192x192.png (角丸)
-# - PWA 用 icon-512x512.png (角丸)
-# - Apple デバイス用 apple-icon.png (非角丸 180x180px)
-# - favicon.ico (角丸 16 / 32 / 48 / 64px)
+  オプション:
+    -resize 10x10                   画像を 10x10px にリサイズする
+    -background none                背景を透明にする
+    -density 1200                   SVG を高解像度でラスタライズする
+    -size 16x16                     キャンバスを 16x16px にする
+    xc:none                         透明なキャンバスを作成
+    -fill '#496369'                 塗りつぶし色を指定
+    -draw 'roundrectangle ...'      角丸の四角形を描画
+    -gravity center                 画像を中央に配置
+    -composite                      画像を重ね合わせる
+  ```
 
-# librsvg2-dev をインストールする
-# SVG を扱うための開発用パッケージ
-sudo apt install -y librsvg2-dev pkg-config
+  ```shell
+  # e.g. ウェブサイト用の各種アイコンファイルを作成する例
+  # - PWA 用 icon-192x192.png (角丸)
+  # - PWA 用 icon-512x512.png (角丸)
+  # - Apple デバイス用 apple-icon.png (非角丸 180x180px)
+  # - favicon.ico (角丸 16 / 32 / 48 / 64px)
 
-# ImageMagick 7 をインストールする
-# https://imagemagick.org/install-source/
-git clone --depth 1 --branch 7.1.2-30 https://github.com/ImageMagick/ImageMagick.git ImageMagick-7.1.2-30
-cd ImageMagick-7.1.2-30
-./configure --with-rsvg
-make
-sudo make install
-sudo ldconfig /usr/local/lib
+  # librsvg2-dev をインストールする
+  # SVG を扱うための開発用パッケージ
+  sudo apt install -y librsvg2-dev pkg-config
 
-/usr/local/bin/magick logo: logo.gif
-# -> 現在ディレクトリへ logo.gif が出力されていれば OK
+  # ImageMagick 7 をインストールする
+  # https://imagemagick.org/install-source/
+  git clone --depth 1 --branch 7.1.2-30 https://github.com/ImageMagick/ImageMagick.git ImageMagick-7.1.2-30
+  cd ImageMagick-7.1.2-30
+  ./configure --with-rsvg
+  make
+  sudo make install
+  sudo ldconfig /usr/local/lib
 
-magick --version
-# -> PATH が通っていることを確認できたら OK
+  /usr/local/bin/magick logo: logo.gif
+  # -> 現在ディレクトリへ logo.gif が出力されていれば OK
 
-# SVG 素材を準備して配置する
-# 例) https://lucide.dev > briefcase (鞄) アイコン
+  magick --version
+  # -> PATH が通っていることを確認できたら OK
 
-# 出力先ディレクトリを作成する
-mkdir -p out
+  # SVG 素材を準備して配置する
+  # 例) https://lucide.dev > briefcase (鞄) アイコン
 
-# ここまでのディレクトリ構成
-$ tree --dirsfirst
-.
-├── out
-└── briefcase.svg
+  # 出力先ディレクトリを作成する
+  mkdir -p out
 
-# magick コマンドで各ファイルを生成する
-# icon-192x192.png
-magick -background none -density 1200 ./briefcase.svg -resize 150x150 /tmp/icon-192.png && \
-magick -size 192x192 xc:none -fill '#496369' -draw 'roundrectangle 0,0 191,191 30,30' /tmp/bg-192.png && \
-magick /tmp/bg-192.png /tmp/icon-192.png -gravity center -composite ./out/icon-192x192.png
+  # ここまでのディレクトリ構成
+  $ tree --dirsfirst
+  .
+  ├── out
+  └── briefcase.svg
 
-# icon-512x512.png
-magick -background none -density 1200 ./briefcase.svg -resize 400x400 /tmp/icon-512.png && \
-magick -size 512x512 xc:none -fill '#496369' -draw 'roundrectangle 0,0 511,511 80,80' /tmp/bg-512.png && \
-magick /tmp/bg-512.png /tmp/icon-512.png -gravity center -composite ./out/icon-512x512.png
+  # magick コマンドで各ファイルを生成する
+  # icon-192x192.png
+  magick -background none -density 1200 ./briefcase.svg -resize 150x150 /tmp/icon-192.png && \
+  magick -size 192x192 xc:none -fill '#496369' -draw 'roundrectangle 0,0 191,191 30,30' /tmp/bg-192.png && \
+  magick /tmp/bg-192.png /tmp/icon-192.png -gravity center -composite ./out/icon-192x192.png
 
-# apple-icon.png
-magick -background none -density 1200 ./briefcase.svg -resize 140x140 /tmp/icon-180.png && \
-magick -size 180x180 xc:'#496369' /tmp/icon-180.png -gravity center -composite ./out/apple-icon.png
+  # icon-512x512.png
+  magick -background none -density 1200 ./briefcase.svg -resize 400x400 /tmp/icon-512.png && \
+  magick -size 512x512 xc:none -fill '#496369' -draw 'roundrectangle 0,0 511,511 80,80' /tmp/bg-512.png && \
+  magick /tmp/bg-512.png /tmp/icon-512.png -gravity center -composite ./out/icon-512x512.png
 
-# favicon.ico
-magick -background none -density 1200 ./briefcase.svg -resize 10x10 /tmp/icon-16.png && \
-magick -size 16x16 xc:none -fill '#496369' -draw 'roundrectangle 0,0 15,15 3,3' /tmp/bg-16.png && \
-magick /tmp/bg-16.png /tmp/icon-16.png -gravity center -composite /tmp/favicon-16.png && \
-magick -background none -density 1200 ./briefcase.svg -resize 20x20 /tmp/icon-32.png && \
-magick -size 32x32 xc:none -fill '#496369' -draw 'roundrectangle 0,0 31,31 5,5' /tmp/bg-32.png && \
-magick /tmp/bg-32.png /tmp/icon-32.png -gravity center -composite /tmp/favicon-32.png && \
-magick -background none -density 1200 ./briefcase.svg -resize 30x30 /tmp/icon-48.png && \
-magick -size 48x48 xc:none -fill '#496369' -draw 'roundrectangle 0,0 47,47 8,8' /tmp/bg-48.png && \
-magick /tmp/bg-48.png /tmp/icon-48.png -gravity center -composite /tmp/favicon-48.png && \
-magick -background none -density 1200 ./briefcase.svg -resize 40x40 /tmp/icon-64.png && \
-magick -size 64x64 xc:none -fill '#496369' -draw 'roundrectangle 0,0 63,63 10,10' /tmp/bg-64.png && \
-magick /tmp/bg-64.png /tmp/icon-64.png -gravity center -composite /tmp/favicon-64.png && \
-magick /tmp/favicon-16.png /tmp/favicon-32.png /tmp/favicon-48.png /tmp/favicon-64.png ./out/favicon.ico
+  # apple-icon.png
+  magick -background none -density 1200 ./briefcase.svg -resize 140x140 /tmp/icon-180.png && \
+  magick -size 180x180 xc:'#496369' /tmp/icon-180.png -gravity center -composite ./out/apple-icon.png
 
-# 作成された
-$ tree --dirsfirst
-.
-├── out
-│   ├── apple-icon.png
-│   ├── favicon.ico
-│   ├── icon-192x192.png
-│   └── icon-512x512.png
-└── briefcase.svg
-```
+  # favicon.ico
+  magick -background none -density 1200 ./briefcase.svg -resize 10x10 /tmp/icon-16.png && \
+  magick -size 16x16 xc:none -fill '#496369' -draw 'roundrectangle 0,0 15,15 3,3' /tmp/bg-16.png && \
+  magick /tmp/bg-16.png /tmp/icon-16.png -gravity center -composite /tmp/favicon-16.png && \
+  magick -background none -density 1200 ./briefcase.svg -resize 20x20 /tmp/icon-32.png && \
+  magick -size 32x32 xc:none -fill '#496369' -draw 'roundrectangle 0,0 31,31 5,5' /tmp/bg-32.png && \
+  magick /tmp/bg-32.png /tmp/icon-32.png -gravity center -composite /tmp/favicon-32.png && \
+  magick -background none -density 1200 ./briefcase.svg -resize 30x30 /tmp/icon-48.png && \
+  magick -size 48x48 xc:none -fill '#496369' -draw 'roundrectangle 0,0 47,47 8,8' /tmp/bg-48.png && \
+  magick /tmp/bg-48.png /tmp/icon-48.png -gravity center -composite /tmp/favicon-48.png && \
+  magick -background none -density 1200 ./briefcase.svg -resize 40x40 /tmp/icon-64.png && \
+  magick -size 64x64 xc:none -fill '#496369' -draw 'roundrectangle 0,0 63,63 10,10' /tmp/bg-64.png && \
+  magick /tmp/bg-64.png /tmp/icon-64.png -gravity center -composite /tmp/favicon-64.png && \
+  magick /tmp/favicon-16.png /tmp/favicon-32.png /tmp/favicon-48.png /tmp/favicon-64.png ./out/favicon.ico
 
-作成された画像:
+  # 作成された
+  $ tree --dirsfirst
+  .
+  ├── out
+  │   ├── apple-icon.png
+  │   ├── favicon.ico
+  │   ├── icon-192x192.png
+  │   └── icon-512x512.png
+  └── briefcase.svg
+  ```
 
-<ImageRow
-  images={[
-    "/assets/notes/2024-01-13-my-snippets/icon-192x192.png",
-    "/assets/notes/2024-01-13-my-snippets/icon-512x512.png",
-    "/assets/notes/2024-01-13-my-snippets/apple-icon.png",
-    "/assets/notes/2024-01-13-my-snippets/favicon.ico",
-  ]}
-/>
+  作成された画像:
+
+  <ImageRow
+    images={[
+      "/assets/notes/2024-01-13-my-snippets/icon-192x192.png",
+      "/assets/notes/2024-01-13-my-snippets/icon-512x512.png",
+      "/assets/notes/2024-01-13-my-snippets/apple-icon.png",
+      "/assets/notes/2024-01-13-my-snippets/favicon.ico",
+    ]}
+  />
 
 ## 4. Windows PowerShell
 
