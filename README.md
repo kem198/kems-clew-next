@@ -4,13 +4,13 @@
 
 ## 使用技術
 
-### フレームワーク
-
-- [Next.js](https://nextjs.org/)
-
 ### 言語
 
 - [TypeScript](https://www.typescriptlang.org/)
+
+### フレームワーク
+
+- [Next.js](https://nextjs.org/)
 
 ### UI 構築
 
@@ -30,23 +30,15 @@
 - [Rehype Pretty Code](https://rehype-pretty.pages.dev/)
 - [Shiki](https://shiki.style/)
 
-### フォント
+### フォント・素材
 
 - [Google Fonts](https://fonts.google.com/)
-  - [Ubuntu Sans](https://fonts.google.com/specimen/Ubuntu+Sans)
-  - [Noto Sans Japanese](https://fonts.google.com/noto/specimen/Noto+Sans+JP?query=noto+sans)
-
-### アイコン
-
 - [Lucide](https://lucide.dev/)
 
-### ホスティング
-
-- [Vercel](https://vercel.com/)
-
-### ドメイン取得 / DNS 管理
+### ドメイン管理・ホスティング
 
 - [Xserver Domain](https://www.xdomain.ne.jp/)
+- [Vercel](https://vercel.com/)
 
 ## 参考文献
 
