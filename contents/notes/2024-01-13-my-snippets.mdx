@@ -12,7 +12,7 @@ lastmod: 2025-10-13
 - 思いついたら適宜追加していく。
 - 参考にする際は自己責任で！
 
-## テンプレート
+**テンプレート:**
 
 - タイトル
 
@@ -988,315 +988,14 @@ Docker version 25.0.2, build 29cf629
   DRIVER    VOLUME NAME
   ```
 
-## 7. Laravel
-
-```shell
-$ php --version
-PHP 7.3.33 (cli) (built: Mar 18 2022 03:18:11) ( NTS )
-Copyright (c) 1997-2018 The PHP Group
-Zend Engine v3.3.33, Copyright (c) 1998-2018 Zend Technologies
-$ php artisan --version
-Laravel Framework 8.83.27
-$ composer --version
-Composer version 2.6.6 2023-12-08 18:32:26
-```
-
-### 7.1. Composer
-
-- `composer.json` を使用してライブラリをインストールする
-
-  ```shell
-  composer install
-  ```
-
-  - [Command-line interface / Commands - Composer](https://getcomposer.org/doc/03-cli.md#install-i)
-
-- オートローダーを更新する
-
-  ```shell
-  composer dump-autoload
-  ```
-
-  - [Command-line interface / Commands - Composer](https://getcomposer.org/doc/03-cli.md#dump-autoload-dumpautoload)
-
-### 7.2. Artisan
-
-#### 7.2.1. db
-
-- シーダーを実行する
-
-  ```shell
-  php artisan db:seed [options] [--] [<class>]
-  ```
-
-  ```shell
-  # e.g.
-  $ composer dump-autoload
-  $ php artisan db:seed --class=FoldersTableSeeder
-  Database seeding completed successfully.
-
-  # Check Database
-  $ exit
-  $ docker compose exec database bash
-  37ccc2e57c0a:/# psql -U postgres
-  psql (11.22)
-  Type "help" for help.
-
-  postgres=# select * from folders;
-   id |    title     |     created_at      |     updated_at
-  ----+--------------+---------------------+---------------------
-    1 | プライベート | 2024-01-21 12:24:51 | 2024-01-21 12:24:51
-    2 | 仕事         | 2024-01-21 12:24:51 | 2024-01-21 12:24:51
-    3 | 旅行         | 2024-01-21 12:24:51 | 2024-01-21 12:24:51
-  (3 rows)
-  ```
-
-#### 7.2.2. key
-
-- アプリケーションの暗号化キーを設定する
-
-  ```shell
-  php artisan key:generate
-  ```
-
-  - [暗号化 10.x Laravel](https://readouble.com/laravel/10.x/ja/encryption.html)
-
-#### 7.2.3. make
-
-- コントローラークラスを作成する
-
-  ```shell
-  php artisan make:controller [options] [--] <name>
-  ```
-
-  ```shell
-  # e.g.
-  $ php artisan make:controller TaskController
-  INFO  Controller [app/Http/Controllers/TaskController.php] created successfully.
-  ```
-
-- マイグレーションファイルを作成する
-
-  ```shell
-  php artisan make:migration [options] [--] <name>
-  ```
-
-  ```shell
-  # e.g.
-  $ php artisan make:migration create_folders_table --create=folders
-  $ ls -la database/migrations/
-  total 36
-  drwxr-xr-x 2 1000 1000 4096 Feb 17 02:41 .
-  drwxr-xr-x 5 1000 1000 4096 Jan 21 16:37 ..
-  -rw-r--r-- 1 1000 1000  798 Jan 21 16:37 2014_10_12_000000_create_users_table.php
-  ...
-  -rw-r--r-- 1 1000 1000  770 Jan 21 16:37 2024_01_21_111050_create_folders_table.php # made
-  ```
-
-- モデルクラスを作成する
-
-  ```shell
-  php artisan make:model [options] [--] <name>
-  ```
-
-  ```shell
-  # e.g.
-  $ php artisan make:model Folder
-
-  $ ls -la app/Models/
-  total 20
-  drwxr-xr-x 2 1000 1000 4096 Jan 22 10:25 .
-  drwxr-xr-x 7 1000 1000 4096 Jan 21 16:37 ..
-  -rw-r--r-- 1 1000 1000  247 Jan 22 12:20 Folder.php # made
-  -rw-r--r-- 1 1000 1000  913 Jan 21 16:37 User.php
-  ```
-
-- FormRequest クラスを作成する
-
-  ```shell
-  php artisan make:request <name>
-  ```
-
-  ```shell
-  # e.g.
-  $ php artisan make:request CreateFolder
-
-  $ ls -la app/Http/Requests/
-  total 20
-  drwxr-xr-x 2 1000 1000 4096 Feb 14 13:38 .
-  drwxr-xr-x 5 1000 1000 4096 Jan 22 13:34 ..
-  -rw-r--r-- 1 1000 1000  654 Jan 22 14:06 CreateFolder.php # made
-  ```
-
-- シーダークラスを作成する
-
-  ```shell
-  php artisan make:seeder <name>
-  ```
-
-  ```shell
-  # e.g.
-  $ php artisan make:seeder FoldersTableSeeder
-
-  $ ls -la database/seeders
-  total 24
-  drwxr-xr-x 2 1000 1000 4096 Feb 14 13:38 .
-  drwxr-xr-x 5 1000 1000 4096 Jan 21 16:37 ..
-  -rw-r--r-- 1 1000 1000  282 Jan 21 16:37 DatabaseSeeder.php
-  -rw-r--r-- 1 1000 1000  846 Feb 14 13:38 FoldersTableSeeder.php # made
-  ```
-
-- テストクラスを作成する
-
-  ```shell
-  php artisan make:test [options] [--] <name>
-  ```
-
-  ```shell
-  # e.g.
-  $ php artisan make:test TaskTest
-  $ ls -la tests/Feature
-  total 16
-  drwxr-xr-x 2 1000 1000 4096 Feb 14 13:38 .
-  drwxr-xr-x 4 1000 1000 4096 Jan 21 16:37 ..
-  -rw-r--r-- 1 1000 1000  339 Jan 21 16:37 ExampleTest.php
-  -rw-r--r-- 1 1000 1000 2509 Feb 14 13:38 TaskTest.php
-  ```
-
-#### 7.2.4. migrate
-
-- マイグレーションを実行する
-
-  ```shell
-  php artisan migrate
-  ```
-
-  ```shell
-  # e.g.
-  $ php artisan migrate
-  Migration table created successfully.
-  Migrating: 2014_10_12_000000_create_users_table
-  Migrated:  2014_10_12_000000_create_users_table (6.16ms)
-  Migrating: 2014_10_12_100000_create_password_resets_table
-  Migrated:  2014_10_12_100000_create_password_resets_table (2.87ms)
-  ```
-
-- テーブルをすべて削除してからマイグレーションを実行する
-
-  ```shell
-  php artisan migrate:fresh
-  ```
-
-  ```shell
-  # e.g.
-  $ php artisan migrate:fresh
-  Dropped all tables successfully.
-  Migration table created successfully.
-  Migrating: 2014_10_12_000000_create_users_table
-  Migrated:  2014_10_12_000000_create_users_table (2.66ms)
-  ...
-  ```
-
-#### 7.2.5. route
-
-- ルーティングの定義を一覧表示する
-
-  ```shell
-  route:list [options]
-  ```
-
-  ```shell
-  # e.g.
-  $ php artisan route:list
-  +--------+----------+-----------------------------------+------------------+------------------------------------------------------------------------+---------------------------------------------+
-  | Domain | Method   | URI                               | Name             | Action                                                                 | Middleware                                  |
-  +--------+----------+-----------------------------------+------------------+------------------------------------------------------------------------+---------------------------------------------+
-  |        | GET|HEAD | /                                 | home             | App\Http\Controllers\HomeController@index                              | web                                         |
-  |        | GET|HEAD | api/user                          |                  | Closure                                                                | api                                         |
-  |        |          |                                   |                  |                                                                        | App\Http\Middleware\Authenticate:sanctum    |
-  |        | GET|HEAD | folders/create                    | folders.create   | App\Http\Controllers\FolderController@showCreateForm                   | web                                         |
-  |        | POST     | folders/create                    |                  | App\Http\Controllers\FolderController@create                           | web                                         |
-  |        | GET|HEAD | folders/{id}/tasks                | tasks.index      | App\Http\Controllers\TaskController@index                              | web                                         |
-  |        | GET|HEAD | folders/{id}/tasks/create         | tasks.create     | App\Http\Controllers\TaskController@showCreateForm                     | web                                         |
-  |        | POST     | folders/{id}/tasks/create         |                  | App\Http\Controllers\TaskController@create                             | web                                         |
-  |        | GET|HEAD | folders/{id}/tasks/{task_id}/edit | tasks.edit       | App\Http\Controllers\TaskController@showEditForm                       | web                                         |
-  |        | POST     | folders/{id}/tasks/{task_id}/edit |                  | App\Http\Controllers\TaskController@edit                               | web                                         |
-  |        | GET|HEAD | home                              | home             | App\Http\Controllers\HomeController@index                              | web                                         |
-  |        | POST     | login                             |                  | App\Http\Controllers\Auth\LoginController@login                        | web                                         |
-  |        |          |                                   |                  |                                                                        | App\Http\Middleware\RedirectIfAuthenticated |
-  |        | GET|HEAD | login                             | login            | App\Http\Controllers\Auth\LoginController@showLoginForm                | web                                         |
-  |        |          |                                   |                  |                                                                        | App\Http\Middleware\RedirectIfAuthenticated |
-  |        | POST     | logout                            | logout           | App\Http\Controllers\Auth\LoginController@logout                       | web                                         |
-  |        | GET|HEAD | password/confirm                  | password.confirm | App\Http\Controllers\Auth\ConfirmPasswordController@showConfirmForm    | web                                         |
-  |        |          |                                   |                  |                                                                        | App\Http\Middleware\Authenticate            |
-  |        | POST     | password/confirm                  |                  | App\Http\Controllers\Auth\ConfirmPasswordController@confirm            | web                                         |
-  |        |          |                                   |                  |                                                                        | App\Http\Middleware\Authenticate            |
-  |        | POST     | password/email                    | password.email   | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | web                                         |
-  |        | GET|HEAD | password/reset                    | password.request | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | web                                         |
-  |        | POST     | password/reset                    | password.update  | App\Http\Controllers\Auth\ResetPasswordController@reset                | web                                         |
-  |        | GET|HEAD | password/reset/{token}            | password.reset   | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web                                         |
-  |        | GET|HEAD | register                          | register         | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web                                         |
-  |        |          |                                   |                  |                                                                        | App\Http\Middleware\RedirectIfAuthenticated |
-  |        | POST     | register                          |                  | App\Http\Controllers\Auth\RegisterController@register                  | web                                         |
-  |        |          |                                   |                  |                                                                        | App\Http\Middleware\RedirectIfAuthenticated |
-  |        | GET|HEAD | sanctum/csrf-cookie               |                  | Laravel\Sanctum\Http\Controllers\CsrfCookieController@show             | web                                         |
-  +--------+----------+-----------------------------------+------------------+------------------------------------------------------------------------+---------------------------------------------+
-  ```
-
-#### 7.2.6. serve
-
-- Web サーバーを起動する
-
-  ```shell
-  php artisan serve [options]
-  ```
-
-  ```shell
-  # e.g.
-  # ローカルホストで起動する
-  $ php artisan serve --host 0.0.0.0
-  Starting Laravel development server: http://0.0.0.0:8000
-
-  # Access to http://localhost:8000
-  ```
-
-#### 7.2.7. tinker
-
-- メソッドを実行する
-
-  ```shell
-  tinker [options] [--] [<include>...]
-  ```
-
-  ```shell
-  # e.g. メソッドを実行する
-  $ php artisan tinker
-  Psy Shell v0.11.22 (PHP 7.3.33 — cli) by Justin Hileman
-  > $folder = App\Models\Folder::find(1);
-  = App\Models\Folder {#6516
-      id: 1,
-      title: "プライベート",
-      created_at: "2024-01-22 10:39:42",
-      updated_at: "2024-01-22 10:39:42",
-    }
-  ```
-
-  ```shell
-  # e.g. 実行される SQL を確認する
-  $ php artisan tinker
-  Psy Shell v0.11.22 (PHP 7.3.33 — cli) by Justin Hileman
-  > \App\Models\Task::where('folder_id', 1)->toSql();
-  = "select * from "tasks" where "folder_id" = ?"
-  ```
-
-## 8. SQL
+## 7. SQL
 
 - [標準 SQL 集](/notes/2022-11-24-sql-standard)
 - [自作 SQL 集](/notes/2022-11-24-sql-made-by-me)
 
-## 9. VS Code
+## 8. VS Code
 
-### 9.1. 保存時の設定を無効化する
+### 8.1. 保存時の設定を無効化する
 
 ```json
 {
@@ -1314,11 +1013,11 @@ Composer version 2.6.6 2023-12-08 18:32:26
 
 他者が作成したコードをそのまま保存したいときに配置する。
 
-## 10. Excel
+## 9. Excel
 
 - 🔄: Google スプレッドシートでも動作を確認している関数。
 
-### 10.1. 書式設定
+### 9.1. 書式設定
 
 - YYYY-MM-DD hh:mm:ss 形式 (ゼロ埋め) で表示
 
@@ -1326,7 +1025,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   YYYY-MM-DD hh:mm:ss
   ```
 
-### 10.2. 関数
+### 9.2. 関数
 
 - 🔄 縦に連番を振る
 
@@ -1362,9 +1061,9 @@ Composer version 2.6.6 2023-12-08 18:32:26
 
   - [Excelの表でシート名を利用するのに毎度手動でコピペする修行は不要！ 関数で取得する方法 - 残業を減らす！Officeテクニック - 窓の杜](https://forest.watch.impress.co.jp/docs/serial/offitech/1453353.html)
 
-## 11. その他
+## 10. その他
 
-### 11.1. example.com
+### 10.1. example.com
 
 - example.com
 
@@ -1383,7 +1082,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   - [example.com](https://example.com/)
   - [example.com - Wikipedia](https://ja.wikipedia.org/wiki/Example.com)
 
-### 11.2. Google 検索
+### 10.2. Google 検索
 
 - サイト内検索
 
