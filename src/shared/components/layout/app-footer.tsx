@@ -17,7 +17,7 @@ export function AppFooter({ className, ...props }: AppFooterProps) {
             </Link>
           </li>
           <li>
-            <Link href="https://github.com/kem198" aria-label="GitHub">
+            <Link href="https://github.com/kem198/kems-clew-next" aria-label="GitHub">
               <GitHubIcon className="h-6 w-6" />
             </Link>
           </li>
