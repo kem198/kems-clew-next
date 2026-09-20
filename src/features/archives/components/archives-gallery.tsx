@@ -122,7 +122,6 @@ function renderNextImage(
         alt={alt}
         title={title}
         sizes={sizes}
-        // quality={80}
         className="object-cover"
       />
     </div>
