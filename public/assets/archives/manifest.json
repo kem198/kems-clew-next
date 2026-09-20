@@ -703,5 +703,15 @@
     "src": "/assets/archives/20260821-komochifuku.webp",
     "width": 720,
     "height": 720
+  },
+  "20260910-nightseeker": {
+    "src": "/assets/archives/20260910-nightseeker.webp",
+    "width": 1810,
+    "height": 2560
+  },
+  "20260919-uchinokofencer": {
+    "src": "/assets/archives/20260919-uchinokofencer.webp",
+    "width": 1810,
+    "height": 2560
   }
 }
